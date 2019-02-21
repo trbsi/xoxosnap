@@ -7,8 +7,17 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
-    public function one()
+    public function profile($username)
     {
-    	return view('web.users.resources.profiles.one.profile');
+    	return view('web.users.resources.profiles.profile.profile', [
+    		'username' => $username
+    	]);
+    }
+
+    public function about($username)
+    {
+    	return view('web.users.resources.profiles.about.about', [
+    		'username' => $username
+    	]);
     }
 }

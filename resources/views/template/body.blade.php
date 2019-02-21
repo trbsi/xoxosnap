@@ -1,7 +1,7 @@
 <body>
-    @include('template.body.preloader')
-    @include('template.body.header')
-    @include('template.body.header-responsive')
+    @include('template.header.preloader')
+    @include('template.header.header')
+    @include('template.header.header-responsive')
     <div class="header-spacer"></div>
     @yield('body')
     <a class="back-to-top" href="#">

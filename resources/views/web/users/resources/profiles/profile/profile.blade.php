@@ -3,9 +3,9 @@
 @section('title', 'Profile')
 
 @section('body')
-	@include('web.users.resources.profiles.one.profile-info') 
-	@include('web.users.resources.profiles.one.videos') 
-	@include('web.users.resources.profiles.one.video-popup') 
+	@include('web.users.resources.profiles.common.profile-info') 
+	@include('web.users.resources.profiles.profile.videos') 
+	@include('web.users.resources.profiles.profile.video-popup') 
 @endsection
 
 @section('javascript')

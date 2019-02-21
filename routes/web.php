@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('u/{user}', '\App\Web\Users\Resources\Profiles\Controllers\ProfileController@one');
 
-Route::prefix('user')->group(function () {
-    Route::prefix('profile')->group(function () {
-	});	
+Route::prefix('u')->group(function () {
+	$ctl = '\App\Web\Users\Resources\Profiles\Controllers\ProfileController';
+	Route::get('{username}', $ctl.'@profile')->name('user.profile');
+	Route::get('{username}/about', $ctl.'@about')->name('user.about');
 });

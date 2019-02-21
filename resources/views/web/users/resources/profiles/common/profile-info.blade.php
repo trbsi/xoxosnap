@@ -14,10 +14,10 @@
                             <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
                                     <li>
-                                        <a href="02-ProfilePage.html" class="active">Snaps</a>
+                                        <a href="{{route('user.profile', ['username' => $username])}}" class="active">Snaps</a>
                                     </li>
                                     <li>
-                                        <a href="05-ProfilePage-About.html">About</a>
+                                        <a href="{{route('user.about', ['username' => $username])}}">About</a>
                                     </li>
                                 </ul>
                             </div>
