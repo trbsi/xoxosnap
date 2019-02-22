@@ -16,8 +16,26 @@
         </form>
         <div class="control-block">
             <div class="control-icon more has-items">
-                <svg class="olymp-happy-face-icon">
-                    <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use>
+                
+                    <svg class="olymp-explore-icon">
+                        <a href="{{route('explore')}}">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-explore-icon"></use>    
+                        </a>
+                    </svg>
+            
+                <div class="more-dropdown more-with-triangle triangle-top-center" style="padding: 0;">
+                    <div class="mCustomScrollbar" data-mcs-theme="dark">
+                        <ul class="notification-list">
+                            <li>
+                               Explore new stars, videos and stories
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="control-icon more has-items">
+                <svg class="olymp-followers-icon">
+                    <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-followers-icon"></use>
                 </svg>
                 <div class="label-avatar bg-blue">6</div>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
@@ -65,8 +83,8 @@
                 </div>
             </div>
             <div class="control-icon more has-items">
-                <svg class="olymp-thunder-icon">
-                    <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-thunder-icon"></use>
+                <svg class="olymp-notifications-icon">
+                    <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-notifications-icon"></use>
                 </svg>
                 <div class="label-avatar bg-primary">8</div>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
@@ -149,7 +167,7 @@
                 <svg class="olymp-piggy-bank">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
                 </svg>
-                <div class="label-avatar bg-breez coins">10000</div>
+                <div class="label-avatar bg-breez coins">10k</div>
                 <div class="more-dropdown more-with-triangle triangle-top-center" style="padding: 0;">
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list">
@@ -159,7 +177,6 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">

@@ -3,10 +3,21 @@
     <div class="header-content-wrapper">
         <ul class="nav nav-tabs mobile-app-tabs" role="tablist">
             <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#explore" role="tab">
+                    <div class="control-icon has-items">
+                        <svg class="olymp-explore-icon">
+                            <a href="{{route('explore')}}">
+                                <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-explore-icon"></use>
+                            </a>
+                        </svg>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#request" role="tab">
                     <div class="control-icon has-items">
-                        <svg class="olymp-happy-face-icon">
-                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use>
+                        <svg class="olymp-followers-icon">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-followers-icon"></use>
                         </svg>
                         <div class="label-avatar bg-blue">6</div>
                     </div>
@@ -15,10 +26,20 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#notification" role="tab">
                     <div class="control-icon has-items">
-                        <svg class="olymp-thunder-icon">
-                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-thunder-icon"></use>
+                        <svg class="olymp-notifications-icon">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-notifications-icon"></use>
                         </svg>
                         <div class="label-avatar bg-primary">8</div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#coins" role="tab">
+                    <div class="control-icon has-items">
+                        <svg class="olymp-piggy-bank">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
+                        </svg>
+                        <div class="label-avatar bg-breez coins">18k</div>
                     </div>
                 </a>
             </li>
@@ -154,6 +175,25 @@
                 <a href="#" class="view-all bg-primary">View All Notifications</a>
             </div>
         </div>
+        <div class="tab-pane " id="coins" role="tabpanel">
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="notification-list">
+                    <li>
+                       You have 666 NaughtyCoins. Use them to purchase goods on PornSnap
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane " id="explore" role="tabpanel">
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="notification-list">
+                    <li>
+                       Explore new stars, videos and stories
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <div class="tab-pane " id="search" role="tabpanel">
             <form class="search-bar w-search notification-list friend-requests">
                 <div class="form-group with-button">

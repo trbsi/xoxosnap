@@ -9,4 +9,5 @@
     </a>
     @include('template.javascript')
     @yield('javascript')
+    @stack('javascript')
 </body>

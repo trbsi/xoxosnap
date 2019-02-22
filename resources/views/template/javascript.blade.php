@@ -38,3 +38,8 @@
 <script src="/assets/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="/assets/js/zuck.min.js"></script>
 <script src="/assets/js/progressbar.min.js"></script>
+<script type="text/javascript">
+	$('.olymp-explore-icon').click(function() {
+		window.location.href = "{{route('explore')}}";
+	});
+</script>
