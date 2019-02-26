@@ -1,4 +1,4 @@
-@extends('template.core')
+@extends('layouts.site.core')
 
 @section('title', config('app.name'))
 

@@ -196,12 +196,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:;" id="logout-link">
                                         <svg class="olymp-logout-icon">
                                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-logout-icon"></use>
                                         </svg>
                                         <span>Log Out</span>
                                     </a>
+                                    <form id="logout-form" method="POST" action="{{route('logout')}}" style="display: none">@csrf</form>
                                 </li>
                             </ul>
                             <div class="ui-block-title ui-block-title-small">

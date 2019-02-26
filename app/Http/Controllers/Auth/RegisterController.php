@@ -21,14 +21,40 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers {
+        RegistersUsers::showRegistrationForm as parentShowRegistrationForm;
+    }
+
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $genders = [
+            'male' => User::GENDER_MALE,
+            'female' => User::GENDER_FEMALE
+        ];
+        
+        $userTypes = [
+            'model' => User::USER_TYPE_MODEL,
+            'viewer' => User::USER_TYPE_VIEWER
+        ];
+
+        return view('auth.register', [
+            'genders' => $genders,
+            'userTypes' => $userTypes
+        ]);
+    }
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -49,8 +75,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'agree_terms' => ['accepted'],
+            'gender' => ['required', 'integer', 'in:1,2'],
+            'profile_type' => ['required', 'integer', 'in:1,2'],
+            'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/(^([a-zA-Z]+)(\d+)?$)/u'],
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -63,7 +93,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        session(['you_may_login' => __('auth.you_may_login')]);
+
         return User::create([
+            'gender' => $data['gender'],
+            'profile_type' => $data['profile_type'],
+            'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

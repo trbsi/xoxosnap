@@ -757,7 +757,7 @@ Description: "HTML-template"
   .header--standard-dark .logo {
     color: #fff; }
     .header--standard-dark .logo .logo-title {
-      color: #fff; }
+      color: gray; }
     .header--standard-dark .logo:hover {
       color: #fff; }
   .header--standard-dark .column-tittle {
@@ -852,7 +852,7 @@ Description: "HTML-template"
       top: 0;
       opacity: 0; }
     .header--standard-landing .logo .logo-title {
-      color: #fff; }
+      color: gray; }
     .header--standard-landing .logo:hover {
       color: inherit; }
   .header--standard-landing .dropdown-toggle::after {
@@ -1581,7 +1581,7 @@ Description: "HTML-template"
   .footer--dark .w-about .logo {
     color: #fff; }
     .footer--dark .w-about .logo .logo-title {
-      color: #fff; }
+      color: gray; }
     .footer--dark .w-about .logo:hover {
       color: #fff; }
   .footer--dark .widget .title {
@@ -4692,9 +4692,9 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
   background-color: #fff;
   overflow: hidden;
   position: relative;
-  padding-left: 71px;
+  /*padding-left: 71px; MODIFIED */
   margin-bottom: 20px;
-  min-height: 700px; }
+  /*min-height: 700px;*/ }
   .registration-login-form .nav-tabs {
     float: left;
     display: block;
@@ -15606,4 +15606,8 @@ body {
   width: auto !important;
   padding: 0 3px 0 3px;
   right: -50%;
+}
+
+.invalid-feedback {
+    display: block;
 }

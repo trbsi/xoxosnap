@@ -22,3 +22,5 @@ Route::prefix('u')->group(function () {
 	Route::get('{username}', $ctl.'@profile')->name('user.profile');
 	Route::get('{username}/about', $ctl.'@about')->name('user.about');
 });
+
+Auth::routes();

@@ -42,4 +42,8 @@
 	$('.olymp-explore-icon').click(function() {
 		window.location.href = "{{route('explore')}}";
 	});
+
+	$('#logout-link').click(function() {
+		$('#logout-form').submit();
+	});
 </script>
