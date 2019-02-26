@@ -39,11 +39,11 @@ return [
         'profile_type' => 'Profile type',
         'male' => 'Male',
         'female' => 'Female',
-        'model' => 'Model',
+        'model' => 'Performer',
         'viewer' => 'Viewer',
-        'complete_registration' => 'Complete Registration',
+        'complete_registration' => 'Complete registration',
         'explanation' => 'Click for an explanation',
-        'explanation_profile_type' => '<b>Models can:</b>
+        'explanation_profile_type' => '<b>Performers can:</b>
         <ul>
             <li>- Earn money</li>
             <li>- Post videos and photos</li>

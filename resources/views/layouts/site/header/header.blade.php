@@ -180,7 +180,7 @@
             </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="/img/author-page.jpg" class="avatar">
+                    <img alt="author" src="@if (null !== $profilePicture) {{$profilePicture}} @else /img/forum1.png @endif" class="avatar">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             <div class="ui-block-title ui-block-title-small">
@@ -228,9 +228,9 @@
                         </div>
                     </div>
                 </div>
-                <a href="02-ProfilePage.html" class="author-name fn">
+                <a href="@if (null !== $username) {{route('user.profile', ['username' => $username])}} @else javascript:; @endif" class="author-name fn">
                     <div class="author-title">
-                        James Spiegel 
+                        {{$name}}
                         <svg class="olymp-dropdown-arrow-icon">
                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use>
                         </svg>
