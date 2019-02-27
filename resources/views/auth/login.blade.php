@@ -46,11 +46,11 @@
                         <button type="submit" class="btn btn-lg btn-green full-width"> {{__('auth.login')}}</button>
                         <p>{{__('auth.login_page.donot_have_account')}} <a href="{{route('register')}}" style="color: blue; text-decoration: underline;">{{__('auth.login_page.register_now')}}</a> {{__('auth.login_page.start_enjoing_benefits')}}</p>
 
-                        <?php /*
                         <div class="or"></div>
-                        <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
+                        <h4>{{__('auth.login_page.if_you_are_performer')}}</h4>
+                        <?php /*
+                        <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a> */?>
                         <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
-                        */ ?>
                     </div>
                 </div>
             </form>

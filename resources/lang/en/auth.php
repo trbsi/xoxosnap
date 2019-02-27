@@ -20,7 +20,7 @@ return [
     Join our community of adult performers and their fans.<br>
     Follow your favorite porn stars, cam girls, and amateurs now!
     <br><br>
-    <b>Models: Reliable Payouts! Start Earning Today!</b><br>
+    <b>Performers: Reliable Payouts! Start Earning Today!</b><br>
     Just sign in with your Twitter account and get started making money today!
     ',
     'join' => 'Join',
@@ -69,6 +69,7 @@ return [
         'donot_have_account' => 'Don\'t you have an account?',
         'register_now' => 'Register now!',
         'start_enjoing_benefits' => 'it\'s really simple and you can start enjoing all the benefits!',
+        'if_you_are_performer' => 'If you are performer login via:'
     ],
     'you_may_login' => 'You may login now :)',
     'reset_password' => 'Reset your password',
