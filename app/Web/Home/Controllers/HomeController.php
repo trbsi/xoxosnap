@@ -10,8 +10,8 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {	
-
 		$params = ['javascript' => null];
+        
     	if(empty(Cookie::get('above_18'))) {
             Cookie::queue(Cookie::make('above_18', true, time() + 60 * 60 * 24 * 365));//1year
 	    	$params['javascript'] = sprintf("

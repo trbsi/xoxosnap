@@ -7,7 +7,9 @@
 @endsection
 
 @push('javascript')
-<script type="text/javascript">
-	{!! $javascript !!}
-</script>
+	@if(null !== $javascript )
+	<script type="text/javascript">
+		{!! $javascript !!}
+	</script>
+	@endif
 @endpush

@@ -6,7 +6,7 @@ use Illuminate\View\View;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileComposer
+class UserComposer
 {
     /**
      * Bind data to the view.
@@ -18,15 +18,18 @@ class ProfileComposer
     {
         $user = Auth::user();
         if (null !== $user) {
+            $userId = $user->id;
             $name = $user->name;
             $username = $user->username;
             $picture = $user->picture;
         } else {
+            $userId = null;
             $name = __('web/users/user.guest');
             $username = null;
             $picture = null;
         }
 
+        $view->with('userId', $userId);
         $view->with('name', $name);
         $view->with('profilePicture', $picture);
         $view->with('username', $username);

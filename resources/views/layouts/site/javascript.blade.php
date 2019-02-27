@@ -48,3 +48,16 @@
 		$('#logout-form').submit();
 	});
 </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135376165-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  @if(null !== $userId)
+  gtag('set', {'user_id': '{{$userId}}'}); // Set the user ID using signed-in user_id.
+  @endif
+  gtag('config', 'UA-135376165-1');
+</script>

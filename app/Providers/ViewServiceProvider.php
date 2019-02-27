@@ -25,7 +25,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            '*', 'App\Web\Users\Views\Composers\ProfileComposer'
+            '*', 'App\Web\Users\Views\Composers\UserComposer'
         );
     }
 }
