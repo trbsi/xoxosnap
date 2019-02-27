@@ -15,6 +15,8 @@
 //public
 Route::get('/', '\App\Web\Home\Controllers\HomeController@index')->name('home');
 Route::get('/explore', '\App\Web\Home\Controllers\HomeController@explore')->name('explore');
+Route::get('/terms-of-use', '\App\Web\Home\Controllers\LegalController@termsOfUse')->name('terms-of-use');
+Route::get('/privacy-policy', '\App\Web\Home\Controllers\LegalController@privacyPolicy')->name('privacy-policy');
 
 //user profile
 Route::prefix('u')->group(function () {

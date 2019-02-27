@@ -4024,7 +4024,8 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
     position: relative; }
 
 .left-menu {
-  padding: 20px 0; }
+  /*padding: 20px 0; MODIFIED*/
+  margin-bottom: 0; /*MODIFIED*/}
   .left-menu .left-menu-title {
     transition: all .3s ease;
     font-weight: 700; }

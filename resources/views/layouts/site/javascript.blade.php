@@ -38,12 +38,13 @@
 <script src="/assets/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="/assets/js/zuck.min.js"></script>
 <script src="/assets/js/progressbar.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script type="text/javascript">
 	$('.olymp-explore-icon').click(function() {
 		window.location.href = "{{route('explore')}}";
 	});
 
-	$('#logout-link').click(function() {
+	$('.logout-link').click(function() {
 		$('#logout-form').submit();
 	});
 </script>

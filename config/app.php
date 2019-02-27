@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'PornSnap'),
 
+    'info_email' => env('INFO_EMAIL', 'info@pornsnapx.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

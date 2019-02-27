@@ -6,6 +6,6 @@
     @component('components.media.stories')
     @endcomponent
 
-	@include('web.home.explore.new')
-	@include('web.home.explore.popular')
+	@include('web.home.home.explore.new')
+	@include('web.home.home.explore.popular')
 @endsection

@@ -1,7 +1,7 @@
 <!-- Header-BP -->
 <header class="header" id="site-header">
     <div class="page-title">
-        <a href="/"><h6>PornSnap</h6></a>
+        <a href="/"><h6>{{config('app.name')}}</h6></a>
     </div>
     <div class="header-content-wrapper">
         <form class="search-bar w-search notification-list friend-requests">
@@ -183,45 +183,43 @@
                     <img alt="author" src="@if (null !== $profilePicture) {{$profilePicture}} @else /img/forum1.png @endif" class="avatar">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
+                            @auth
                             <div class="ui-block-title ui-block-title-small">
-                                <h6 class="title">Your Account</h6>
+                                <h6 class="title">{{__('general/user-menu.your_account')}}</h6>
                             </div>
+                            
                             <ul class="account-settings">
                                 <li>
                                     <a href="29-YourAccount-AccountSettings.html">
                                         <svg class="olymp-menu-icon">
                                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
                                         </svg>
-                                        <span>Profile Settings</span>
+                                        <span>{{__('general/user-menu.profile_settings')}}</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;" id="logout-link">
+                                    <a href="javascript:;" class="logout-link">
                                         <svg class="olymp-logout-icon">
                                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-logout-icon"></use>
                                         </svg>
-                                        <span>Log Out</span>
+                                        <span>{{__('general/user-menu.logout')}}</span>
                                     </a>
                                     <form id="logout-form" method="POST" action="{{route('logout')}}" style="display: none">@csrf</form>
                                 </li>
                             </ul>
+                            @endauth
                             <div class="ui-block-title ui-block-title-small">
-                                <h6 class="title">About PornSnap</h6>
+                                <h6 class="title">{{__('general/user-menu.about')}} {{config('app.name')}}</h6>
                             </div>
                             <ul>
                                 <li>
-                                    <a href="#">
-                                    <span>Terms and Conditions</span>
+                                    <a href="{{route('terms-of-use')}}">
+                                    <span>{{__('general/legal.terms_of_use')}}</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                    <span>FAQs</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    <span>Contact</span>
+                                    <a href="{{route('privacy-policy')}}">
+                                    <span>{{__('general/legal.privacy_policy')}}</span>
                                     </a>
                                 </li>
                             </ul>
