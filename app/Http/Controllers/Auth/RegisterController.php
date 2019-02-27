@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\profile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -32,19 +33,14 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showRegistrationForm()
-    {
-        $genders = [
-            'male' => User::GENDER_MALE,
-            'female' => User::GENDER_FEMALE
-        ];
-        
+    {        
         $userTypes = [
             'model' => User::USER_TYPE_PERFORMER,
             'viewer' => User::USER_TYPE_VIEWER
         ];
 
         return view('auth.register', [
-            'genders' => $genders,
+            'genders' => Profile::$genders,
             'userTypes' => $userTypes
         ]);
     }
@@ -76,7 +72,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'agree_terms' => ['accepted'],
-            'gender' => ['required', 'integer', 'in:1,2'],
+            'gender' => ['required', 'integer', 'in:1,2,3'],
             'profile_type' => ['required', 'integer', 'in:1,2'],
             'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/(^([a-zA-Z]+)(\d+)?$)/u'],
             'name' => ['required', 'string', 'max:100'],
@@ -95,13 +91,18 @@ class RegisterController extends Controller
     {
         session(['you_may_login' => __('auth.you_may_login')]);
 
-        return User::create([
-            'gender' => $data['gender'],
+        $user = User::create([
             'profile_type' => $data['profile_type'],
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->profile()->create([
+            'gender' => $data['gender'],
+        ]);
+
+        return $user;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Web\Home\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cookie;
 
 class HomeController extends Controller
 {
@@ -11,8 +12,8 @@ class HomeController extends Controller
     {	
 
 		$params = ['javascript' => null];
-    	if(empty(cookie('above_18'))) {
-    		cookie('above_18', true, time() + 60 * 60 * 24 * 365); //1 year
+    	if(empty(Cookie::get('above_18'))) {
+            Cookie::queue(Cookie::make('above_18', true, time() + 60 * 60 * 24 * 365));//1year
 	    	$params['javascript'] = sprintf("
                 Swal.fire({
                   type: 'question',

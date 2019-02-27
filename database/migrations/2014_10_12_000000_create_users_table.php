@@ -15,18 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
-            $table->string('username', 20)->unique()->index()->nullable();
+            $table->string('name', 100)->index();
+            $table->string('username', 20)->unique()->index();
             $table->string('email', 50)->unique()->nullable();
             $table->string('picture', 255)->nullable();
             $table->tinyInteger('profile_type');
-            $table->enum('provider', ['twitter', 'facebook']);
-            $table->bigInteger('provider_id');
+            $table->enum('provider', ['twitter', 'facebook'])->nullable();
+            $table->bigInteger('provider_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::statement('CREATE FULLTEXT INDEX name_username ON users(name, username)');
     }
 
     /**

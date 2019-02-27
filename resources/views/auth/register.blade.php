@@ -59,7 +59,7 @@
                             <label class="control-label">{{__('auth.register_page.gender')}}</label>
                             <select name="gender" class="selectpicker form-control" required>
                             @foreach ($genders as $genderKey => $genderValue)
-                            <option @if (old('gender') == $genderValue) selected @endif value="{{$genderValue}}">{{__('auth.register_page.'.$genderKey)}}</option>
+                            <option @if (old('gender') == $genderKey) selected @endif value="{{$genderKey}}">{{__('auth.register_page.'.$genderValue)}}</option>
                             @endforeach
                             </select>
                             @if ($errors->has('gender'))

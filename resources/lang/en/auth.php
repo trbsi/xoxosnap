@@ -39,6 +39,7 @@ return [
         'profile_type' => 'Profile type',
         'male' => 'Male',
         'female' => 'Female',
+        'trans' => 'Trans',
         'model' => 'Performer',
         'viewer' => 'Viewer',
         'complete_registration' => 'Complete registration',
@@ -69,7 +70,7 @@ return [
         'donot_have_account' => 'Don\'t you have an account?',
         'register_now' => 'Register now!',
         'start_enjoing_benefits' => 'it\'s really simple and you can start enjoing all the benefits!',
-        'if_you_are_performer' => 'If you are performer login via:'
+        'if_you_are_performer' => 'If you are a performer login via:'
     ],
     'you_may_login' => 'You may login now :)',
     'reset_password' => 'Reset your password',
