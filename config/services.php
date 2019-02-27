@@ -40,4 +40,9 @@ return [
         ],
     ],
 
+    'twitter' => [
+        'client_id' => 'ti8Ra3nMHMV49ug67kQ0keZQ1',
+        'client_secret' => 'tx7OP2lZZMtz9KY0JhSqEynXWQSb7iRb1fjh301V43OlQk4Gga',
+        'redirect' => env('APP_URL').'/auth/callback/twitter',
+    ],
 ];

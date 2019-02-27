@@ -39,7 +39,7 @@ class RegisterController extends Controller
         ];
         
         $userTypes = [
-            'model' => User::USER_TYPE_MODEL,
+            'model' => User::USER_TYPE_PERFORMER,
             'viewer' => User::USER_TYPE_VIEWER
         ];
 

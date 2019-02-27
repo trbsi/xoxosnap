@@ -17,12 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->string('username', 20)->unique()->index()->nullable();
-            $table->string('email', 50)->unique();
+            $table->string('email', 50)->unique()->nullable();
             $table->string('picture', 255)->nullable();
             $table->tinyInteger('profile_type');
-            $table->tinyInteger('gender');
+            $table->enum('provider', ['twitter', 'facebook']);
+            $table->bigInteger('provider_id');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

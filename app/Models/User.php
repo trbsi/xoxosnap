@@ -10,10 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public const GENDER_MALE = 1;
-    public const GENDER_FEMALE = 2;
-
-    public const USER_TYPE_MODEL = 1;
+    public const USER_TYPE_PERFORMER = 1;
     public const USER_TYPE_VIEWER = 2;
 
     /**
@@ -22,7 +19,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'gender', 'profile_type'
+        'name',
+        'email',
+        'password',
+        'username',
+        'profile_type',
+        'provider',
+        'provider_id'
     ];
 
     /**
@@ -31,7 +34,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -41,5 +45,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'name' => 'string',
+        'email' => 'string',
+        'username' => 'string',
+        'profile_type' => 'integer',
+        'provider' => 'string',
+        'provider_id' => 'integer',
+        'picture' => 'string',
     ];
 }
