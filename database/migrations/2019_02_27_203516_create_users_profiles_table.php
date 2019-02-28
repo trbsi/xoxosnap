@@ -21,6 +21,7 @@ class CreateUsersProfilesTable extends Migration
             $table->string('current_city', 50)->nullable();
             $table->tinyInteger('gender')->nullable();
             $table->string('business_email', 50)->nullable();
+            $table->tinyInteger('badge')->default(1);
             $table->string('website', 50)->nullable();
             $table->string('facebook', 50)->nullable();
             $table->string('instagram', 50)->nullable();

@@ -18,7 +18,7 @@ class HomeController extends Controller
                 Swal.fire({
                   type: 'question',
                   title: '%s',
-                  text: '%s',
+                  html: '%s',
                   allowOutsideClick: false
                 })",
                 __('web/home/index.over_18'),
