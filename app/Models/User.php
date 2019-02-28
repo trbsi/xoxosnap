@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\Profile;
+use App\Models\UserProfile;
 
 class User extends Authenticatable
 {
@@ -14,7 +14,9 @@ class User extends Authenticatable
     public const USER_TYPE_PERFORMER = 1;
     public const USER_TYPE_VIEWER = 2;
 
-    /**
+    protected $table = 'users';
+
+   /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -26,7 +28,8 @@ class User extends Authenticatable
         'username',
         'profile_type',
         'provider',
-        'provider_id'
+        'provider_id',
+        'has_notification'
     ];
 
     /**
@@ -52,7 +55,7 @@ class User extends Authenticatable
         'profile_type' => 'integer',
         'provider' => 'string',
         'provider_id' => 'integer',
-        'picture' => 'string',
+        'has_notification' => 'boolean',
     ];
 
     /**
@@ -60,6 +63,6 @@ class User extends Authenticatable
      */
     public function profile()
     {
-        return $this->hasOne(Profile::class, 'user_id');
+        return $this->hasOne(UserProfile::class, 'user_id');
     }
 }

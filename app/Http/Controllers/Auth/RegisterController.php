@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Models\profile;
+use App\Models\UserProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,7 +40,7 @@ class RegisterController extends Controller
         ];
 
         return view('auth.register', [
-            'genders' => Profile::$genders,
+            'genders' => UserProfile::$genders,
             'userTypes' => $userTypes
         ]);
     }

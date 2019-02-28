@@ -17,6 +17,7 @@ class CreateTipsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('sender_id');
             $table->unsignedInteger('receiver_id');
+            $table->integer('coins');
             $table->timestamps();
 
             $table->foreign('receiver_id')
