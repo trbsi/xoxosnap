@@ -10,3 +10,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 reset_site.sh
+seed_db.sh

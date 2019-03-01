@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\StoryMedia;
 
-class Story extends Eloquent
+class Story extends Model
 {
+	public const STORY_PATH = '/user/stories/';
+
 	protected $table = 'stories';
 
 	protected $casts = [
@@ -27,4 +30,9 @@ class Story extends Eloquent
 	{
 		return $this->belongsTo(\App\Models\User::class);
 	}
+
+	public function media()
+    {
+        return $this->hasOne(StoryMedia::class, 'story_id');
+    }
 }

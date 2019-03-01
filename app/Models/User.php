@@ -6,6 +6,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\UserProfile;
+use App\Models\Media;
+use App\Models\Coin;
+use App\Models\Notification;
+use App\Models\Stories;
 
 class User extends Authenticatable
 {
@@ -58,11 +62,29 @@ class User extends Authenticatable
         'has_notification' => 'boolean',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
     public function profile()
     {
         return $this->hasOne(UserProfile::class, 'user_id');
     }
+
+    public function coin()
+    {
+        return $this->hasOne(Coin::class, 'user_id');
+    }
+
+    public function media()
+    {
+        return $this->hasMany(Media::class, 'user_id');
+    }
+
+    public function stories()
+    {
+        return $this->hasMany(Story::class, 'user_id');
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'user_id');
+    }
+
 }

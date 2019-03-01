@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class UsersBilling extends Eloquent
+class UsersBilling extends Model
 {
 	protected $table = 'users_billings';
 

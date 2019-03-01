@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class Coin extends Eloquent
+class Coin extends Model
 {
 	protected $table = 'coins';
 

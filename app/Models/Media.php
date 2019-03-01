@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
-class Media extends Eloquent
+class Media extends Model
 {
+	public const MEDIA_PATH = '/user/media/';
+
 	protected $table = 'media';
 
 	protected $casts = [
@@ -38,8 +41,8 @@ class Media extends Eloquent
 		return $this->hasMany(\App\Models\MediaLike::class, 'media_id');
 	}
 
-	public function media_purchases()
+	public function purchases()
 	{
-		return $this->hasMany(\App\Models\MediaPurchase::class, 'media_id');
+		return $this->belongsToMany(User::class, 'media_purchases', 'media_id', 'user_id');
 	}
 }

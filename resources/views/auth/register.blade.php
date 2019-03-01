@@ -11,9 +11,28 @@
                 @csrf
                 <div class="row">
                     <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="form-group label-floating">
+                        <a href="javascript:;" class="explanation" style="border-bottom: 1px dotted gray; color: gray"> 
+                        {{__('auth.register_page.explanation')}}
+                        </a>
+                        <div id="explanation-details" style="display: none">
+                            {!! __('auth.register_page.explanation_profile_type') !!}
+                        </div>
+                        <div class="form-group label-floating is-select">
+                            <label class="control-label">{{__('auth.register_page.profile_type')}}</label>
+                            <select id="profile_type_input" name="profile_type" class="selectpicker form-control" required>
+                            @foreach ($userTypes as $userTypeKey=> $userTypeValue)
+                            <option @if (old('profile_type') == $userTypeValue) selected @endif value="{{$userTypeValue}}">{{__('auth.register_page.'.$userTypeKey)}}</option>
+                            @endforeach
+                            </select>
+                            @if ($errors->has('profile_type'))
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('profile_type') }}</strong>
+                            </span>
+                            @endif                                      
+                        </div>                        
+                        <div class="form-group label-floating" id="name_input_group">
                             <label class="control-label">{{__('auth.register_page.name')}}</label>
-                            <input name="name" class="form-control" placeholder="" type="text" value="{{ old('name') }}" required>
+                            <input name="name" id="name_input" class="form-control" placeholder="" type="text" value="{{ old('name') }}" required>
                             @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -68,25 +87,6 @@
                             </span>
                             @endif
                         </div>
-                        <a href="javascript:;" class="explanation" style="border-bottom: 1px dotted gray; color: gray">	
-                        {{__('auth.register_page.explanation')}}
-                        </a>
-                        <div id="explanation-details" style="display: none">
-                            {!! __('auth.register_page.explanation_profile_type') !!}
-                        </div>
-                        <div class="form-group label-floating is-select">
-                            <label class="control-label">{{__('auth.register_page.profile_type')}}</label>
-                            <select name="profile_type" class="selectpicker form-control" required>
-                            @foreach ($userTypes as $userTypeKey=> $userTypeValue)
-                            <option @if (old('profile_type') == $userTypeValue) selected @endif value="{{$userTypeValue}}">{{__('auth.register_page.'.$userTypeKey)}}</option>
-                            @endforeach
-                            </select>
-                            @if ($errors->has('profile_type'))
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('profile_type') }}</strong>
-                            </span>
-                            @endif										
-                        </div>
                         <div class="remember">
                             <div class="checkbox">
                                 <label>
@@ -110,3 +110,19 @@
 </div>
 <!-- ... end Login-Registration Form  -->
 @endsection
+
+@push('javascript')
+    <script type="text/javascript">
+        $('#profile_type_input').change(function() {
+            var name_input = $('#name_input');
+            var name_input_group = $('#name_input_group')
+            if ({{$userTypes['performer']}} == $(this).val()) {
+                name_input.attr('required', true);
+                name_input_group.show();
+            } else if ({{$userTypes['viewer']}} == $(this).val()) {
+                name_input.attr('viewer', false);
+                name_input_group.hide();
+            }
+        });
+    </script>
+@endpush

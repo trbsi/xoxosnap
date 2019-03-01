@@ -40,7 +40,7 @@ return [
         'male' => 'Male',
         'female' => 'Female',
         'trans' => 'Trans',
-        'model' => 'Performer',
+        'performer' => 'Performer',
         'viewer' => 'Viewer',
         'complete_registration' => 'Complete registration',
         'explanation' => 'Click for an explanation',
@@ -54,7 +54,7 @@ return [
         </ul>
         <b>Viewers can:</b>
         <ul>
-            <li>- Follow models</li>
+            <li>- Follow performers</li>
             <li>- Purchase tokens</li>
             <li>- Watch videos, photos and stories</li>
             <li>- Browse PornSnap</li>

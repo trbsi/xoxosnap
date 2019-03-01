@@ -1,6 +1,11 @@
 # Xampp setup
-In \xampp\apache\conf\extra\httpd-vhosts.conf add following:
 
+## Install SSL locally
+1. https://shellcreeper.com/how-to-create-valid-ssl-in-localhost-for-xampp/
+
+2. In \xampp\apache\conf\extra\httpd-vhosts.conf add following:
+
+```
 <VirtualHost *:80>
     ServerAdmin webmaster@dummy-host2.example.com
     DocumentRoot "F:/xampp/htdocs/pornsnap/site"
@@ -13,6 +18,7 @@ In \xampp\apache\conf\extra\httpd-vhosts.conf add following:
     DocumentRoot "F:/xampp/htdocs/pornsnap/site"
     ServerName pornsnap.loc
     SSLEngine on
-    SSLCertificateFile "conf/ssl.crt/server.crt"
-    SSLCertificateKeyFile "conf/ssl.key/server.key"
+    SSLCertificateFile "cert/pornsnap.loc/server.crt"
+    SSLCertificateKeyFile "cert/pornsnap.loc/server.key"
 </VirtualHost>
+```

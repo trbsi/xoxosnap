@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class UserProfile extends Eloquent
+class UserProfile extends Model
 {
     public const GENDER_MALE = 1;
     public const GENDER_FEMALE = 2;
     public const GENDER_TRANS = 3;
+
+    public const USER_PICTURE_PATH = '/user/profile/';
 
     public static $genders = [
         self::GENDER_MALE => 'male',

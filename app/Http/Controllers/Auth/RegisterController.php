@@ -35,7 +35,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {        
         $userTypes = [
-            'model' => User::USER_TYPE_PERFORMER,
+            'performer' => User::USER_TYPE_PERFORMER,
             'viewer' => User::USER_TYPE_VIEWER
         ];
 
@@ -74,8 +74,8 @@ class RegisterController extends Controller
             'agree_terms' => ['accepted'],
             'gender' => ['required', 'integer', 'in:1,2,3'],
             'profile_type' => ['required', 'integer', 'in:1,2'],
-            'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/(^([a-zA-Z]+)(\d+)?$)/u'],
-            'name' => ['required', 'string', 'max:100'],
+            'username' => ['required', 'string', 'max:20', 'unique:users', 'regex:/(^([a-zA-Z]+)(\d+)?$)/u'],
+            'name' => ['required_if:profile_type,1', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);

@@ -20,7 +20,7 @@ class CreateMediaTable extends Migration
             $table->text('description')->nullable();
             $table->string('file', 100);
             $table->integer('cost')->default(0);
-            $table->date('expires_at')->nullable();
+            $table->datetime('expires_at')->nullable();
             $table->integer('likes')->default(0);
             $table->timestamps();
 

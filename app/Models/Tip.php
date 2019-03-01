@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class Tip extends Eloquent
+class Tip extends Model
 {
 	protected $table = 'tips';
 

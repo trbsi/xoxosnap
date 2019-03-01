@@ -17,6 +17,7 @@ class CreateUsersProfilesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->unique();
             $table->string('picture', 255)->nullable();
+            $table->integer('followers')->default(0);
             $table->text('description')->nullable();
             $table->date('birthday')->nullable();
             $table->string('current_city', 50)->nullable();

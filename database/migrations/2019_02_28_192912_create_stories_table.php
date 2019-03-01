@@ -17,7 +17,7 @@ class CreateStoriesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->integer('cost')->default(0);
-            $table->date('expires_at')->nullable();
+            $table->datetime('expires_at')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

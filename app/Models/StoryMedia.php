@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class StoryMedia extends Eloquent
+class StoryMedia extends Model
 {
 	protected $table = 'stories_media';
 

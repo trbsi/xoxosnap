@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Eloquent
+class Notification extends Model
 {
+	public const TYPE_PERFORMER_NEW_FOLLOWER = 1;
+	public const TYPE_PERFORMER_NEW_PURCHASE = 2;
+	public const TYPE_VIEWER_PERFORMER_POSTED = 3;
+
 	protected $table = 'notifications';
 
 	protected $casts = [

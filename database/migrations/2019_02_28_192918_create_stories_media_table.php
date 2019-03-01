@@ -21,7 +21,7 @@ class CreateStoriesMediaTable extends Migration
 
             $table->foreign('story_id')
             ->references('id')
-            ->on('users')
+            ->on('stories')
             ->onDelete('cascade');
         });
     }

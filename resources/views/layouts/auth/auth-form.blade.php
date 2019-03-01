@@ -173,10 +173,10 @@
     </div>
 </div>
 @endsection
-@section('javascript')
+@push('javascript')
 <script type="text/javascript">
     $('.explanation').click(function() {
     	$('#explanation-details').toggle();
     });
 </script>
-@endsection
+@endpush

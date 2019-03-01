@@ -180,7 +180,6 @@ return [
         //Custom
         App\Providers\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Reliese\Coders\CodersServiceProvider::class,
 
     ],
 
