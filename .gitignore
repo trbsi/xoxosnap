@@ -11,3 +11,5 @@ npm-debug.log
 yarn-error.log
 reset_site.sh
 seed_db.sh
+/public_html
+.idea
