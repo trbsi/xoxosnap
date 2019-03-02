@@ -180,7 +180,7 @@
             </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="@if (null !== $profilePicture) {{$profilePicture}} @else /img/forum1.png @endif" class="avatar">
+                    <img alt="author" src="{{$profilePicture}}" class="avatar">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             @auth

@@ -4,29 +4,22 @@ namespace App\Web\Home\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Cookie;
+use App\Web\Home\Repositores\Home\Above18Repository;
+use App\Web\Home\Repositores\Home\HomeRepository;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
-    {	
-		$params = ['javascript' => null];
+    public function home(
+        Request $request,
+        Above18Repository $above18Repository,
+        HomeRepository $homeRepository
+    ) {	
         
-    	if(empty(Cookie::get('above_18'))) {
-            Cookie::queue(Cookie::make('above_18', true, time() + 60 * 60 * 24 * 365));//1year
-	    	$params['javascript'] = sprintf("
-                Swal.fire({
-                  type: 'question',
-                  title: '%s',
-                  html: '%s',
-                  allowOutsideClick: false
-                })",
-                __('web/home/index.over_18'),
-                __('web/home/index.accept_that_you_are_over_18')
-            );  		
-    	}
+        $params = [];
+        $params['javascript'] = $above18Repository->getJavascriptParam();
+        $homepageData = $homeRepository->getDataForHomePage();
 
-    	return view('web.home.home.index.home', $params);
+    	return view('web.home.home.home.home', array_merge($params, $homepageData));
     }
 
     public function explore()

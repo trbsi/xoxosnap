@@ -3,7 +3,11 @@
 @section('title', config('app.name'))
 
 @section('body')
-	@include('components.media.videos-with-stories') 
+	@if(true === $isGuest) 
+		@include('web.home.home.home.guest') 
+	@else
+		@include('components.media.videos-with-stories') 
+	@endif
 @endsection
 
 @push('javascript')

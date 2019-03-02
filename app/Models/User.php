@@ -18,6 +18,8 @@ class User extends Authenticatable
     public const USER_TYPE_PERFORMER = 1;
     public const USER_TYPE_VIEWER = 2;
 
+    public const PROVIDER_TWITTER = 'twitter';
+
     protected $table = 'users';
 
    /**

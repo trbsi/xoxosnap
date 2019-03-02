@@ -4277,7 +4277,10 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
     width: 98px;
     margin-bottom: 10px; }
     .friend-avatar .author-thumb img {
-      border: 4px solid #fff; }
+      border: 4px solid #fff;
+      object-fit: cover;
+      height: 98px;
+      width: 98px; }
 
 .friend-count {
   margin-bottom: 35px; }
@@ -15615,4 +15618,10 @@ body {
 
 .avatar {
   max-height: 50px;
+}
+
+.friend-header-thumb {
+  height: 50px;
+  background: #F6FBFB;
+  border-bottom: none;
 }

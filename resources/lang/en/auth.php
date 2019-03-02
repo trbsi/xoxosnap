@@ -25,6 +25,8 @@ return [
     ',
     'join' => 'Join',
     'login' => 'Login',
+    'register' => 'Register',
+    'login_with_twitter' => 'Login with Twitter',
     'register_to' => 'Register to',
     'register_page' => [
         'name' => 'Your name',
@@ -72,8 +74,6 @@ return [
         'start_enjoing_benefits' => 'it\'s really simple and you can start enjoing all the benefits!',
         'if_you_are_performer' => 'If you are a performer login via:'
     ],
-    'you_may_login' => 'You may login now :)',
-    'reset_password' => 'Reset your password',
     'reset_password_page' => [
         'reset_password_description' => 'Enter your email and click the send code button. You’ll receive a code in your email. Please use that code below to change the old password for a new one.',
         'restore_password' => 'Restore your password',
@@ -83,5 +83,6 @@ return [
         'confirm_password' => 'Confirm password',
         'change_password' => 'Change your password',
     ],
-    
+    'you_may_login' => 'You may login now :)',
+    'reset_password' => 'Reset your password',    
 ];

@@ -39,6 +39,10 @@ class SocialAuthController extends Controller
                 'provider_id' => $providerUser->getId(),
                 'provider' => $providerName
             ]);
+
+            $user->profile()->create([
+                'picture' => $providerUser->getAvatar(),
+            ]);
         }
 
         return $user;

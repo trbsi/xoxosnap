@@ -1,5 +1,0 @@
-<?php
-return [
-	'over_18' => 'Are you over 18?',
-	'accept_that_you_are_over_18' => 'This website contains age-restricted materials. If you are under the age of 18 years, or under the age of majority in the location from where you are accessing this website you do not have authorization or permission to enter this website or access any of its materials. If you are over the age of 18 years or over the age of majority in the location from where you are accessing this website by entering the website you hereby agree to comply with all the TERMS AND CONDITIONS. You also acknowledge and agree that you are not offended by nudity and explicit depictions of sexual activity.<br><br>By clicking on the "OK" button, and by entering this website you agree with all the above and certify under penalty of perjury that you are an adult.',
-];

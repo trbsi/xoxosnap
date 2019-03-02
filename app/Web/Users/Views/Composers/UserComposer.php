@@ -5,6 +5,7 @@ namespace App\Web\Users\Views\Composers;
 use Illuminate\View\View;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserProfile;
 
 class UserComposer
 {
@@ -21,12 +22,12 @@ class UserComposer
             $userId = $user->id;
             $name = $user->name;
             $username = $user->username;
-            $picture = $user->picture;
+            $picture = $user->profile->picture;
         } else {
             $userId = null;
             $name = __('web/users/user.guest');
             $username = null;
-            $picture = null;
+            $picture = UserProfile::NO_PROFILE_PICTURE_PATH;
         }
 
         $view->with('userId', $userId);

@@ -24,7 +24,7 @@
 			<div class="control-block">
 				<div class="author-page author vcard inline-items">
 					<div class="author-thumb">
-						<img alt="author" src="@if (null !== $profilePicture) {{$profilePicture}} @else /img/forum1.png @endif" class="avatar">
+						<img alt="author" src="{{$profilePicture}}" class="avatar">
 					</div>
 					<a href="@if (null !== $username) {{route('user.profile', ['username' => $username])}} @else javascript:; @endif" class="author-name fn">
 						<div class="author-title">
