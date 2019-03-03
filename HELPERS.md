@@ -9,3 +9,6 @@ ln -s ../storage/app/public/ storage
 # error setting certificate verify locations: CAfile
 https://stackoverflow.com/a/40861755/1860890
 Gdje god u php.ini ima `curl-ca-bundle.crt`, zamijeniti to sa cacert.pem
+
+# Infinite scroll
+https://laraget.com/blog/implementing-infinite-scroll-pagination-using-laravel-and-jscroll

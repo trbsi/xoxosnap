@@ -28,7 +28,7 @@ class HomeRepository
 		$recent = User::where('profile_type', User::USER_TYPE_PERFORMER)
 					->orderBy('id', 'DESC')
 					->with(['profile'])
-					->limit(5)
+					->limit(6)
 					->get();
 
 		//get 5 with most followers
@@ -37,7 +37,7 @@ class HomeRepository
 					    $query->orderBy('followers', 'DESC');
 					})
 					->with(['profile'])
-					->limit(5)
+					->limit(6)
 					->get();
 
 		$performers = $recent->merge($mostPopular);
