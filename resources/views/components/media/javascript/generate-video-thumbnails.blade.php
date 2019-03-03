@@ -1,4 +1,6 @@
+@if($useScriptTag)
 <script type="text/javascript">
+@endif
     var video = [];
     var canvas = [];
     var jVideo = [];
@@ -14,4 +16,7 @@
             (canvas[i]).getContext('2d').drawImage(video[i], 0, 0, parseInt(jVideo[i].width()), parseInt(jVideo[i].height()));
         };
     });
+
+@if($useScriptTag)
 </script>
+@endif

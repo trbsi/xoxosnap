@@ -8,9 +8,7 @@
             </div>
             <canvas id="canvas{{$video->id}}" class="video-canvas" data-video-id="{{$video->id}}"></canvas>
             <a data-toggle="modal" data-target="#open-photo-popup-v2" class="play-video">
-                <svg class="{{($video->cost > 0) ? 'olymp-locked' : 'olymp-play-icon'}}">
-                    <use xlink:href="/assets/svg-icons/sprites/icons.svg#{{($video->cost > 0) ? 'olymp-locked' : 'olymp-play-icon'}}"></use>
-                </svg>
+                <img src="/img/{{($video->cost > 0) ? 'locked.png' : 'play.png'}}">
             </a>
             <div class="overlay overlay-dark"></div>
         </div>

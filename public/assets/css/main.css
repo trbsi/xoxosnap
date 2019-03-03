@@ -15633,3 +15633,8 @@ body {
   float: left;
   margin-right: 10px;
 }
+
+.video-player img {
+  margin-bottom: 13px;
+  width: 22px;
+}

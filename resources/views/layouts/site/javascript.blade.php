@@ -39,6 +39,7 @@
 <script src="/assets/js/zuck.min.js"></script>
 <script src="/assets/js/progressbar.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="/assets/js/jquery.jscroll.min.js"></script>
 
 <script type="text/javascript">
 	$('.olymp-explore-icon').click(function() {
