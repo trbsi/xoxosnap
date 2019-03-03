@@ -20,7 +20,7 @@ class UserComposer
         $user = Auth::user();
         if (null !== $user) {
             $userId = $user->id;
-            $name = $user->name;
+            $name = $user->name ?? $user->username;
             $username = $user->username;
             $picture = $user->profile->picture;
         } else {

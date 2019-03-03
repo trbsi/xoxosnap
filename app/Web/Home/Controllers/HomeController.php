@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Web\Home\Repositores\Home\Above18Repository;
 use App\Web\Home\Repositores\Home\HomeRepository;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -14,10 +16,14 @@ class HomeController extends Controller
         Above18Repository $above18Repository,
         HomeRepository $homeRepository
     ) {	
-        
-        $params = [];
+        $user = Auth::user();
+        $params = [
+            'user' => $user,
+            'profileTypePerfomer' => User::USER_TYPE_PERFORMER,
+            'profileTypeViewer' => User::USER_TYPE_VIEWER,
+        ];
         $params['javascript'] = $above18Repository->getJavascriptParam();
-        $homepageData = $homeRepository->getDataForHomePage();
+        $homepageData = $homeRepository->getDataForHomePage($user);
 
     	return view('web.home.home.home.home', array_merge($params, $homepageData));
     }

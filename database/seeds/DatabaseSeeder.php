@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
     	$this->call(CoinsSeeder::class);
         $this->call(NotificationsSeeder::class);
         $this->call(StoriesSeeder::class);
+        $this->call(FollowersSeeder::class);
     }
 }

@@ -3,14 +3,14 @@ $('{{$cssClass}}').each(function() {
         var bar = new ProgressBar.Circle(this, {
             strokeWidth: 10,
             easing: 'easeInOut',
-            duration: 40000,
+            duration: $(this).data('duration')*1000,
             color: '#FF5E3A',
             trailColor: '#B5B5B5',
             trailWidth: 1,
             svgStyle: null
         });
 
-        bar.set(1)
+        bar.set($(this).data('current-state'))
         bar.animate(0);
 });
 </script>

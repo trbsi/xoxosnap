@@ -22,6 +22,7 @@ class CreateMediaTable extends Migration
             $table->integer('cost')->default(0);
             $table->datetime('expires_at')->nullable();
             $table->integer('likes')->default(0);
+            $table->integer('views')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')

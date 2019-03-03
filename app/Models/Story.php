@@ -33,6 +33,6 @@ class Story extends Model
 
 	public function media()
     {
-        return $this->hasOne(StoryMedia::class, 'story_id');
+        return $this->hasMany(StoryMedia::class, 'story_id');
     }
 }

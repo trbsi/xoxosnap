@@ -26,12 +26,15 @@ class MediaSeeder extends Seeder
 					'cost' => rand(0, 5),
 					'expires_at' => $this->calculateExpiresAt(),
 					'likes' => rand(),
+					'created_at' => '2019-02-20 10:12:25'
 				];
-				$performer->media()->create($data);
+				$media = $performer->media()->create($data);
+				$year = date('Y', strtotime($media->created_at));
+				$month = date('m', strtotime($media->created_at));
 
 				Storage::copy(
 	                $oldFilePath,
-	                sprintf('%s%s/%s', Media::MEDIA_PATH, $performer->id, $fileName)
+	                sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $performer->id, $year, $month, $fileName) //->/user/media/{user_id}/{year}/{month}/video.mp4
 	            );
 			}
     	}
@@ -39,12 +42,12 @@ class MediaSeeder extends Seeder
 
     private function calculateExpiresAt()
     {
-    	$type = (rand(0, 1) % 2 === 0) ? 'h' : 'd';
-    	$number = rand(1, 10);
-
     	if (rand(0, 1) % 2 === 0) {
     		return null;
     	}
+
+    	$type = (rand(0, 1) % 2 === 0) ? 'h' : 'd';
+    	$number = rand(1, 10);
 
     	$date = new DateTime();
     	if ('h' === $type) {

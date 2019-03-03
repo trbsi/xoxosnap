@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        DB::statement('CREATE FULLTEXT INDEX name_username ON users(name, username)');
+        DB::statement('CREATE FULLTEXT INDEX ft_name_username ON users(name, username)');
     }
 
     /**

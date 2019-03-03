@@ -10682,7 +10682,8 @@ ol ol li {
   .author-thumb img {
     border-radius: 100%;
     overflow: hidden;
-    max-width: unset; }
+    width: 50px;
+    height: 50px; }
   .author-thumb .icon-status {
     position: absolute;
     margin-right: 0;
@@ -15595,25 +15596,15 @@ input[type=checkbox] {
 
 
 /*DARIO*/
-.progressbar-continer-vid {
-  height: 30px;
-  width: 30px; 
-  float: left;
-  margin-right: 10px;
-}
-
 body {
   background: #F6FBFB;
 }
 
+/*HEADER*/
 .control-icon .coins {
   width: auto !important;
   padding: 0 3px 0 3px;
   right: -50%;
-}
-
-.invalid-feedback {
-    display: block;
 }
 
 .avatar {
@@ -15624,4 +15615,21 @@ body {
   height: 50px;
   background: #F6FBFB;
   border-bottom: none;
+}
+
+/*INPUT VALIDATION*/
+.invalid-feedback {
+    display: block;
+}
+
+/*VIDEOS*/
+.video-canvas {
+  width: 100%;
+}
+
+.progressbar-continer-vid {
+  height: 30px;
+  width: 30px; 
+  float: left;
+  margin-right: 10px;
 }

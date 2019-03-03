@@ -62,6 +62,7 @@ class User extends Authenticatable
         'provider' => 'string',
         'provider_id' => 'integer',
         'has_notification' => 'boolean',
+        'is_verified' => 'boolean',
     ];
 
     public function profile()
@@ -89,4 +90,8 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class, 'user_id');
     }
 
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
 }

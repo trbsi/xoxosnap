@@ -2,27 +2,27 @@
 
 namespace App\Web\Home\Repositores\Home;
 
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Media;
+use App\Models\Story;
 
 class HomeRepository 
 {
-	public function getDataForHomePage(): array
+	public function getDataForHomePage(?User $user): array
 	{
-		$user = Auth::user();
 		//guest
 		if (null === $user) {
-			$data['performers'] = $this->getRandomPerformers();
-			$data['isGuest'] = true;
+			return $this->getRandomPerformers();
 		} else {
-			$this->getAuthenticatedHomePage();
-			$data['isGuest'] = false;
+			if(User::USER_TYPE_PERFORMER === $user->profile_type) {
+				return $this->getPerformerHomePage();
+			} elseif (User::USER_TYPE_VIEWER === $user->profile_type) {
+				return $this->getViewerHomePage($user);
+			}
 		}
-
-		return $data;
 	}
 
-	private function getRandomPerformers(): object
+	private function getRandomPerformers(): array
 	{
 		//get 5 recent performers
 		$recent = User::where('profile_type', User::USER_TYPE_PERFORMER)
@@ -43,6 +43,26 @@ class HomeRepository
 		$performers = $recent->merge($mostPopular);
 		$performers = $performers->shuffle();
 
-		return $performers;
+		return ['performers' => $performers];
+	}
+
+	private function getViewerHomePage(User $user): array
+	{
+		$followsIds = $user->follows()->pluck('user_id');
+		
+		//get recent videos of performers user follows		
+		$videos = Media::whereIn('user_id', $followsIds)
+		->whereRaw('(expires_at IS NULL OR expires_at >= ?)', [date('Y-m-d H:i:s')])
+		->orderBy('id', 'DESC')
+		->paginate(9);
+
+		//get stories of performers user follows
+		$stories = Story::whereIn('user_id', $followsIds)
+		->whereRaw('(expires_at IS NULL OR expires_at >= ?)', [date('Y-m-d H:i:s')])
+		->with(['media'])
+		->orderBy('id', 'DESC')
+		->paginate(10);
+
+		return ['videos' => $videos, 'stories' => $stories];
 	}
 }
