@@ -12,3 +12,6 @@ Gdje god u php.ini ima `curl-ca-bundle.crt`, zamijeniti to sa cacert.pem
 
 # Infinite scroll
 https://laraget.com/blog/implementing-infinite-scroll-pagination-using-laravel-and-jscroll
+
+# Laravel Passport consume own api unauthorized
+https://stackoverflow.com/a/48542641/1860890

@@ -26,7 +26,13 @@ return [
 		'if_you_want_to_follow' => 'If you want to follow',
 		'register_or_login' => 'please register or login :)',
 		'join_community' => 'Join a Naughty community now',
-		'' => '',
 	],
+	'viewer' => [
+		'views' => 'views',
+		'video_is_locked' => 'Video is locked',
+		'amount' => 'Amount:',
+		'coins' => 'NaughtyCoins',
+		'pay_to_access' => 'Do you want to pay to access it?',
+	]
 
 ];

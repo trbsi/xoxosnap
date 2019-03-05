@@ -7,10 +7,12 @@ use App\Models\User;
 use App\Web\Media\Traits\MediaFileTrait;
 use Westsworld\TimeAgo;
 use DateTime;
+use App\Helpers\Traits\NumberFormatterTrait;
+use App\Web\Coins\Traits\ConvertToNaughtyCoinsTrait;
 
 class Media extends Model
 {
-	use MediaFileTrait;
+	use MediaFileTrait, NumberFormatterTrait, ConvertToNaughtyCoinsTrait;
 	
 	public const MEDIA_PATH = '/user/media/';
 
@@ -23,6 +25,8 @@ class Media extends Model
 		'cost' => 'int',
 		'likes' => 'int',
 		'views' => 'int',
+		'user_paid' => 'boolean', //see HomeRepository::getViewerHomePage
+		'user_liked' => 'boolean', //see HomeRepository::getViewerHomePage
 	];
 
 	protected $dates = [
@@ -43,6 +47,7 @@ class Media extends Model
 		'published_ago',
 		'progress_bar_duration',
 		'progress_bar_current_state',
+		'coins',
 	];
 
 	public function getFileAttribute($value)
@@ -74,14 +79,37 @@ class Media extends Model
 		return round(1 - $completed, 2);
 	}
 
-	public function user()
+	public function getViewsAttribute($value)
 	{
-		return $this->belongsTo(\App\Models\User::class);
+		if ($this->noMutation) {
+			return $value;
+		}
+
+		return $this->formatNumber($value);
 	}
 
-	public function media_likes()
+	public function getLikesAttribute($value)
 	{
-		return $this->hasMany(\App\Models\MediaLike::class, 'media_id');
+		if ($this->noMutation) {
+			return $value;
+		}
+
+		return $this->formatNumber($value);
+	}
+
+	public function getCoinsAttribute()
+	{
+		return $this->convertToNaughtyCoins($this->cost);
+	}
+
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
+
+	public function likes()
+	{
+		return $this->belongsToMany(User::class, 'media_likes', 'media_id', 'user_id');
 	}
 
 	public function purchases()

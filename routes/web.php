@@ -25,8 +25,16 @@ Route::prefix('u')->group(function () {
 	Route::get('{username}/about', $ctl.'@about')->name('user.about');
 });
 
+//coins
+Route::middleware('auth')->group(function () {
+	Route::prefix('coins')->group(function () {
+		$ctl = '\App\Web\Coins\Controllers\CoinController';
+		Route::get('', $ctl.'@get')->name('coins.get');
+	});
+});
 
-//auth
+
+//auth - register/login
 Auth::routes();
 Route::namespace('Auth')->group(function () {
 	Route::get('auth/callback/{provider}', 'SocialAuthController@callback');

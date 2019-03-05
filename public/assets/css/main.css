@@ -5492,7 +5492,7 @@ body {
   top: -25px;
   right: -25px;
   color: #888da8;
-  fill: #888da8; }
+  fill: white; }
   .icon-close:hover {
     color: #ff5e3a;
     fill: #ff5e3a; }
@@ -5644,6 +5644,7 @@ figure {
   padding: 55px 0;
   background-color: #000; }
   .open-photo-thumb .photo-item {
+    width: 100%; /*MODIFIED*/
     margin: 0;
     border-radius: 0;
     padding: 0;
@@ -6354,7 +6355,7 @@ ol ol li {
     transition: all .15s ease; }
   .post-add-icon svg, .post-add-icon img {
     margin-right: 8px;
-    width: 20px;
+    width: 26px;
     height: 18px; }
   .post-add-icon .olymp-speech-balloon-icon {
     width: 22px;
@@ -15622,7 +15623,7 @@ body {
     display: block;
 }
 
-/*VIDEOS*/
+/*VIDEOS HOMEPAGE*/
 .video-canvas {
   width: 100%;
 }
@@ -15637,4 +15638,8 @@ body {
 .video-player img {
   margin-bottom: 13px;
   width: 22px;
+}
+
+.video-item .plyr video {
+  max-height: 200px;
 }

@@ -10,10 +10,11 @@ use App\Models\Media;
 use App\Models\Coin;
 use App\Models\Notification;
 use App\Models\Stories;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     public const USER_TYPE_PERFORMER = 1;
     public const USER_TYPE_VIEWER = 2;

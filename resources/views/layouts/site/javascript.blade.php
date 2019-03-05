@@ -28,7 +28,6 @@
 <script src="/assets/js/circle-progress.js"></script>
 <script src="/assets/js/loader.js"></script>
 <script src="/assets/js/run-chart.js"></script>
-<script src="/assets/js/jquery.magnific-popup.js"></script>
 <script src="/assets/js/jquery.gifplayer.js"></script>
 <script src="/assets/js/mediaelement-and-player.js"></script>
 <script src="/assets/js/mediaelement-playlist-plugin.min.js"></script>
@@ -40,16 +39,32 @@
 <script src="/assets/js/progressbar.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="/assets/js/jquery.jscroll.min.js"></script>
+<script src="/assets/js/plyr.min.js"></script>
 
 <script type="text/javascript">
+  //redirect when cloced on explore button in header
 	$('.olymp-explore-icon').click(function() {
 		window.location.href = "{{route('explore')}}";
 	});
 
+  //post form to logout
 	$('.logout-link').click(function() {
 		$('#logout-form').submit();
 	});
+
+  function ajax(urlToCall, method, dataToPost) {
+    return $.ajax({
+        url : urlToCall,
+        type: method,
+        beforeSend: function (request) {
+            request.setRequestHeader("X-CSRF-TOKEN", '{{ csrf_token() }}');
+        },
+        data : dataToPost
+    });
+}
 </script>
+
+
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135376165-1"></script>

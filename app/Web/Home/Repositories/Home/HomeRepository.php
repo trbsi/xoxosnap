@@ -8,6 +8,9 @@ use App\Models\Story;
 
 class HomeRepository 
 {
+	/**
+	 * @param User $user Loggedin user
+	 */
 	public function getDataForHomePage(?User $user): array
 	{
 		//guest
@@ -52,7 +55,11 @@ class HomeRepository
 		
 		//get recent videos of performers user follows		
 		$videos = Media::whereIn('user_id', $followsIds)
+		->select('*')
+		->selectRaw('IF((SELECT COUNT(*) FROM media_purchases WHERE user_id = ? AND media_id = media.id) = 0, 0, 1) AS user_paid', [$user->id])
+		->selectRaw('IF((SELECT COUNT(*) FROM media_likes WHERE user_id = ? AND media_id = media.id) = 0, 0, 1) AS user_liked', [$user->id])
 		->whereRaw('(expires_at IS NULL OR expires_at >= ?)', [date('Y-m-d H:i:s')])
+		->with(['user.profile'])
 		->orderBy('id', 'DESC')
 		->paginate(9);
 

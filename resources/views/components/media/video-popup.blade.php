@@ -13,31 +13,27 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="">
-                                <div class="photo-item" data-swiper-parallax="-300" data-swiper-parallax-duration="500">
-                                    <img src="/img/open-photo2.jpg" alt="photo">
-                                    <div class="overlay"></div>
-                                    <div class="content">
-                                        <a href="#" class="h6 title">Photoshoot 2016</a>
-                                        <time class="published" datetime="2017-03-24T18:18">2 weeks ago</time>
-                                    </div>
+                                <div class="photo-item">
+                                    <video id="performer-video" preload="auto" style="max-height: 400px;">
+                                        <source type="video/mp4">
+                                    </video>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="open-photo-content">
                     <article class="hentry post">
                         <div class="post__author author vcard inline-items">
-                            <img src="/img/author-page.jpg" alt="author">
+                            <img id="profile-picture" alt="author">
                             <div class="author-date">
-                                <a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
+                                <a id="post-author-name" target="_blank" class="h6 post__author-name fn" href="">First Last</a>
                                 <div class="post__date">
-                                    <time class="published" datetime="2017-03-24T18:18">
+                                    <time class="published" id="published-ago" datetime="2017-03-24T18:18">
                                     2 hours ago
                                     </time>
                                 </div>
                             </div>
+                            <?php /*
                             <div class="more">
                                 <svg class="olymp-three-dots-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
@@ -51,25 +47,28 @@
                                     </li>
                                 </ul>
                             </div>
+                            */ ?>
                         </div>
-                        <p>Here’s a photo from last month’s photoshoot. We really had a great time and got a batch of incredible shots for the new catalog.</p>
+                        <p id="description">Here’s a photo from last month’s photoshoot. We really had a great time and got a batch of incredible shots for the new catalog.</p>
                         <div class="post-additional-info inline-items">
-                            <a href="#" class="post-add-icon inline-items">
+                            <img src="/img/loading_circle.gif" style="display: none;" id="likes-loading">
+                            <a href="javascript:;" id="likes-icon" class="post-add-icon inline-items">
                                 <svg class="olymp-heart-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
                                 </svg>
-                                <span>148</span>
+                                <span id="likes">148</span>
                             </a>
                             <div class="comments-shared">
-                                <a href="#" class="post-add-icon inline-items">
-                                    <svg class="olymp-speech-balloon-icon">
-                                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
+                                <a href="javascript:;" class="post-add-icon inline-items">
+                                    <svg class="olymp-icon-eye">
+                                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-icon-eye"></use>
                                     </svg>
-                                    <span>61</span>
+                                    <span id="views">61</span>
                                 </a>
                             </div>
                         </div>
                     </article>
+                    <?php /*
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="comments-list">
                             <li class="comment-item">
@@ -110,9 +109,39 @@
                             </div>
                         </div>
                     </form>
+                    */?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Window-popup Open Photo Popup V2 -->
+
+@push('javascript')
+<script type="text/javascript">
+    var likesIcon = $('#likes-icon');
+    likesIcon.click(function() {
+        var likesLoading = $('#likes-loading');
+        likesLoading.show();
+        likesIcon.hide();
+
+        var response = ajax('{{route('media.like')}}', 'POST', {id: $(this).data('video-id')})
+        response
+        .done(function(data) {
+            likesLoading.hide();
+            likesIcon.show();
+            $('#likes').text(data.likes); 
+            if (true === data.liked) {
+                color = '#FF5E3A';
+            } else {
+                color = '#c2c5d9';
+            }
+            $('#likes-icon').css({'fill': color, 'color': color});
+        })
+        .fail(function(xhr) {
+            likesLoading.hide();
+            likesIcon.show();
+        });
+    });
+</script>
+@endpush

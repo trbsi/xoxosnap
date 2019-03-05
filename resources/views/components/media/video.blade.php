@@ -1,14 +1,29 @@
 <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+
     <div class="ui-block video-item">
         <div class="video-player">
-            <div align="center" class="embed-responsive embed-responsive-16by9" style="z-index: -50; position: absolute;">
-                <video id="video{{$video->id}}" class="embed-responsive-item" controls preload="auto">
+            <div align="center">
+                <video id="video{{$video->id}}" class="performer-video" preload="auto">
                     <source src="{{$video->file}}" type="video/mp4">
                 </video>
             </div>
-            <canvas id="canvas{{$video->id}}" class="video-canvas" data-video-id="{{$video->id}}"></canvas>
-            <a data-toggle="modal" data-target="#open-photo-popup-v2" class="play-video">
-                <img src="/img/{{($video->cost > 0) ? 'locked.png' : 'play.png'}}">
+            <a 
+                href="javascript:;"
+                data-video-id="{{$video->id}}"
+                data-video-url="{{$video->file}}"
+                data-profile-url="{{route('user.profile', ['username' => $video->user->username])}}"
+                data-profile-picture="{{$video->user->profile->picture}}"
+                data-username="{{$video->user->username}}"
+                data-description="{{nl2br($video->description)}}"
+                data-views="{{$video->views}}"
+                data-likes="{{$video->likes}}"
+                data-published-ago="{{$video->published_ago}}"
+                data-can-access="{{($video->cost > 0 && true === $video->user_paid) ? '1' : '0'}}"
+                data-liked="{{(true === $video->user_liked) ? '1' : '0'}}"
+                data-coins="{{$video->coins}}"
+                class="play-video"
+            >
+                <img src="/img/{{($video->cost > 0 && $video->user_paid) ? 'play.png' : 'locked.png'}}">
             </a>
             <div class="overlay overlay-dark"></div>
         </div>
@@ -17,10 +32,11 @@
             <div class="progressbar-continer-vid" data-current-state="{{$video->progress_bar_current_state}}" data-duration="{{$video->progress_bar_duration}}"></div>
             @endif
             <a href="#" class="h6 title">{{$video->title}}</a>
+            <a href="{{route('user.profile', ['username' => $video->user->username])}}">{{$video->user->username}}</a>
+            |
             <time class="published" datetime="{{$video->created_at}}">{{$video->published_ago}}</time>
+            |
+            <time class="published">{{$video->views}} {{__('web/home/home.viewer.views')}}</time>
         </div>
     </div>
 </div>
-
-@component('components.media.video-popup')
-@endcomponent
