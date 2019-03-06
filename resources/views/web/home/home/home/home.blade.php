@@ -11,8 +11,12 @@
 		@if($profileTypePerfomer === $user->profile_type)
 
 		@elseif($profileTypeViewer === $user->profile_type)
-			@component('components.media.videos-with-stories', ['videos'=> $videos, 'stories' => $stories]) 
-			@endcomponent
+		    @if([] !== $videos)
+				@component('components.media.videos-with-stories', ['videos'=> $videos, 'stories' => $stories]) 
+				@endcomponent
+			@else
+				@include('web.home.home.home.viewer-follow-performers')
+			@endif
 		@endif
 	@endauth
 

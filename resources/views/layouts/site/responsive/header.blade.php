@@ -39,7 +39,7 @@
                         <svg class="olymp-piggy-bank">
                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
                         </svg>
-                        <div class="label-avatar bg-breez coins">18k</div>
+                        <div class="label-avatar bg-breez coins">{{$coinsFormatted}}</div>
                     </div>
                 </a>
             </li>
@@ -179,7 +179,7 @@
             <div class="mCustomScrollbar" data-mcs-theme="dark">
                 <ul class="notification-list">
                     <li>
-                       You have 666 NaughtyCoins. Use them to purchase goods on PornSnap
+                       {{__('general/header.coins_explanation', ['coins' => $coins])}}
                     </li>
                 </ul>
             </div>

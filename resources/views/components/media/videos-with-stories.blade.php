@@ -7,20 +7,15 @@
 </div>
 
 <div class="container">
-        @if([] !== $videos)
-        <div class="infinite-scroll">
-            <div class="row">
-                
-                @foreach($videos as $video)
-                    @component('components.media.video', ['video' => $video])
-                    @endcomponent
-                @endforeach
-                  {{$videos->links()}}
-            </div>
+    <div class="infinite-scroll">
+        <div class="row">
+            @foreach($videos as $video)
+                @component('components.media.video', ['video' => $video])
+                @endcomponent
+            @endforeach
+              {{$videos->links()}}
         </div>
-        @else
-            PRAZNO
-        @endif
+    </div>
 </div>
 
 @component('components.media.video-popup')
