@@ -8,9 +8,9 @@ use App\Api\V1\Web\Coins\Repositories\Update\UpdateRepository;
 
 class CoinController extends Controller
 {
-	public function update(Request $request, UpdateRepository $updateRepository)
+	public function purchase(Request $request, UpdateRepository $updateRepository)
 	{
-	    $data = $updateRepository->update($request->id);
+	    $data = $updateRepository->purchase($request->id, $request->type);
 	    return response()->json($data);
 	}
 }

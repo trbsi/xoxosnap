@@ -14,9 +14,10 @@ class CreateStoriesMediaTable extends Migration
     public function up()
     {
         Schema::create('stories_media', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('story_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('story_id');
             $table->string('file', 100);
+            $table->tinyInteger('type');
             $table->timestamps();
 
             $table->foreign('story_id')

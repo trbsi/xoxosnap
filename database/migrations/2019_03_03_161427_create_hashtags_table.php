@@ -14,7 +14,7 @@ class CreateHashtagsTable extends Migration
     public function up()
     {
         Schema::create('hashtags', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name', 50);
             $table->integer('popularity');
             $table->timestamps();

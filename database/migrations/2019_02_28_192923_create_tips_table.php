@@ -14,9 +14,9 @@ class CreateTipsTable extends Migration
     public function up()
     {
         Schema::create('tips', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('sender_id');
-            $table->unsignedInteger('receiver_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('sender_id');
+            $table->unsignedBigInteger('receiver_id');
             $table->integer('coins');
             $table->timestamps();
 

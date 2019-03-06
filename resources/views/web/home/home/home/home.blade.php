@@ -11,7 +11,7 @@
 		@if($profileTypePerfomer === $user->profile_type)
 
 		@elseif($profileTypeViewer === $user->profile_type)
-			@component('components.media.videos-with-stories', ['videos'=> $videos]) 
+			@component('components.media.videos-with-stories', ['videos'=> $videos, 'stories' => $stories]) 
 			@endcomponent
 		@endif
 	@endauth

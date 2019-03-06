@@ -5,9 +5,17 @@ namespace App\Web\Home\Repositores\Home;
 use App\Models\User;
 use App\Models\Media;
 use App\Models\Story;
+use App\Web\Stories\Repositories\RecentStories\RecentStoriesRepository;
 
 class HomeRepository 
 {
+	private $recentStoriesRepository;
+
+	public function __construct(RecentStoriesRepository $recentStoriesRepository)
+	{
+		$this->recentStoriesRepository = $recentStoriesRepository;
+	}
+
 	/**
 	 * @param User $user Loggedin user
 	 */
@@ -64,12 +72,8 @@ class HomeRepository
 		->paginate(9);
 
 		//get stories of performers user follows
-		$stories = Story::whereIn('user_id', $followsIds)
-		->whereRaw('(expires_at IS NULL OR expires_at >= ?)', [date('Y-m-d H:i:s')])
-		->with(['media'])
-		->orderBy('id', 'DESC')
-		->paginate(10);
+		$stories = $this->recentStoriesRepository->getRecentStoriesOfFollowedUsers($followsIds, $user->id);
 
-		return ['videos' => $videos, 'stories' => $stories];
+		return ['videos' => $videos, 'stories' => json_encode($stories)];
 	}
 }

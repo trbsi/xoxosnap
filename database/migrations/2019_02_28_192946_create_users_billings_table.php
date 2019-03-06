@@ -14,8 +14,8 @@ class CreateUsersBillingsTable extends Migration
     public function up()
     {
         Schema::create('users_billings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id')->unique();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->string('name', 100);
             $table->string('bank_account_number', 100);
             $table->timestamps();

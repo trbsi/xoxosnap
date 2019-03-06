@@ -14,9 +14,9 @@ class CreateMediaLikesTable extends Migration
     public function up()
     {
         Schema::create('media_likes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('media_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('media_id');
 
             $table->foreign('user_id')
             ->references('id')

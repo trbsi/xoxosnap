@@ -1,5 +1,5 @@
 <script>
-    var initDemo = function () {     
+    var initStories = function () {     
       skin = 'Snapgram';
       var skins = {
         'Snapgram': {
@@ -9,18 +9,10 @@
           'cubeEffect': true
         }
       };
-    
-      var timeIndex = 0;
-      var shifts = [35, 60, 60 * 3, 60 * 60 * 2, 60 * 60 * 25, 60 * 60 * 24 * 4, 60 * 60 * 24 * 10];
-      var timestamp = function () {
-        var now = new Date();
-        var shift = shifts[timeIndex++] || 0;
-        var date = new Date(now - shift * 1000);
-    
-        return date.getTime() / 1000;
-      };
-    
-      new Zuck('stories', {
+
+      var buildedStories = buildStories();
+
+      var loadedStories = new Zuck('stories', {
         backNative: true,
         previousTap: true,
         autoFullScreen: skins[skin]['autoFullScreen'],
@@ -29,91 +21,133 @@
         list: skins[skin]['list'],
         cubeEffect: skins[skin]['cubeEffect'],
         localStorage: true,
-        stories: [
-          {
-            id: "ramon",
-            photo: "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/1.jpg",
-            name: "Ramon",
-            link: "https://ramon.codes",
-            lastUpdated: timestamp(),
-            items: [
-              Zuck.buildItem("ramon-1", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/1.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/1.jpg", '', false, false, timestamp()),
-              Zuck.buildItem("ramon-2", "video", 0, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/2.mp4", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/2.jpg", '', false, false, timestamp()),
-              Zuck.buildItem("ramon-3", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/3.png", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/3.png", 'https://ramon.codes', 'Visit my Portfolio', false, timestamp())
-            ]
-          },
-          {
-            id: "gorillaz",
-            photo: "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/2.jpg",
-            name: "Gorillaz",
-            link: "",
-            lastUpdated: timestamp(),
-            items: [
-              Zuck.buildItem("gorillaz-1", "video", 0, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.mp4", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.jpg", '', false, false, timestamp()),
-              Zuck.buildItem("gorillaz-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", '', false, false, timestamp()),
-            ]
-          },
-          {
-            id: "ladygaga",
-            photo: "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/3.jpg",
-            name: "Lady Gaga",
-            link: "",
-            lastUpdated: timestamp(),
-            items: [
-              Zuck.buildItem("ladygaga-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", '', false, false, timestamp()),
-              Zuck.buildItem("ladygaga-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", 'http://ladygaga.com', false, false, timestamp()),
-            ]
-          },
-          {
-            id: "starboy",
-            photo: "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/4.jpg",
-            name: "The Weeknd",
-            link: "",
-            lastUpdated: timestamp(),
-            items: [
-              Zuck.buildItem("starboy-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", '', false, false, timestamp())
-            ]
-          },
-          {
-            id: "riversquomo",
-            photo: "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/5.jpg",
-            name: "Rivers Cuomo",
-            link: "",
-            lastUpdated: timestamp(),
-            items: [
-              Zuck.buildItem("riverscuomo", "photo", 10, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", '', false, false, timestamp())
-            ]
-          }
-        ],
+        stories: buildedStories,
          callbacks:  {
             'onOpen': function(storyId, callback) {
-              alert(storyId);  // on open story viewer
-              callback();
+                var locked = false;
+                var storyIndex = null;
+
+                $.each(buildedStories, function(index, story) {
+                    if (storyId == story.id && true === story.isLocked) {
+                        locked = story.isLocked;
+                        storyIndex = index;
+                    }
+                });
+
+                if (false === locked) {
+                    callback();
+                } else {
+                    storyIsLocked(callback, storyId, storyIndex, buildedStories);
+                }
             },
 
             'onRender': function(item, mediaHTML) {
-              return mediaHTML; // on render story viewer, use if you want custom elements
+                return mediaHTML; // on render story viewer, use if you want custom elements
             },
 
             'onView': function(storyId) {
-              // on view story
+                // on view story
             },
 
             'onEnd': function(storyId, callback) {
-              callback();  // on end story
+                callback();  // on end story
             },
 
             'onClose': function(storyId, callback) {
-              callback();  // on close story viewer
+                callback();  // on close story viewer
             },
 
             'onNavigateItem': function(storyId, nextStoryId, callback) {
-              callback();  // on navigate item of story
+                callback();  // on navigate item of story
             },
           },
       });
   
     };
     
-    initDemo();
+    initStories();
+    $('#stories').perfectScrollbar({wheelPropagation:false});
+
+    function buildStories()
+    {
+        var storiesJson = {!! $stories !!}; 
+        var stories = [];
+        var timestamp = function (shift) {
+            var now = new Date();
+            var date = new Date(now - shift * 1000);
+
+            return date.getTime() / 1000;
+          };
+
+        $.each(storiesJson, function(index, story) {
+            itemsArray = [];
+            $.each(story.items, function(i, item) {
+                itemsArray.push(Zuck.buildItem(
+                    item.story_id,
+                    item.media_type,
+                    item.duration,
+                    item.media_file,
+                    item.preview,
+                    '',
+                    false,
+                    false,
+                    timestamp(item.last_updated_at)
+                ));
+            });
+            storyObject = {
+                id: story.id,
+                photo: story.photo,
+                name: story.name,
+                link: story.link,
+                isLocked: story.is_locked,
+                coins: story.coins,
+                lastUpdated: timestamp(story.last_updated_at),
+                items: itemsArray
+            };
+
+            stories.push(storyObject);
+        });
+
+        return stories;
+    }
+
+    function storyIsLocked(storyCallback, storyId, storyIndex, buildedStories, coins)
+    {
+        Swal.fire({
+            type: 'question',
+            title: '{{__('web/home/home.viewer.story_is_locked')}}',
+            html: '{{__('web/home/home.viewer.pay_to_access')}}<br><b>{{__('web/home/home.viewer.amount')}}</b> '
+            +buildedStories[storyIndex].coins
+            +' {{__('web/home/home.viewer.coins')}}',
+            showCancelButton: true,
+        })
+        .then((result) => {
+            if (true === result.value) {
+                <?php //send request to server ?>
+                var response = ajax('{{route('coins.purchase', ['type' => 'story'])}}', 'PATCH', {id: storyId});
+                response
+                .done(function(data) {
+                    <?php  //unlock story ?>
+                    buildedStories[storyIndex].isLocked = false;
+                    storyCallback();
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    response = jqXHR.responseJSON;
+                    Swal.fire({
+                      title: response.message,
+                      html: '{{__('web/coins/coins.update.buy_coins')}}',
+                      type: 'warning',
+                      showCancelButton: true,
+                    })
+                    .then((resultBuyCoins) => {
+                        console.log(resultBuyCoins);
+                        if (true === resultBuyCoins.value) {
+                            window.location = '{{route('coins.get')}}';
+                        }
+                    });
+                });
+               
+            }
+        });
+    }
 </script>

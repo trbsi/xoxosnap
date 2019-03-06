@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Media;
 use App\Models\User;
 use App\Models\Story;
+use App\Models\StoryMedia;
 
 class StoriesSeeder extends Seeder
 {
@@ -20,9 +21,11 @@ class StoriesSeeder extends Seeder
 				if ($i % 2 === 0) { //video
 		     		$fileName = sprintf('%s_%s_%s.mp4', date('YmdHisu'), $key, $i);
 		     		$oldFilePath = sprintf('seeds/videos/%s.mp4', rand(1, 12));
+		     		$type = StoryMedia::TYPE_VIDEO;
 				} else { //image
 		     		$fileName = sprintf('%s_%s_%s.jpg', date('YmdHisu'), $key, $i);
 		     		$oldFilePath = sprintf('seeds/pictures/%s.jpg', rand(1, 20));
+		     		$type = StoryMedia::TYPE_PHOTO;
 				}
  		 		$data = [
 					'cost' => rand(0, 5),
@@ -32,7 +35,8 @@ class StoriesSeeder extends Seeder
 				
 				$story = $performer->stories()->create($data);
 				$story->media()->create([
-					'file' => $fileName
+					'file' => $fileName,
+					'type' => $type
 				]);
 				$year = date('Y', strtotime($story->created_at));
 				$month = date('m', strtotime($story->created_at));

@@ -28,7 +28,7 @@ Route::middleware('auth:api')->group(function () {
 		});
 		Route::prefix('coins')->group(function () {
 			$ctl = '\App\Api\V1\Web\Coins\Controllers\CoinController';
-			Route::patch('', $ctl.'@update')->name('coins.patch');
+			Route::patch('purchase', $ctl.'@purchase')->name('coins.purchase');
 		});
 	});
 });

@@ -5,28 +5,30 @@ namespace App\Api\V1\Web\Coins\Repositories\Update;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use App\Models\Media;
+use App\Models\Story;
 use App\Web\Coins\Traits\ConvertToNaughtyCoinsTrait;
 
 class UpdateRepository 
 {
 	use ConvertToNaughtyCoinsTrait;
 
-    public function update(int $id): array
+    public function purchase(int $id, string $type): array
     {
-    	$media = Media::find($id);
+        $model = $this->getModel($id, $type);
     	$user = Auth::user();
-    	$coinsCost = $this->convertToNaughtyCoins($media->cost);
+    	$coinsCost = $this->convertToNaughtyCoins($model->cost);
 
     	if ($user->coin->coins < $coinsCost) {
     		abort(400, __('web/coins/coins.update.no_enough_coins'));
     	}
 
     	try {
-    		//check if user already bought access to video
+    		//check if user already bought access to media
     		//if exception is thrown then he already has access
-    		$media->purchases()->attach($user->id);
+            $this->setAsPurchased($model, $user->id);
     	} catch (Exception $e) {
     		return [
+                'e' =>$e->getMessage(),
 	    		'coins' => $user->coin->coins
 	    	];
     	}
@@ -41,5 +43,20 @@ class UpdateRepository
     	return [
     		'coins' => $user->coin->coins
     	];
+    }
+
+    private function getModel(int $id, string $type): object
+    {
+        switch ($type) {
+            case 'video':
+                return Media::find($id);
+            case 'story':
+                return Story::find($id);
+        }
+    }
+
+    private function setAsPurchased(object $model, int $userId) 
+    {
+        $model->purchases()->attach($userId);
     }
 }

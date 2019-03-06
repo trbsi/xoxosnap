@@ -33,6 +33,7 @@ return [
 		'amount' => 'Amount:',
 		'coins' => 'NaughtyCoins',
 		'pay_to_access' => 'Do you want to pay to access it?',
+		'story_is_locked' => 'Story is locked'
 	]
 
 ];

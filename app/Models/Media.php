@@ -48,6 +48,7 @@ class Media extends Model
 		'progress_bar_duration',
 		'progress_bar_current_state',
 		'coins',
+		'is_locked',
 	];
 
 	public function getFileAttribute($value)
@@ -100,6 +101,17 @@ class Media extends Model
 	public function getCoinsAttribute()
 	{
 		return $this->convertToNaughtyCoins($this->cost);
+	}
+
+	public function getIsLockedAttribute()
+	{
+		if (0 === $this->cost) {
+			return false;
+		} elseif ($this->cost > 0 && true === $this->user_paid) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public function user()

@@ -14,9 +14,9 @@ class CreateMediaHashtagsTable extends Migration
     public function up()
     {
         Schema::create('media_hashtags', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('media_id');
-            $table->unsignedInteger('hashtag_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('media_id');
+            $table->unsignedBigInteger('hashtag_id');
 
             $table->foreign('media_id')
             ->references('id')

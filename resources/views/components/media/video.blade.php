@@ -18,12 +18,12 @@
                 data-views="{{$video->views}}"
                 data-likes="{{$video->likes}}"
                 data-published-ago="{{$video->published_ago}}"
-                data-can-access="{{($video->cost > 0 && true === $video->user_paid) ? '1' : '0'}}"
+                data-is-locked="{{(true === $video->is_locked) ? '1' : '0'}}"
                 data-liked="{{(true === $video->user_liked) ? '1' : '0'}}"
                 data-coins="{{$video->coins}}"
                 class="play-video"
             >
-                <img src="/img/{{($video->cost > 0 && $video->user_paid) ? 'play.png' : 'locked.png'}}">
+                <img src="/img/{{(true === $video->is_locked) ? 'locked.png' : 'play.png'}}">
             </a>
             <div class="overlay overlay-dark"></div>
         </div>

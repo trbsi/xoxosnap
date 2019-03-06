@@ -14,8 +14,8 @@ class CreateStoriesTable extends Migration
     public function up()
     {
         Schema::create('stories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->integer('cost')->default(0);
             $table->integer('views')->default(0);
             $table->datetime('expires_at')->nullable();
