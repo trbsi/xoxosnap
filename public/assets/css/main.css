@@ -15602,12 +15602,6 @@ body {
 }
 
 /*HEADER*/
-.control-icon .coins {
-  width: auto !important;
-  padding: 0 3px 0 3px;
-  right: -50%;
-}
-
 .avatar {
   max-height: 50px;
 }
