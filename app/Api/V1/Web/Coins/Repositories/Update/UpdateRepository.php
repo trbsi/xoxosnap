@@ -45,7 +45,7 @@ class UpdateRepository
     	];
     }
 
-    private function getModel(int $id, string $type): object
+    private function getModel(int $id, string $type)
     {
         switch ($type) {
             case 'video':
@@ -55,7 +55,7 @@ class UpdateRepository
         }
     }
 
-    private function setAsPurchased(object $model, int $userId) 
+    private function setAsPurchased($model, int $userId) 
     {
         $model->purchases()->attach($userId);
     }

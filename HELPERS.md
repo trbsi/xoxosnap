@@ -5,6 +5,7 @@ On any other or locally: `php artisan storage:link`
 # Create symbolic link from `storage` inside `public` folder to `storage/app/public`
 cd public/
 ln -s ../storage/app/public/ storage
+ln -s path_to_directory link_name
 
 # error setting certificate verify locations: CAfile
 https://stackoverflow.com/a/40861755/1860890
@@ -15,3 +16,8 @@ https://laraget.com/blog/implementing-infinite-scroll-pagination-using-laravel-a
 
 # Laravel Passport consume own api unauthorized
 https://stackoverflow.com/a/48542641/1860890
+
+# Hostgator php 7 and composer
+Combination of those two because you need to download composer.phar in order to put it in `~/bin/composer`
+https://stackoverflow.com/questions/39643805/need-to-run-composer-update-on-ssh-on-hostgator-but-php-v-to-low/48714217
+https://www.livelywebdesign.com/blog/2018/09/composer-on-hostgator-shared-hosting/

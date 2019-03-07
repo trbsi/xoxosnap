@@ -3,10 +3,12 @@
 namespace App\Web\Media\Repositories\FollowedUsers;
 
 use App\Models\Media;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class FollowedUsersRepository
 {
-    public function getMediaOfFollowedUsers(object $followsIds, int $userId): object
+    public function getMediaOfFollowedUsers(Collection $followsIds, int $userId): LengthAwarePaginator
     {
     	return Media::whereIn('user_id', $followsIds)
 		->select('*')

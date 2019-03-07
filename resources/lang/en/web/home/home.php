@@ -26,6 +26,8 @@ return [
 		'if_you_want_to_follow' => 'If you want to follow',
 		'register_or_login' => 'please register or login :)',
 		'join_community' => 'Join a Naughty community now',
+		'register_as_performer_viewer' => 'Register as a performer or a viewer:',
+		'login_as_performer_viewer' => 'Login as a performer or a viewer:',
 	],
 	'viewer' => [
 		'views' => 'views',
@@ -33,7 +35,8 @@ return [
 		'amount' => 'Amount:',
 		'coins' => 'NaughtyCoins',
 		'pay_to_access' => 'Do you want to pay to access it?',
-		'story_is_locked' => 'Story is locked'
-	]
-
+		'story_is_locked' => 'Story is locked',
+		'followed' => 'Followed',
+		'already_following' => 'You\'re already following this user',
+	],
 ];

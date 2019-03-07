@@ -10,7 +10,12 @@ class CoinController extends Controller
 {
 	public function purchase(Request $request, UpdateRepository $updateRepository)
 	{
-	    $data = $updateRepository->purchase($request->id, $request->type);
+		$data = $request->validate([
+            'id' => 'required|integer',
+            'type' => 'required|in:video,story',
+        ]);
+
+	    $data = $updateRepository->purchase($data['id'], $data['type']);
 	    return response()->json($data);
 	}
 }

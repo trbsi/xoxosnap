@@ -6,7 +6,7 @@ use App\Models\Media;
 
 class UpdateViewsRepository 
 {
-    public function update(array $data, int $id): array
+    public function update(int $id): array
     {
         $media = Media::find($id);
         $media->increment('views');

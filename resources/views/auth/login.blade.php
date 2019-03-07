@@ -47,7 +47,7 @@
                         <p>{{__('auth.login_page.donot_have_account')}} <a href="{{route('register')}}" style="color: blue; text-decoration: underline;">{{__('auth.login_page.register_now')}}</a> {{__('auth.login_page.start_enjoing_benefits')}}</p>
 
                         <div class="or"></div>
-                        <h4>{{__('auth.login_page.if_you_are_performer')}}</h4>
+                        <h4><b>{{__('auth.login_page.if_you_are_performer')}}</b></h4>
                         <?php /*
                         <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a> */?>
                         <a href="{{route('social.login', ['provider' => 'twitter'])}}" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>{{__('auth.login_with_twitter')}}</a>

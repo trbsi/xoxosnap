@@ -1,11 +1,12 @@
 <script type="text/javascript">
     var videoPlayer = null;
+    var videoElement = null; <?php //keep variable global so you can access it in video-popup.blade ?>
     $('#open-photo-popup-v2').on('hidden.bs.modal', function (e) {
         videoPlayer.destroy();
     });
 
     $('.play-video').click(function() {
-        var videoElement = this;
+        videoElement = this;
         //if user can access or not
         if (1 === $(this).data('is-locked')) {
             <?php //ask if wants to buy access ?>
@@ -21,7 +22,7 @@
                 response
                 .done(function(data) {
                     $('#views').text(data.views); 
-                    $(videoElement).data('is-locked', 1);
+                    $(videoElement).data('is-locked', 0);
                     $(videoElement).children('img').attr('src', '/img/play.png');
                     openModal(videoElement);
                 })
@@ -47,7 +48,7 @@
         }
     });
 
-    function openModal( videoElement)
+    function openModal(videoElement)
     {
         <?php //prepare popup data ?>
         $('#performer-video source').attr('src', $(videoElement).data('video-url'));

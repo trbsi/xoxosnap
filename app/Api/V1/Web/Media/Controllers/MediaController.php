@@ -14,7 +14,7 @@ class MediaController extends Controller
 		$data = $request->validate([
             'id' => 'required|integer',
         ]);
-		return response()->json($updateViewsRepository->update($data, $request->id));
+		return response()->json($updateViewsRepository->update($data['id']));
 	}
 
 	public function like(Request $request, LikeRepository $likeRepository)
@@ -23,7 +23,7 @@ class MediaController extends Controller
 	        'id' => 'required|integer',
 	    ]);
 
-	    return response()->json($likeRepository->like($request->id));
+	    return response()->json($likeRepository->like($data['id']));
 
 	}
 }

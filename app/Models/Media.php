@@ -38,6 +38,7 @@ class Media extends Model
 		'title',
 		'description',
 		'file',
+		'thumbnail',
 		'cost',
 		'expires_at',
 		'likes'

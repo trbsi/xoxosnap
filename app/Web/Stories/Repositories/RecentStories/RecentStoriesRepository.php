@@ -6,12 +6,13 @@ use App\Models\Story;
 use App\Models\StoryMedia;
 use DateTime;
 use App\Web\Coins\Traits\ConvertToNaughtyCoinsTrait;
+use Illuminate\Support\Collection;
 
 class RecentStoriesRepository
 {
 	use ConvertToNaughtyCoinsTrait;
 
-    public function getRecentStoriesOfFollowedUsers(object $followsIds, int $userId): array
+    public function getRecentStoriesOfFollowedUsers(Collection $followsIds, int $userId): array
     {
     	$stories = Story::whereIn('user_id', $followsIds)
     	->select('*')

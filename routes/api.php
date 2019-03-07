@@ -30,5 +30,9 @@ Route::middleware('auth:api')->group(function () {
 			$ctl = '\App\Api\V1\Web\Coins\Controllers\CoinController';
 			Route::patch('purchase', $ctl.'@purchase')->name('coins.purchase');
 		});
+		Route::prefix('users')->group(function () {
+			$ctl = '\App\Api\V1\Web\Users\Controllers\UserController';
+			Route::post('follow-user', $ctl.'@followUser')->name('users.follow-user');
+		});
 	});
 });

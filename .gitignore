@@ -13,3 +13,4 @@ reset_site.sh
 seed_db.sh
 /public_html
 .idea
+error_log

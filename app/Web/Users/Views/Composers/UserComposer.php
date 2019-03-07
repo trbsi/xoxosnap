@@ -31,8 +31,8 @@ class UserComposer
             $name = __('web/users/user.guest');
             $username = null;
             $picture = UserProfile::NO_PROFILE_PICTURE_PATH;
-            $coins = null;
-            $coinsFormatted = null;
+            $coins = 0;
+            $coinsFormatted = 0;
         }
 
         $view->with('userId', $userId);

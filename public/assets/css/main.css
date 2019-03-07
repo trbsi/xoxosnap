@@ -296,8 +296,8 @@ Description: "HTML-template"
   .control-icon.has-items {
     fill: #3f4257; }
   .control-icon .label-avatar {
-    width: 19px;
-    height: 19px;
+    min-width: 19px;
+    min-height: 19px;
     line-height: 19px;
     top: -12px;
     right: -9px; }
@@ -15603,7 +15603,7 @@ body {
 
 /*HEADER*/
 .control-icon .coins {
-  width: auto !important;
+  width: auto;
   padding: 0 3px 0 3px;
 }
 
