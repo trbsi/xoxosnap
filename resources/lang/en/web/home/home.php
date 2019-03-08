@@ -25,7 +25,7 @@ return [
 		'login_to_follow' => 'Login to follow',
 		'if_you_want_to_follow' => 'If you want to follow',
 		'register_or_login' => 'please register or login :)',
-		'join_community' => 'Join a Naughty community now',
+		'join_community' => 'Join a Naughty Community Now',
 		'register_as_performer_viewer' => 'Register as a performer or a viewer:',
 		'login_as_performer_viewer' => 'Login as a performer or a viewer:',
 	],

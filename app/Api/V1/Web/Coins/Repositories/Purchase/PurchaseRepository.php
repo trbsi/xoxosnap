@@ -52,7 +52,6 @@ class PurchaseRepository
             DB::commit();
 		} catch (Exception $e) {
             DB::rollBack();
-            abort(400, $e->getMessage());
 			abort(400, __('web/coins/coins.update.unable_to_take_coins'));
 		}
 

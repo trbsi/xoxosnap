@@ -2,13 +2,23 @@
 <div class="container">
     <div class="row">
         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
-            <h2><b>{{config('app.name')}}</b> - {{__('web/home/home.guest.make_second_count')}}</h2>
+            <h1><b>{{config('app.name')}}</b></h1>
             <h3>{{__('web/home/home.guest.join_community')}}</h3>
             <h4>{{__('web/home/home.guest.watch_uncensored_video')}}</h4>
             <br><br>
         </div>
         <div class="col col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <h5>{{__('web/home/home.guest.viewers')}}</h5>
+            <h4>{{__('web/home/home.guest.performers')}}</h4>
+            <ul class="list-group" style="min-height: 180px">
+                <li class="list-group-item">&starf; {{__('web/home/home.guest.performer_description_1')}}</li>
+                <li class="list-group-item">&starf; {{__('web/home/home.guest.performer_description_2')}}</li>
+                <li class="list-group-item">&starf; {{__('web/home/home.guest.performer_description_3')}}</li>
+            </ul>
+            <h4><b>{{__('auth.login_page.if_you_are_performer')}}</b></h4>
+            <a href="{{route('social.login', ['provider' => 'twitter'])}}" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>{{__('auth.login_with_twitter')}}</a>
+        </div>
+        <div class="col col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <h4>{{__('web/home/home.guest.viewers')}}</h4>
              <ul class="list-group" style="min-height: 180px">
                 <li class="list-group-item">&#10022; {{__('web/home/home.guest.visitor_description_1')}}</li>
                 <li class="list-group-item">&#10022; {{__('web/home/home.guest.visitor_description_2')}}</li>
@@ -18,17 +28,6 @@
             <a href="{{route('register')}}" class="btn btn-purple btn-md full-width">{{__('auth.register')}}<div class="ripple-container"></div></a>
             <h4><b>{{__('web/home/home.guest.login_as_performer_viewer')}}</b></h4>
             <a href="{{route('login')}}" class="btn btn-green btn-md full-width">{{__('auth.login')}}<div class="ripple-container"></div></a>
-
-        </div>
-        <div class="col col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <h5>{{__('web/home/home.guest.performers')}}</h5>
-            <ul class="list-group" style="min-height: 180px">
-                <li class="list-group-item">&starf; {{__('web/home/home.guest.performer_description_1')}}</li>
-                <li class="list-group-item">&starf; {{__('web/home/home.guest.performer_description_2')}}</li>
-                <li class="list-group-item">&starf; {{__('web/home/home.guest.performer_description_3')}}</li>
-            </ul>
-            <h4><b>{{__('auth.login_page.if_you_are_performer')}}</b></h4>
-            <a href="{{route('social.login', ['provider' => 'twitter'])}}" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>{{__('auth.login_with_twitter')}}</a>
         </div>
     </div>
 
