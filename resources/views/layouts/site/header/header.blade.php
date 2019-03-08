@@ -1,5 +1,6 @@
 <?php 
 use App\Models\Notification;
+use App\Models\User;
 ?>
 
 <!-- Header-BP -->
@@ -214,6 +215,7 @@ use App\Models\Notification;
 <!-- ... end Header-BP -->
 
 @push('javascript')
+@auth
 <script type="text/javascript">
     //notifications
     var loadMoreNotificationsLoading = $('.load-more-notifications-loading');
@@ -233,19 +235,19 @@ use App\Models\Notification;
             var notificationsContainer = $('.notifications-container');
             $.each(data.data, function(index, notificationItem) {
                 switch (notificationItem.by_user.profile_type) {
-                    case <?=$user::USER_TYPE_PERFORMER?>:
+                    case <?=User::USER_TYPE_PERFORMER?>:
                         username = notificationItem.by_user.name;
                         break;
-                    case <?=$user::USER_TYPE_VIEWER?>:
+                    case <?=User::USER_TYPE_VIEWER?>:
                         username = notificationItem.by_user.username;
                         break;
                 }
 
                 switch (notificationItem.notification_type) {
-                    case <?=$notification::TYPE_PERFORMER_NEW_PURCHASE?>:
+                    case <?=Notification::TYPE_PERFORMER_NEW_PURCHASE?>:
                         notificationText = '{{__('general/header.notifications.bought_your_video')}}';
                         break;
-                    case <?=$notification::TYPE_VIEWER_PERFORMER_POSTED?>:
+                    case <?=Notification::TYPE_VIEWER_PERFORMER_POSTED?>:
                         notificationText = '{{__('general/header.notifications.posted_new_video')}}';
                         break;
                 }
@@ -378,4 +380,5 @@ use App\Models\Notification;
         });
     });
 </script>
+@endauth
 @endpush
