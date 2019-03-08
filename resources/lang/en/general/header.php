@@ -10,7 +10,7 @@ return [
 	],
 	'notifications' => [
 		'notifications' => 'Naughtyfications',
-		'view_all_notifications' => 'View All Naughtyfications',
+		'view_all_notifications' => 'Load more Naughtyfications',
 		'bought_your_video' => 'bought your video',
 		'posted_new_video' => 'posted new video',
 	],

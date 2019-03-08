@@ -13,14 +13,12 @@ class NotificationController extends Controller
 	public function get(Request $request, GetNotificationsRepository $getNotificationsRepository)
 	{
 		$data = $request->validate([
-        	'type' => sprintf('required|in:%s,%s,%s',
-        		Notification::TYPE_PERFORMER_NEW_FOLLOWER,
-        		Notification::TYPE_PERFORMER_NEW_PURCHASE,
-        		Notification::TYPE_VIEWER_PERFORMER_POSTED
+        	'type' => sprintf('in:%s',
+        		Notification::TYPE_PERFORMER_NEW_FOLLOWER
         	),
         ]);
 
-	    $data = $getNotificationsRepository->getNotifications($data['type']);
+	    $data = $getNotificationsRepository->getNotifications($data['type'] ?? null);
 	    return response()->json($data);
 	}
 

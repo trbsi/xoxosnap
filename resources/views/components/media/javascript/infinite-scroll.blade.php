@@ -1,15 +1,15 @@
 <script type="text/javascript">
     //infinite scroll
-    $('ul.pagination').hide();
+    $('#video-container ul.pagination').hide();
     $(function() {
-        $('.infinite-scroll').jscroll({
+        $('.infinite-scroll-media').jscroll({
             autoTrigger: true,
             loadingHtml: '<div style="text-align:center;"><img src="/img/loading_videos.gif" alt="Loading..." /></div>',
             padding: 0,
             nextSelector: '.pagination li.active + li a',
-            contentSelector: 'div.infinite-scroll',
+            contentSelector: 'div.infinite-scroll-media',
             callback: function() {
-                $('ul.pagination').remove();
+                $('#video-container ul.pagination').remove();
                 @component('components.media.javascript.init-plyr', ['useScriptTag' => false])
                 @endcomponent
             }

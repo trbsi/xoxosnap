@@ -9,7 +9,10 @@ use DateTime;
 
 class Notification extends Model
 {
+	//followers
 	public const TYPE_PERFORMER_NEW_FOLLOWER = 1;
+
+	//notifications
 	public const TYPE_PERFORMER_NEW_PURCHASE = 2;
 	public const TYPE_VIEWER_PERFORMER_POSTED = 3;
 

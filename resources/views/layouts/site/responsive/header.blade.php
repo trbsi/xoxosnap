@@ -63,15 +63,17 @@
     </div>
     <!-- Tab panes -->
     <div class="tab-content tab-content-responsive">
+
+        @if (true === $showNewFollowersNotifications)
         <!-- followers -->
         <div class="tab-pane " id="request" role="tabpanel">
-            <div class="mCustomScrollbar" data-mcs-theme="dark">
+            <div class="mCustomScrollbar followers-notifications-container-responsive" data-mcs-theme="dark">
                 <div class="ui-block-title ui-block-title-small">
                     <h6 class="title">{{__('general/header.followers.followers')}}</h6>
+                    <img src="/img/loading_circle.gif" class="mark-as-read-loading" style="display: none">
                     <a href="javascript:;" class="mark-as-read-followers">{{__('general/header.followers.mark_as_read')}}</a>
                 </div>
                 <ul class="notification-list friend-requests notification-list-followers">
-    
                     @foreach($newFollowersNotifications as $notification)
                     <li class="accepted {{(true === $notification->is_read) ? '' : 'un-read'}}">
                         <div class="notifications-author-thumb">
@@ -87,16 +89,21 @@
                     </li>
                     @endforeach
                 </ul>
-                <a href="#" class="view-all bg-blue">{{__('general/header.followers.view_all_followers')}}</a>
+                <div class="load-more-followers-loading text-center" style="display: none;">;
+                        <img src="/img/loading_circle.gif">
+                </div>
+                <a href="#" class="view-all load-more-followers bg-blue">{{__('general/header.followers.view_all_followers')}}</a>
             </div>
         </div>
         <!-- followers -->
+        @endif
 
         <!-- notifications -->
         <div class="tab-pane " id="notification" role="tabpanel">
-            <div class="mCustomScrollbar" data-mcs-theme="dark">
+            <div class="mCustomScrollbar notifications-container-responsive" data-mcs-theme="dark">
                 <div class="ui-block-title ui-block-title-small">
                     <h6 class="title">{{__('general/header.notifications.notifications')}}</h6>
+                    <img src="/img/loading_circle.gif" class="mark-as-read-loading" style="display: none">
                     <a href="javascript:;" class="mark-as-read-notifications">{{__('general/header.followers.mark_as_read')}}</a>
                 </div>
                 <ul class="notification-list notification-list-notifications">
@@ -131,7 +138,10 @@
                     </li>
                     @endforeach
                 </ul>
-                <a href="#" class="view-all bg-primary">{{__('general/header.notifications.view_all_notifications')}}</a>
+                <div class="load-more-notifications-loading text-center" style="display: none;">;
+                    <img src="/img/loading_circle.gif">
+                </div>
+                <a href="#" class="view-all load-more-notifications bg-primary">{{__('general/header.notifications.view_all_notifications')}}</a>
             </div>
         </div>
         <!-- notifications -->

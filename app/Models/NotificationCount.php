@@ -12,15 +12,13 @@ class NotificationCount extends Model
 	protected $casts = [
 		'user_id' => 'int',
 		'new_followers' => 'int',
-		'new_purchases' => 'int',
-		'performer_posted' => 'int'
+		'new_notifications' => 'int',
 	];
 
 	protected $fillable = [
 		'user_id',
 		'new_followers',
-		'new_purchases',
-		'performer_posted'
+		'new_notifications',
 	];
 
 	public function user()

@@ -56,26 +56,6 @@ use App\Models\Notification;
 		$('#logout-form').submit();
 	});
 
-    //mark notifications as read
-    $('.mark-as-read-followers').click(function() {
-        var dataToPost = {type: <?=Notification::TYPE_PERFORMER_NEW_FOLLOWER?>};
-        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', dataToPost);
-        response
-        .done(function(data) {
-            $('.notification-list-followers li').removeClass('un-read');
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {});
-    });
-
-    $('.mark-as-read-notifications').click(function() {
-        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', {});
-        response
-        .done(function(data) {
-            $('.notification-list-notifications li').removeClass('un-read');
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {});
-    });
-
 </script>
 
 <script type="text/javascript">

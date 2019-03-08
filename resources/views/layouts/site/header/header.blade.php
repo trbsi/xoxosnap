@@ -1,3 +1,7 @@
+<?php 
+use App\Models\Notification;
+?>
+
 <!-- Header-BP -->
 <header class="header" id="site-header">
     <div class="page-title">
@@ -44,10 +48,11 @@
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">{{__('general/header.followers.followers')}}</h6>
+                        <img src="/img/loading_circle.gif" class="mark-as-read-loading" style="display: none">
                         <a href="javascript:;" class="mark-as-read-followers">{{__('general/header.followers.mark_as_read')}}</a>
                     </div>
-                    <div class="mCustomScrollbar" data-mcs-theme="dark">
-                        <ul class="notification-list friend-requests notification-list-followers">
+                    <div class="mCustomScrollbar followers-notifications-container" data-mcs-theme="dark">
+                        <ul class="notification-list friend-requests notification-list-followers ">
                             @foreach($newFollowersNotifications as $notification)
                             <li class="accepted {{(true === $notification->is_read) ? '' : 'un-read'}}">
                                 <div class="notifications-author-thumb">
@@ -64,11 +69,14 @@
                             @endforeach
                         </ul>
                     </div>
-                    <a href="#" class="view-all bg-blue">{{__('general/header.followers.view_all_followers')}}</a>
+                    <div class="load-more-followers-loading text-center" style="display: none;">;
+                        <img src="/img/loading_circle.gif">
+                    </div>
+                    <a href="#" class="view-all load-more-followers bg-blue">{{__('general/header.followers.view_all_followers')}}</a>
                 </div>
             </div>
-            @endif
             <!-- followers -->
+            @endif
 
             <!-- notifications -->
             <div class="control-icon more has-items">
@@ -81,12 +89,13 @@
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">{{__('general/header.notifications.notifications')}}</h6>
+                        <img src="/img/loading_circle.gif" class="mark-as-read-loading" style="display: none">
                         <a href="javsacript:;" class="mark-as-read-notifications">{{__('general/header.followers.mark_as_read')}}</a>
                     </div>
-                    <div class="mCustomScrollbar" data-mcs-theme="dark">
+                    <div class="mCustomScrollbar notifications-container" data-mcs-theme="dark">
                         <ul class="notification-list notification-list-notifications">
                             @foreach($newNotifications as $notification)
-                            <li class="{{(true === $notification->is_read) ? '' : 'un-read'}}">
+                            <li class="{{(true === $notification->is_read) ? '' : 'un-read'}} ">
                                 <div class="notifications-author-thumb">
                                     <img src="{{$notification->byUser->profile->picture}}" alt="author">
                                 </div>
@@ -117,7 +126,10 @@
                             @endforeach
                         </ul>
                     </div>
-                    <a href="#" class="view-all bg-primary">{{__('general/header.notifications.view_all_notifications')}}</a>
+                    <div class="load-more-notifications-loading text-center" style="display: none;">;
+                        <img src="/img/loading_circle.gif">
+                    </div>
+                    <a href="javascript:;" class="view-all load-more-notifications bg-primary">{{__('general/header.notifications.view_all_notifications')}}</a>
                 </div>
             </div>
             <!-- notifications -->
@@ -200,3 +212,170 @@
     </div>
 </header>
 <!-- ... end Header-BP -->
+
+@push('javascript')
+<script type="text/javascript">
+    //notifications
+    var loadMoreNotificationsLoading = $('.load-more-notifications-loading');
+    var notificationsPage = 2;
+
+    $('.load-more-notifications').click(function() {
+        var viewAllNotificationsButton = $(this);
+        viewAllNotificationsButton.hide();
+        loadMoreNotificationsLoading.show();
+
+        var response = ajax('{{route('notifications.get')}}', 'GET', {page: notificationsPage});
+        response
+        .done(function(data) {
+            var username = null;
+            var notificationText = null;
+            var isReadClass = '';
+            var notificationsContainer = $('.notifications-container');
+            $.each(data.data, function(index, notificationItem) {
+                switch (notificationItem.by_user.profile_type) {
+                    case <?=$user::USER_TYPE_PERFORMER?>:
+                        username = notificationItem.by_user.name;
+                        break;
+                    case <?=$user::USER_TYPE_VIEWER?>:
+                        username = notificationItem.by_user.username;
+                        break;
+                }
+
+                switch (notificationItem.notification_type) {
+                    case <?=$notification::TYPE_PERFORMER_NEW_PURCHASE?>:
+                        notificationText = '{{__('general/header.notifications.bought_your_video')}}';
+                        break;
+                    case <?=$notification::TYPE_VIEWER_PERFORMER_POSTED?>:
+                        notificationText = '{{__('general/header.notifications.posted_new_video')}}';
+                        break;
+                }
+                isReadClass = (true === notificationItem.is_read) ? '' : 'un-read';
+
+                var content = '<li class="'+isReadClass+'">'
+                        +'<div class="notifications-author-thumb">'
+                            +'<img src="'+notificationItem.by_user.profile.picture+'" alt="author">'
+                        +'</div>'
+                        +'<div class="notification-event">'
+                            +'<div>'
+                                +'<a href="/u/'+notificationItem.by_user.username+'" class="h6 notification-friend">'
+                                +username+''
+                                +'</a>'
+                                +' '
+                                +notificationText+''
+                            +'</div>'
+                            +'<span class="notification-date"><time class="entry-date updated" datetime="'+notificationItem.created_at+'">'+notificationItem.created_ago+'</time></span>'
+                        +'</div>'
+                    +'</li>';
+
+                $('.notification-list-notifications').append(content);
+
+                if (0 === notificationsContainer.prop('scrollHeight')) {
+                    notificationsContainer = $('.notifications-container-responsive');
+                }
+
+                notificationsContainer.animate({scrollTop: notificationsContainer.prop("scrollHeight")}, 500);
+            });
+            notificationsPage++;
+
+            viewAllNotificationsButton.show();
+            loadMoreNotificationsLoading.hide();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            viewAllNotificationsButton.show();
+            loadMoreNotificationsLoading.hide();
+        });
+    });
+
+    //followers
+    var loadMoreFollowersLoading = $('.load-more-followers-loading');
+    var followersPage = 2;
+
+    $('.load-more-followers').click(function() {
+        var viewAllNotificationsButton = $(this);
+        viewAllNotificationsButton.hide();
+        loadMoreFollowersLoading.show();
+
+        var response = ajax('{{route('notifications.get', ['type' => Notification::TYPE_PERFORMER_NEW_FOLLOWER])}}', 'GET', {page: notificationsPage});
+        response
+        .done(function(data) {
+            var isReadClass = '';
+            var notificationsContainer = $('.followers-notifications-container');
+            $.each(data.data, function(index, notificationItem) {
+                isReadClass = (true === notificationItem.is_read) ? '' : 'un-read';
+
+                var content = '<li class="accepted '+isReadClass+'">'
+                        +'<div class="notifications-author-thumb">'
+                            +'<img src="'+notificationItem.by_user.profile.picture+'" alt="author">'
+                        +'</div>'
+                        +'<div class="notification-event">'
+                            +'<div>'
+                                +'<a href="#" class="h6 notification-friend">'+notificationItem.by_user.username+'</a>'
+                                +' '
+                                +'{{__('general/header.followers.followed_you')}}'
+                            +'</div>'
+                            +'<span class="notification-date"><time class="entry-date updated" datetime="'+notificationItem.created_at+'">'+notificationItem.created_ago+'</time></span>'
+                        +'</div>'
+                    +'</li>';
+
+                $('.notification-list-followers').append(content);
+
+                if (0 === notificationsContainer.prop('scrollHeight')) {
+                    notificationsContainer = $('.followers-notifications-container-responsive');
+                }
+
+                notificationsContainer.animate({scrollTop: notificationsContainer.prop("scrollHeight")}, 500);
+            });
+            followersPage++;
+
+            viewAllNotificationsButton.show();
+            loadMoreFollowersLoading.hide();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            viewAllNotificationsButton.show();
+            loadMoreFollowersLoading.hide();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    var markAsReadLoading = $('.mark-as-read-loading');
+
+    //mark notifications as read
+    $('.mark-as-read-followers').click(function() {
+        var markAsReadButton = $(this);
+        markAsReadButton.hide();
+        markAsReadLoading.show();
+
+        var dataToPost = {type: <?=Notification::TYPE_PERFORMER_NEW_FOLLOWER?>};
+        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', dataToPost);
+        response
+        .done(function(data) {
+            $('.notification-list-followers li').removeClass('un-read');
+            markAsReadButton.show();
+            markAsReadLoading.hide();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            markAsReadButton.show();
+            markAsReadLoading.hide();
+        });
+    });
+
+    $('.mark-as-read-notifications').click(function() {
+        var markAsReadButton = $(this);
+        markAsReadButton.hide();
+        markAsReadLoading.show();
+
+        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', {});
+        response
+        .done(function(data) {
+            $('.notification-list-notifications li').removeClass('un-read');
+            markAsReadButton.show();
+            markAsReadLoading.hide();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            markAsReadButton.show();
+            markAsReadLoading.hide();
+        });
+    });
+</script>
+@endpush

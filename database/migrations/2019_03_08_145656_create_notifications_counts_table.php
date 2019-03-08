@@ -17,8 +17,7 @@ class CreateNotificationsCountsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unique();
             $table->integer('new_followers')->default(0);
-            $table->integer('new_purchases')->default(0);
-            $table->integer('performer_posted')->default(0);
+            $table->integer('new_notifications')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')

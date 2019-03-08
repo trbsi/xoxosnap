@@ -6,8 +6,8 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="infinite-scroll">
+<div class="container" id="video-container">
+    <div class="infinite-scroll-media">
         <div class="row">
             @foreach($videos as $video)
                 @component('components.media.video', ['video' => $video])

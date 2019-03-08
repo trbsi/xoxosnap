@@ -8,23 +8,18 @@ use App\Models\Notification;
 
 class NotificationsCountRepository
 {
-   public function getNotificationsCount(int $type): NotificationCount   
+   public function getNotificationsCount(): NotificationCount   
     {    	
 		return NotificationCount::where('user_id', Auth::id())->first();
     }
 
     public function getNewFollowersNotificationsCount()
     {
-    	return $this->getNotificationsCount(Notification::TYPE_PERFORMER_NEW_FOLLOWER)->new_followers;
+    	return $this->getNotificationsCount()->new_followers;
     }
 
-    public function getNewPurchasesNotificationsCount()
+    public function getNewNotificationsCount()
     {
-    	return $this->getNotificationsCount(Notification::TYPE_PERFORMER_NEW_PURCHASE)->new_purchases;
-    }
-
-    public function getPerformerPostedNotificationsCount()
-    {
-    	return $this->getNotificationsCount(Notification::TYPE_VIEWER_PERFORMER_POSTED)->performer_posted;
+    	return $this->getNotificationsCount()->new_notifications;
     }
 }

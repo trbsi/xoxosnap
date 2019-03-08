@@ -8,14 +8,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class GetNotificationsRepository 
 {
-   public function getNotifications(int $type): LengthAwarePaginator
+   public function getNotifications(?int $type = null): LengthAwarePaginator
     {
-		return
-    		Notification::where('notification_type', $type)
-    		->where('user_id', Auth::id())
+		$notifications =
+    		Notification::where('user_id', Auth::id())
     		->with(['byUser.profile'])
     		->orderBy('id', 'DESC')
-   			->paginate(10);
+   			;
+        if (null !== $type) {
+            $notifications = $notifications->where('notification_type', $type);
+        }
+
+        return $notifications->paginate(2);
     }
 
     public function getNewFollowersNotifications()
@@ -23,13 +27,8 @@ class GetNotificationsRepository
     	return $this->getNotifications(Notification::TYPE_PERFORMER_NEW_FOLLOWER);
     }
 
-    public function getNewPurchasesNotifications()
+    public function getNewNotifications()
     {
-    	return $this->getNotifications(Notification::TYPE_PERFORMER_NEW_PURCHASE);
-    }
-
-    public function getPerformerPostedNotifications()
-    {
-    	return $this->getNotifications(Notification::TYPE_VIEWER_PERFORMER_POSTED);
+    	return $this->getNotifications();
     }
 }

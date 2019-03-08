@@ -41,26 +41,24 @@ class NotificationComposer
                 $showNewFollowersNotifications = true;
 
                 $newFollowersNotifications = $this->getNotificationsRepository->getNewFollowersNotifications();
-                $newNotifications = $this->getNotificationsRepository->getNewPurchasesNotifications();         
-
                 $newFollowersNotificationsCount = $this->notificationsCountRepository->getNewFollowersNotificationsCount();
-                $newNotificationsCount = $this->notificationsCountRepository->getNewPurchasesNotificationsCount();         
     		} elseif (User::USER_TYPE_VIEWER === $user->profile_type) {
                 $showNewFollowersNotifications = false;
-
-                $newNotifications = $this->getNotificationsRepository->getPerformerPostedNotifications(); 
-                $newNotificationsCount = $this->notificationsCountRepository->getPerformerPostedNotificationsCount(); 
 		    }
+
+            $newNotifications = $this->getNotificationsRepository->getNewNotifications(); 
+            $newNotificationsCount = $this->notificationsCountRepository->getNewNotificationsCount(); 
     	}
 
         $view->with('showNewFollowersNotifications', $showNewFollowersNotifications);
 
-        //notifications content
+        //followers
         $view->with('newFollowersNotifications', $newFollowersNotifications);
+        $view->with('newFollowersNotificationsCount', $newFollowersNotificationsCount);
+
+        //notifications
+        $view->with('newNotificationsCount', $newNotificationsCount);
         $view->with('newNotifications', $newNotifications);
 
-        //notifications count
-        $view->with('newFollowersNotificationsCount', $newFollowersNotificationsCount);
-        $view->with('newNotificationsCount', $newNotificationsCount);
     }
 }
