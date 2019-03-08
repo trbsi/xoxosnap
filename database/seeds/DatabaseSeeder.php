@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     	$this->call(MediaPurchasesSeeder::class);
     	$this->call(CoinsSeeder::class);
         $this->call(NotificationsSeeder::class);
+        $this->call(NotificationsCountsSeeder::class);
         $this->call(StoriesSeeder::class);
         $this->call(FollowersSeeder::class);
     }

@@ -26,13 +26,21 @@ Route::middleware('auth:api')->group(function () {
 			Route::post('update-views', $ctl.'@updateViews')->name('media.update-views');
 			Route::post('like', $ctl.'@like')->name('media.like');
 		});
+		
 		Route::prefix('coins')->group(function () {
 			$ctl = '\App\Api\V1\Web\Coins\Controllers\CoinController';
 			Route::patch('purchase', $ctl.'@purchase')->name('coins.purchase');
 		});
+
 		Route::prefix('users')->group(function () {
 			$ctl = '\App\Api\V1\Web\Users\Controllers\UserController';
 			Route::post('follow-user', $ctl.'@followUser')->name('users.follow-user');
+		});
+
+		Route::prefix('notifications')->group(function () {
+			$ctl = '\App\Api\V1\Web\Notifications\Controllers\NotificationController';
+			Route::get('', $ctl.'@get')->name('notifications.get');
+			Route::post('', $ctl.'@markAllAsRead')->name('notifications.mark-all-as-read');
 		});
 	});
 });

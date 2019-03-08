@@ -1,3 +1,7 @@
+<?php
+use App\Models\Notification;
+?>
+
 <!-- JS Scripts -->
 <script src="/assets/js/jquery-3.2.1.js"></script>
 <script src="/assets/js/jquery.appear.js"></script>
@@ -51,6 +55,30 @@
 	$('.logout-link').click(function() {
 		$('#logout-form').submit();
 	});
+
+    //mark notifications as read
+    $('.mark-as-read-followers').click(function() {
+        var dataToPost = {type: <?=Notification::TYPE_PERFORMER_NEW_FOLLOWER?>};
+        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', dataToPost);
+        response
+        .done(function(data) {
+            $('.notification-list-followers li').removeClass('un-read');
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {});
+    });
+
+    $('.mark-as-read-notifications').click(function() {
+        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', {});
+        response
+        .done(function(data) {
+            $('.notification-list-notifications li').removeClass('un-read');
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {});
+    });
+
+</script>
+
+<script type="text/javascript">
 
   function ajax(urlToCall, method, dataToPost) {
     return $.ajax({

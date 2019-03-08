@@ -83,4 +83,9 @@ class HomeRepository
 
 		return ['videos' => $videos, 'stories' => json_encode($stories)];
 	}
+
+	private function getPerformerHomePage()
+	{
+		return [];
+	}
 }

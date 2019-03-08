@@ -27,5 +27,9 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(
             '*', 'App\Web\Users\Views\Composers\UserComposer'
         );
+
+        View::composer(
+            '*', 'App\Web\Notifications\Views\Composers\NotificationComposer'
+        );
     }
 }

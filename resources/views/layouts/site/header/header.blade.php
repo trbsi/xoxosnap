@@ -16,158 +16,119 @@
         </form>
         <div class="control-block">
             <div class="control-icon more has-items">
-                
-                    <svg class="olymp-explore-icon">
-                        <a href="{{route('explore')}}">
-                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-explore-icon"></use>    
-                        </a>
-                    </svg>
-            
+                <svg class="olymp-explore-icon">
+                    <a href="{{route('explore')}}">
+                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-explore-icon"></use>    
+                    </a>
+                </svg>
                 <div class="more-dropdown more-with-triangle triangle-top-center" style="padding: 0;">
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list">
                             <li>
-                               Explore new stars, videos and stories
+                               {{__('general/header.explore_stars_videos')}}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+            <!-- followers -->
+            @if (true === $showNewFollowersNotifications)
             <div class="control-icon more has-items">
                 <svg class="olymp-followers-icon">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-followers-icon"></use>
                 </svg>
-                <div class="label-avatar bg-blue">6</div>
+                @if(0 !== $newFollowersNotificationsCount)
+                <div class="label-avatar bg-blue">{{$newFollowersNotificationsCount}}</div>
+                @endif
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
-                        <h6 class="title">Followers</h6>
-                        <a href="#">Mark all as read</a>
+                        <h6 class="title">{{__('general/header.followers.followers')}}</h6>
+                        <a href="javascript:;" class="mark-as-read-followers">{{__('general/header.followers.mark_as_read')}}</a>
                     </div>
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
-                        <ul class="notification-list friend-requests">
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="/img/avatar55-sm.jpg" alt="author">
+                        <ul class="notification-list friend-requests notification-list-followers">
+                            @foreach($newFollowersNotifications as $notification)
+                            <li class="accepted {{(true === $notification->is_read) ? '' : 'un-read'}}">
+                                <div class="notifications-author-thumb">
+                                    <img src="{{$notification->byUser->profile->picture}}" alt="author">
                                 </div>
                                 <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Tamara Romanoff</a>
+                                    <div>
+                                        <a href="#" class="h6 notification-friend">{{$notification->byUser->username}}</a>
+                                        {{__('general/header.followers.followed_you')}}
+                                    </div>
+                                    <span class="notification-date"><time class="entry-date updated" datetime="{{$notification->created_at}}">{{$notification->created_ago}}</time></span>
                                 </div>
                             </li>
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="/img/avatar56-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Tony Stevens</a>
-                                </div>
-                            </li>
-                            <li class="accepted">
-                                <div class="author-thumb">
-                                    <img src="/img/avatar57-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Tony Stevens</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="/img/avatar58-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Tony Stevens</a>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
-                    <a href="#" class="view-all bg-blue">View all new followers</a>
+                    <a href="#" class="view-all bg-blue">{{__('general/header.followers.view_all_followers')}}</a>
                 </div>
             </div>
+            @endif
+            <!-- followers -->
+
+            <!-- notifications -->
             <div class="control-icon more has-items">
                 <svg class="olymp-notifications-icon">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-notifications-icon"></use>
                 </svg>
-                <div class="label-avatar bg-primary">8</div>
+                @if(0 !== $newNotificationsCount)
+                <div class="label-avatar bg-primary">{{$newNotificationsCount}}</div>
+                @endif
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
-                        <h6 class="title">Naughtyfications</h6>
-                        <a href="#">Mark all as read</a>
+                        <h6 class="title">{{__('general/header.notifications.notifications')}}</h6>
+                        <a href="javsacript:;" class="mark-as-read-notifications">{{__('general/header.followers.mark_as_read')}}</a>
                     </div>
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
-                        <ul class="notification-list">
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="/img/avatar62-sm.jpg" alt="author">
+                        <ul class="notification-list notification-list-notifications">
+                            @foreach($newNotifications as $notification)
+                            <li class="{{(true === $notification->is_read) ? '' : 'un-read'}}">
+                                <div class="notifications-author-thumb">
+                                    <img src="{{$notification->byUser->profile->picture}}" alt="author">
                                 </div>
                                 <div class="notification-event">
-                                    <div><a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-comments-post-icon">
-                                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                    </svg>
-                                </span>
-                            </li>
-                            <li class="un-read">
-                                <div class="author-thumb">
-                                    <img src="/img/avatar63-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <div>You and <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on <a href="#" class="notification-link">his wall</a>.</div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 hours ago</time></span>
-                                </div>
-                            </li>
-                            <li class="with-comment-photo">
-                                <div class="author-thumb">
-                                    <img src="/img/avatar64-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <div><a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your <a href="#" class="notification-link">photo</a>.</div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 5:32am</time></span>
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-comments-post-icon">
-                                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                    </svg>
-                                </span>
-                                <div class="comment-photo">
-                                    <img src="/img/comment-photo1.jpg" alt="photo">
-                                    <span>“She looks incredible in that outfit! We should see each...”</span>
+                                    <div>
+                                        <a href="{{route('user.profile', ['username' => $notification->byUser->username])}}" class="h6 notification-friend">
+                                            @switch($notification->byUser->profile_type)
+                                                @case($user::USER_TYPE_PERFORMER)
+                                                    {{$notification->byUser->name}}
+                                                    @break
+                                                @case($user::USER_TYPE_VIEWER)
+                                                    {{$notification->byUser->username}}
+                                                    @break
+                                            @endswitch
+                                        </a>
+                                        @switch($notification->notification_type)
+                                            @case($notification::TYPE_PERFORMER_NEW_PURCHASE)
+                                                {{__('general/header.notifications.bought_your_video')}}
+                                                @break
+                                            @case($notification::TYPE_VIEWER_PERFORMER_POSTED)
+                                                {{__('general/header.notifications.posted_new_video')}}
+                                                @break
+                                        @endswitch
+                                    </div>
+                                    <span class="notification-date"><time class="entry-date updated" datetime="{{$notification->created_at}}">{{$notification->created_ago}}</time></span>
                                 </div>
                             </li>
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="/img/avatar65-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <div><a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in <a href="#" class="notification-link">Gotham Bar</a>.</div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 5th at 6:43pm</time></span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="/img/avatar66-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <div><a href="#" class="h6 notification-friend">James Summers</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 2nd at 8:29pm</time></span>
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-heart-icon">
-                                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                    </svg>
-                                </span>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
-                    <a href="#" class="view-all bg-primary">View All Naughtyfications</a>
+                    <a href="#" class="view-all bg-primary">{{__('general/header.notifications.view_all_notifications')}}</a>
                 </div>
             </div>
+            <!-- notifications -->
+
             <div class="control-icon more has-items">
                 <svg class="olymp-piggy-bank">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
                 </svg>
+                @if(0 != $coinsFormatted)
                 <div class="label-avatar bg-breez coins">{{$coinsFormatted}}</div>
+                @endif
                 <div class="more-dropdown more-with-triangle triangle-top-center" style="padding: 0;">
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list">

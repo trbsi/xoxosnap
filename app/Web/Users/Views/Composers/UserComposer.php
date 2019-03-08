@@ -19,6 +19,7 @@ class UserComposer
     public function compose(View $view)
     {
         $user = User::with(['coin'])->find(Auth::id());
+        
         if (null !== $user) {
             $userId = $user->id;
             $name = $user->name ?? $user->username;

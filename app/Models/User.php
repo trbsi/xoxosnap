@@ -9,6 +9,7 @@ use App\Models\UserProfile;
 use App\Models\Media;
 use App\Models\Coin;
 use App\Models\Notification;
+use App\Models\NotificationCount;
 use App\Models\Stories;
 use Laravel\Passport\HasApiTokens;
 
@@ -74,6 +75,11 @@ class User extends Authenticatable
     public function coin()
     {
         return $this->hasOne(Coin::class, 'user_id');
+    }
+
+    public function notificationCount()
+    {
+        return $this->hasOne(NotificationCount::class, 'user_id');
     }
 
     public function media()

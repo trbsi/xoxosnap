@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\CoreUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
@@ -21,6 +20,8 @@ class NotificationsSeeder extends Seeder
     {
     	//for each performer add 10 notifications of viewers
     	foreach ($performers as $performer) {
+            $dataFollowers = [];
+            $dataPurchases = [];
     		for ($i = 0; $i < 10; $i++) {
 	    		$dataFollowers[] = [
 					'notification_type' => Notification::TYPE_PERFORMER_NEW_FOLLOWER,
@@ -34,24 +35,26 @@ class NotificationsSeeder extends Seeder
 					'by_user_id' => $viewers[$i]->id,
 	    		];
     		}
-    	}
+    	
+            $performer->notifications()->createMany($dataFollowers);
+            $performer->notifications()->createMany($dataPurchases);
 
-		$performer->notifications()->createMany($dataFollowers);
-		$performer->notifications()->createMany($dataPurchases);
+        }
     }
 
     private function seedForViewers($performers, $viewers) 
     {
     	//for each viewer add 10 notifications of performer
     	foreach ($viewers as $viewer) {
+            $dataPerformerPosted = [];
     		for ($i = 0; $i < 10; $i++) {
 	    		$dataPerformerPosted[] = [
 					'notification_type' => Notification::TYPE_VIEWER_PERFORMER_POSTED,
 					'by_user_id' => $performers[$i]->id,
 	    		];
     		}
+            
+            $viewer->notifications()->createMany($dataPerformerPosted);
     	}
-
-		$viewer->notifications()->createMany($dataPerformerPosted);
     }
 }

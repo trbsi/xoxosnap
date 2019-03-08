@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\CoreUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;

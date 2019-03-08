@@ -3,9 +3,8 @@
 namespace App\Web\Users\Listeners;
 
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class CreateCoins
+class CreateCoinsListener
 {
     public function handle(Registered $event)
     {

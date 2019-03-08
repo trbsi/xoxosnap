@@ -4994,7 +4994,7 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
       .notification-list .selectize-dropdown-content > *:hover .more, .notification-list li:hover .more {
         opacity: 1; }
     .notification-list .selectize-dropdown-content > *.un-read, .notification-list li.un-read {
-      background-color: #f7f9fc; }
+      background-color: #E7F2FF; }
       .notification-list .selectize-dropdown-content > *.un-read .notification-icon, .notification-list li.un-read .notification-icon {
         color: #9da2c1;
         fill: #9da2c1; }
@@ -15642,4 +15642,12 @@ body {
 
 .video-item .plyr video {
   max-height: 200px;
+}
+
+/*NOTIFICATIONS*/
+.notifications-author-thumb img {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;  
 }
