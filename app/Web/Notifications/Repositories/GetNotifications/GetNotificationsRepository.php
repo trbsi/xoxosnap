@@ -19,7 +19,7 @@ class GetNotificationsRepository
             $notifications = $notifications->where('notification_type', $type);
         }
 
-        return $notifications->paginate(2);
+        return $notifications->paginate(6);
     }
 
     public function getNewFollowersNotifications()

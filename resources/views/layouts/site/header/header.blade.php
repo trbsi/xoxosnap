@@ -44,7 +44,7 @@ use App\Models\User;
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-followers-icon"></use>
                 </svg>
                 @if(0 !== $newFollowersNotificationsCount)
-                <div class="label-avatar bg-blue">{{$newFollowersNotificationsCount}}</div>
+                <div class="label-avatar bg-blue notification-badge-followers">{{$newFollowersNotificationsCount}}</div>
                 @endif
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -85,7 +85,7 @@ use App\Models\User;
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-notifications-icon"></use>
                 </svg>
                 @if(0 !== $newNotificationsCount)
-                <div class="label-avatar bg-primary">{{$newNotificationsCount}}</div>
+                <div class="label-avatar bg-primary notification-badge-notifications">{{$newNotificationsCount}}</div>
                 @endif
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -355,6 +355,7 @@ use App\Models\User;
             $('.notification-list-followers li').removeClass('un-read');
             markAsReadButton.show();
             markAsReadLoading.hide();
+            $('.notification-badge-followers').text(0);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             markAsReadButton.show();
@@ -373,6 +374,7 @@ use App\Models\User;
             $('.notification-list-notifications li').removeClass('un-read');
             markAsReadButton.show();
             markAsReadLoading.hide();
+            $('.notification-badge-notifications').text(0);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             markAsReadButton.show();

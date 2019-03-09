@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
             CreateCoinsListener::class,
             NotificationsCountListener::class,
         ],
+        'App\Web\Coins\Events\MediaPurchasedEvent' => [
+            'App\Web\Coins\Listeners\MediaPurchasedListener'
+        ]
     ];
 
     /**

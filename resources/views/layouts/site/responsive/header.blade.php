@@ -21,7 +21,7 @@
                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-followers-icon"></use>
                         </svg>
                         @if(0 !== $newFollowersNotificationsCount)
-                        <div class="label-avatar bg-blue">{{$newFollowersNotificationsCount}}</div>
+                        <div class="label-avatar bg-blue notification-badge-followers">{{$newFollowersNotificationsCount}}</div>
                         @endif
                     </div>
                 </a>
@@ -34,7 +34,7 @@
                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-notifications-icon"></use>
                         </svg>
                         @if(0 !== $newNotificationsCount)
-                        <div class="label-avatar bg-primary">{{$newNotificationsCount}}</div>
+                        <div class="label-avatar bg-primary notification-badge-notifications">{{$newNotificationsCount}}</div>
                         @endif
                     </div>
                 </a>

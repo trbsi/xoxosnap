@@ -9,6 +9,7 @@ use App\Models\Media;
 use App\Models\Story;
 use App\Web\Coins\Traits\ConvertToNaughtyCoinsTrait;
 use DB;
+use App\Web\Coins\Events\MediaPurchasedEvent;
 
 class PurchaseRepository 
 {
@@ -49,10 +50,12 @@ class PurchaseRepository
 
             //increment performer's coins
             $model->user->coin()->increment('coins', $coinsCost);
+
+            event(new MediaPurchasedEvent($user, $model));
             DB::commit();
 		} catch (Exception $e) {
             DB::rollBack();
-			abort(400, __('web/coins/coins.update.unable_to_take_coins'));
+            abort(400, __('web/coins/coins.update.unable_to_take_coins'));
 		}
 
     	return [

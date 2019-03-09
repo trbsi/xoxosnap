@@ -3,7 +3,7 @@
 namespace App\Web\Notifications\Resources\Counts\Listeners;
 
 use Illuminate\Auth\Events\Registered;
-use App\Models\NotificationCount
+use App\Models\NotificationCount;
 
 class NotificationsCountListener
 {
