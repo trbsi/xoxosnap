@@ -5,7 +5,7 @@
         videoPlayer.destroy();
     });
 
-    $('.play-video').click(function() {
+    $(document).on('click', '.play-video', function() {
         videoElement = this;
         //if user can access or not
         if (1 === $(this).data('is-locked')) {
