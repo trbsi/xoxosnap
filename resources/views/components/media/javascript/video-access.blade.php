@@ -24,6 +24,7 @@
                     $('#views').text(data.views); 
                     $(videoElement).data('is-locked', 0);
                     $(videoElement).children('img').attr('src', '/img/play.png');
+                    $('.coins-badge').text(data.coins);
                     openModal(videoElement);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
@@ -35,7 +36,6 @@
                       showCancelButton: true,
                     })
                     .then((resultBuyCoins) => {
-                        console.log(resultBuyCoins);
                         if (true === resultBuyCoins.value) {
                             window.location = '{{route('coins.get')}}';
                         }

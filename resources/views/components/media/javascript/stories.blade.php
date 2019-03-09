@@ -1,4 +1,6 @@
 <script>
+    var buildedStories = buildStories();
+
     var initStories = function () {     
       skin = 'Snapgram';
       var skins = {
@@ -9,8 +11,6 @@
           'cubeEffect': true
         }
       };
-
-      var buildedStories = buildStories();
 
       var loadedStories = new Zuck('stories', {
         backNative: true,
@@ -24,20 +24,11 @@
         stories: buildedStories,
          callbacks:  {
             'onOpen': function(storyId, callback) {
-                var locked = false;
-                var storyIndex = null;
-
-                $.each(buildedStories, function(index, story) {
-                    if (storyId == story.id && true === story.isLocked) {
-                        locked = story.isLocked;
-                        storyIndex = index;
-                    }
-                });
-
-                if (false === locked) {
+                var result = findStory(storyId);
+                if (false === result['locked']) {
                     callback();
                 } else {
-                    storyIsLocked(callback, storyId, storyIndex, buildedStories);
+                    storyIsLocked(callback, storyId, result['storyIndex']);
                 }
             },
 
@@ -58,7 +49,7 @@
             },
 
             'onNavigateItem': function(storyId, nextStoryId, callback) {
-                callback();  // on navigate item of story
+                callback();
             },
           },
       });
@@ -66,6 +57,7 @@
     };
     
     initStories();
+    //init perfect scrollbar
     $('#stories').perfectScrollbar({wheelPropagation:false});
 
     function buildStories()
@@ -111,7 +103,7 @@
         return stories;
     }
 
-    function storyIsLocked(storyCallback, storyId, storyIndex, buildedStories, coins)
+    function storyIsLocked(storyCallback, storyId, storyIndex)
     {
         Swal.fire({
             type: 'question',
@@ -129,6 +121,7 @@
                 .done(function(data) {
                     <?php  //unlock story ?>
                     buildedStories[storyIndex].isLocked = false;
+                    $('.coins-badge').text(data.coins);
                     storyCallback();
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
@@ -140,7 +133,6 @@
                       showCancelButton: true,
                     })
                     .then((resultBuyCoins) => {
-                        console.log(resultBuyCoins);
                         if (true === resultBuyCoins.value) {
                             window.location = '{{route('coins.get')}}';
                         }
@@ -149,5 +141,23 @@
                
             }
         });
+    }
+
+    function findStory(storyId)
+    {
+        var locked = false;
+        var storyIndex = null;
+
+        $.each(buildedStories, function(index, story) {
+            if (storyId == story.id && true === story.isLocked) {
+                locked = story.isLocked;
+                storyIndex = index;
+            }
+        });
+
+        var result = [];
+        result['locked'] = locked;
+        result['storyIndex'] = storyIndex;
+        return result;
     }
 </script>

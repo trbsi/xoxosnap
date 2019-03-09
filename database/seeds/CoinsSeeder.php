@@ -10,7 +10,7 @@ class CoinsSeeder extends Seeder
     {
         foreach ($user->get() as $singleUser) {
             $singleUser->coin()->create([
-                'coins' => rand(),
+                'coins' => rand(50, 2000),
             ]);
         }
     }

@@ -10,7 +10,9 @@ class ProfileController extends Controller
     public function profile($username)
     {
     	return view('web.users.resources.profiles.profile.profile', [
-    		'username' => $username
+    		'username' => $username,
+            'videos' => [],
+            'stories' => json_encode([]),
     	]);
     }
 

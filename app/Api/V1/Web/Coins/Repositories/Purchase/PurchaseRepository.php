@@ -59,7 +59,7 @@ class PurchaseRepository
 		}
 
     	return [
-    		'coins' => $user->coin->coins
+    		'coins' => $user->coin->fresh()->coins
     	];
     }
 

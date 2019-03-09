@@ -33,9 +33,17 @@ class StoriesSeeder extends Seeder
 				];
 				
 				$story = $performer->stories()->create($data);
-				$story->media()->create([
-					'file' => $fileName,
-					'type' => $type
+
+				//create multiple media for stories
+				$story->media()->createMany([
+					[
+						'file' => $fileName,
+						'type' => $type
+					],
+					[
+						'file' => $fileName,
+						'type' => $type
+					]
 				]);
 				$year = date('Y', strtotime($story->created_at));
 				$month = date('m', strtotime($story->created_at));

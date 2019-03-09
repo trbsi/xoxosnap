@@ -9,11 +9,13 @@
 <div class="container" id="video-container">
     <div class="infinite-scroll-media">
         <div class="row">
+            @if(false === $videos->isEmpty())
             @foreach($videos as $video)
                 @component('components.media.video', ['video' => $video])
                 @endcomponent
             @endforeach
               {{$videos->links()}}
+            @endif
         </div>
     </div>
 </div>

@@ -104,10 +104,10 @@ use App\Models\User;
                                     <div>
                                         <a href="{{route('user.profile', ['username' => $notification->byUser->username])}}" class="h6 notification-friend">
                                             @switch($notification->byUser->profile_type)
-                                                @case($user::USER_TYPE_PERFORMER)
+                                                @case(User::USER_TYPE_PERFORMER)
                                                     {{$notification->byUser->name}}
                                                     @break
-                                                @case($user::USER_TYPE_VIEWER)
+                                                @case(User::USER_TYPE_VIEWER)
                                                     {{$notification->byUser->username}}
                                                     @break
                                             @endswitch
@@ -140,13 +140,13 @@ use App\Models\User;
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
                 </svg>
                 @if(0 != $coinsFormatted)
-                <div class="label-avatar bg-breez coins">{{$coinsFormatted}}</div>
+                <div class="label-avatar bg-breez coins coins-badge">{{$coinsFormatted}}</div>
                 @endif
                 <div class="more-dropdown more-with-triangle triangle-top-center" style="padding: 0;">
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list">
                             <li>
-                               {{__('general/header.coins_explanation', ['coins' => $coins])}}
+                               {!!__('general/header.coins_explanation', ['coins' => $coins])!!}
                             </li>
                         </ul>
                     </div>
