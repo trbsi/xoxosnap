@@ -8,11 +8,11 @@ use App\Web\Media\Traits\MediaFileTrait;
 use Westsworld\TimeAgo;
 use DateTime;
 use App\Helpers\Traits\NumberFormatterTrait;
-use App\Web\Coins\Traits\ConvertToNaughtyCoinsTrait;
+use App\Web\Coins\Traits\ConvertCoinsTrait;
 
 class Media extends Model
 {
-	use MediaFileTrait, NumberFormatterTrait, ConvertToNaughtyCoinsTrait;
+	use MediaFileTrait, NumberFormatterTrait, ConvertCoinsTrait;
 	
 	public const MEDIA_PATH = '/user/media/';
 

@@ -61,7 +61,7 @@ use App\Models\User;
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="#" class="h6 notification-friend">{{$notification->byUser->username}}</a>
+                                        <a href="{{route('user.profile', ['username' => $notification->byUser->username])}}" class="h6 notification-friend">{{$notification->byUser->username}}</a>
                                         {{__('general/header.followers.followed_you')}}
                                     </div>
                                     <span class="notification-date"><time class="entry-date updated" datetime="{{$notification->created_at}}">{{$notification->created_ago}}</time></span>
@@ -73,7 +73,7 @@ use App\Models\User;
                     <div class="load-more-followers-loading text-center" style="display: none;">;
                         <img src="/img/loading_circle.gif">
                     </div>
-                    <a href="#" class="view-all load-more-followers bg-blue">{{__('general/header.followers.view_all_followers')}}</a>
+                    <a href="#" class="view-all load-more-followers bg-blue">{{__('general/header.followers.load_more_followers')}}</a>
                 </div>
             </div>
             <!-- followers -->

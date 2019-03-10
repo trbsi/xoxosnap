@@ -2,7 +2,7 @@
 
 namespace App\Web\Coins\Traits;
 
-trait ConvertToNaughtyCoinsTrait
+trait ConvertCoinsTrait
 {
 	/**
 	 * 0-10 (max $1)
@@ -13,5 +13,10 @@ trait ConvertToNaughtyCoinsTrait
     public function convertToNaughtyCoins(int $cost): int
     {
     	return $cost * 10;
+    }
+
+    public function convertToMoney(int $coins): float
+    {
+    	return round($coins / 10, 2);
     }
 }

@@ -18,15 +18,15 @@ class UserComposer
      */
     public function compose(View $view)
     {
-        $user = User::with(['coin'])->find(Auth::id());
+        $user = User::with(['coin', 'profile'])->find(Auth::id());
         
         if (null !== $user) {
             $userId = $user->id;
             $name = $user->name ?? $user->username;
             $username = $user->username;
             $picture = $user->profile->picture;
-            $coins = $user->coin->coins;
-            $coinsFormatted = $user->coin->coins_formatted;
+            $coins = $user->coin->current_coins;
+            $coinsFormatted = $user->coin->current_coins_formatted;
         } else {
             $userId = null;
             $name = __('web/users/user.guest');

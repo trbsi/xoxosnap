@@ -7,13 +7,13 @@ use Exception;
 use App\Models\CoinTransaction;
 use App\Models\Media;
 use App\Models\Story;
-use App\Web\Coins\Traits\ConvertToNaughtyCoinsTrait;
+use App\Web\Coins\Traits\ConvertCoinsTrait;
 use DB;
 use App\Web\Coins\Events\MediaPurchasedEvent;
 
 class PurchaseRepository 
 {
-	use ConvertToNaughtyCoinsTrait;
+	use ConvertCoinsTrait;
 
     public function purchase(int $id, string $type): array
     {
@@ -21,14 +21,14 @@ class PurchaseRepository
     	$user = Auth::user();
     	$coinsCost = $this->convertToNaughtyCoins($model->cost);
 
-    	if ($user->coin->coins < $coinsCost) {
+    	if ($user->coin->current_coins < $coinsCost) {
     		abort(400, __('web/coins/coins.update.no_enough_coins'));
     	}
 
         //check if user already bought access to media
         if ($model->purchases()->where('user_id', $user->id)->count() > 0) {
             return [
-                'coins' => $user->coin->coins
+                'coins' => $user->coin->current_coins
             ];
         }
 
@@ -39,7 +39,7 @@ class PurchaseRepository
             $this->setAsPurchased($model, $user->id);
 
             //take coins from user
-    		$user->coin()->decrement('coins', $coinsCost);
+    		$user->coin()->decrement('current_coins', $coinsCost);
 
             //save transaction
             CoinTransaction::create([
@@ -49,7 +49,8 @@ class PurchaseRepository
             ]);
 
             //increment performer's coins
-            $model->user->coin()->increment('coins', $coinsCost);
+            $model->user->coin()->increment('current_coins', $coinsCost);
+            $model->user->coin()->increment('total_coins', $coinsCost);
 
             event(new MediaPurchasedEvent($user, $model));
             DB::commit();
@@ -59,7 +60,7 @@ class PurchaseRepository
 		}
 
     	return [
-    		'coins' => $user->coin->fresh()->coins
+    		'coins' => $user->coin->fresh()->current_coins
     	];
     }
 

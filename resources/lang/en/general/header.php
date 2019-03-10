@@ -5,7 +5,7 @@ return [
 	'followers' => [
 		'followers' => 'Followers',
 		'mark_as_read' => 'Mark all as read',
-		'view_all_followers' => 'View all new followers',
+		'load_more_followers' => 'Load more followers',
 		'followed_you' => 'followed you'
 	],
 	'notifications' => [

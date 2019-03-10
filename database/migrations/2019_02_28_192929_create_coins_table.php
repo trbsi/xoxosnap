@@ -16,7 +16,8 @@ class CreateCoinsTable extends Migration
         Schema::create('coins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unique();
-            $table->integer('coins')->default(0);
+            $table->integer('current_coins')->default(0);
+            $table->integer('total_coins')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')

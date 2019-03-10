@@ -16,7 +16,7 @@ class HomeController extends Controller
         Above18Repository $above18Repository,
         HomeRepository $homeRepository
     ) {	
-        $user = Auth::user();
+        $user = User::where('id', Auth::id())->with(['coin', 'profile'])->first();
         $params = [
             'user' => $user,
             'profileTypePerfomer' => User::USER_TYPE_PERFORMER,

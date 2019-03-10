@@ -16,7 +16,7 @@ class CreateStoriesTable extends Migration
         Schema::create('stories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('cost')->default(0);
+            $table->integer('cost')->default(0)->comment('in dollars');
             $table->integer('views')->default(0);
             $table->datetime('expires_at')->nullable();
             $table->timestamps();

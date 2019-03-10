@@ -5,12 +5,12 @@ namespace App\Web\Stories\Repositories\RecentStories;
 use App\Models\Story;
 use App\Models\StoryMedia;
 use DateTime;
-use App\Web\Coins\Traits\ConvertToNaughtyCoinsTrait;
+use App\Web\Coins\Traits\ConvertCoinsTrait;
 use Illuminate\Support\Collection;
 
 class RecentStoriesRepository
 {
-	use ConvertToNaughtyCoinsTrait;
+	use ConvertCoinsTrait;
 
     public function getRecentStoriesOfFollowedUsers(Collection $followsIds, int $userId): array
     {

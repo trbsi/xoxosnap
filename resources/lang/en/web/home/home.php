@@ -39,4 +39,14 @@ return [
 		'followed' => 'Followed',
 		'already_following' => 'You\'re already following this user',
 	],
+	'performer' => [
+		'current_earnings' => 'Current earnings',
+		'total_earnings' => 'Total earnings',
+		'followers' => 'Followers',
+		'top_ten_videos_by_earnings' => 'Top 10 videos by earnings',
+		'twitter_feed' => 'Twitter feed',
+		'view_your_profile' => 'View your public profile:',
+		'cannot_display_twitter_feed' => 'We can\'t display Twitter feed.',
+		'not_connected_with_twitter_account' => 'You haven\'t logged in via your Twitter account.'
+	],
 ];

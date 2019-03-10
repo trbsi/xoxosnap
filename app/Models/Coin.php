@@ -13,21 +13,23 @@ class Coin extends Model
 
 	protected $casts = [
 		'user_id' => 'int',
-		'coins' => 'int'
+		'current_coins' => 'int',
+		'total_coins' => 'int',
 	];
 
 	protected $fillable = [
 		'user_id',
-		'coins'
+		'current_coins',
+		'total_coins',
 	];
 
 	protected $appends = [
-		'coins_formatted'
+		'current_coins_formatted',
 	];
 
-	public function getCoinsFormattedAttribute()
+	public function getCurrentCoinsFormattedAttribute()
 	{
-		return $this->formatNumber($this->coins);
+		return $this->formatNumber($this->current_coins);
 	}
 
 	public function user()
