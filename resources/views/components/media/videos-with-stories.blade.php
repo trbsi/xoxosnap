@@ -30,9 +30,6 @@
     @component('components.media.javascript.progressbar', ['cssClass' => '.progressbar-continer-vid'])
     @endcomponent
 
-    @component('components.media.javascript.init-plyr', ['useScriptTag' => true])
-    @endcomponent
-
     @component('components.media.javascript.infinite-scroll')
     @endcomponent
 
