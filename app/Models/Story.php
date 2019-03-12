@@ -15,7 +15,7 @@ class Story extends Model
 	protected $casts = [
 		'user_id' => 'int',
 		'cost' => 'int',
-		'user_paid' => 'boolean', //see RecentStoriesRepository::getRecentStoriesOfFollowedUsers
+		'user_paid' => 'boolean', //see RecentStoriesRepository::getRecentStoriesOfUsers
 	];
 
 	protected $dates = [

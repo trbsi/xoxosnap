@@ -9,6 +9,7 @@ class ProfileController extends Controller
 {
     public function profile($username)
     {
+        //if user doesn't exist
     	return view('web.users.resources.profiles.profile.profile', [
     		'username' => $username,
             'videos' => [],

@@ -12,9 +12,14 @@ class RecentStoriesRepository
 {
 	use ConvertCoinsTrait;
 
-    public function getRecentStoriesOfFollowedUsers(Collection $followsIds, int $userId): array
+	public function getRecentStoriesOfUser(int $userId): array
+	{
+		return $this->getRecentStoriesOfUsers(collect([$userId]), $userId);
+	}	
+
+    public function getRecentStoriesOfUsers(Collection $userIds, int $userId): array
     {
-    	$stories = Story::whereIn('user_id', $followsIds)
+    	$stories = Story::whereIn('user_id', $userIds)
     	->select('*')
 		->selectRaw('IF((SELECT COUNT(*) FROM stories_purchases WHERE user_id = ? AND story_id = stories.id) = 0, 0, 1) AS user_paid', [$userId])
     	->selectRaw('(SELECT MAX(updated_at) FROM stories_media WHERE story_id = stories.id) as max_updated_at')

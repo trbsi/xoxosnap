@@ -1,14 +1,19 @@
 <?php
 
-namespace App\Web\Media\Repositories\FollowedUsers;
+namespace App\Web\Media\Repositories\RecentMedia;
 
 use App\Models\Media;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
-class FollowedUsersRepository
+class RecentMediaRepository
 {
-    public function getMediaOfFollowedUsers(Collection $followsIds, int $userId): LengthAwarePaginator
+	public function getRecentMediaOfUser(int $userId): LengthAwarePaginator
+	{
+		return $this->getRecentMediaOfUsers(collect([$userId]), $userId);
+	}
+
+    public function getRecentMediaOfUsers(Collection $followsIds, int $userId): LengthAwarePaginator
     {
     	return Media::whereIn('user_id', $followsIds)
 		->select('*')

@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Media;
 use App\Models\Story;
 use App\Web\Stories\Repositories\RecentStories\RecentStoriesRepository;
-use App\Web\Media\Repositories\FollowedUsers\FollowedUsersRepository;
+use App\Web\Media\Repositories\RecentMedia\RecentMediaRepository;
 use App\Web\Coins\Traits\ConvertCoinsTrait;
 
 class HomeRepository 
@@ -14,14 +14,14 @@ class HomeRepository
 	use ConvertCoinsTrait;
 
 	private $recentStoriesRepository;
-	private $followedUsersRepository;
+	private $recentMediaRepository;
 
 	public function __construct(
 		RecentStoriesRepository $recentStoriesRepository,
-		FollowedUsersRepository $followedUsersRepository
+		RecentMediaRepository $recentMediaRepository
 	) {
 		$this->recentStoriesRepository = $recentStoriesRepository;
-		$this->followedUsersRepository = $followedUsersRepository;
+		$this->recentMediaRepository = $recentMediaRepository;
 	}
 
 	/**
@@ -79,10 +79,10 @@ class HomeRepository
 		}
 		
 		//get recent media of performers user follows		
-		$media = $this->followedUsersRepository->getMediaOfFollowedUsers($followsIds, $user->id);
+		$media = $this->recentMediaRepository->getRecentMediaOfUsers($followsIds, $user->id);
 
 		//get stories of performers user follows
-		$stories = $this->recentStoriesRepository->getRecentStoriesOfFollowedUsers($followsIds, $user->id);
+		$stories = $this->recentStoriesRepository->getRecentStoriesOfUsers($followsIds, $user->id);
 
 		return ['media' => $media, 'stories' => json_encode($stories)];
 	}
