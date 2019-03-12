@@ -19,6 +19,7 @@ class CreateMediaTable extends Migration
             $table->string('title', 100);
             $table->text('description')->nullable();
             $table->string('file', 100);
+            $table->string('external_file', 255)->nullable();
             $table->string('thumbnail', 100)->nullable();
             $table->integer('cost')->default(0)->comment('in dollars');
             $table->datetime('expires_at')->nullable();

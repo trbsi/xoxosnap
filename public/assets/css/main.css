@@ -15640,7 +15640,7 @@ body {
   width: 22px;
 }
 
-.video-item .plyr video {
+.video-item .plyr video, .performer-video {
   max-height: 200px;
 }
 

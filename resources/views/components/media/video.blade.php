@@ -1,9 +1,8 @@
 <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-
     <div class="ui-block video-item">
         <div class="video-player">
             <div align="center">
-                <video id="video{{$video->id}}" class="performer-video" preload="auto">
+                <video id="video{{$video->id}}" class="performer-video">
                     <source src="{{$video->file}}" type="video/mp4">
                 </video>
             </div>

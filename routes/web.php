@@ -12,11 +12,12 @@
 */
 
 
-//public
+//*********************PUBLIC ROUTES*********************
 Route::get('/', '\App\Web\Home\Controllers\HomeController@home')->name('home');
 Route::get('/explore', '\App\Web\Home\Controllers\HomeController@explore')->name('explore');
 Route::get('/terms-of-use', '\App\Web\Home\Controllers\LegalController@termsOfUse')->name('terms-of-use');
 Route::get('/privacy-policy', '\App\Web\Home\Controllers\LegalController@privacyPolicy')->name('privacy-policy');
+Route::get('/search', '\App\Web\Search\Controllers\SearchController@search')->name('search');
 
 //user profile
 Route::prefix('u')->group(function () {
@@ -25,18 +26,19 @@ Route::prefix('u')->group(function () {
 	Route::get('{username}/about', $ctl.'@about')->name('user.about');
 });
 
-//coins
+
+//register/login
+Auth::routes();
+Route::namespace('Auth')->group(function () {
+	//social login
+	Route::get('auth/callback/{provider}', 'SocialAuthController@callback');
+	Route::get('auth/redirect/{provider}', 'SocialAuthController@redirect')->name('social.login');
+});
+
+//*********************AUTH ROUTES*********************
 Route::middleware('auth')->group(function () {
 	Route::prefix('coins')->group(function () {
 		$ctl = '\App\Web\Coins\Controllers\CoinController';
 		Route::get('', $ctl.'@get')->name('coins.get');
 	});
-});
-
-
-//auth - register/login
-Auth::routes();
-Route::namespace('Auth')->group(function () {
-	Route::get('auth/callback/{provider}', 'SocialAuthController@callback');
-	Route::get('auth/redirect/{provider}', 'SocialAuthController@redirect')->name('social.login');
 });

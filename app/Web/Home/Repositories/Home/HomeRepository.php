@@ -73,18 +73,18 @@ class HomeRepository
 			return array_merge(
 				$this->getRandomPerformers(),
 				[
-					'videos' => [],
+					'media' => collect([]),
 				]
 			);
 		}
 		
-		//get recent videos of performers user follows		
-		$videos = $this->followedUsersRepository->getMediaOfFollowedUsers($followsIds, $user->id);
+		//get recent media of performers user follows		
+		$media = $this->followedUsersRepository->getMediaOfFollowedUsers($followsIds, $user->id);
 
 		//get stories of performers user follows
 		$stories = $this->recentStoriesRepository->getRecentStoriesOfFollowedUsers($followsIds, $user->id);
 
-		return ['videos' => $videos, 'stories' => json_encode($stories)];
+		return ['media' => $media, 'stories' => json_encode($stories)];
 	}
 
 	private function getPerformerHomePage(User $user)

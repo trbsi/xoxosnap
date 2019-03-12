@@ -10,8 +10,6 @@
             contentSelector: 'div.infinite-scroll-media',
             callback: function() {
                 $('#video-container ul.pagination').remove();
-                @component('components.media.javascript.init-plyr', ['useScriptTag' => false])
-                @endcomponent
             }
         });
     });

@@ -17,6 +17,7 @@ class CreateStoriesMediaTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('story_id');
             $table->string('file', 100);
+            $table->string('external_file', 255)->nullable();
             $table->tinyInteger('type');
             $table->timestamps();
 

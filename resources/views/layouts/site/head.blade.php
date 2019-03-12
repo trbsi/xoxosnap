@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/zuck.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/story-skins/snapgram.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/plyr.css">
+    @stack('css')
     <!-- Main Font -->
     <script src="/assets/js/webfontloader.min.js"></script>
     <script>

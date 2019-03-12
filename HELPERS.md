@@ -21,3 +21,12 @@ https://stackoverflow.com/a/48542641/1860890
 Combination of those two because you need to download composer.phar in order to put it in `~/bin/composer`
 https://stackoverflow.com/questions/39643805/need-to-run-composer-update-on-ssh-on-hostgator-but-php-v-to-low/48714217
 https://www.livelywebdesign.com/blog/2018/09/composer-on-hostgator-shared-hosting/
+
+# Socialite Twitter login
+https://arjunphp.com/laravel-5-6-socialite-twitter-login/
+
+# Infinite scroll
+https://laraget.com/blog/implementing-infinite-scroll-pagination-using-laravel-and-jscroll
+
+# Laravel pagination include query string
+https://github.com/laravel/framework/issues/19441#issuecomment-305491111

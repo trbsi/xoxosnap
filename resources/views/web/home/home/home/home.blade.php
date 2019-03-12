@@ -11,8 +11,8 @@
 		@if($profileTypePerfomer === $user->profile_type)
 			@include('web.home.home.home.performer')
 		@elseif($profileTypeViewer === $user->profile_type)
-		    @if([] !== $videos)
-				@component('components.media.videos-with-stories', ['videos'=> $videos, 'stories' => $stories]) 
+		    @if(false === $media->isEmpty())
+				@component('components.media.videos-with-stories', ['media'=> $media, 'stories' => $stories]) 
 				@endcomponent
 			@else
 				@include('web.home.home.home.viewer-follow-performers')

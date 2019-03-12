@@ -9,9 +9,10 @@ use App\Models\User;
         <a href="/"><h6>{{config('app.name')}}</h6></a>
     </div>
     <div class="header-content-wrapper">
-        <form class="search-bar w-search notification-list friend-requests">
+        <form class="search-bar w-search notification-list friend-requests" method="GET" action="{{route('search')}}">
+            <input type="hidden" name="type" value="{{request()->query('type') ?? 'users'}}">
             <div class="form-group with-button">
-                <input class="form-control" placeholder="Search here people or videos..." type="text">
+                <input class="form-control" name="term" placeholder="{{__('general/header.search_placeholder')}}" type="text" value="{{request()->query('term') ?? ''}}">
                 <button>
                     <svg class="olymp-magnifying-glass-icon">
                         <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use>
