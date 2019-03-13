@@ -41,4 +41,11 @@ Route::middleware('auth')->group(function () {
 		$ctl = '\App\Web\Coins\Controllers\CoinController';
 		Route::get('', $ctl.'@get')->name('coins.get');
 	});
+
+	Route::prefix('users')->group(function () {
+		Route::prefix('profiles')->group(function () {
+			$ctl = '\App\Web\Users\Resources\Profiles\Controllers\ProfileController';
+			Route::get('', $ctl.'@get')->name('user.profile.get');
+		});
+	});
 });

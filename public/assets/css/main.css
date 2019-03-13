@@ -15657,3 +15657,33 @@ body {
     width: 30px;
     height: 30px;  
 }
+
+/*PROFILE*/
+.profile-author-thumb {
+  display: inline-block;
+  position: relative; 
+}
+.profile-author-thumb img {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 132px;
+  height: 132px; 
+}
+.profile-author-thumb .icon-status {
+  position: absolute;
+  margin-right: 0;
+  top: 0;
+  left: 0;
+  border: 1px solid #3f4257;
+  width: 8px;
+  height: 8px; 
+}
+.top-header-author .profile-author-thumb {
+    border-radius: 100%;
+    border: 6px solid #fff;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 132px;
+    height: 132px;
+    background-color: #FDFBEE;
+}

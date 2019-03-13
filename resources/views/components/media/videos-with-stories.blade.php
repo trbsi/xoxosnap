@@ -15,6 +15,13 @@
                     @endcomponent
                 @endforeach
                 {{$media->links()}}
+            @else
+                <div class="col col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                    <div class="text-center">
+                        <h1 style="color: #cacbd2">{{__('web/media/media.no_videos')}}</h1>
+                        <img src="/img/no-video.png">
+                    </div>
+                </div>
             @endif
         </div>
     </div>

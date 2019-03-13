@@ -84,7 +84,10 @@ class HomeRepository
 		//get stories of performers user follows
 		$stories = $this->recentStoriesRepository->getRecentStoriesOfUsers($followsIds, $user->id);
 
-		return ['media' => $media, 'stories' => json_encode($stories)];
+		return [
+			'media' => $media,
+			'stories' => json_encode($stories)
+		];
 	}
 
 	private function getPerformerHomePage(User $user)
