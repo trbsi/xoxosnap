@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Web\Users\Resources\Profiles\Repositories\Profile\ProfileRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Web\Users\Resources\Profiles\Repositories\IsUserFollowed\IsUserFollowedRepository;
 
 class ProfileController extends Controller
 {
     public function profile($username, ProfileRepository $profileRepository)
     {
-        //if user doesn't exist
         $user = User::where('username', $username)
         ->with(['profile'])
         ->firstOrFail();
@@ -20,6 +20,7 @@ class ProfileController extends Controller
         $authUser = Auth::user();
 
         $storiesMedia = $profileRepository->getStoriesAndMedia($user, $authUser);
+
         $data = array_merge($storiesMedia, [
             'user' => $user,
             'authUser' => $authUser,
@@ -28,10 +29,20 @@ class ProfileController extends Controller
     	return view('web.users.resources.profiles.profile.profile', $data);
     }
 
-    public function about($username)
+    public function about($username, IsUserFollowedRepository $isUserFollowedRepository)
     {
+        $user = User::where('username', $username)
+        ->with(['profile'])
+        ->firstOrFail();
+
+        $authUser = Auth::user();
+
+        $isUserFollowed = $isUserFollowedRepository->isUserFollowed($authUser, $user->id);
+
     	return view('web.users.resources.profiles.about.about', [
-    		'username' => $username
+            'user' => $user,
+            'authUser' => $authUser,
+            'isUserFollowed' => $isUserFollowed,
     	]);
     }
 }

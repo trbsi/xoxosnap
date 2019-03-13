@@ -77,15 +77,6 @@ class UserProfile extends Model
 		return $this->getGender($value);
 	}
 
-	public function getBusinessEmailAttribute($value)
-	{
-		if (null === $value) {
-			return '-';
-		}
-
-		return $value;
-	}
-
 	public function getWebsiteAttribute($value)
 	{
 		if (null === $value) {
@@ -111,6 +102,42 @@ class UserProfile extends Model
 		}
 
 		return $this->formatNumber($value);
+	}
+
+	public function getDescriptionAttribute($value)
+	{
+		if (empty($value)) {
+			return '-';
+		}
+
+		return $value;
+	}
+
+	public function getBirthdayAttribute($value)
+	{
+		if (empty($value)) {
+			return '-';
+		}
+
+		return $value;
+	}
+
+	public function getCurrentCityAttribute($value)
+	{
+		if (empty($value)) {
+			return '-';
+		}
+
+		return $value;
+	}
+
+	public function getBusinessEmailAttribute($value)
+	{
+		if (empty($value)) {
+			return '-';
+		}
+
+		return $value;
 	}
 
 	public function user()

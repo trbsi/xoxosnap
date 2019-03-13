@@ -5,7 +5,7 @@ $('{{$cssClass}}').each(function() {
             easing: 'easeInOut',
             duration: $(this).data('duration')*1000,
             color: '#FF5E3A',
-            trailColor: '#B5B5B5',
+            trailColor: '#2C2C2C',
             trailWidth: 1,
             svgStyle: null
         });
