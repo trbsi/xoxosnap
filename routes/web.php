@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 	Route::prefix('users')->group(function () {
 		Route::prefix('profiles')->group(function () {
 			$ctl = '\App\Web\Users\Resources\Profiles\Controllers\ProfileController';
-			Route::get('', $ctl.'@get')->name('user.profile.get');
+			Route::get('edit-profile', $ctl.'@editProfile')->name('user.profile.edit-profile');
 		});
 	});
 });

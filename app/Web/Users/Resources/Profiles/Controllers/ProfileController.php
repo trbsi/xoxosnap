@@ -37,12 +37,21 @@ class ProfileController extends Controller
 
         $authUser = Auth::user();
 
-        $isUserFollowed = $isUserFollowedRepository->isUserFollowed($authUser, $user->id);
+        $isUserFollowed = $isUserFollowedRepository->isUserFollowed($user->id, $authUser);
 
     	return view('web.users.resources.profiles.about.about', [
             'user' => $user,
             'authUser' => $authUser,
             'isUserFollowed' => $isUserFollowed,
     	]);
+    }
+
+    public function editProfile(Request $request)
+    {
+        $user = $authUser = Auth::user();
+        return view('web.users.resources.profiles.edit-profile.edit-profile', [
+            'user' => $user,
+            'authUser' => $authUser,
+        ]);
     }
 }

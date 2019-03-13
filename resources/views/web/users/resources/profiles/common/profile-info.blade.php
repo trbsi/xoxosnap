@@ -14,7 +14,7 @@
                             <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
                                     <li>
-                                        <a href="{{route('user.profile', ['username' => $user->username])}}" class="active">{{__('web/users/resources/profile.snaps')}}</a>
+                                        <a href="{{route('user.profile', ['username' => $user->username])}}">{{__('web/users/resources/profile.snaps')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route('user.about', ['username' => $user->username])}}">{{__('web/users/resources/profile.about')}}</a>
@@ -45,7 +45,7 @@
                             </div>
                             */ ?>
 
-                            @if($user->id !== $authUser->id)
+                            @if(null !== $authUser && $user->id !== $authUser->id)
                                 <img src="/img/loading_circle.gif" id="follow-user-loading-circle" style="display: none;">
                                 <div class="btn btn-control bg-blue more" id="follow-user" style="{{(true === $isUserFollowed) ? 'display: none;' : ''}}">
                                     <svg class="olymp-plus-icon">
@@ -69,14 +69,14 @@
                                 </div>
                             @endif
 
-                            @if($user->id === $authUser->id)
-                            <a class="btn btn-control bg-primary more" href="{{route('user.profile.get')}}">
+                            @if(null !== $authUser && $user->id === $authUser->id)
+                            <a class="btn btn-control bg-primary more" href="{{route('user.profile.edit-profile')}}">
                                 <svg class="olymp-settings-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-settings-icon"></use>
                                 </svg>
                                 <ul class="more-dropdown more-with-triangle triangle-top-right">
                                     <li>
-                                        <a href="{{route('user.profile.get')}}">{{__('web/users/resources/profile.account_settings')}}</a>
+                                        <a href="{{route('user.profile.edit-profile')}}">{{__('web/users/resources/profile.account_settings')}}</a>
                                     </li>
                                 </ul>
                             </a>

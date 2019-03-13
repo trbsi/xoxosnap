@@ -23,7 +23,7 @@ class ProfileRepository
 		$this->isUserFollowedRepository = $isUserFollowedRepository;
 	}
 
-    public function getStoriesAndMedia(User $user, User $authUser): array
+    public function getStoriesAndMedia(User $user, ?User $authUser): array
     {
 		//get recent media of performers user follows		
 		$media = $this->recentMediaRepository->getRecentMediaOfUser($user->id);
@@ -31,17 +31,12 @@ class ProfileRepository
 		//get stories of performers user follows
 		$stories = $this->recentStoriesRepository->getRecentStoriesOfUser($user->id);
 
-		$isUserFollowed = $this->isUserFollowedRepository->isUserFollowed($authUser, $user->id);
+		$isUserFollowed = $this->isUserFollowedRepository->isUserFollowed($user->id, $authUser);
 
         return [
         	'stories' => json_encode($stories),
         	'media' => $media,
         	'isUserFollowed' => $isUserFollowed,
         ];
-    }
-
-    private function isUserFollowed(User $authUser, int $userId): bool
-    {
-    	return $authUser->follows()->where('followers.user_id', $userId)->exists();
     }
 }
