@@ -17,23 +17,34 @@ class MediaSeeder extends Seeder
 
 			for ($i = 0; $i < $numberOfMedia; $i++) {
 	     		$fileName = sprintf('%s_%s_%s.mp4', date('YmdHisu'), $key, $i);
+	     		$thumbnailName = sprintf('%s_%s_%s.jpg', date('YmdHisu'), $key, $i);
 	     		$oldFilePath = sprintf('seeds/videos/%s.mp4', rand(1, 12));
+	     		$thumbnailPath = sprintf('seeds/pictures/%s.jpg', rand(1, 20));
+
  		 		$data = [
-					'title' => sprintf('Video title %s', mt_rand(), rand()),
+					'title' => sprintf('Video title %s', mt_rand()),
 					'description' => 'Someone seems to enjoy the snow!Greetings from snowy Finland❄❄ #snow #test #lol #snap #porn',
 					'file' => $fileName,
 					'cost' => rand(0, 5),
 					'expires_at' => $this->calculateExpiresAt(),
 					'likes' => rand(),
-					'created_at' => '2019-02-20 10:12:25'
+					'created_at' => '2019-02-20 10:12:25',
+					'thumbnail' => $thumbnailName,
 				];
 				$media = $performer->media()->create($data);
 				$year = date('Y', strtotime($media->created_at));
 				$month = date('m', strtotime($media->created_at));
 
+				//copy video
 				Storage::copy(
 	                $oldFilePath,
 	                sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $performer->id, $year, $month, $fileName) //->/user/media/{user_id}/{year}/{month}/video.mp4
+	            );
+
+				//copy thumbnail
+				Storage::copy(
+	                $thumbnailPath,
+	                sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $performer->id, $year, $month, $thumbnailName) //->/user/media/{user_id}/{year}/{month}/thumbnail.jpg
 	            );
 			}
     	}

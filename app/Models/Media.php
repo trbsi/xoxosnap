@@ -59,6 +59,13 @@ class Media extends Model
 		return $this->getMediaPath($this->user_id, $year, $month, $value);
 	}
 
+	public function getThumbnailAttribute($value)
+	{
+		$year = date('Y', strtotime($this->created_at));
+		$month = date('m', strtotime($this->created_at));
+		return $this->getMediaPath($this->user_id, $year, $month, $value);
+	}
+
 	public function getPublishedAgoAttribute()
 	{
 		if (null === $this->timeAgo) {

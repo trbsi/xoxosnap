@@ -2,9 +2,7 @@
     <div class="ui-block video-item">
         <div class="video-player">
             <div align="center">
-                <video id="video{{$video->id}}" class="performer-video">
-                    <source src="{{$video->file}}" type="video/mp4">
-                </video>
+                <img src="{{$video->thumbnail}}" class="video-thumbnail">
             </div>
             <a 
                 href="javascript:;"
