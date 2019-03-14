@@ -44,8 +44,17 @@ Route::middleware('auth')->group(function () {
 
 	Route::prefix('users')->group(function () {
 		Route::prefix('profiles')->group(function () {
-			$ctl = '\App\Web\Users\Resources\Profiles\Controllers\ProfileController';
-			Route::get('edit-profile', $ctl.'@editProfile')->name('user.profile.edit-profile');
+			Route::prefix('settings')->group(function () {
+				$ctl = '\App\Web\Users\Resources\Profiles\Controllers\SettingsController';
+				Route::get('account', $ctl.'@accountSettings')->name('user.profile.settings.account-settings');
+				Route::post('edit-account', $ctl.'@editAccountSettings')->name('user.profile.settings.edit-account-settings');
+
+				Route::get('personal-info', $ctl.'@personalInfoSettings')->name('user.profile.settings.personal-info-settings');
+				Route::post('edit-personal-info', $ctl.'@editPersonalInfoSettings')->name('user.profile.settings.edit-personal-info-settings');
+
+				Route::get('change-password', $ctl.'@changePasswordSettings')->name('user.profile.settings.change-password-settings');
+				Route::post('edit-change-password', $ctl.'@editChangePasswordSettings')->name('user.profile.settings.edit-change-password-settings');
+			});
 		});
 	});
 });

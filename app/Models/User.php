@@ -12,15 +12,18 @@ use App\Models\Notification;
 use App\Models\NotificationCount;
 use App\Models\Stories;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, SoftDeletes;
 
     public const USER_TYPE_PERFORMER = 1;
     public const USER_TYPE_VIEWER = 2;
 
     public const PROVIDER_TWITTER = 'twitter';
+
+    public const USERNAME_REGEX = 'regex:/(^([a-zA-Z]+)(\d+)?$)/u';
 
     protected $table = 'users';
 

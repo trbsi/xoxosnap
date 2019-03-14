@@ -44,6 +44,7 @@ use App\Models\Notification;
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="/assets/js/jquery.jscroll.min.js"></script>
 <script src="/assets/js/plyr.min.js"></script>
+<script src="/assets/js/toastr.min.js"></script>
 
 <script type="text/javascript">
   //redirect when cloced on explore button in header
@@ -72,6 +73,44 @@ use App\Models\Notification;
 }
 </script>
 
+<script type="text/javascript">
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
+
+@foreach (['error', 'warning', 'success', 'info'] as $key)
+ @if(session()->has($key))
+     @switch($key)
+        @case('success')
+            toastr.success('{{session($key)}}');
+            @break
+        @case('error')
+            toastr.error('{{session($key)}}');
+            @break
+        @case('info')
+            toastr.info('{{session($key)}}');
+            @break
+        @case('warning')
+            toastr.warning('{{session($key)}}');
+            @break
+    @endswitch
+ @endif
+@endforeach
+</script>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

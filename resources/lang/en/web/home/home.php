@@ -40,8 +40,8 @@ return [
 		'already_following' => 'You\'re already following this user',
 	],
 	'performer' => [
-		'current_earnings' => 'Current earnings',
-		'total_earnings' => 'Total earnings',
+		'current_earnings' => 'Current Balance',
+		'total_earnings' => 'Total Earnings',
 		'followers' => 'Followers',
 		'top_ten_videos_by_earnings' => 'Top 10 videos by earnings',
 		'twitter_feed' => 'Twitter feed',

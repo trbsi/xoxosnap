@@ -17,4 +17,9 @@ return [
 	'instagram' => 'Instagram',
 	'twitter' => 'Twitter',
 	'other_social_networks' => 'Other social networks',
-];
+	'your_profile' => 'Your profile',
+	'profile_settings' => 'Profile settings',
+	'personal_info' => 'Personal information',
+	'change_password' => 'Change password',
+	'account_update' => 'Account updated',
+ ];

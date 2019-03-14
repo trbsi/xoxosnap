@@ -165,7 +165,7 @@ use App\Models\User;
                             
                             <ul class="account-settings">
                                 <li>
-                                    <a href="{{route('user.profile.edit-profile')}}">
+                                    <a href="{{route('user.profile.settings.account-settings')}}">
                                         <svg class="olymp-menu-icon">
                                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
                                         </svg>

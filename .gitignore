@@ -14,3 +14,4 @@ seed_db.sh
 /public_html
 .idea
 error_log
+/public/php.ini

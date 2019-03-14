@@ -3,7 +3,7 @@
 ## Install SSL locally
 1. https://shellcreeper.com/how-to-create-valid-ssl-in-localhost-for-xampp/
 
-2. In \xampp\apache\conf\extra\httpd-vhosts.conf add following:
+1. In \xampp\apache\conf\extra\httpd-vhosts.conf add following:
 
 ```
 <VirtualHost *:80>
@@ -22,3 +22,5 @@
     SSLCertificateKeyFile "crt/pornsnap.loc/server.key"
 </VirtualHost>
 ```
+
+1. Enable Magick

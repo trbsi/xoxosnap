@@ -3518,6 +3518,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     background-color: #ff5e3a; }
 
 .file-upload__input {
+  width: 100%!important;
   position: absolute;
   left: 0;
   top: 0;
@@ -10684,7 +10685,8 @@ ol ol li {
     border-radius: 100%;
     overflow: hidden;
     width: 50px;
-    height: 50px; }
+    height: 50px;
+    object-fit: cover; }
   .author-thumb .icon-status {
     position: absolute;
     margin-right: 0;
@@ -15668,6 +15670,7 @@ body {
   overflow: hidden;
   width: 132px;
   height: 132px; 
+  object-fit: cover;
 }
 .profile-author-thumb .icon-status {
   position: absolute;

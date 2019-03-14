@@ -70,16 +70,16 @@
                             @endif
 
                             @if(null !== $authUser && $user->id === $authUser->id)
-                            <a class="btn btn-control bg-primary more" href="{{route('user.profile.edit-profile')}}">
+                            <div class="btn btn-control bg-primary more" onclick="window.location='{{route('user.profile.settings.account-settings')}}'">
                                 <svg class="olymp-settings-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-settings-icon"></use>
                                 </svg>
                                 <ul class="more-dropdown more-with-triangle triangle-top-right">
                                     <li>
-                                        <a href="{{route('user.profile.edit-profile')}}">{{__('web/users/resources/profile.account_settings')}}</a>
+                                        <a href="{{route('user.profile.settings.account-settings')}}">{{__('web/users/resources/profile.account_settings')}}</a>
                                     </li>
                                 </ul>
-                            </a>
+                            </div>
                             @endif
                         </div>
                     </div>

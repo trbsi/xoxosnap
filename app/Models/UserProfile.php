@@ -54,8 +54,9 @@ class UserProfile extends Model
 		'twitter'
 	];
 
+
 	public function getPictureAttribute($value)
-	{
+	{		
 		if (null === $value) {
 			return self::NO_PROFILE_PICTURE_PATH;
 		}
@@ -70,6 +71,10 @@ class UserProfile extends Model
 
 	public function getGenderAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
 		if (null === $value) {
 			return '-';
 		}
@@ -79,6 +84,10 @@ class UserProfile extends Model
 
 	public function getWebsiteAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
 		if (null === $value) {
 			return '-';
 		}
@@ -106,6 +115,10 @@ class UserProfile extends Model
 
 	public function getDescriptionAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
 		if (empty($value)) {
 			return '-';
 		}
@@ -115,6 +128,10 @@ class UserProfile extends Model
 
 	public function getBirthdayAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
 		if (empty($value)) {
 			return '-';
 		}
@@ -124,6 +141,10 @@ class UserProfile extends Model
 
 	public function getCurrentCityAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
 		if (empty($value)) {
 			return '-';
 		}
@@ -133,11 +154,42 @@ class UserProfile extends Model
 
 	public function getBusinessEmailAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
 		if (empty($value)) {
 			return '-';
 		}
 
 		return $value;
+	}
+
+	public function getInstagramAttribute($value)
+	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
+		return sprintf('https://www.instagram.com/%s', $value);
+	}
+
+	public function getTwitterAttribute($value)
+	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
+		return sprintf('https://twitter.com/%s', $value);
+	}
+
+	public function getFacebookAttribute($value)
+	{
+		if ($this->noMutation) {
+			return $value;
+		}
+		
+		return sprintf('https://www.facebook.com/%s', $value);
 	}
 
 	public function user()
