@@ -34,27 +34,27 @@ class SearchRepository
     {
     	/**
 		SELECT media.*,
-		MATCH(media.title) AGAINST("malen" IN BOOLEAN MODE) AS mediaScore,
-		MATCH(hashtags.name) AGAINST("malen" IN BOOLEAN MODE) AS hashtagScore
+		MATCH(media.title) AGAINST("malen*" IN BOOLEAN MODE) AS mediaScore,
+		MATCH(hashtags.name) AGAINST("malen*" IN BOOLEAN MODE) AS hashtagScore
 		FROM `media` 
 		LEFT JOIN media_hashtags ON (media_hashtags.media_id = media.id)
 		LEFT JOIN hashtags ON (hashtags.id = media_hashtags.hashtag_id)
 		WHERE
-		MATCH(media.title) AGAINST("malen" IN BOOLEAN MODE)
+		MATCH(media.title) AGAINST("malen*" IN BOOLEAN MODE)
 		OR 
-		MATCH(hashtags.name) AGAINST("malen" IN BOOLEAN MODE)
+		MATCH(hashtags.name) AGAINST("malen*" IN BOOLEAN MODE)
 		ORDER BY (mediaScore + hashtagScore) DESC
     	 */
     	$where = sprintf('
-    		MATCH(media.title) AGAINST("%1$s" IN BOOLEAN MODE) 
+    		MATCH(media.title) AGAINST("%1$s*" IN BOOLEAN MODE) 
     		OR 
-    		MATCH(hashtags.name) AGAINST("%1$s" IN BOOLEAN MODE
+    		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE
     	)', $term);
 
     	$select = sprintf('
 		media.*,
-		MATCH(media.title) AGAINST("%1$s" IN BOOLEAN MODE) AS mediaScore,
-		MATCH(hashtags.name) AGAINST("%1$s" IN BOOLEAN MODE) AS hashtagScore
+		MATCH(media.title) AGAINST("%1$s*" IN BOOLEAN MODE) AS mediaScore,
+		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE) AS hashtagScore
 		', $term);
 
     	return Media::selectRaw($select)
@@ -70,32 +70,32 @@ class SearchRepository
     {
     	/**
 		SELECT users.*,
-		MATCH(users.name, users.username) AGAINST("blonde" IN BOOLEAN MODE) AS userScore,
-		MATCH(hashtags.name) AGAINST("blonde" IN BOOLEAN MODE) AS hashtagScore
+		MATCH(users.name, users.username) AGAINST("blonde*" IN BOOLEAN MODE) AS userScore,
+		MATCH(hashtags.name) AGAINST("blonde*" IN BOOLEAN MODE) AS hashtagScore
 		FROM `users` 
 		LEFT JOIN users_profiles_hashtags ON (users_profiles_hashtags.user_id = users.id)
 		LEFT JOIN hashtags ON (hashtags.id = users_profiles_hashtags.hashtag_id)
 		WHERE
 		(
-            MATCH(users.name, users.username) AGAINST("blonde" IN BOOLEAN MODE)
+            MATCH(users.name, users.username) AGAINST("blonde*" IN BOOLEAN MODE)
     		OR 
-    		MATCH(hashtags.name) AGAINST("blonde" IN BOOLEAN MODE)
+    		MATCH(hashtags.name) AGAINST("blonde*" IN BOOLEAN MODE)
         )
         AND users.profile_type = 1
 		ORDER BY (userScore + hashtagScore) DESC
     	 */
     	$where = sprintf('
     		(
-                MATCH(users.name, users.username) AGAINST("%1$s" IN BOOLEAN MODE) 
+                MATCH(users.name, users.username) AGAINST("%1$s*" IN BOOLEAN MODE) 
         		OR 
-        		MATCH(hashtags.name) AGAINST("%1$s" IN BOOLEAN MODE)
+        		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE)
             )
             AND users.profile_type = %2$s', $term, User::USER_TYPE_PERFORMER);
 
     	$select = sprintf('
 		users.*,
-		MATCH(users.name, users.username) AGAINST("%1$s" IN BOOLEAN MODE) AS userScore,
-		MATCH(hashtags.name) AGAINST("%1$s" IN BOOLEAN MODE) AS hashtagScore
+		MATCH(users.name, users.username) AGAINST("%1$s*" IN BOOLEAN MODE) AS userScore,
+		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE) AS hashtagScore
 		', $term);
 
     	return User::selectRaw($select)

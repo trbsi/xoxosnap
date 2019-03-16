@@ -10,6 +10,7 @@
                         </div>
                         -->
                     <div class="profile-section">
+                        @if($user::USER_TYPE_PERFORMER === $user->profile_type)
                         <div class="row">
                             <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
@@ -24,14 +25,15 @@
                             <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
                                     <li>
-                                        <a href="#">{{__('web/users/resources/profile.followers')}}: {{$user->profile->followers}}</a>
+                                        <span>{{__('web/users/resources/profile.followers')}}: {{$user->profile->followers}}</span>
                                     </li>
                                     <li>
-                                        <a href="#">{{__('web/users/resources/profile.videos')}}: {{$user->profile->videos}}</a>
+                                        <span>{{__('web/users/resources/profile.videos')}}: {{$user->profile->videos}}</span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
+                        @endif
                         <div class="control-block-button">
                             <?php /*
                             <div class="btn btn-control more">
@@ -45,7 +47,11 @@
                             </div>
                             */ ?>
 
-                            @if(null !== $authUser && $user->id !== $authUser->id)
+                            @if(
+                                null !== $authUser 
+                                && $user->id !== $authUser->id
+                                && $user::USER_TYPE_PERFORMER !== $authUser->profile_type
+                            )
                                 <img src="/img/loading_circle.gif" id="follow-user-loading-circle" style="display: none;">
                                 <div class="btn btn-control bg-blue more" id="follow-user" style="{{(true === $isUserFollowed) ? 'display: none;' : ''}}">
                                     <svg class="olymp-plus-icon">
@@ -84,12 +90,21 @@
                         </div>
                     </div>
                     <div class="top-header-author">
-                        <a href="{{route('user.profile', ['username' => $user->username])}}" class="profile-author-thumb">
-                        <img src="{{$user->profile->picture}}" alt="author">
-                        </a>
-                        <div class="author-content">
-                            <a href="{{route('user.profile', ['username' => $user->username])}}" class="h4 author-name">{{$user->name ?? $user->username}}</a>
-                        </div>
+                        @if($user::USER_TYPE_PERFORMER === $user->profile_type)
+                            <a href="{{route('user.profile', ['username' => $user->username])}}" class="profile-author-thumb">
+                            <img src="{{$user->profile->picture}}" alt="author">
+                            </a>
+                            <div class="author-content">
+                                <a href="{{route('user.profile', ['username' => $user->username])}}" class="h4 author-name">{{$user->name ?? $user->username}}</a>
+                            </div>
+                        @else
+                            <span class="profile-author-thumb">
+                            <img src="{{$user->profile->picture}}" alt="author">
+                            </span>
+                            <div class="author-content">
+                                <span class="h4 author-name">{{$user->name ?? $user->username}}</span>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

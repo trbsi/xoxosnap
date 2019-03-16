@@ -33,6 +33,7 @@ class ProfileController extends Controller
     public function about($username, IsUserFollowedRepository $isUserFollowedRepository)
     {
         $user = User::where('username', $username)
+        ->where('profile_type', User::USER_TYPE_PERFORMER)
         ->with(['profile'])
         ->firstOrFail();
 
