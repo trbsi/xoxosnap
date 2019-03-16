@@ -30,3 +30,6 @@ https://laraget.com/blog/implementing-infinite-scroll-pagination-using-laravel-a
 
 # Laravel pagination include query string
 https://github.com/laravel/framework/issues/19441#issuecomment-305491111
+
+# Rotate image 
+https://medium.com/thetiltblog/fixing-rotated-mobile-image-uploads-in-php-803bb96a852c

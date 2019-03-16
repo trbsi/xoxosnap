@@ -14,6 +14,7 @@ class ProfileController extends Controller
     public function profile($username, ProfileRepository $profileRepository)
     {
         $user = User::where('username', $username)
+        ->where('profile_type', User::USER_TYPE_PERFORMER)
         ->with(['profile'])
         ->firstOrFail();
 

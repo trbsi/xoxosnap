@@ -76,16 +76,21 @@ class SearchRepository
 		LEFT JOIN users_profiles_hashtags ON (users_profiles_hashtags.user_id = users.id)
 		LEFT JOIN hashtags ON (hashtags.id = users_profiles_hashtags.hashtag_id)
 		WHERE
-		MATCH(users.name, users.username) AGAINST("blonde" IN BOOLEAN MODE)
-		OR 
-		MATCH(hashtags.name) AGAINST("blonde" IN BOOLEAN MODE)
+		(
+            MATCH(users.name, users.username) AGAINST("blonde" IN BOOLEAN MODE)
+    		OR 
+    		MATCH(hashtags.name) AGAINST("blonde" IN BOOLEAN MODE)
+        )
+        AND users.profile_type = 1
 		ORDER BY (userScore + hashtagScore) DESC
     	 */
     	$where = sprintf('
-    		MATCH(users.name, users.username) AGAINST("%1$s" IN BOOLEAN MODE) 
-    		OR 
-    		MATCH(hashtags.name) AGAINST("%1$s" IN BOOLEAN MODE
-    	)', $term);
+    		(
+                MATCH(users.name, users.username) AGAINST("%1$s" IN BOOLEAN MODE) 
+        		OR 
+        		MATCH(hashtags.name) AGAINST("%1$s" IN BOOLEAN MODE)
+            )
+            AND users.profile_type = %2$s', $term, User::USER_TYPE_PERFORMER);
 
     	$select = sprintf('
 		users.*,

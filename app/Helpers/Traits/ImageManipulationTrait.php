@@ -18,6 +18,7 @@ trait ImageManipulationTrait
             $mime = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $picturePath);
 
             if (strpos($mime, 'image') !== false) {
+                /** @var InterventionImage $img */
                 $img = Image::make($picturePath);
              
                 // resize the image to a width of 500 and constrain aspect ratio (auto height)

@@ -3,10 +3,14 @@
     <!-- Search Result -->
     <article class="hentry post searches-item">
         <div class="post__author author vcard inline-items">
-            <img src="{{$user->profile->picture}}" alt="author">
+            <a href="{{route('user.profile', ['username' => $user->username])}}">
+                <img src="{{$user->profile->picture}}" alt="author">
+            </a>
             <div class="author-date">
                 <a class="h6 post__author-name fn" href="{{route('user.profile', ['username' => $user->username])}}">{{$user->name}}</a>
-                <div class="country">{{$user->username}}</div>
+                <div class="country">
+                    <a href="{{route('user.profile', ['username' => $user->username])}}">{{$user->username}}</a>
+                </div>
             </div>
             <?php /*
             <span class="notification-icon">
@@ -26,7 +30,7 @@
             */?>
         </div>
         <p class="user-description">
-            <span class="title">About Me:</span> {{nl2br($user->profile->description)}}
+            <span class="title">{{__('web/search/search.about_me')}}:</span> {{nl2br($user->profile->description)}}
         </p>
     </article>
     <!-- ... end Search Result -->
