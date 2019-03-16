@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Search\Repositores\Search;
+namespace App\Web\Search\Repositores\Search\Search;
 
 use App\Models\User;
 use App\Models\Media;

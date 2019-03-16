@@ -4,8 +4,8 @@ namespace App\Web\Home\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Web\Home\Repositores\Home\Above18Repository;
-use App\Web\Home\Repositores\Home\HomeRepository;
+use App\Web\Home\Repositores\Home\Home\Above18Repository;
+use App\Web\Home\Repositores\Home\Home\HomeRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 

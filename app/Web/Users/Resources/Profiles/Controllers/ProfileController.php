@@ -5,7 +5,7 @@ namespace App\Web\Users\Resources\Profiles\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Web\Users\Resources\Profiles\Repositories\Profile\ProfileRepository;
+use App\Web\Users\Resources\Profiles\Repositories\Profile\Profile\ProfileRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Web\Users\Resources\Profiles\Repositories\IsUserFollowed\IsUserFollowedRepository;
 

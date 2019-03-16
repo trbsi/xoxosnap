@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Web\Coins\Repositories\Purchase;
+namespace App\Api\V1\Web\Coins\Repositories\Coin\Purchase;
 
 use Illuminate\Support\Facades\Auth;
 use Exception;

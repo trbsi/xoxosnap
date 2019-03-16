@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Users\Resources\Profiles\Repositories\Profile;
+namespace App\Web\Users\Resources\Profiles\Repositories\Profile\Profile;
 
 use App\Models\User;
 use App\Web\Stories\Repositories\RecentStories\RecentStoriesRepository;

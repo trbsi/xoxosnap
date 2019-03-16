@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Web\Media\Repositories\Like;
+namespace App\Api\V1\Web\Media\Repositories\Media\Like;
 
 use App\Models\Media;
 use Exception;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Home\Repositores\Home;
+namespace App\Web\Home\Repositores\Home\Home;
 
 use App\Models\User;
 use App\Models\Media;

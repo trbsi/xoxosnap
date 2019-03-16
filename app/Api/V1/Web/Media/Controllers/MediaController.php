@@ -4,8 +4,8 @@ namespace App\Api\V1\Web\Media\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Api\V1\Web\Media\Repositories\UpdateViews\UpdateViewsRepository;
-use App\Api\V1\Web\Media\Repositories\Like\LikeRepository;
+use App\Api\V1\Web\Media\Repositories\Media\UpdateViews\UpdateViewsRepository;
+use App\Api\V1\Web\Media\Repositories\Media\Like\LikeRepository;
 
 class MediaController extends Controller
 {

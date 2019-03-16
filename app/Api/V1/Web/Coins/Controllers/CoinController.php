@@ -4,7 +4,7 @@ namespace App\Api\V1\Web\Coins\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Api\V1\Web\Coins\Repositories\Purchase\PurchaseRepository;
+use App\Api\V1\Web\Coins\Repositories\Coin\Purchase\PurchaseRepository;
 
 class CoinController extends Controller
 {

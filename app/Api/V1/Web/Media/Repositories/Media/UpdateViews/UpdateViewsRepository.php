@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Web\Media\Repositories\UpdateViews;
+namespace App\Api\V1\Web\Media\Repositories\Media\UpdateViews;
 
 use App\Models\Media;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Web\Notifications\Repositories\MarkAllAsRead;
+namespace App\Api\V1\Web\Notifications\Repositories\Notification\MarkAllAsRead;
 
 use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;

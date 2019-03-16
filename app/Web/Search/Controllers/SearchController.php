@@ -4,7 +4,7 @@ namespace App\Web\Search\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Web\Search\Repositores\Search\SearchRepository;
+use App\Web\Search\Repositores\Search\Search\SearchRepository;
 use App\Web\Search\Constants\SearchConstants;
 
 class SearchController extends Controller

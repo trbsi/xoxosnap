@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Web\Notifications\Repositories\GetNotifications\GetNotificationsRepository;
 use App\Models\Notification;
-use App\Api\V1\Web\Notifications\Repositories\MarkAllAsRead\MarkAllAsReadRepository;
+use App\Api\V1\Web\Notifications\Repositories\Notification\MarkAllAsRead\MarkAllAsReadRepository;
 
 class NotificationController extends Controller
 {

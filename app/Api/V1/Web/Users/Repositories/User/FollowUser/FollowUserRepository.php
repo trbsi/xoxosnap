@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Web\Users\Repositories\FollowUser;
+namespace App\Api\V1\Web\Users\Repositories\User\FollowUser;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
