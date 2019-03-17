@@ -10,6 +10,90 @@
 	</div>
 </div>
 
+
+<div class="container">
+    <div class="row">
+        <!-- Main Content -->
+        <main class="col col-xl-12 order-xl-12 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+            <div class="ui-block">
+                <!-- News Feed Form  -->
+                <div class="news-feed-form">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active inline-items" data-toggle="tab" href="#video" role="tab" aria-expanded="true">
+
+                                <span>{{__('web/home/home.performer.add_video')}}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link inline-items" data-toggle="tab" href="#story" role="tab" aria-expanded="false">
+                                <span>{{__('web/home/home.performer.add_story')}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="video" role="tabpanel" aria-expanded="true">
+                            <form>
+                                <div class="form-group with-icon label-floating is-empty">
+                                    <textarea class="form-control" placeholder=""  ></textarea>
+                                </div>
+                                <div class="add-options-message">
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                        <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                        <svg class="olymp-computer-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                        <svg class="olymp-small-pin-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use>
+                                        </svg>
+                                    </a>
+                                    <button class="btn btn-primary btn-md-2">{{__('web/home/home.performer.upload_video')}}</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="story" role="tabpanel" aria-expanded="true">
+                            <form>
+                                <div class="form-group with-icon label-floating is-empty">
+                                    <textarea class="form-control" placeholder=""  ></textarea>
+                                </div>
+                                <div class="add-options-message">
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                        <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                        <svg class="olymp-computer-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                        <svg class="olymp-small-pin-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use>
+                                        </svg>
+                                    </a>
+                                    <button class="btn btn-primary btn-md-2">{{__('web/home/home.performer.upload_story')}}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- ... end News Feed Form  -->			
+            </div>
+        </main>
+        <!-- ... end Main Content -->
+    </div>
+</div>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col col-xl-4 order-xl-4 col-lg-6 order-lg-4 col-md-6 col-sm-12 col-12">

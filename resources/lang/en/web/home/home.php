@@ -47,6 +47,10 @@ return [
 		'twitter_feed' => 'Twitter feed',
 		'view_your_profile' => 'View your public profile:',
 		'cannot_display_twitter_feed' => 'We can\'t display Twitter feed.',
-		'not_connected_with_twitter_account' => 'You haven\'t logged in via your Twitter account.'
+		'not_connected_with_twitter_account' => 'You haven\'t logged in via your Twitter account.',
+		'add_video' => 'Add video',
+		'add_story' => 'Add story',
+		'upload_video' => 'Upload video',
+		'upload_story' => 'Upload story'
 	],
 ];
