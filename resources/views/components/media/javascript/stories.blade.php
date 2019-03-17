@@ -15,6 +15,8 @@
       };
 
       var loadedStories = new Zuck('stories', {
+        touchMoveEnabled: false,
+        moveToNextStoryAutomatically: false,
         backNative: true,
         previousTap: true,
         autoFullScreen: skins[skin]['autoFullScreen'],
@@ -51,7 +53,6 @@
             },
 
             'onNavigateItem': function(storyId, nextStoryId, callback) {
-                console.log(nextStoryId);
                 callback();
             },
           },
