@@ -67,6 +67,27 @@
 			</ul>
 			@endauth
 
+			@guest                            
+            <ul class="account-settings">
+                <li>
+                    <a href="{{route('login')}}">
+                        <svg class="olymp-menu-icon">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-login-icon"></use>
+                        </svg>
+                        <span>{{__('general/user-menu.login')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('register')}}">
+                        <svg class="olymp-menu-icon">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-register-icon"></use>
+                        </svg>
+                        <span>{{__('general/user-menu.register')}}</span>
+                    </a>
+                </li>
+            </ul>
+            @endguest
+
 			<div class="ui-block-title ui-block-title-small">
 				<h6 class="title">{{__('general/user-menu.about')}} {{config('app.name')}}</h6>
 			</div>

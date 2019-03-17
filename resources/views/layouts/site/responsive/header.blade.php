@@ -163,7 +163,7 @@ use App\Models\User;
             <div class="mCustomScrollbar" data-mcs-theme="dark">
                 <ul class="notification-list">
                     <li>
-                       Explore new stars, videos and stories
+                       {{__('general/header.explore_stars_videos')}}
                     </li>
                 </ul>
             </div>
