@@ -1,5 +1,7 @@
 <script>
-    var buildedStories = buildStories();
+    var arrayOfStories = buildStories();
+    var buildedStories = arrayOfStories.stories;
+    var storiesWithCustomKey = arrayOfStories.storiesWithCustomKey;
 
     var initStories = function () {     
       skin = 'Snapgram';
@@ -49,6 +51,7 @@
             },
 
             'onNavigateItem': function(storyId, nextStoryId, callback) {
+                console.log(nextStoryId);
                 callback();
             },
           },
@@ -57,6 +60,16 @@
     };
     
     initStories();
+
+    <?php //how through each story and add class that will add icon representing that story is locked?>
+    $("div.story").each(function(index) {
+        var id = $(this).data('id');
+        var story = storiesWithCustomKey['story'+id];
+        if (story.isLocked) {
+            $(this).find('.img').addClass('story-locked');
+        }
+    });
+
     //init perfect scrollbar
     $('#stories').perfectScrollbar({wheelPropagation:false});
 
@@ -64,6 +77,7 @@
     {
         var storiesJson = {!! $stories !!}; 
         var stories = [];
+        var storiesWithCustomKey = [];
         var timestamp = function (shift) {
             var now = new Date();
             var date = new Date(now - shift * 1000);
@@ -72,7 +86,7 @@
           };
 
         $.each(storiesJson, function(index, story) {
-            itemsArray = [];
+            var itemsArray = [];
             $.each(story.items, function(i, item) {
                 itemsArray.push(Zuck.buildItem(
                     item.story_id,
@@ -86,6 +100,7 @@
                     timestamp(item.last_updated_at)
                 ));
             });
+
             storyObject = {
                 id: story.id,
                 photo: story.photo,
@@ -97,10 +112,11 @@
                 items: itemsArray
             };
 
+            storiesWithCustomKey['story'+story.id] = storyObject;
             stories.push(storyObject);
         });
 
-        return stories;
+        return {stories: stories, storiesWithCustomKey: storiesWithCustomKey};
     }
 
     function storyIsLocked(storyCallback, storyId, storyIndex)
@@ -121,7 +137,11 @@
                 .done(function(data) {
                     <?php  //unlock story ?>
                     buildedStories[storyIndex].isLocked = false;
+                    <?php //remove locked icon from it ?>
+                    $("div.story[data-id='"+storyId+"']").find('.img').removeClass('story-locked'); 
+                    <?php //update coins in header ?>
                     $('.coins-badge').text(data.coins);
+                    <?php //open story ?>
                     storyCallback();
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {

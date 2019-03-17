@@ -5,3 +5,12 @@
 .stories.snapgram .story.seen{opacity:.75}
 .stories.snapgram .story.seen > a > .img {background:#999}
 .stories.snapgram .story.seen > a{color:#999!important}
+
+.stories.snapgram .story > a > .story-locked::before {
+    background-image: url(../../../img/story-locked.png);
+    position: absolute;
+     display: block; 
+    content: "";
+    width: 20px;
+    height: 20px;
+}
