@@ -33,7 +33,7 @@ class CreateMediaTable extends Migration
             ->onDelete('cascade');
         });
 
-        DB::statement('CREATE FULLTEXT INDEX title ON media(title)');
+        DB::statement('CREATE FULLTEXT INDEX title_description ON media(title, description)');
     }
 
     /**

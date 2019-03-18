@@ -46,14 +46,14 @@ class SearchRepository
 		ORDER BY (mediaScore + hashtagScore) DESC
     	 */
     	$where = sprintf('
-    		MATCH(media.title) AGAINST("%1$s*" IN BOOLEAN MODE) 
+    		MATCH(media.title, media.description) AGAINST("%1$s*" IN BOOLEAN MODE) 
     		OR 
     		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE
     	)', $term);
 
     	$select = sprintf('
 		media.*,
-		MATCH(media.title) AGAINST("%1$s*" IN BOOLEAN MODE) AS mediaScore,
+		MATCH(media.title, media.description) AGAINST("%1$s*" IN BOOLEAN MODE) AS mediaScore,
 		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE) AS hashtagScore
 		', $term);
 
