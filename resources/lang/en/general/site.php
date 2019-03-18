@@ -1,5 +1,6 @@
 <?php 
 return [
 	'coins' => 'Naughtycoins',
-	'dollars' => 'dollars'
+	'dollars' => 'dollars',
+	'are_you_sure' => 'Are you sure?',
 ];

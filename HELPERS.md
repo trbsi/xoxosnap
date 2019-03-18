@@ -33,3 +33,7 @@ https://github.com/laravel/framework/issues/19441#issuecomment-305491111
 
 # Rotate image 
 https://medium.com/thetiltblog/fixing-rotated-mobile-image-uploads-in-php-803bb96a852c
+
+# Capture video thumbnail
+http://usefulangle.com/post/46/javascript-get-video-thumbnail-image-jpeg-png
+https://codepen.io/renanpupin/pen/PqjyeK
