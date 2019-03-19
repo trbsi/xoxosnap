@@ -25,6 +25,7 @@ Route::middleware('auth:api')->group(function () {
 			$ctl = '\App\Api\V1\Web\Media\Controllers\MediaController';
 			Route::post('update-views', $ctl.'@updateViews')->name('media.update-views');
 			Route::post('like', $ctl.'@like')->name('media.like');
+			Route::post('', $ctl.'@create')->name('media.create');
 		});
 		
 		Route::prefix('coins')->group(function () {

@@ -62,6 +62,7 @@ return [
 		'expires_choose' => 'Expires in',
 		'days' => 'days',
 		'hours' => 'hours',
+		'minutes' => 'minutes',
 		'preview' => 'Preview',
 		'upload_video' => 'Upload video',
 		'upload_story' => 'Upload story',
@@ -70,8 +71,11 @@ return [
 		'thumbnail' => 'Thumbnail',
 		'validation_error_field' => 'Field',
 		'validation_error_must_not_be_empty' => 'must be filled',
-		'choose_thumbnail' => 'You must choose a thumbnail for your video',
+		'choose_thumbnail' => 'You must capture a thumbnail for your video',
 		'reset' => 'Reset',
 		'success' => 'Success',
+		'video_uploaded' => 'Your video has been uploaded :)',
+		'please_choose_video' => 'Please choose a video',
+		'max_video_length' => 'Video can be max :duration minutes long',
 	]
 ];

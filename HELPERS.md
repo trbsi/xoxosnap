@@ -37,3 +37,6 @@ https://medium.com/thetiltblog/fixing-rotated-mobile-image-uploads-in-php-803bb9
 # Capture video thumbnail
 http://usefulangle.com/post/46/javascript-get-video-thumbnail-image-jpeg-png
 https://codepen.io/renanpupin/pen/PqjyeK
+
+# jQuery File Upload: clean file queue
+https://stackoverflow.com/questions/41540040/jquery-file-upload-clean-file-queue

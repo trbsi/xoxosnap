@@ -113,6 +113,10 @@ toastr.options = {
     @endswitch
  @endif
 @endforeach
+
+@if (request('success'))
+  toastr.success('{{request('success')}}');
+@endif
 </script>
 
 
