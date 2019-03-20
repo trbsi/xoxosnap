@@ -105,7 +105,7 @@ use App\Models\Media;
 						                                
 		  	<div class="add-options-message">
                 <button class="btn btn-primary btn-md-2" type="submit" id="upload-video-btn">{{__('web/home/home.performer_video_form.upload_video')}}</button>
-                <button class="btn btn-secondary btn-md-2" type="button" id="reset-button">{{__('web/home/home.performer_video_form.reset')}}</button>
+                <button class="btn btn-secondary btn-md-2" type="button" id="reset-video-form-button">{{__('web/home/home.performer_video_form.reset')}}</button>
             </div>
     	</div>
     </form>
@@ -117,15 +117,15 @@ $("#video-form").submit(function(e){
 	e.preventDefault();
 });
 
+var resetVideoFormBtn = $('#reset-video-form-button');
 
 //input are being validated inside fileupload.add
 //so validate here only if video not chosen
 var uploadVideoBtn = $('#upload-video-btn');
 uploadVideoBtn.click(function() {
-	if (' ' === $('#preview-video source').attr('src')
-		|| '' === $('#preview-video source').attr('src')
-		|| undefined === $('#preview-video source').attr('src')
-	) {
+	var previewVideoSource = $('#preview-video source').attr('src');
+	
+	if (' ' === previewVideoSource || '' === previewVideoSource || undefined === previewVideoSource) {
 		toastr.error('{{__('web/home/home.performer_video_form.please_choose_video')}}');
 	}
 });
@@ -144,7 +144,7 @@ $(function () {
         add: function (e, data) {
             var videoData = processVideoAndPrepareForThumbnail(data);
 
-		    // Load metadata of the video to get video duration and dimensions
+		    // Load metadata of the video to get video duration
 		    videoData.video.addEventListener('loadedmetadata', function() {
 		        var video_duration = videoData.video.duration;
 		         if (video_duration > {{Media::MAX_VIDEO_DURATION}}) {
@@ -162,13 +162,12 @@ $(function () {
 		    });
         },
         done: function (e, data) {
-            uploadVideoBtn.attr('disabled', false);
             $('#progress .bar').css('width', '0%');
             toastr.success('{{__('web/home/home.performer_video_form.video_uploaded')}}');
 
             setTimeout(function(){
 	            window.location.href = '{{route('home')}}'; 
-	        }, 1500);
+	        }, 2000);
             
         },
         progressall: function (e, data) {
@@ -191,6 +190,7 @@ $(function () {
 
 	        $('#progress .bar').css('width', '0%');
 	        uploadVideoBtn.attr('disabled', false);
+	        resetVideoFormBtn.attr('disabled', false);
 	    }
     });
 
@@ -206,6 +206,8 @@ $(function () {
 		}
 
 		uploadVideoBtn.attr('disabled', true);
+		resetVideoFormBtn.attr('disabled', true);
+
 		fileToSubmit.formData = {
     		thumbnail: $('input[name="thumbnail"]').val(),
     		title: $('input[name="title"]').val(),
@@ -227,7 +229,7 @@ $(function () {
 	processVideo(document.querySelector("#media-to-upload"));
 });*/
 
-$("#reset-button").click(function(e) {
+resetVideoFormBtn.click(function(e) {
 	e.preventDefault();
 	Swal.fire({
 		title: '{{__('general/site.are_you_sure')}}',
