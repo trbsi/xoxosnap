@@ -7,7 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\Notification;
 
-class MediaPurchasedListener
+class CreateNotificationForPerformerListener
 {
     /**
      * Handle the event.

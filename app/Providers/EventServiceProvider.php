@@ -8,6 +8,8 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Web\Users\Listeners\CreateCoinsListener;
 use App\Web\Notifications\Resources\Counts\Listeners\NotificationsCountListener;
+use App\Web\Coins\Events\MediaPurchasedEvent;
+use App\Web\Coins\Listeners\CreateNotificationForPerformerListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,8 +24,8 @@ class EventServiceProvider extends ServiceProvider
             CreateCoinsListener::class,
             NotificationsCountListener::class,
         ],
-        'App\Web\Coins\Events\MediaPurchasedEvent' => [
-            'App\Web\Coins\Listeners\MediaPurchasedListener'
+        MediaPurchasedEvent::class => [
+            CreateNotificationForPerformerListener::class
         ]
     ];
 

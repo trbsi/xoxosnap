@@ -23,7 +23,7 @@ class User extends Authenticatable
 
     public const PROVIDER_TWITTER = 'twitter';
 
-    public const USERNAME_REGEX = 'regex:/(^([a-zA-Z]+)(\d+)?$)/u';
+    public const USERNAME_VALIDATION_REGEX = '/(^([a-zA-Z]+)(\d+)?$)/u';
 
     protected $table = 'users';
 

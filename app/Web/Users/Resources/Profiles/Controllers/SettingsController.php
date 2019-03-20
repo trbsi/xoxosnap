@@ -36,7 +36,7 @@ class SettingsController extends Controller
     public function editAccountSettings(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username' => sprintf('required|unique:users,username,%d|max:20|%s', $this->authUser->id, User::USERNAME_REGEX),
+            'username' => sprintf('required|unique:users,username,%d|max:20|regex:%s', $this->authUser->id, User::USERNAME_VALIDATION_REGEX),
             'email' => sprintf('required|unique:users,email,%d|max:100|email', $this->authUser->id),
         ]);
 
