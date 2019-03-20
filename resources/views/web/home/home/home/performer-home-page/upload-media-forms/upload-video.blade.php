@@ -70,7 +70,7 @@ use App\Models\Media;
                 	<br>
 					<div class="file-upload">
 						<label for="upload" class="file-upload__label">{{__('web/home/home.performer_video_form.choose_video')}}</label>
-						<input class="file-upload__input"  type="file" id="media-to-upload" accept="video/mp4" name="video">
+						<input class="file-upload__input"  type="file" id="video-form-media-to-upload" accept="video/mp4" name="video">
 					</div>
 					<br>
 					{{__('web/home/home.performer_video_form.capture_info')}}
@@ -104,7 +104,7 @@ use App\Models\Media;
 			</div>
 						                                
 		  	<div class="add-options-message">
-                <button class="btn btn-primary btn-md-2" type="submit" id="upload-video-btn">{{__('web/home/home.performer_video_form.upload_video')}}</button>
+                <button class="btn btn-primary btn-md-2" type="submit" id="upload-video-form-btn">{{__('web/home/home.performer_video_form.upload_video')}}</button>
                 <button class="btn btn-secondary btn-md-2" type="button" id="reset-video-form-button">{{__('web/home/home.performer_video_form.reset')}}</button>
             </div>
     	</div>
@@ -121,7 +121,7 @@ var resetVideoFormBtn = $('#reset-video-form-button');
 
 //input are being validated inside fileupload.add
 //so validate here only if video not chosen
-var uploadVideoBtn = $('#upload-video-btn');
+var uploadVideoBtn = $('#upload-video-form-btn');
 uploadVideoBtn.click(function() {
 	var previewVideoSource = $('#preview-video source').attr('src');
 
@@ -133,7 +133,7 @@ uploadVideoBtn.click(function() {
 $(function () {	
 	var fileToSubmit;
 
-    $('#media-to-upload').fileupload({
+    $('#video-form-media-to-upload').fileupload({
         dataType: 'json',
         acceptFileTypes: '/(\.|\/)(mp4)$/i',
         autoUpload: false,
@@ -195,13 +195,13 @@ $(function () {
     });
 
     uploadVideoBtn.click(function() {
-        var validated = validateInput();
+        var validated = validateVideoFormInput();
         if (false === validated) {
         	return;
         }
 
 		if('' === $("input[name='thumbnail']").val()) {
-			showErrorMessage(false, '{{__('web/home/home.performer_video_form.choose_thumbnail')}}');
+			showVideoFormErrorMessage(false, '{{__('web/home/home.performer_video_form.choose_thumbnail')}}');
 			return;
 		}
 
@@ -225,8 +225,8 @@ $(function () {
 </script>
 
 <script type="text/javascript">
-/*document.querySelector("#media-to-upload").addEventListener('change', function() {
-	processVideo(document.querySelector("#media-to-upload"));
+/*document.querySelector("#video-form-media-to-upload").addEventListener('change', function() {
+	processVideo(document.querySelector("#video-form-media-to-upload"));
 });*/
 
 resetVideoFormBtn.click(function(e) {
@@ -238,24 +238,24 @@ resetVideoFormBtn.click(function(e) {
 		showConfirmButton: true,
 	}).then((result) => {
 	  	if (result.value) {
-	  		emptyFields();
+	  		emptyVideoFormFields();
 		    toastr.success('{{__('web/home/home.performer_video_form.success')}}');
 		}
 	});
 
 });
 
-function emptyFields()
+function emptyVideoFormFields()
 {
 	var form = $('#video-form');
     form.find("input[type=text], input[type=file], textarea, input[type=number]").val("");
     $('#output').empty();
     $('#preview-video source').attr('src', '');
     $('#preview-video')[0].load();
-    $('#media-to-upload').empty();
+    $('#video-form-media-to-upload').empty();
 }
 
-function validateInput()
+function validateVideoFormInput()
 {
 	var requiredInputs = ['title', 'cost'];
 	var validated = true;
@@ -277,17 +277,17 @@ function validateInput()
 					break;
 
 			}
-			showErrorMessage(displayName);
+			showVideoFormErrorMessage(displayName);
 			validated = false;
 		}
 	});
 
 	if (false === $('input[name="expiry_type"]').is(':checked')) { 
-		showErrorMessage('{{__('web/home/home.performer_video_form.expiry')}}');
+		showVideoFormErrorMessage('{{__('web/home/home.performer_video_form.expiry')}}');
 		validated = false;
 	} else {
 		if ('{{Media::EXPIRY_TYPE_CUSTOM}}' === $('input[name="expiry_type"]:checked').val() && '' === $('input[name="expires_in"]').val()) {
-			showErrorMessage('{{__('web/home/home.performer_video_form.expires_choose')}}');
+			showVideoFormErrorMessage('{{__('web/home/home.performer_video_form.expires_choose')}}');
 			validated = false;
 		}
 	}
@@ -295,7 +295,7 @@ function validateInput()
 	return validated;
 }
 
-function showErrorMessage(inputName, fullMessage = false) 
+function showVideoFormErrorMessage(inputName, fullMessage = false) 
 {
 	if (fullMessage) {
 		toastr.error(fullMessage);
