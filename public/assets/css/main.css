@@ -5635,11 +5635,12 @@ figure {
     padding: 0; }
   .open-photo-popup .modal-content {
     border: none; }
-  .open-photo-popup .mCustomScrollbar {
+    /*MODIFIED DARIO*/
+  /*.open-photo-popup .mCustomScrollbar {
     overflow: hidden;
-    max-height: 140px; }
-  .open-photo-popup .ps > .ps__scrollbar-y-rail, .open-photo-popup .ps:hover > .ps__scrollbar-y-rail {
-    display: none; }
+    max-height: 140px; }*/
+  /*.open-photo-popup .ps > .ps__scrollbar-y-rail, .open-photo-popup .ps:hover > .ps__scrollbar-y-rail {
+    display: none; }*/
 
 .open-photo-thumb {
   padding: 55px 0;

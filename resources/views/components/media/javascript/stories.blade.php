@@ -15,8 +15,8 @@
       };
 
       var loadedStories = new Zuck('stories', {
-        touchMoveEnabled: false,
-        moveToNextStoryAutomatically: false,
+        touchMoveEnabled: true,
+        moveToNextStoryAutomatically: true,
         backNative: true,
         previousTap: true,
         autoFullScreen: skins[skin]['autoFullScreen'],

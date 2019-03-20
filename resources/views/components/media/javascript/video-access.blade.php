@@ -1,7 +1,9 @@
 <script type="text/javascript">
     var videoPlayer = null;
     var videoElement = null; <?php //keep variable global so you can access it in video-popup.blade ?>
-    $('#open-photo-popup-v2').on('hidden.bs.modal', function (e) {
+    var modalPopup = $('#open-photo-popup-v2');
+
+    modalPopup.on('hidden.bs.modal', function (e) {
         videoPlayer.destroy();
     });
 
@@ -74,13 +76,18 @@
         videoPlayer = new Plyr($("#performer-video"), {}); 
 
         <?php //open popup ?>
-        $('#open-photo-popup-v2').modal('show');
+        modalPopup.modal('show');
 
         <?php //update views ?>
         var response = ajax('{{route('media.update-views')}}', 'POST', {id: $(videoElement).data('video-id')})
         response
         .done(function(data) {
             $('#views').text(data.views); 
+        });        
+
+        modalPopup.on('shown.bs.modal', function (e) {
+            $('#description').perfectScrollbar();
         });
+
     }
 </script>

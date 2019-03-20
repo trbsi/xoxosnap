@@ -15,8 +15,12 @@ class Media extends Model
 	use MediaFileTrait, NumberFormatterTrait, ConvertCoinsTrait;
 	
 	public const MEDIA_PATH = '/user/media/';
+
 	public const EXPIRY_TYPE_NEVER = 'never';
 	public const EXPIRY_TYPE_CUSTOM = 'custom';
+	public const EXPIRY_TIME_DAYS = 'days';
+	public const EXPIRY_TIME_HOURS = 'hours';
+	public const EXPIRY_TIME_MINUTES = 'minutes';
 
 	public const MAX_VIDEO_DURATION = 120; //seconds
 

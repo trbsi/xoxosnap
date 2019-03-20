@@ -32,7 +32,12 @@ class CreateMediaRequest extends FormRequest
             'thumbnail' => 'required|string',
             'expiry_type' => sprintf('required|in:%s,%s', Media::EXPIRY_TYPE_CUSTOM, Media::EXPIRY_TYPE_NEVER),
             'expires_in' => sprintf('required_if:expiry_type,%s|nullable|integer|min:1', Media::EXPIRY_TYPE_CUSTOM),
-            'expires_in_type' => sprintf('required_if:expiry_type,%s|nullable|in:days,hours,minutes', Media::EXPIRY_TYPE_CUSTOM),
+            'expires_in_type' => sprintf('required_if:expiry_type,%s|nullable|in:%s,%s,%s', 
+                Media::EXPIRY_TYPE_CUSTOM,
+                Media::EXPIRY_TIME_MINUTES,
+                Media::EXPIRY_TIME_HOURS,
+                Media::EXPIRY_TIME_DAYS
+            ),
         ];
     }
 }

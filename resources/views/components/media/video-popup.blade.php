@@ -14,7 +14,7 @@
                         <div class="swiper-wrapper">
                             <!-- Slides -->
                                 <div class="photo-item">
-                                    <video id="performer-video" preload="auto" style="max-height: 400px;">
+                                    <video id="performer-video" preload="none" style="max-height: 400px;">
                                         <source type="video/mp4">
                                     </video>
                                 </div>
@@ -49,7 +49,7 @@
                             </div>
                             */ ?>
                         </div>
-                        <p id="description">Here’s a photo from last month’s photoshoot. We really had a great time and got a batch of incredible shots for the new catalog.</p>
+                        <p id="description" style="max-height: 350px">Here’s a photo from last month’s photoshoot. We really had a great time and got a batch of incredible shots for the new catalog.</p>
                         <div class="post-additional-info inline-items">
                             <img src="/img/loading_circle.gif" style="display: none;" id="likes-loading">
                             <a href="javascript:;" id="likes-icon" class="post-add-icon inline-items">
@@ -147,5 +147,6 @@
             likesIcon.show();
         });
     });
+
 </script>
 @endpush

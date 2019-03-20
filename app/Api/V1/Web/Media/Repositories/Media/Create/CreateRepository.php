@@ -70,12 +70,16 @@ class CreateRepository
         $date = new DateTime();
 
         switch ($data['expires_in_type']) {
-            case 'days':
+            case Media::EXPIRY_TIME_DAYS:
                 $date->add(new DateInterval(sprintf('P%dD', $data['expires_in'])));
                 break;
             
-            case 'hours':
+            case Media::EXPIRY_TIME_HOURS:
                 $date->add(new DateInterval(sprintf('PT%dH', $data['expires_in'])));
+                break;
+
+            case Media::EXPIRY_TIME_MINUTES:
+                $date->add(new DateInterval(sprintf('PT%dM', $data['expires_in'])));
                 break;
         }
 

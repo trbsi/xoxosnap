@@ -50,9 +50,9 @@ use App\Models\Media;
 			<div class="col col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<div class="form-group is-select">
 					<select class="selectpicker form-control" name="expires_in_type">
-						<option value="minutes">{{__('web/home/home.performer_video_form.minutes')}}</option>
-						<option value="hours">{{__('web/home/home.performer_video_form.hours')}}</option>
-						<option value="days" selected="">{{__('web/home/home.performer_video_form.days')}}</option>
+						<option value="{{Media::EXPIRY_TIME_MINUTES}}" selected="">{{__('web/home/home.performer_video_form.minutes')}}</option>
+						<option value="{{Media::EXPIRY_TIME_HOURS}}">{{__('web/home/home.performer_video_form.hours')}}</option>
+						<option value="{{Media::EXPIRY_TIME_DAYS}}">{{__('web/home/home.performer_video_form.days')}}</option>
 					</select>
 				</div>
 			</div>
@@ -124,7 +124,7 @@ var resetVideoFormBtn = $('#reset-video-form-button');
 var uploadVideoBtn = $('#upload-video-btn');
 uploadVideoBtn.click(function() {
 	var previewVideoSource = $('#preview-video source').attr('src');
-	
+
 	if (' ' === previewVideoSource || '' === previewVideoSource || undefined === previewVideoSource) {
 		toastr.error('{{__('web/home/home.performer_video_form.please_choose_video')}}');
 	}
