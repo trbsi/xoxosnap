@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Web\Media\Traits\MediaFileTrait;
 use DateTime;
 use DateInterval;
+use Exception;
+use DB;
 
 class CreateRepository 
 {
@@ -16,21 +18,29 @@ class CreateRepository
 
     public function create(array $data): void
     {
-    	$user = Auth::user();
-    	$data['file'] = $this->uploadVideo($data, $user);
-    	$data['thumbnail'] = $this->uploadThumbnail($data, $user);
-        $data['expires_at'] = $this->calculateExpiresAt($data);
+        try {
+            $user = Auth::user();
+            $data['file'] = $this->uploadVideo($data, $user);
+            $data['thumbnail'] = $this->uploadThumbnail($data, $user);
+            $data['expires_at'] = $this->calculateExpiresAt($data);
 
-    	$saveData = [
-    		'user_id' => $user->id,
-    		'file' => $data['file'],
-    		'thumbnail' => $data['thumbnail'],
-    		'title' => $data['title'],
-			'description' => $data['description'],
-			'cost' => $data['cost'],
-			'expires_at' => $data['expires_at'],
-    	];
-    	Media::create($saveData);
+            DB::beginTransaction();
+            $saveData = [
+                'user_id' => $user->id,
+                'file' => $data['file'],
+                'thumbnail' => $data['thumbnail'],
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'cost' => $data['cost'],
+                'expires_at' => $data['expires_at'],
+            ];
+            Media::create($saveData);     
+            DB::commit();   
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
     }
 
     private function uploadVideo(array $data, User $user) : string

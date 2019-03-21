@@ -20,6 +20,7 @@ trait MediaFileTrait
     	$month = date('m');
         $pathPrefix = Storage::getAdapter()->getPathPrefix(); //->/htdocs/pornsnap/site/storage/app/public/
         $pathPrefix = rtrim($pathPrefix, '/');
+        $pathPrefix = rtrim($pathPrefix, '\\');
         $path = sprintf('%s%s%d/%s/%s', $pathPrefix, Media::MEDIA_PATH, $userId, $year, $month);
         return $path;
     }

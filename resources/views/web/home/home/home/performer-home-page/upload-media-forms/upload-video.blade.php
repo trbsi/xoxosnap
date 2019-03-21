@@ -94,7 +94,7 @@ use App\Models\Media;
 			<div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 				<canvas id="video-canvas" style="display: none;"></canvas>
 				<b>{{__('web/home/home.performer_video_form.thumbnail')}}</b>
-				<div id="output"></div>
+				<div id="video-thumbnail-output"></div>
 			</div>
 
 			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 20px;">
@@ -104,7 +104,7 @@ use App\Models\Media;
 			</div>
 						                                
 		  	<div class="add-options-message">
-                <button class="btn btn-primary btn-md-2" type="submit" id="upload-video-form-btn">{{__('web/home/home.performer_video_form.upload_video')}}</button>
+                <button class="btn btn-green btn-md-2" type="submit" id="upload-video-form-btn">{{__('web/home/home.performer_video_form.upload_video')}}</button>
                 <button class="btn btn-secondary btn-md-2" type="button" id="reset-video-form-button">{{__('web/home/home.performer_video_form.reset')}}</button>
             </div>
     	</div>
@@ -157,8 +157,8 @@ $(function () {
 	        	fileToSubmit = data;
 
 	            //remove thumbnail
-	            $("input[name='thumbnail']").val('');
-	            $('#output').empty();
+	            $("#video-form input[name='thumbnail']").val('');
+	            $('#video-thumbnail-output').empty();
 		    });
         },
         done: function (e, data) {
@@ -200,7 +200,7 @@ $(function () {
         	return;
         }
 
-		if('' === $("input[name='thumbnail']").val()) {
+		if('' === $("#video-form input[name='thumbnail']").val()) {
 			showVideoFormErrorMessage(false, '{{__('web/home/home.performer_video_form.choose_thumbnail')}}');
 			return;
 		}
@@ -209,13 +209,13 @@ $(function () {
 		resetVideoFormBtn.attr('disabled', true);
 
 		fileToSubmit.formData = {
-    		thumbnail: $('input[name="thumbnail"]').val(),
-    		title: $('input[name="title"]').val(),
-			description: $('textarea[name="description"]').val(),
-			cost: $('input[name="cost"]').val(),
-			expiry_type: $('input[name="expiry_type"]:checked').val(),
-			expires_in: $('input[name="expires_in"]').val(),
-			expires_in_type: $('select[name="expires_in_type"]').val(),
+    		thumbnail: $('#video-form input[name="thumbnail"]').val(),
+    		title: $('#video-form input[name="title"]').val(),
+			description: $('#video-form textarea[name="description"]').val(),
+			cost: $('#video-form input[name="cost"]').val(),
+			expiry_type: $('#video-form input[name="expiry_type"]:checked').val(),
+			expires_in: $('#video-form input[name="expires_in"]').val(),
+			expires_in_type: $('#video-form select[name="expires_in_type"]').val(),
 		};
 
         fileToSubmit.submit();
@@ -249,7 +249,7 @@ function emptyVideoFormFields()
 {
 	var form = $('#video-form');
     form.find("input[type=text], input[type=file], textarea, input[type=number]").val("");
-    $('#output').empty();
+    $('#video-thumbnail-output').empty();
     $('#preview-video source').attr('src', '');
     $('#preview-video')[0].load();
     $('#video-form-media-to-upload').empty();
@@ -261,7 +261,7 @@ function validateVideoFormInput()
 	var validated = true;
 
 	$.each(requiredInputs, function(index, inputName) {
-		if ('' === $("input[name='"+inputName+"']").val()) {
+		if ('' === $("#video-form input[name='"+inputName+"']").val()) {
 			var displayName = '';
 			switch (inputName) {
 				case 'title':
@@ -282,11 +282,11 @@ function validateVideoFormInput()
 		}
 	});
 
-	if (false === $('input[name="expiry_type"]').is(':checked')) { 
+	if (false === $('#video-form input[name="expiry_type"]').is(':checked')) { 
 		showVideoFormErrorMessage('{{__('web/home/home.performer_video_form.expiry')}}');
 		validated = false;
 	} else {
-		if ('{{Media::EXPIRY_TYPE_CUSTOM}}' === $('input[name="expiry_type"]:checked').val() && '' === $('input[name="expires_in"]').val()) {
+		if ('{{Media::EXPIRY_TYPE_CUSTOM}}' === $('#video-form input[name="expiry_type"]:checked').val() && '' === $('#video-form input[name="expires_in"]').val()) {
 			showVideoFormErrorMessage('{{__('web/home/home.performer_video_form.expires_choose')}}');
 			validated = false;
 		}
@@ -389,7 +389,7 @@ function capture(video, scaleFactor) {
 function shoot()
 {
     var video  = document.getElementById('preview-video');
-    var output = document.getElementById('output');
+    var output = document.getElementById('video-thumbnail-output');
     var canvas = capture(video, scaleFactor);
         canvas.onclick = function(){
             window.open(this.toDataURL());

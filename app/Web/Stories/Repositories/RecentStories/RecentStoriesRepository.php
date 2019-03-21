@@ -23,7 +23,7 @@ class RecentStoriesRepository
     	->select('*')
 		->selectRaw('IF((SELECT COUNT(*) FROM stories_purchases WHERE user_id = ? AND story_id = stories.id) = 0, 0, 1) AS user_paid', [$userId])
     	->selectRaw('(SELECT MAX(updated_at) FROM stories_media WHERE story_id = stories.id) as max_updated_at')
-		->whereRaw('(expires_at IS NULL OR expires_at >= ?)', [date('Y-m-d H:i:s')])
+		->whereRaw('(expires_at >= ?)', [date('Y-m-d H:i:s')])
 		->with(['media', 'user.profile'])
 		->orderBy('id', 'DESC')
 		->limit(30)

@@ -38,5 +38,19 @@ https://medium.com/thetiltblog/fixing-rotated-mobile-image-uploads-in-php-803bb9
 http://usefulangle.com/post/46/javascript-get-video-thumbnail-image-jpeg-png
 https://codepen.io/renanpupin/pen/PqjyeK
 
-# jQuery File Upload: clean file queue
+# Get video duration on file input
+https://stackoverflow.com/a/27550848/1860890
+
+# Blueimp
+
+## Blueimp - jQuery File Upload: clean file queue
 https://stackoverflow.com/questions/41540040/jquery-file-upload-clean-file-queue
+
+## Blueimp - display thumbnail image preview
+https://stackoverflow.com/questions/10971662/blueimp-jquery-file-upload-doesnt-show-thumbnail-preview-image
+
+## File type not allowed
+https://stackoverflow.com/questions/12303660/restricting-file-types-in-jquery-file-upload-demo/14435204
+
+## Send multiple files at once with extra data
+https://stackoverflow.com/questions/19807361/uploading-multiple-files-asynchronously-by-blueimp-jquery-fileupload

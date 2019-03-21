@@ -65,7 +65,6 @@ return [
 		'minutes' => 'minutes',
 		'preview' => 'Preview',
 		'upload_video' => 'Upload video',
-		'upload_story' => 'Upload story',
 		'capture_thumbnail' => 'Capture thumbnail',
 		'capture_info' => 'Find a scene you want to set as thumbnail, pause and click the button',
 		'thumbnail' => 'Thumbnail',
@@ -77,5 +76,22 @@ return [
 		'video_uploaded' => 'Your video has been uploaded :)',
 		'please_choose_video' => 'Please choose a video',
 		'max_video_length' => 'Video can be max :duration minutes long',
-	]
+	],
+	'performer_story_form' => [
+		'upload_story' => 'Upload story',
+		'choose_video_or_image' => 'Choose videos and/or images',
+		'reset' => 'Reset',
+		'preview' => 'Preview',
+		'action' => 'Action',
+		'name' => 'Name',
+		'remove' => 'Remove',
+		'max_video_length' => 'Video can be max :duration seconds long',
+		'story_added' => 'Story successfully added :)',
+		'add_only_images_videos' => 'File not allowed. You may add only images and videos (mp4)',
+		'expiry' => 'Expiry',
+		'expires_24' => 'After 24h',
+		'expires_choose' => 'Expires in',
+		'expires_in' => 'Expires in',
+
+	],
 ];

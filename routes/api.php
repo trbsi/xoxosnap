@@ -28,6 +28,11 @@ Route::middleware('auth:api')->group(function () {
 			Route::post('', $ctl.'@create')->name('media.create');
 		});
 		
+		Route::prefix('story')->group(function () {
+			$ctl = '\App\Api\V1\Web\Stories\Controllers\StoryController';
+			Route::post('', $ctl.'@create')->name('story.create');
+		});
+		
 		Route::prefix('coins')->group(function () {
 			$ctl = '\App\Api\V1\Web\Coins\Controllers\CoinController';
 			Route::patch('purchase', $ctl.'@purchase')->name('coins.purchase');

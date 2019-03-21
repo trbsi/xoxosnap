@@ -11,10 +11,18 @@ trait ImageManipulationTrait
     
     /**
      * Resize and lower quality of an image
+     * @param string $picturePath Absoluthe picture path
      */
-    public function resizeOrientateAndLowerQuality(string $picturePath): ?InterventionImage
-    {
+    public function resizeOrientateAndLowerImageQuality(
+        string $picturePath,
+        ?int $width = null,
+        ?int $height = null
+    ): ?InterventionImage {
         try {
+            if (null !== $width && null !== $height) {
+                $height = null;
+            }
+
             $mime = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $picturePath);
 
             if (strpos($mime, 'image') !== false) {
@@ -23,7 +31,7 @@ trait ImageManipulationTrait
              
                 // resize the image to a width of 500 and constrain aspect ratio (auto height)
                 // prevent possible upsizing
-                $image = $img->resize(500, null, function ($constraint) {
+                $image = $img->resize($width, $height, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });

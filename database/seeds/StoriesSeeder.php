@@ -27,7 +27,7 @@ class StoriesSeeder extends Seeder
 		     		$type = StoryMedia::TYPE_PHOTO;
 				}
  		 		$data = [
-					'cost' => rand(0, 5),
+					'cost' => 0,
 					'expires_at' => $this->calculateExpiresAt(),
 					'created_at' => '2019-02-20 10:12:25'
 				];
@@ -60,10 +60,6 @@ class StoriesSeeder extends Seeder
     {
     	$type = (rand(0, 1) % 2 === 0) ? 'h' : 'd';
     	$number = rand(1, 10);
-
-    	if (rand(0, 1) % 2 === 0) {
-    		return null;
-    	}
 
     	$date = new DateTime();
     	if ('h' === $type) {

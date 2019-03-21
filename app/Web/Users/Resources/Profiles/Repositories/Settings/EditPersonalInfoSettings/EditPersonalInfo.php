@@ -23,7 +23,7 @@ class EditPersonalInfo
 	        Storage::putFileAs($uploadPath, $picture, $pictureName);
 	        //resize and save
 	        $absolutePicturePath = $this->getProfilePictureAbsolutePath($userProfile->user_id, $pictureName);
-	        $this->resizeOrientateAndLowerQuality($absolutePicturePath);
+	        $this->resizeOrientateAndLowerImageQuality($absolutePicturePath, 500);
 	        $userProfile->picture = $pictureName;
 		}
         
