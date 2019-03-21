@@ -7,6 +7,6 @@
 </div>
 
 @section('javascript')
-    @component('components.media.javascript.stories')
+    @component('components.media.javascript.stories', ['stories' => $stories])
     @endcomponent
 @endsection

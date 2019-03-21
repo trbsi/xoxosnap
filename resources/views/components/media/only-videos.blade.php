@@ -25,24 +25,3 @@
     @component('components.media.javascript.video-access')
     @endcomponent    
 @endpush
-
-@push('css')
-<style type="text/css">
-    video {
-        pointer-events: none;
-    }
-    video::-webkit-media-controls {
-      display: none;
-    }
-
-    video::-webkit-media-controls-play-button {}
-
-    video::-webkit-media-controls-volume-slider {}
-
-    video::-webkit-media-controls-mute-button {}
-
-    video::-webkit-media-controls-timeline {}
-
-    video::-webkit-media-controls-current-time-display {}
-</style>
-@endpush

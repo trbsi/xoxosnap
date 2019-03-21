@@ -52,6 +52,9 @@ class PurchaseRepository
             $model->user->coin()->increment('current_coins', $coinsCost);
             $model->user->coin()->increment('total_coins', $coinsCost);
 
+            //increment number of times media was purchased
+            $model->increment('purchased_count');
+
             event(new MediaPurchasedEvent($user, $model));
             DB::commit();
 		} catch (Exception $e) {

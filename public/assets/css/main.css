@@ -15689,3 +15689,13 @@ body {
     height: 132px;
     background-color: #FDFBEE;
 }
+
+/*GROUPED BUTTONS*/
+.grouped-buttons-full-width {
+  display: flex;
+}
+
+.grouped-buttons-full-width a {
+  flex: 1 !important;
+  color: white !important;
+}

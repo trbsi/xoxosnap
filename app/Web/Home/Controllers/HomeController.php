@@ -8,6 +8,8 @@ use App\Web\Home\Repositores\Home\Home\Above18Repository;
 use App\Web\Home\Repositores\Home\Home\HomeRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Media;
+use App\Web\Home\Repositores\Home\Explore\ExploreRepository;
 
 class HomeController extends Controller
 {
@@ -28,8 +30,12 @@ class HomeController extends Controller
     	return view('web.home.home.home.home', array_merge($params, $homepageData));
     }
 
-    public function explore()
+    public function explore(Request $request, ExploreRepository $exploreRepository)
     {
-    	return view('web.home.home.explore.explore');
+        $exploreType = $request->type ?? Media::ORDER_TYPE_RECENT;
+        $data = $exploreRepository->getDataForExplorePage((int) $exploreType);
+        $data['exploreType'] = (int) $exploreType;
+
+    	return view('web.home.home.explore.explore', $data);
     }
 }

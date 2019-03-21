@@ -6,9 +6,9 @@
 <div class="container">
     <div class="row">
     	<div class="col col-xl-12 order-xl-12 col-lg-12 order-lg-12 col-md-12 col-sm-12 col-12">
-    		<div class="btn-group btn-group-justified" role="group" style="display: flex;">
-			  <a href="{{route('search', ['term' => $term, 'type' => 'users'])}}" class="btn {{($searchTypeUsers === $type ? 'btn-primary' : 'btn-secondary')}} btn-lg" style="flex: 1;">{{__('web/search/search.search_users')}}</a>
-			  <a href="{{route('search', ['term' => $term, 'type' => 'media'])}}" class="btn {{($searchTypeMedia === $type ? 'btn-primary' : 'btn-secondary')}} btn-lg" style="flex: 1;">{{__('web/search/search.search_videos')}}</a>
+    		<div class="btn-group btn-group-justified grouped-buttons-full-width" role="group">
+			  <a href="{{route('search', ['term' => $term, 'type' => 'users'])}}" class="btn {{($searchTypeUsers === $type ? 'btn-primary' : 'btn-secondary')}} btn-lg">{{__('web/search/search.search_users')}}</a>
+			  <a href="{{route('search', ['term' => $term, 'type' => 'media'])}}" class="btn {{($searchTypeMedia === $type ? 'btn-primary' : 'btn-secondary')}} btn-lg">{{__('web/search/search.search_videos')}}</a>
 			</div>
     	</div>
         <!-- Main Content -->

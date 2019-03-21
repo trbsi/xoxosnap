@@ -25,11 +25,17 @@ class ProfileRepository
 
     public function getStoriesAndMedia(User $user, ?User $authUser): array
     {
+    	if (null !== $authUser) {
+    		$authUserId = $authUser->id;
+    	} else {
+    		$authUserId = null;
+    	}
+
 		//get recent media of performers user follows		
-		$media = $this->recentMediaRepository->getRecentMediaOfUser($user->id);
+		$media = $this->recentMediaRepository->getRecentMediaOfUser($user->id, $authUserId);
 
 		//get stories of performers user follows
-		$stories = $this->recentStoriesRepository->getRecentStoriesOfUser($user->id);
+		$stories = $this->recentStoriesRepository->getRecentStoriesOfUser($user->id, $authUserId);
 
 		$isUserFollowed = $this->isUserFollowedRepository->isUserFollowed($user->id, $authUser);
 

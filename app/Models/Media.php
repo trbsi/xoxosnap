@@ -22,6 +22,11 @@ class Media extends Model
 	public const EXPIRY_TIME_HOURS = 'hours';
 	public const EXPIRY_TIME_MINUTES = 'minutes';
 
+	public const ORDER_TYPE_RECENT = 1;
+	public const ORDER_TYPE_ENDING_SOON = 2;
+	public const ORDER_TYPE_MOST_VIEWED = 3;
+	public const ORDER_TYPE_MOST_PAID = 4;
+
 	public const MAX_VIDEO_DURATION = 120; //seconds
 
 	private $timeAgo = null;
@@ -35,6 +40,7 @@ class Media extends Model
 		'views' => 'int',
 		'user_paid' => 'boolean', //see HomeRepository::getViewerHomePage
 		'user_liked' => 'boolean', //see HomeRepository::getViewerHomePage
+		'purchased_count' => 'int',
 	];
 
 	protected $dates = [
