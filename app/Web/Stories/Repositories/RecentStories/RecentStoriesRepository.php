@@ -60,18 +60,20 @@ class RecentStoriesRepository
 						'media_file' => $storyMedia->file,
 						'duration' => (StoryMedia::TYPE_VIDEO === $storyMedia->type) ? 0 : 5,
 						'preview' => (StoryMedia::TYPE_VIDEO === $storyMedia->type) ? '' : $storyMedia->file,
-						'last_updated_at' => $lastUpdatedAt
+						'last_updated_at' => $lastUpdatedAt,
 					];
 			}
+
 			$array[] = [
 				'id' => $story->id,
 				'photo' => $story->user->profile->picture,
 				'name' => $story->user->name,
 				'link' => '',
+				'views' => $story->views,
 				'last_updated_at' => $this->getLastUpdatedAt($story->max_updated_at),
 				'is_locked' => $story->is_locked,
 				'coins' => $this->convertToNaughtyCoins($story->cost),
-				'items' => $items
+				'items' => $items,
 			];
 		}
 

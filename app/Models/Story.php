@@ -23,6 +23,7 @@ class Story extends Model
 		'user_id' => 'int',
 		'cost' => 'int',
 		'user_paid' => 'boolean', //see RecentStoriesRepository::getRecentStoriesOfUsers
+		'views' => 'int',
 	];
 
 	protected $dates = [

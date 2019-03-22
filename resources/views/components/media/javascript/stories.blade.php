@@ -36,12 +36,16 @@
                 }
             },
 
-            'onRender': function(item, mediaHTML) {
+            'onRender': function(storyId, item, mediaHTML) {
+                var story = storiesWithCustomKey['story'+storyId];
+                console.log(story);
+                <?php //display number of views per story ?>
+                mediaHTML+= '<div style="position:absolute; bottom: 10px; left: 10px;"><img style="max-width: 20px;" src="/img/eye_white.png"> '+story.views+'</div>';
                 return mediaHTML; // on render story viewer, use if you want custom elements
             },
 
             'onView': function(storyId) {
-                // on view story
+                ajax('{{route('story.update-views')}}', 'POST', {id: storyId});
             },
 
             'onEnd': function(storyId, callback) {
@@ -110,6 +114,7 @@
                 isLocked: story.is_locked,
                 coins: story.coins,
                 lastUpdated: timestamp(story.last_updated_at),
+                views: story.views,
                 items: itemsArray
             };
 

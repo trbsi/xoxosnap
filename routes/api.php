@@ -50,3 +50,10 @@ Route::middleware('auth:api')->group(function () {
 		});
 	});
 });
+
+
+//*******************PUBLIC************************
+Route::prefix('story')->group(function () {
+	$ctl = '\App\Api\V1\Web\Stories\Controllers\StoryController';
+	Route::post('update-views', $ctl.'@updateViews')->name('story.update-views');
+});
