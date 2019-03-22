@@ -10,6 +10,11 @@
 	</div>
 </div>
 
-@include('web.home.home.home.performer-home-page.upload-media')
+@if ($user->is_verified)
+	@include('web.home.home.home.performer-home-page.upload-media')
+@else
+	@include('web.home.home.home.performer-home-page.profile-not-verified')
+@endif
+
 @include('web.home.home.home.performer-home-page.statistics-earnings-followers')
 @include('web.home.home.home.performer-home-page.statistics-twitter-top-paid-videos')

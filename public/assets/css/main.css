@@ -15699,3 +15699,17 @@ body {
   flex: 1 !important;
   color: white !important;
 }
+
+/*IMAGES*/
+.img-circular {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  display: block;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  margin: 10px 0 10px 0;
+  border: 10px solid rgba(255,255,255,0.7);
+  position: relative;
+}
