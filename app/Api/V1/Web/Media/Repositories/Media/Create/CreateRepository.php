@@ -36,11 +36,9 @@ class CreateRepository
                 'duration' => $data['duration'],
             ];
             $media = Media::create($saveData);     
-
-            if (false === empty($data['hashtags'])) {
-                $hashtags = explode(',', $data['hashtags']);
-                $media->hashtags()->attach($hashtags);
-            }
+            $hashtags = explode(',', $data['hashtags']);
+            $media->hashtags()->attach($hashtags);
+                
             DB::commit();   
         } catch (Exception $e) {
             DB::rollBack();

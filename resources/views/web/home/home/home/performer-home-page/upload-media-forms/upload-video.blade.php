@@ -18,7 +18,7 @@ use App\Models\Media;
     		<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="form-group">
                 	<label class="control-label">
-                		{{__('web/home/home.performer_video_form.tags')}}
+                		{{__('web/home/home.performer_video_form.tags')}}*
                 	</label>
                     <input type="text" name="hashtags" class="form-control">
                 </div>
@@ -269,7 +269,7 @@ function emptyVideoFormFields()
 
 function validateVideoFormInput()
 {
-	var requiredInputs = ['title', 'cost'];
+	var requiredInputs = ['title', 'cost', 'hashtags'];
 	var validated = true;
 
 	$.each(requiredInputs, function(index, inputName) {
@@ -286,6 +286,10 @@ function validateVideoFormInput()
 
 				case 'expires_in':
 					displayName = '{{__('web/home/home.performer_video_form.expiry')}}';
+					break;
+
+				case 'hashtags':
+					displayName = '{{__('web/home/home.performer_video_form.tags')}}';
 					break;
 
 			}
@@ -413,7 +417,7 @@ function shoot()
 <script type="text/javascript">
 $("#video-form input[name='hashtags']").tokenInput('{{route('hashtags.filter')}}', {
     searchDelay: 2000,
-    minChars: 4,
+    minChars: 3,
     tokenLimit: 10,
     preventDuplicates: true,
     theme: 'facebook'

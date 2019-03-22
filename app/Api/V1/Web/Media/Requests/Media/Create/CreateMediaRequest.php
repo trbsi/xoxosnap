@@ -30,7 +30,7 @@ class CreateMediaRequest extends FormRequest
             'description' => 'max:10000',
             'video' => 'required|file|mimes:mp4',
             'thumbnail' => 'required|string',
-            'hashtags' => 'nullable|string',
+            'hashtags' => 'required|string',
             'expiry_type' => sprintf('required|in:%s,%s', Media::EXPIRY_TYPE_CUSTOM, Media::EXPIRY_TYPE_NEVER),
             'expires_in' => sprintf('required_if:expiry_type,%s|nullable|integer|min:1', Media::EXPIRY_TYPE_CUSTOM),
             'expires_in_type' => sprintf('required_if:expiry_type,%s|nullable|in:%s,%s,%s', 
