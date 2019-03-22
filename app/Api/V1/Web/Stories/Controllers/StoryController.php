@@ -25,10 +25,11 @@ class StoryController extends Controller
 	{
 		try {
 			$data = $request->validate([
-	            'id' => 'required|integer',
+	            'ids' => 'required|array',
+	            'ids.*' => 'integer',
 	        ]);
 
-			$updateViewsRepository->updateViews($data['id']);
+			$updateViewsRepository->updateViews($data['ids']);
 			return response()->json();
 		} catch (Exception $e) {
 			abort(400, $e->getMessage());

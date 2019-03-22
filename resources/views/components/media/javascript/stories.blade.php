@@ -38,14 +38,13 @@
 
             'onRender': function(storyId, item, mediaHTML) {
                 var story = storiesWithCustomKey['story'+storyId];
-                console.log(story);
                 <?php //display number of views per story ?>
                 mediaHTML+= '<div style="position:absolute; bottom: 10px; left: 10px;"><img style="max-width: 20px;" src="/img/eye_white.png"> '+story.views+'</div>';
                 return mediaHTML; // on render story viewer, use if you want custom elements
             },
 
             'onView': function(storyId) {
-                ajax('{{route('story.update-views')}}', 'POST', {id: storyId});
+                saveViewedStoryIds(storyId);
             },
 
             'onEnd': function(storyId, callback) {
@@ -53,6 +52,7 @@
             },
 
             'onClose': function(storyId, callback) {
+                updateStoriesViews();
                 callback();  // on close story viewer
             },
 
@@ -185,5 +185,22 @@
         result['locked'] = locked;
         result['storyIndex'] = storyIndex;
         return result;
+    }
+
+    function saveViewedStoryIds(storyId)
+    {
+        var viewedStoryIds = JSON.parse(localStorage.getItem('viewedStoryIds'));
+        if (null === viewedStoryIds) {
+            viewedStoryIds = [];
+        }
+        viewedStoryIds.push(storyId);
+        localStorage.setItem('viewedStoryIds', JSON.stringify(viewedStoryIds));
+    }
+
+    function updateStoriesViews()
+    {
+        var viewedStoryIds = JSON.parse(localStorage.getItem('viewedStoryIds'));
+        ajax('{{route('story.update-views')}}', 'POST', {ids: viewedStoryIds});
+        localStorage.removeItem('viewedStoryIds');
     }
 </script>
