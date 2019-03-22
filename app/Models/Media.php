@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Hashtag;
 use App\Web\Media\Traits\MediaFileTrait;
 use Westsworld\TimeAgo;
 use DateTime;
@@ -165,6 +166,6 @@ class Media extends Model
 
 	public function hashtags()
 	{
-		return $this->belongsToMany(User::class, 'media_hashtags', 'media_id', 'hashtag_id');
+		return $this->belongsToMany(Hashtag::class, 'media_hashtags', 'media_id', 'hashtag_id');
 	}
 }

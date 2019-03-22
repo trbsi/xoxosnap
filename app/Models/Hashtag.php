@@ -16,6 +16,15 @@ class Hashtag extends Model
 		'popularity'
 	];
 
+	protected $appends = [
+		'hashtag_name'
+	];
+
+	public function getHashtagNameAttribute() 
+	{
+		return '#'.$this->name;
+	}
+
 	public function media_hashtags()
 	{
 		return $this->belongsToMany(Media::class, 'media_hashtags', 'hashtag_id', 'media_id');

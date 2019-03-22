@@ -18,6 +18,7 @@
                 data-is-locked="{{(true === $video->is_locked) ? '1' : '0'}}"
                 data-liked="{{(true === $video->user_liked) ? '1' : '0'}}"
                 data-coins="{{$video->coins}}"
+                data-hashtags="{{$video->hashtags->toJson()}}"
                 class="play-video"
             >
                 <img src="/img/{{(true === $video->is_locked) ? 'locked.png' : 'play.png'}}">

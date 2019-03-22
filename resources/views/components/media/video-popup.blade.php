@@ -49,7 +49,9 @@
                             </div>
                             */ ?>
                         </div>
-                        <p id="description" style="max-height: 350px">Here’s a photo from last month’s photoshoot. We really had a great time and got a batch of incredible shots for the new catalog.</p>
+                        <div id="video-hashtags"></div>
+                        <div id="description" style="max-height: 350px"></div>
+                        <br>
                         <div class="post-additional-info inline-items">
                             <img src="/img/loading_circle.gif" style="display: none;" id="likes-loading">
                             <a href="javascript:;" id="likes-icon" class="post-add-icon inline-items">

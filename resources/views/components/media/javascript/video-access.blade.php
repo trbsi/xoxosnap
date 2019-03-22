@@ -1,3 +1,7 @@
+<?php 
+use App\Web\Search\Constants\SearchConstants;
+?>
+
 <script type="text/javascript">
     var videoPlayer = null;
     var videoElement = null; <?php //keep variable global so you can access it in video-popup.blade ?>
@@ -52,17 +56,25 @@
 
     function openModal(videoElement)
     {
+        var hashtags = $(videoElement).data('hashtags');
+        var hashtagsHtml = '';
+        $.each(hashtags, function( index, value ) {
+            hashtagsHtml+='<a href="{{route('search', ['type' => SearchConstants::SEARCH_MEDIA])}}&term='+value.name+'">'+value.hashtag_name+'</a>';
+            hashtagsHtml+=' ';
+        });
+
         <?php //prepare popup data ?>
-        $('#performer-video source').attr('src', $(videoElement).data('video-url'));
-        $('#post-author-name').attr('href', $(videoElement).data('profile-url'));
-        $('#post-author-name').text($(videoElement).data('username'));
-        $('#profile-picture').attr('src', $(videoElement).data('profile-picture'));
-        $('#description').html($(videoElement).data('description'));
-        $('#published-ago').text($(videoElement).data('published-ago'));
-        $('#views').text($(videoElement).data('views'));
-        $('#likes').text($(videoElement).data('likes'));
-        $('#likes-icon').data('video-id', $(videoElement).data('video-id'));
-        $('#performer-video')[0].load();
+        $('#open-photo-popup-v2 #performer-video source').attr('src', $(videoElement).data('video-url'));
+        $('#open-photo-popup-v2 #post-author-name').attr('href', $(videoElement).data('profile-url'));
+        $('#open-photo-popup-v2 #post-author-name').text($(videoElement).data('username'));
+        $('#open-photo-popup-v2 #profile-picture').attr('src', $(videoElement).data('profile-picture'));
+        $('#open-photo-popup-v2 #description').html($(videoElement).data('description'));
+        $('#open-photo-popup-v2 #published-ago').text($(videoElement).data('published-ago'));
+        $('#open-photo-popup-v2 #views').text($(videoElement).data('views'));
+        $('#open-photo-popup-v2 #likes').text($(videoElement).data('likes'));
+        $('#open-photo-popup-v2 #likes-icon').data('video-id', $(videoElement).data('video-id'));
+        $('#open-photo-popup-v2 #video-hashtags').html(hashtagsHtml);
+        $('#open-photo-popup-v2 #performer-video')[0].load();
 
         <?php //if video is liked mark it in popup ?>
         if (1 === $(videoElement).data('liked')) {
@@ -70,10 +82,10 @@
         } else {
             color = '#c2c5d9';
         }
-        $('#likes-icon').css({'fill': color, 'color': color});
+        $('#open-photo-popup-v2 #likes-icon').css({'fill': color, 'color': color});
 
         <?php //init video ?>
-        videoPlayer = new Plyr($("#performer-video"), {}); 
+        videoPlayer = new Plyr($("#open-photo-popup-v2 #performer-video"), {}); 
 
         <?php //open popup ?>
         modalPopup.modal('show');
@@ -82,11 +94,11 @@
         var response = ajax('{{route('media.update-views')}}', 'POST', {id: $(videoElement).data('video-id')})
         response
         .done(function(data) {
-            $('#views').text(data.views); 
+            $('#open-photo-popup-v2 #views').text(data.views); 
         });        
 
         modalPopup.on('shown.bs.modal', function (e) {
-            $('#description').perfectScrollbar();
+            $('#open-photo-popup-v2 #description').perfectScrollbar();
         });
 
     }
