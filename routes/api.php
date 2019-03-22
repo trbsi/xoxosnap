@@ -28,7 +28,7 @@ Route::middleware('auth:api')->group(function () {
 			Route::post('', $ctl.'@create')->name('media.create');
 		});
 		
-		Route::prefix('story')->group(function () {
+		Route::prefix('stories')->group(function () {
 			$ctl = '\App\Api\V1\Web\Stories\Controllers\StoryController';
 			Route::post('', $ctl.'@create')->name('story.create');
 		});
@@ -53,7 +53,12 @@ Route::middleware('auth:api')->group(function () {
 
 
 //*******************PUBLIC************************
-Route::prefix('story')->group(function () {
+Route::prefix('stories')->group(function () {
 	$ctl = '\App\Api\V1\Web\Stories\Controllers\StoryController';
 	Route::post('update-views', $ctl.'@updateViews')->name('story.update-views');
+});
+
+Route::prefix('hashtags')->group(function () {
+	$ctl = '\App\Api\V1\Web\Hashtags\Controllers\HashtagController';
+	Route::get('/filter', $ctl.'@filter')->name('hashtags.filter');
 });

@@ -40,12 +40,14 @@ use App\Models\Notification;
 <script defer src="/assets/fonts/fontawesome-all.js"></script>
 <script src="/assets/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 
+<!-- custom -->
 <script src="/assets/js/zuck.min.js"></script>
 <script src="/assets/js/progressbar.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="/assets/js/jquery.jscroll.min.js"></script>
 <script src="/assets/js/plyr.min.js"></script>
 <script src="/assets/js/toastr.min.js"></script>
+<script src="/assets/js/jquery.tokeninput.min.js"></script>
 
 <script type="text/javascript">
   //redirect when cloced on explore button in header

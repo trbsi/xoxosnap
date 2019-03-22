@@ -162,4 +162,9 @@ class Media extends Model
 	{
 		return $this->belongsToMany(User::class, 'media_purchases', 'media_id', 'user_id');
 	}
+
+	public function hashtags()
+	{
+		return $this->belongsToMany(User::class, 'media_hashtags', 'media_id', 'hashtag_id');
+	}
 }

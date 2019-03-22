@@ -15,6 +15,15 @@ use App\Models\Media;
                 </div>
             </div>
 
+    		<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="form-group">
+                	<label class="control-label">
+                		{{__('web/home/home.performer_video_form.tags')}}
+                	</label>
+                    <input type="text" name="hashtags" class="form-control">
+                </div>
+            </div>
+
             <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="form-group label-floating">
                 	<label class="control-label">{{__('web/home/home.performer_video_form.cost')}}*</label>
@@ -218,6 +227,7 @@ $(function () {
 			expires_in: $('#video-form input[name="expires_in"]').val(),
 			expires_in_type: $('#video-form select[name="expires_in_type"]').val(),
 			duration: videoDuration,
+			hashtags: $('#video-form input[name="hashtags"]').val(),
 		};
 
         fileToSubmit.submit();
@@ -398,5 +408,15 @@ function shoot()
 
     document.getElementById('thumbnail').value = canvas.toDataURL('image/jpeg');
 }
+</script>
+
+<script type="text/javascript">
+$("#video-form input[name='hashtags']").tokenInput('{{route('hashtags.filter')}}', {
+    searchDelay: 2000,
+    minChars: 4,
+    tokenLimit: 10,
+    preventDuplicates: true,
+    theme: 'facebook'
+});
 </script>
 @endpush

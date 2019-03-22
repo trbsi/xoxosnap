@@ -76,6 +76,7 @@ return [
 		'video_uploaded' => 'Your video has been uploaded :)',
 		'please_choose_video' => 'Please choose a video',
 		'max_video_length' => 'Video can be max :duration minutes long',
+		'tags' => 'Tags',
 	],
 	'performer_story_form' => [
 		'upload_story' => 'Upload story',
