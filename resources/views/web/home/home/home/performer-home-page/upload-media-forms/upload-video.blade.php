@@ -118,6 +118,7 @@ $("#video-form").submit(function(e){
 });
 
 var resetVideoFormBtn = $('#reset-video-form-button');
+var videoDuration = 0;
 
 //input are being validated inside fileupload.add
 //so validate here only if video not chosen
@@ -146,8 +147,8 @@ $(function () {
 
 		    // Load metadata of the video to get video duration
 		    videoData.video.addEventListener('loadedmetadata', function() {
-		        var video_duration = videoData.video.duration;
-		         if (video_duration > {{Media::MAX_VIDEO_DURATION}}) {
+		        videoDuration = videoData.video.duration;
+		         if (videoDuration > {{Media::MAX_VIDEO_DURATION}}) {
 	            	toastr.error('{{__('web/home/home.performer_video_form.max_video_length', ['duration' => Media::MAX_VIDEO_DURATION/60])}}');
             	    $('#preview-video source').attr('src', '');
     				videoData.video.load();
@@ -216,6 +217,7 @@ $(function () {
 			expiry_type: $('#video-form input[name="expiry_type"]:checked').val(),
 			expires_in: $('#video-form input[name="expires_in"]').val(),
 			expires_in_type: $('#video-form select[name="expires_in_type"]').val(),
+			duration: videoDuration,
 		};
 
         fileToSubmit.submit();
@@ -329,9 +331,6 @@ function processVideoAndPrepareForThumbnail(videoData)
     
     // Load metadata of the video to get video duration and dimensions
     _VIDEO.addEventListener('loadedmetadata', function() {
-        var video_duration = _VIDEO.duration,
-            duration_options_html = '';
-
         // Set canvas dimensions same as video dimensions
         _CANVAS.width = _VIDEO.videoWidth;
         _CANVAS.height = _VIDEO.videoHeight;

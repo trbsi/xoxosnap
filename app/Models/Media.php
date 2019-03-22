@@ -41,6 +41,7 @@ class Media extends Model
 		'user_paid' => 'boolean', //see HomeRepository::getViewerHomePage
 		'user_liked' => 'boolean', //see HomeRepository::getViewerHomePage
 		'purchased_count' => 'int',
+		'duration' => 'int',
 	];
 
 	protected $dates = [
@@ -55,7 +56,8 @@ class Media extends Model
 		'thumbnail',
 		'cost',
 		'expires_at',
-		'likes'
+		'likes',
+		'duration',
 	];
 
 	protected $appends = [
@@ -134,6 +136,16 @@ class Media extends Model
 		} else {
 			return true;
 		}
+	}
+
+	public function getDurationAttribute($value)
+	{
+		$minutes = floor(($value / 60) % 60);
+		$seconds = $value % 60;
+		if ($seconds <= 9) {
+			$seconds = "0$seconds";
+		}
+		return "$minutes:$seconds";
 	}
 
 	public function user()

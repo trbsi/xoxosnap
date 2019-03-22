@@ -31,6 +31,8 @@
             <a href="#" class="h6 title">{{$video->title}}</a>
             <a href="{{route('user.profile', ['username' => $video->user->username])}}">{{$video->user->username}}</a>
             |
+            {{$video->duration}}
+            <br>
             <time class="published" datetime="{{$video->created_at}}">{{$video->published_ago}}</time>
             |
             <time class="published">{{$video->views}} {{__('web/home/home.viewer.views')}}</time>

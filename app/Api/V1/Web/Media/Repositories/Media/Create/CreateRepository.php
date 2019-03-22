@@ -33,6 +33,7 @@ class CreateRepository
                 'description' => $data['description'],
                 'cost' => $data['cost'],
                 'expires_at' => $data['expires_at'],
+                'duration' => $data['duration'],
             ];
             Media::create($saveData);     
             DB::commit();   
