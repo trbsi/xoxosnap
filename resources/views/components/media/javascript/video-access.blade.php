@@ -17,7 +17,7 @@ $(document).on('click', '.play-video', function() {
     globalVideoElement = this;
 
     <?php //if user can access or not ?>
-    if (1 === $(this).data('is-locked') && {{$userId ?? 0}} !== $(globalVideoElement).data('video-user-id')) {
+    if (1 === $(this).data('is-locked') && {{$userComposerUserId ?? 0}} !== $(globalVideoElement).data('video-user-id')) {
         <?php //ask if wants to buy access ?>
         Swal.fire({
             type: 'question',
@@ -77,7 +77,7 @@ function openVideoModal(videoElement)
     response
     .done(function(data) {
         <?php //sanity check if user manipulates is-locked ?>
-        if (false === data.user_paid && {{ $userId ?? 0 }} !== data.user_id) {
+        if (false === data.user_paid && {{ $userComposerUserId ?? 0 }} !== data.user_id) {
             alert('No access');
             return;
         }

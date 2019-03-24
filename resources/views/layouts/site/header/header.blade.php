@@ -140,14 +140,14 @@ use App\Models\User;
                 <svg class="olymp-piggy-bank">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
                 </svg>
-                @if(0 != $coinsFormatted)
-                <div class="label-avatar bg-breez coins coins-badge">{{$coinsFormatted}}</div>
+                @if(0 != $userComposerCoinsFormatted)
+                <div class="label-avatar bg-breez coins coins-badge">{{$userComposerCoinsFormatted}}</div>
                 @endif
                 <div class="more-dropdown more-with-triangle triangle-top-center" style="padding: 0;">
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list">
                             <li>
-                               {!!__('general/header.coins_explanation', ['coins' => $coins])!!}
+                               {!!__('general/header.coins_explanation', ['coins' => $userComposerCoins])!!}
                             </li>
                         </ul>
                     </div>
@@ -155,7 +155,7 @@ use App\Models\User;
             </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="{{$profilePicture}}" class="avatar">
+                    <img alt="author" src="{{$userComposerProfilePicture}}" class="avatar">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             @auth
@@ -222,9 +222,9 @@ use App\Models\User;
                         </div>
                     </div>
                 </div>
-                <a href="@if (null !== $username) {{route('user.profile', ['username' => $username])}} @else javascript:; @endif" class="author-name fn">
+                <a href="@if (null !== $userComposerUsername) {{route('user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
                     <div class="author-title">
-                        {{$name}}
+                        {{$userComposerName}}
                         <svg class="olymp-dropdown-arrow-icon">
                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use>
                         </svg>

@@ -49,7 +49,9 @@ use App\Models\User;
                         <svg class="olymp-piggy-bank">
                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
                         </svg>
-                        <div class="label-avatar bg-breez coins coins-badge">{{$coinsFormatted}}</div>
+                        @if(0 != $userComposerCoinsFormatted)
+                        <div class="label-avatar bg-breez coins coins-badge">{{$userComposerCoinsFormatted}}</div>
+                        @endif
                     </div>
                 </a>
             </li>
@@ -154,7 +156,7 @@ use App\Models\User;
             <div class="mCustomScrollbar" data-mcs-theme="dark">
                 <ul class="notification-list">
                     <li>
-                       {{__('general/header.coins_explanation', ['coins' => $coins])}}
+                       {{__('general/header.coins_explanation', ['coins' => $userComposerCoins])}}
                     </li>
                 </ul>
             </div>

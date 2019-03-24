@@ -128,8 +128,8 @@ toastr.options = {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  @if(null !== $userId)
-  gtag('set', {'user_id': '{{$userId}}'}); // Set the user ID using signed-in user_id.
+  @if(null !== $userComposerUserId)
+  gtag('set', {'user_id': '{{$userComposerUserId}}'}); // Set the user ID using signed-in user_id.
   @endif
   gtag('config', 'UA-135376165-1');
 </script>

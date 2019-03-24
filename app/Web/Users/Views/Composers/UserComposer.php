@@ -36,11 +36,11 @@ class UserComposer
             $coinsFormatted = 0;
         }
 
-        $view->with('userId', $userId);
-        $view->with('name', $name);
-        $view->with('profilePicture', $picture);
-        $view->with('username', $username);
-        $view->with('coins', $coins);
-        $view->with('coinsFormatted', $coinsFormatted);
+        $view->with('userComposerUserId', $userId);
+        $view->with('userComposerName', $name);
+        $view->with('userComposerProfilePicture', $picture);
+        $view->with('userComposerUsername', $username);
+        $view->with('userComposerCoins', $coins);
+        $view->with('userComposerCoinsFormatted', $coinsFormatted);
     }
 }

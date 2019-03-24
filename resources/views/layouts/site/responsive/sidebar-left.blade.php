@@ -24,11 +24,11 @@
 			<div class="control-block">
 				<div class="author-page author vcard inline-items">
 					<div class="author-thumb">
-						<img alt="author" src="{{$profilePicture}}" class="avatar">
+						<img alt="author" src="{{$userComposerProfilePicture}}" class="avatar">
 					</div>
-					<a href="@if (null !== $username) {{route('user.profile', ['username' => $username])}} @else javascript:; @endif" class="author-name fn">
+					<a href="@if (null !== $userComposerUsername) {{route('user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
 						<div class="author-title">
-							{{$name}} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+							{{$userComposerName}} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 						</div>
 					</a>
 				</div>
