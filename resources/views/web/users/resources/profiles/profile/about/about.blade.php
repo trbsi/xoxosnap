@@ -4,5 +4,5 @@
 
 @section('body')
 	@include('web.users.resources.profiles.common.profile-info')
-	@include('web.users.resources.profiles.about.about-body')
+	@include('web.users.resources.profiles.profile.about.about-body')
 @endsection

@@ -27,7 +27,7 @@ class SettingsController extends Controller
 
     public function accountSettings(Request $request)
     {
-        return view('web.users.resources.profiles.settings.account-settings', [
+        return view('web.users.resources.profiles.settings.account-settings.account-settings', [
             'user' => $this->user,
             'authUser' => $this->authUser,
         ]);
@@ -58,7 +58,7 @@ class SettingsController extends Controller
 
     public function personalInfoSettings(Request $request)
     {
-        return view('web.users.resources.profiles.settings.personal-info-settings', [
+        return view('web.users.resources.profiles.settings.personal-info-settings.personal-info-settings', [
             'genders' => UserProfile::$genders,
             'user' => $this->user,
             'authUser' => $this->authUser,
@@ -97,7 +97,7 @@ class SettingsController extends Controller
 
     public function changePasswordSettings(Request $request)
     {
-        return view('web.users.resources.profiles.settings.change-password-settings', [
+        return view('web.users.resources.profiles.settings.change-password-settings.change-password-settings', [
             'user' => $this->user,
             'authUser' => $this->authUser,
         ]);
