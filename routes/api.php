@@ -26,6 +26,7 @@ Route::middleware('auth:api')->group(function () {
 			Route::post('update-views', $ctl.'@updateViews')->name('media.update-views');
 			Route::post('like', $ctl.'@like')->name('media.like');
 			Route::post('', $ctl.'@create')->name('media.create');
+			Route::get('', $ctl.'@one')->name('media.one');
 		});
 		
 		Route::prefix('stories')->group(function () {

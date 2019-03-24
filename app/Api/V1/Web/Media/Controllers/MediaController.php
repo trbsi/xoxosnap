@@ -9,9 +9,15 @@ use App\Api\V1\Web\Media\Repositories\Media\Like\LikeRepository;
 use App\Api\V1\Web\Media\Requests\Media\Create\CreateMediaRequest;
 use App\Api\V1\Web\Media\Repositories\Media\Create\CreateRepository;
 use Exception;
+use App\Models\Media;
 
 class MediaController extends Controller
 {
+	public function one(Request $request) 
+	{
+		return response()->json(Media::find($request->id));
+	}
+
 	public function updateViews(Request $request, UpdateViewsRepository $updateViewsRepository)
 	{
 		$data = $request->validate([

@@ -7,7 +7,7 @@
             <a 
                 href="javascript:;"
                 data-video-id="{{$video->id}}"
-                data-video-url="{{$video->file}}"
+                data-video-user-id="{{$video->user_id}}"
                 data-profile-url="{{route('user.profile', ['username' => $video->user->username])}}"
                 data-profile-picture="{{$video->user->profile->picture}}"
                 data-username="{{$video->user->username}}"

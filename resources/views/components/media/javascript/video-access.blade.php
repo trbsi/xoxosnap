@@ -13,8 +13,11 @@ use App\Web\Search\Constants\SearchConstants;
 
     $(document).on('click', '.play-video', function() {
         videoElement = this;
-        //if user can access or not
-        if (1 === $(this).data('is-locked')) {
+        if ({{$userId ?? 0}} === $(videoElement).data('video-user-id')) {
+            openVideoModal(videoElement);
+        }
+        <?php //if user can access or not ?>
+        else if (1 === $(this).data('is-locked')) {
             <?php //ask if wants to buy access ?>
             Swal.fire({
               type: 'question',
@@ -31,7 +34,7 @@ use App\Web\Search\Constants\SearchConstants;
                     $(videoElement).data('is-locked', 0);
                     $(videoElement).children('img').attr('src', '/img/play.png');
                     $('.coins-badge').text(data.coins);
-                    openModal(videoElement);
+                    openVideoModal(videoElement);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
                     response = jqXHR.responseJSON;
@@ -50,11 +53,11 @@ use App\Web\Search\Constants\SearchConstants;
               }
             });
         } else {
-            openModal(videoElement);
+            openVideoModal(videoElement);
         }
     });
 
-    function openModal(videoElement)
+    function openVideoModal(videoElement)
     {
         var hashtags = $(videoElement).data('hashtags');
         var hashtagsHtml = '';
@@ -64,7 +67,7 @@ use App\Web\Search\Constants\SearchConstants;
         });
 
         <?php //prepare popup data ?>
-        $('#open-photo-popup-v2 #performer-video source').attr('src', $(videoElement).data('video-url'));
+        var videoId = $(videoElement).data('video-id');
         $('#open-photo-popup-v2 #post-author-name').attr('href', $(videoElement).data('profile-url'));
         $('#open-photo-popup-v2 #post-author-name').text($(videoElement).data('username'));
         $('#open-photo-popup-v2 #profile-picture').attr('src', $(videoElement).data('profile-picture'));
@@ -72,7 +75,7 @@ use App\Web\Search\Constants\SearchConstants;
         $('#open-photo-popup-v2 #published-ago').text($(videoElement).data('published-ago'));
         $('#open-photo-popup-v2 #views').text($(videoElement).data('views'));
         $('#open-photo-popup-v2 #likes').text($(videoElement).data('likes'));
-        $('#open-photo-popup-v2 #likes-icon').data('video-id', $(videoElement).data('video-id'));
+        $('#open-photo-popup-v2 #likes-icon').data('video-id', videoId);
         $('#open-photo-popup-v2 #video-hashtags').html(hashtagsHtml);
         $('#open-photo-popup-v2 #performer-video')[0].load();
 
@@ -84,19 +87,26 @@ use App\Web\Search\Constants\SearchConstants;
         }
         $('#open-photo-popup-v2 #likes-icon').css({'fill': color, 'color': color});
 
-        <?php //init video ?>
-        videoPlayer = new Plyr($("#open-photo-popup-v2 #performer-video"), {}); 
-
         <?php //open popup ?>
-        modalPopup.modal('show');
-
-        <?php //update views ?>
-        var response = ajax('{{route('media.update-views')}}', 'POST', {id: $(videoElement).data('video-id')})
+        var response = ajax('{{route('media.one')}}?id='+videoId, 'GET', {});
         response
         .done(function(data) {
-            $('#open-photo-popup-v2 #views').text(data.views); 
-        });        
+            $('#open-photo-popup-v2 #performer-video source').attr('src', data.file);   
 
+            <?php //init video ?>
+            videoPlayer = new Plyr($("#open-photo-popup-v2 #performer-video"), {}); 
+   
+            modalPopup.modal('show');      
+
+            <?php //update views ?>
+            var response = ajax('{{route('media.update-views')}}', 'POST', {id: $(videoElement).data('video-id')})
+            response
+            .done(function(data) {
+                $('#open-photo-popup-v2 #views').text(data.views); 
+            });        
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {});
+        
         modalPopup.on('shown.bs.modal', function (e) {
             $('#open-photo-popup-v2 #description').perfectScrollbar();
         });
