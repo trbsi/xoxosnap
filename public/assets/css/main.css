@@ -15636,7 +15636,7 @@ body {
   margin-right: 10px;
 }
 
-.video-player img {
+.video-player .play-video img {
   margin-bottom: 13px;
   width: 22px;
 }

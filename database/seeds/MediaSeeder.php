@@ -21,8 +21,9 @@ class MediaSeeder extends Seeder
 	     		$oldFilePath = sprintf('seeds/videos/%s.mp4', rand(1, 12));
 	     		$thumbnailPath = sprintf('seeds/pictures/%s.jpg', rand(1, 20));
 
+				$title = sprintf('Video title %s', mt_rand());
  		 		$data = [
-					'title' => sprintf('Video title %s', mt_rand()),
+					'title' => $title,
 					'description' => 'Someone seems to enjoy the snow!Greetings from snowy Finland❄❄ #snow #test #lol #snap #porn',
 					'file' => $fileName,
 					'cost' => rand(0, 5),
@@ -32,6 +33,11 @@ class MediaSeeder extends Seeder
 					'thumbnail' => $thumbnailName,
 				];
 				$media = $performer->media()->create($data);
+
+				//set url
+				$media->url = sprintf('%s-%s', str_slug($title), $media->id);
+				$media->save();
+
 				$year = date('Y', strtotime($media->created_at));
 				$month = date('m', strtotime($media->created_at));
 

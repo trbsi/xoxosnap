@@ -10,12 +10,18 @@ use App\Api\V1\Web\Media\Requests\Media\Create\CreateMediaRequest;
 use App\Api\V1\Web\Media\Repositories\Media\Create\CreateRepository;
 use Exception;
 use App\Models\Media;
+use Illuminate\Support\Facades\Auth;
 
 class MediaController extends Controller
 {
 	public function one(Request $request) 
 	{
-		return response()->json(Media::find($request->id));
+		$media = Media::where('id', $request->id)
+		->select('*')
+		->selectRaw('IF((SELECT COUNT(*) FROM media_purchases WHERE user_id = ? AND media_id = media.id) = 0, 0, 1) AS user_paid', [Auth::id()])
+		->first();
+
+		return response()->json($media);
 	}
 
 	public function updateViews(Request $request, UpdateViewsRepository $updateViewsRepository)

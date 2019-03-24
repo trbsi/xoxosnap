@@ -69,6 +69,13 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="control-block-button post-control-button">
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                <a class="a2a_dd btn btn-control">
+                                    <svg class="olymp-share-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-share-icon"></use></svg>
+                                </a>
+                            </div>
+                        </div>
                     </article>
                     <?php /*
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -135,10 +142,10 @@
             likesIcon.show();
             $('#likes').text(data.likes); 
             if (true === data.liked) {
-                $(videoElement).data('liked', 1);
+                $(globalVideoElement).data('liked', 1);
                 color = '#FF5E3A';
             } else {
-                $(videoElement).data('liked', 0);
+                $(globalVideoElement).data('liked', 0);
                 color = '#c2c5d9';
             }
             $('#likes-icon').css({'fill': color, 'color': color});

@@ -48,6 +48,7 @@ use App\Models\Notification;
 <script src="/assets/js/plyr.min.js"></script>
 <script src="/assets/js/toastr.min.js"></script>
 <script src="/assets/js/jquery.tokeninput.min.js"></script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 
 <script type="text/javascript">
   //redirect when cloced on explore button in header

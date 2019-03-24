@@ -24,8 +24,8 @@ Route::prefix('u')->group(function () {
 	$ctl = '\App\Web\Users\Resources\Profiles\Controllers\ProfileController';
 	Route::get('{username}', $ctl.'@profile')->name('user.profile');
 	Route::get('{username}/about', $ctl.'@about')->name('user.about');
+	Route::get('{username}/{slug}', $ctl.'@sharedVideo')->name('user.media-share');
 });
-
 
 //register/login
 Auth::routes();

@@ -35,7 +35,12 @@ class CreateRepository
                 'expires_at' => $data['expires_at'],
                 'duration' => $data['duration'],
             ];
-            $media = Media::create($saveData);     
+            $media = Media::create($saveData);   
+            //update url
+            $media->url = sprintf('%s-%s', str_slug($media->title), $media->id);
+            $media->save();
+            
+            //save hashtags
             $hashtags = explode(',', $data['hashtags']);
             $media->hashtags()->attach($hashtags);
                 

@@ -9,16 +9,9 @@
                 data-video-id="{{$video->id}}"
                 data-video-user-id="{{$video->user_id}}"
                 data-profile-url="{{route('user.profile', ['username' => $video->user->username])}}"
-                data-profile-picture="{{$video->user->profile->picture}}"
-                data-username="{{$video->user->username}}"
-                data-description="{{nl2br($video->description)}}"
-                data-views="{{$video->views}}"
-                data-likes="{{$video->likes}}"
-                data-published-ago="{{$video->published_ago}}"
                 data-is-locked="{{(true === $video->is_locked) ? '1' : '0'}}"
                 data-liked="{{(true === $video->user_liked) ? '1' : '0'}}"
                 data-coins="{{$video->coins}}"
-                data-hashtags="{{$video->hashtags->toJson()}}"
                 class="play-video"
             >
                 <img src="/img/{{(true === $video->is_locked) ? 'locked.png' : 'play.png'}}">
@@ -29,7 +22,7 @@
             @if(null !== $video->expires_at)
             <div class="progressbar-continer-vid" data-current-state="{{$video->progress_bar_current_state}}" data-duration="{{$video->progress_bar_duration}}"></div>
             @endif
-            <a href="#" class="h6 title">{{$video->title}}</a>
+            <a href="{{$video->url}}" class="h6 title">{{$video->title}}</a>
             <a href="{{route('user.profile', ['username' => $video->user->username])}}">{{$video->user->username}}</a>
             |
             {{$video->duration}}

@@ -43,6 +43,9 @@ class Media extends Model
 		'user_liked' => 'boolean', //see HomeRepository::getViewerHomePage
 		'purchased_count' => 'int',
 		'duration' => 'int',
+		'is_locked' => 'boolean',
+		'progress_bar_duration' => 'int',
+		'progress_bar_current_state' => 'float',
 	];
 
 	protected $dates = [
@@ -68,6 +71,8 @@ class Media extends Model
 		'coins',
 		'is_locked',
 	];
+	
+	protected $with = ['user.profile', 'hashtags'];
 
 	public function getFileAttribute($value)
 	{
@@ -93,11 +98,19 @@ class Media extends Model
 
 	public function getProgressBarDurationAttribute()
 	{
+		if (null === $this->expires_at) {
+			return 0;
+		}
+
 		return strtotime($this->expires_at) - time();
 	}
 
 	public function getProgressBarCurrentStateAttribute()
 	{
+		if (null === $this->expires_at) {
+			return 0;
+		}
+
 		$end = strtotime($this->expires_at);
 		$start = strtotime($this->created_at);
 		$current = time();
@@ -147,6 +160,20 @@ class Media extends Model
 			$seconds = "0$seconds";
 		}
 		return "$minutes:$seconds";
+	}
+
+	public function getUrlAttribute($value)
+	{
+		return route('user.media-share', 
+		[	
+			'username' => $this->user->username,
+			'slug' => $value,
+		]);
+	}
+
+	public function getDescriptionAttribute($value)
+	{
+		return nl2br($value);
 	}
 
 	public function user()

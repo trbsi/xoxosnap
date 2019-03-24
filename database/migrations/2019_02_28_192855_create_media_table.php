@@ -27,6 +27,7 @@ class CreateMediaTable extends Migration
             $table->integer('likes')->default(0);
             $table->integer('views')->default(0);
             $table->integer('purchased_count')->default(0);
+            $table->string('url', 255)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
