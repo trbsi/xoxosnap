@@ -8,7 +8,7 @@ use App\Models\User;
 
 @section('meta')
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{env('TWITTER_USERNAME')}}">
+<meta name="twitter:site" content="@<?=env('TWITTER_USERNAME')?>">
 @if (User::PROVIDER_TWITTER === $media->user->provider)
 <meta name="twitter:creator" content="@{{$media->user->username}}">
 @endif
