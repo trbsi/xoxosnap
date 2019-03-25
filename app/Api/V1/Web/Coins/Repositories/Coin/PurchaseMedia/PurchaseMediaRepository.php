@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Web\Coins\Repositories\Coin\Purchase;
+namespace App\Api\V1\Web\Coins\Repositories\Coin\PurchaseMedia;
 
 use Illuminate\Support\Facades\Auth;
 use Exception;
@@ -11,7 +11,7 @@ use App\Web\Coins\Traits\ConvertCoinsTrait;
 use DB;
 use App\Web\Coins\Events\MediaPurchasedEvent;
 
-class PurchaseRepository 
+class PurchaseMediaRepository
 {
 	use ConvertCoinsTrait;
 

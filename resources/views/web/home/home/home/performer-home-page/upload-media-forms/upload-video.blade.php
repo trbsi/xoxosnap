@@ -176,7 +176,7 @@ $(function () {
             toastr.success('{{__('web/home/home.performer_video_form.video_uploaded')}}');
 
             setTimeout(function(){
-	            window.location.href = '{{route('home')}}'; 
+	            window.location.href = data.result.url;
 	        }, 2000);
             
         },
@@ -404,9 +404,7 @@ function shoot()
     var video  = document.getElementById('preview-video');
     var output = document.getElementById('video-thumbnail-output');
     var canvas = capture(video, scaleFactor);
-        canvas.onclick = function(){
-            window.open(this.toDataURL());
-        };
+
     output.innerHTML = '';
     output.appendChild(canvas);
 
@@ -418,7 +416,7 @@ function shoot()
 $("#video-form input[name='hashtags']").tokenInput('{{route('hashtags.filter')}}', {
     searchDelay: 2000,
     minChars: 3,
-    tokenLimit: 10,
+    tokenLimit: 5,
     preventDuplicates: true,
     theme: 'facebook'
 });

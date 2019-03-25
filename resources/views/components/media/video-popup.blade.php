@@ -14,7 +14,7 @@
                         <div class="swiper-wrapper">
                             <!-- Slides -->
                                 <div class="photo-item">
-                                    <video id="performer-video" preload="none" style="max-height: 400px;">
+                                    <video id="performer-video" preload="none">
                                         <source type="video/mp4">
                                     </video>
                                 </div>
@@ -50,7 +50,7 @@
                             */ ?>
                         </div>
                         <div id="video-hashtags"></div>
-                        <div id="description" style="max-height: 350px"></div>
+                        <div id="media-description"></div>
                         <br>
                         <div class="post-additional-info inline-items">
                             <img src="/img/loading_circle.gif" style="display: none;" id="likes-loading">
@@ -127,35 +127,6 @@
 <!-- Window-popup Open Photo Popup V2 -->
 
 @push('javascript')
-<script type="text/javascript">
-    var likesIcon = $('#likes-icon');
-
-    likesIcon.click(function() {    
-        var likesLoading = $('#likes-loading');
-        likesLoading.show();
-        likesIcon.hide();
-
-        var response = ajax('{{route('media.like')}}', 'POST', {id: $(this).data('video-id')})
-        response
-        .done(function(data) {
-            likesLoading.hide();
-            likesIcon.show();
-            $('#likes').text(data.likes); 
-            if (true === data.liked) {
-                $(globalVideoElement).data('liked', 1);
-                color = '#FF5E3A';
-            } else {
-                $(globalVideoElement).data('liked', 0);
-                color = '#c2c5d9';
-            }
-            $('#likes-icon').css({'fill': color, 'color': color});
-            
-        })
-        .fail(function(xhr) {
-            likesLoading.hide();
-            likesIcon.show();
-        });
-    });
-
-</script>
+    @component('components.media.javascript.like-media')
+    @endcomponent
 @endpush

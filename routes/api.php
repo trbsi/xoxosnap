@@ -36,7 +36,7 @@ Route::middleware('auth:api')->group(function () {
 		
 		Route::prefix('coins')->group(function () {
 			$ctl = '\App\Api\V1\Web\Coins\Controllers\CoinController';
-			Route::patch('purchase', $ctl.'@purchase')->name('coins.purchase');
+			Route::patch('purchase-media', $ctl.'@purchaseMedia')->name('coins.purchase-media');
 		});
 
 		Route::prefix('users')->group(function () {
@@ -54,12 +54,14 @@ Route::middleware('auth:api')->group(function () {
 
 
 //*******************PUBLIC************************
-Route::prefix('stories')->group(function () {
-	$ctl = '\App\Api\V1\Web\Stories\Controllers\StoryController';
-	Route::post('update-views', $ctl.'@updateViews')->name('story.update-views');
-});
+Route::prefix('v1')->group(function () {
+	Route::prefix('stories')->group(function () {
+		$ctl = '\App\Api\V1\Web\Stories\Controllers\StoryController';
+		Route::post('update-views', $ctl.'@updateViews')->name('story.update-views');
+	});
 
-Route::prefix('hashtags')->group(function () {
-	$ctl = '\App\Api\V1\Web\Hashtags\Controllers\HashtagController';
-	Route::get('/filter', $ctl.'@filter')->name('hashtags.filter');
+	Route::prefix('hashtags')->group(function () {
+		$ctl = '\App\Api\V1\Web\Hashtags\Controllers\HashtagController';
+		Route::get('/filter', $ctl.'@filter')->name('hashtags.filter'); //public beacuse of jquery plugin can't handle laravel_token
+	});
 });

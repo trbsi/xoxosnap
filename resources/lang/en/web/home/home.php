@@ -38,6 +38,7 @@ return [
 		'story_is_locked' => 'Story is locked',
 		'followed' => 'Followed',
 		'already_following' => 'You\'re already following this user',
+		'login_to_view_video' => 'Login to view this video',
 	],
 	'performer' => [
 		'current_earnings' => 'Current Balance',

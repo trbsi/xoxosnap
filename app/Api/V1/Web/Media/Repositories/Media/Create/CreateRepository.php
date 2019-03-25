@@ -16,7 +16,7 @@ class CreateRepository
 {
 	use MediaFileTrait;
 
-    public function create(array $data): void
+    public function create(array $data): Media
     {
         try {
             $user = Auth::user();
@@ -43,8 +43,9 @@ class CreateRepository
             //save hashtags
             $hashtags = explode(',', $data['hashtags']);
             $media->hashtags()->attach($hashtags);
-                
-            DB::commit();   
+
+            DB::commit();
+            return $media;
         } catch (Exception $e) {
             DB::rollBack();
             throw $e;

@@ -26,11 +26,13 @@ class MediaSeeder extends Seeder
 					'title' => $title,
 					'description' => 'Someone seems to enjoy the snow!Greetings from snowy Finland❄❄ #snow #test #lol #snap #porn',
 					'file' => $fileName,
-					'cost' => rand(0, 5),
+					'cost' => 5,
 					'expires_at' => $this->calculateExpiresAt(),
-					'likes' => rand(),
-					'created_at' => '2019-02-20 10:12:25',
+					'likes' => 123456,
+					'views' => 123456,
+					'created_at' => date('Y-m-d 00:00:00'),
 					'thumbnail' => $thumbnailName,
+					'duration' => 128,
 				];
 				$media = $performer->media()->create($data);
 
@@ -38,23 +40,45 @@ class MediaSeeder extends Seeder
 				$media->url = sprintf('%s-%s', str_slug($title), $media->id);
 				$media->save();
 
-				$year = date('Y', strtotime($media->created_at));
-				$month = date('m', strtotime($media->created_at));
+				//set hashtags
+				$this->setHashtags($media);
 
-				//copy video
-				Storage::copy(
-	                $oldFilePath,
-	                sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $performer->id, $year, $month, $fileName) //->/user/media/{user_id}/{year}/{month}/video.mp4
-	            );
-
-				//copy thumbnail
-				Storage::copy(
-	                $thumbnailPath,
-	                sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $performer->id, $year, $month, $thumbnailName) //->/user/media/{user_id}/{year}/{month}/thumbnail.jpg
-	            );
+				//copy files
+				$this->copyFiles($media, $performer, $fileName, $thumbnailName, $oldFilePath, $thumbnailPath);
 			}
     	}
-    }
+	}
+	
+	private function copyFiles(
+		Media $media,
+		User $performer,
+		string $fileName,
+		string $thumbnailName,
+		string $oldFilePath,
+		string $thumbnailPath
+	) {
+		$year = date('Y', strtotime($media->created_at));
+		$month = date('m', strtotime($media->created_at));
+
+		//copy video
+		Storage::copy(
+			$oldFilePath,
+			sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $performer->id, $year, $month, $fileName) //->/user/media/{user_id}/{year}/{month}/video.mp4
+		);
+
+		//copy thumbnail
+		Storage::copy(
+			$thumbnailPath,
+			sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $performer->id, $year, $month, $thumbnailName) //->/user/media/{user_id}/{year}/{month}/thumbnail.jpg
+		);
+	}
+
+	private function setHashtags(Media $media)
+	{
+		//hashtags are saved in db as autoincrement starting with 1
+		$hashtagIds = [5, 10, 15, 20, 25];
+		$media->hashtags()->attach($hashtagIds);
+	}
 
     private function calculateExpiresAt()
     {

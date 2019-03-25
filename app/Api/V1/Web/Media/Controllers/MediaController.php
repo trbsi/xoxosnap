@@ -11,15 +11,13 @@ use App\Api\V1\Web\Media\Repositories\Media\Create\CreateRepository;
 use Exception;
 use App\Models\Media;
 use Illuminate\Support\Facades\Auth;
+use App\Web\Media\Repositories\One\GetOneMediaRepository;
 
 class MediaController extends Controller
 {
-	public function one(Request $request) 
+	public function one(Request $request, GetOneMediaRepository $getOneVideoRepository)
 	{
-		$media = Media::where('id', $request->id)
-		->select('*')
-		->selectRaw('IF((SELECT COUNT(*) FROM media_purchases WHERE user_id = ? AND media_id = media.id) = 0, 0, 1) AS user_paid', [Auth::id()])
-		->first();
+		$media = $getOneVideoRepository->getOneVideo($request->id, Auth::id());
 
 		return response()->json($media);
 	}
@@ -45,8 +43,8 @@ class MediaController extends Controller
 	public function create(CreateMediaRequest $createMediaRequest, CreateRepository $createRepository)
 	{
 		try {
-			$createRepository->create($createMediaRequest->all());
-			return response()->json();
+			$media = $createRepository->create($createMediaRequest->all());
+			return response()->json($media);
 		} catch (Exception $e) {
 			abort(400, $e->getMessage());
 		}

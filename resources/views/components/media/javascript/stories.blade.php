@@ -138,7 +138,7 @@
         .then((result) => {
             if (true === result.value) {
                 <?php //send request to server ?>
-                var response = ajax('{{route('coins.purchase', ['type' => 'story'])}}', 'PATCH', {id: storyId});
+                var response = ajax('{{route('coins.purchase-media', ['type' => 'story'])}}', 'PATCH', {id: storyId});
                 response
                 .done(function(data) {
                     <?php  //unlock story ?>

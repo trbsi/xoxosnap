@@ -14,6 +14,7 @@
                 data-coins="{{$video->coins}}"
                 class="play-video"
             >
+                <!-- svg doesn't work on infinite load -->
                 <img src="/img/{{(true === $video->is_locked) ? 'locked.png' : 'play.png'}}">
             </a>
             <div class="overlay overlay-dark"></div>

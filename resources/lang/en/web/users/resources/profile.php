@@ -22,4 +22,9 @@ return [
 	'personal_info' => 'Personal information',
 	'change_password' => 'Change password',
 	'account_update' => 'Account updated',
+	'single_video' => [
+		'delete' => 'Delete',
+		'edit' => 'Edit',
+		'login_to_view_video' => 'Login to view this video',
+	],
  ];

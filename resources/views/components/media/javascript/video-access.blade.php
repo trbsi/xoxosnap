@@ -17,7 +17,7 @@ $(document).on('click', '.play-video', function() {
     globalVideoElement = this;
 
     <?php //if user can access or not ?>
-    if (1 === $(this).data('is-locked') && {{$userComposerUserId ?? 0}} !== $(globalVideoElement).data('video-user-id')) {
+    if (1 === $(this).data('is-locked')) {
         <?php //ask if wants to buy access ?>
         Swal.fire({
             type: 'question',
@@ -27,7 +27,7 @@ $(document).on('click', '.play-video', function() {
         }).then((result) => {
             if (true === result.value) {
             <?php  //take coins from user ?>
-            var response = ajax('{{route('coins.purchase', ['type' => 'video'])}}', 'PATCH', {id: $(this).data('video-id')});
+            var response = ajax('{{route('coins.purchase-media', ['type' => 'video'])}}', 'PATCH', {id: $(this).data('video-id')});
             response
             .done(function(data) {
                 $('#views').text(data.views); 
@@ -77,7 +77,7 @@ function openVideoModal(videoElement)
     response
     .done(function(data) {
         <?php //sanity check if user manipulates is-locked ?>
-        if (false === data.user_paid && {{ $userComposerUserId ?? 0 }} !== data.user_id) {
+        if (true === data.is_locked) {
             alert('No access');
             return;
         }
@@ -90,7 +90,7 @@ function openVideoModal(videoElement)
 
         $('#open-photo-popup-v2 #profile-picture').attr('src', data.user.profile.picture);
         $('#open-photo-popup-v2 #post-author-name').text(data.user.username);
-        $('#open-photo-popup-v2 #description').html(data.description);
+        $('#open-photo-popup-v2 #media-description').html(data.description);
         $('#open-photo-popup-v2 #views').text(data.views);
         $('#open-photo-popup-v2 #likes').text(data.likes);
         $('#open-photo-popup-v2 #published-ago').text(data.published_ago);
@@ -113,10 +113,18 @@ function openVideoModal(videoElement)
             $('#open-photo-popup-v2 #views').text(data.views); 
         });        
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {});
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        if (401 === jqXHR.status) {
+            Swal.fire({
+                type: 'warning',
+                title: jqXHR.statusText,
+                html: '{{__('web/home/home.viewer.login_to_view_video')}}',
+            });
+        }
+    });
     
     globalVideoModalPopup.on('shown.bs.modal', function (e) {
-        $('#open-photo-popup-v2 #description').perfectScrollbar();
+        $('#open-photo-popup-v2 #media-description').perfectScrollbar();
     });
 
 }

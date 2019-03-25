@@ -4,11 +4,11 @@ namespace App\Api\V1\Web\Coins\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Api\V1\Web\Coins\Repositories\Coin\Purchase\PurchaseRepository;
+use App\Api\V1\Web\Coins\Repositories\Coin\PurchaseMedia\PurchaseMediaRepository;
 
 class CoinController extends Controller
 {
-	public function purchase(Request $request, PurchaseRepository $purchaseRepository)
+	public function purchaseMedia(Request $request, PurchaseMediaRepository $purchaseRepository)
 	{
 		$data = $request->validate([
             'id' => 'required|integer',

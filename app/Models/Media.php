@@ -10,6 +10,7 @@ use Westsworld\TimeAgo;
 use DateTime;
 use App\Helpers\Traits\NumberFormatterTrait;
 use App\Web\Coins\Traits\ConvertCoinsTrait;
+use Illuminate\Support\Facades\Auth;
 
 class Media extends Model
 {
@@ -143,7 +144,9 @@ class Media extends Model
 
 	public function getIsLockedAttribute()
 	{
-		if (0 === $this->cost) {
+		if ($this->user_id === Auth::id()) {
+			return false;
+		} else if (0 === $this->cost) {
 			return false;
 		} elseif ($this->cost > 0 && true === $this->user_paid) {
 			return false;
