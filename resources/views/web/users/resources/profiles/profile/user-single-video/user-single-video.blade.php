@@ -19,5 +19,6 @@ use App\Models\User;
 
 @section('body')
     @include('web.users.resources.profiles.common.profile-info') 
-    @include('web.users.resources.profiles.profile.user-single-video.single-video-template') 
+    @component('components.media.single-video', ['media' => $media])
+    @endcomponent
 @endsection

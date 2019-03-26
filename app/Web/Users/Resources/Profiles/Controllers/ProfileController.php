@@ -68,6 +68,10 @@ class ProfileController extends Controller
         $videoId = (int) end($slugExplode); 
         $media = $getOneVideoRepository->getOneVideo($videoId, Auth::id());
 
+        if ($media->user_id !== $this->user->id) {
+            abort(404);
+        } 
+
         return view('web.users.resources.profiles.profile.user-single-video.user-single-video', [
             'user' => $this->user,
             'media' => $media,

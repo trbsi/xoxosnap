@@ -11,7 +11,7 @@
         <div class="row">
             @if(false === $media->isEmpty())
                 @foreach($media as $video)
-                    @component('components.media.video', ['video' => $video])
+                    @component('components.media.small-video', ['video' => $video])
                     @endcomponent
                 @endforeach
                 {{$media->links()}}

@@ -53,6 +53,7 @@ class UsersSeeder extends Seeder
 
     private function seed(array $profiles, int $profileType)
     {
+        $i = 1;
         foreach ($profiles as $username => $name) {
             //General data
             $pictureName = sprintf('%s.jpg', $username);
@@ -63,6 +64,7 @@ class UsersSeeder extends Seeder
                 'password' => Hash::make('123456'),
                 'username' => $username,
                 'profile_type' => $profileType,
+                'is_verified' => ($i <= 5) ? true : false,
             ];
             
             if (User::USER_TYPE_PERFORMER === $profileType) {
@@ -93,6 +95,8 @@ class UsersSeeder extends Seeder
                 sprintf('seeds/pictures/%s.jpg', rand(1, 20)),
                 sprintf('%s%s/%s', UserProfile::USER_PICTURE_PATH, $user->id, $pictureName)
             );
+
+            $i++;
         }
     }
 
