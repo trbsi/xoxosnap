@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Socialite;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 
 class SocialAuthController extends Controller
 {
@@ -43,6 +44,8 @@ class SocialAuthController extends Controller
             $user->profile()->create([
                 'picture' => $providerUser->getAvatar(),
             ]);
+
+            event(new Registered($user));
         }
 
         return $user;

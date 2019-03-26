@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UsersBilling extends Model
+class UserBilling extends Model
 {
 	protected $table = 'users_billings';
 

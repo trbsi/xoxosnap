@@ -51,8 +51,17 @@ return [
 		'not_connected_with_twitter_account' => 'You haven\'t logged in via your Twitter account.',
 		'add_video' => 'Add video',
 		'add_story' => 'Add story',
-		'profile_not_verified' => 'Please verify your profile',
-		'upload_stories_videos_verify' => 'In order to be able to upload stories and videos and earn money please complete the form below for verification :)'
+		
+		'not_verified' => [
+			'profile_not_verified' => 'Please verify your profile',
+			'upload_stories_videos_verify' => 'In order to be able to upload stories and videos and earn money please complete the form below for verification &#128522;',
+			'choose_photo' => 'Choose your photo',
+			'use_this_number_to_verify_profile' => 'Please write the number you see on a paper and take a picture of yourself with it so we can verify it\'s you. Something like what Rick from The Walking Dead did &#128521;',
+			'number' => 'Number',
+			'hold_on_we_are_verifying_you' => 'Hold on! We\'re working on verification. It will take up to 24h &#128513;',
+			'send' => 'Send',
+			'request_sent' => 'Your request has been submitted',
+		],
 	],
 	'performer_video_form' => [
 		'description' => 'Description',

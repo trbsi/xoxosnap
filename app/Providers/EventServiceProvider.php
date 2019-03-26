@@ -10,6 +10,8 @@ use App\Web\Users\Listeners\CreateCoinsListener;
 use App\Web\Notifications\Resources\Counts\Listeners\NotificationsCountListener;
 use App\Web\Coins\Events\MediaPurchasedEvent;
 use App\Web\Coins\Listeners\CreateNotificationForPerformerListener;
+use App\Web\Users\Resources\Verifications\Listeners\CreateVerificationNumberListener;
+use App\Web\Users\Events\UserRegisteredEvent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,16 +20,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
-            CreateCoinsListener::class,
-            NotificationsCountListener::class,
-        ],
-        MediaPurchasedEvent::class => [
-            CreateNotificationForPerformerListener::class
-        ]
-    ];
+    protected $listen = [];
 
     /**
      * Register any events for your application.
@@ -36,8 +29,18 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
+        $this->listen = [
+            Registered::class => [
+                SendEmailVerificationNotification::class,
+                CreateCoinsListener::class,
+                NotificationsCountListener::class,
+                CreateVerificationNumberListener::class,
+            ],
+            MediaPurchasedEvent::class => [
+                CreateNotificationForPerformerListener::class
+            ]
+        ];
 
-        //
+        parent::boot();
     }
 }

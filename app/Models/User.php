@@ -11,6 +11,7 @@ use App\Models\Coin;
 use App\Models\Notification;
 use App\Models\NotificationCount;
 use App\Models\Stories;
+use App\Models\UserVerification;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -103,5 +104,10 @@ class User extends Authenticatable
     public function follows()
     {
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
+
+    public function verification()
+    {
+        return $this->hasOne(UserVerification::class, 'user_id');
     }
 }

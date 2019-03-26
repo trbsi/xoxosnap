@@ -56,5 +56,10 @@ Route::middleware('auth')->group(function () {
 				Route::post('edit-change-password', $ctl.'@editChangePasswordSettings')->name('user.profile.settings.edit-change-password-settings');
 			});
 		});
+
+		Route::prefix('verifications')->group(function () {
+			$ctl = '\App\Web\Users\Resources\Verifications\Controllers\VerificationController';
+			Route::post('request-verification', $ctl.'@requestVerification')->name('user.verification.request-verification');
+		});
 	});
 });
