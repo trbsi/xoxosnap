@@ -25,21 +25,28 @@ class SocialAuthController extends Controller
     {
         $providerData = Socialite::driver($provider);
         $providerUser = $providerData->user();
-        $providerName = class_basename($provider);
+        $providerUserRaw = $providerUser->getRaw();
+        $providerName = strtolower($provider);
 
         $user = User::where('provider', $providerName)
                     ->where('provider_id', $providerUser->getId())
                     ->first();
 
         if (!$user) {
-            $user = User::create([
+            $userData = [
                 'profile_type' => User::USER_TYPE_PERFORMER,
                 'username' => $providerUser->getNickname(),
                 'name' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
                 'provider_id' => $providerUser->getId(),
                 'provider' => $providerName
-            ]);
+            ];
+
+            if (isset($providerUserRaw['verified'])) {
+                $userData['is_verified'] = $providerUserRaw['verified'];
+            }
+
+            $user = User::create($userData);
 
             $user->profile()->create([
                 'picture' => $providerUser->getAvatar(),

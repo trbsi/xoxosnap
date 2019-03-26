@@ -41,7 +41,8 @@ class User extends Authenticatable
         'profile_type',
         'provider',
         'provider_id',
-        'has_notification'
+        'has_notification',
+        'is_verified',
     ];
 
     /**
