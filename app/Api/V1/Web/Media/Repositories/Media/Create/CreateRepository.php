@@ -37,7 +37,7 @@ class CreateRepository
             ];
             $media = Media::create($saveData);   
             //update url
-            $media->url = sprintf('%s-%s', str_slug($media->title), $media->id);
+            $media->slug = sprintf('%s-%s', str_slug($media->title), $media->id);
             $media->save();
             
             //save hashtags

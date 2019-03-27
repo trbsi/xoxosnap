@@ -37,7 +37,7 @@ class MediaSeeder extends Seeder
 				$media = $performer->media()->create($data);
 
 				//set url
-				$media->url = sprintf('%s-%s', str_slug($title), $media->id);
+				$media->slug = sprintf('%s-%s', str_slug($title), $media->id);
 				$media->save();
 
 				//set hashtags

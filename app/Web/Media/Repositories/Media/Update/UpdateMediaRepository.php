@@ -15,7 +15,7 @@ class UpdateMediaRepository
             
         $media->title = $data['title'];
         $media->description = $data['description'];
-        $media->url = sprintf('%s-%s', str_slug($media->title), $media->id);
+        $media->slug = sprintf('%s-%s', str_slug($media->title), $media->id);
         $media->save();
 
         $hashtags = explode(',', $data['hashtags']);

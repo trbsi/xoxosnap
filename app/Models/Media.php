@@ -71,6 +71,7 @@ class Media extends Model
 		'progress_bar_current_state',
 		'coins',
 		'is_locked',
+        'url',
 	];
 	
 	protected $with = ['user.profile', 'hashtags'];
@@ -173,12 +174,12 @@ class Media extends Model
 		return "$minutes:$seconds";
 	}
 
-	public function getUrlAttribute($value)
+	public function getUrlAttribute()
 	{
 		return route('user.media-share', 
 		[	
 			'username' => $this->user->username,
-			'slug' => $value,
+			'slug' => $this->slug,
 		]);
 	}
 
