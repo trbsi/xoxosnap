@@ -25,7 +25,13 @@
                     <div class="friend-item-content">
                         <div class="friend-avatar">
                             <div class="author-thumb">
-                                <img src="{{$performer->profile->picture}}" class="img-responsive" alt="author">
+                                @component('components.user.profile-picture-component', [
+                                    'user' => $performer,
+                                    'isVerified' => $performer->is_verified,
+                        			'profilePicture' => $performer->profile->picture,
+									'verifiedTickSizeClass' => 'verified-tick-medium'
+								])
+								@endcomponent
                             </div>
                             <div class="author-content">
                                 <a href="#" class="h5 author-name">{{$performer->name}}</a>

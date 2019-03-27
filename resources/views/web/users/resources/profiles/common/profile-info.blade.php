@@ -91,18 +91,24 @@
                     </div>
                     <div class="top-header-author">
                         @if($user::USER_TYPE_PERFORMER === $user->profile_type)
-                            <a href="$user->profile_url" class="profile-author-thumb">
+                            <a href="{{$user->profile_url}}" class="profile-author-thumb">
                             <img src="{{$user->profile->picture}}" alt="author">
                             </a>
                             <div class="author-content">
-                                <a href="$user->profile_url" class="h4 author-name">{{$user->name ?? $user->username}}</a>
+                                <a href="{{$user->profile_url}}" class="h4 author-name">{{$user->name ?? $user->username}}</a> 
+                                @if(true === $user->is_verified)
+                                    <img src="/img/verified.png" class="verified-tick-medium">
+                                @endif
                             </div>
                         @else
                             <span class="profile-author-thumb">
                             <img src="{{$user->profile->picture}}" alt="author">
                             </span>
                             <div class="author-content">
-                                <span class="h4 author-name">{{$user->name ?? $user->username}}</span>
+                                <span class="h4 author-name">{{$user->name ?? $user->username}}</span> 
+                                @if(true === $user->is_verified)
+                                    <img src="/img/verified.png" class="verified-tick-medium">
+                                @endif
                             </div>
                         @endif
                     </div>

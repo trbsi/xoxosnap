@@ -15700,6 +15700,27 @@ body {
     background-color: #FDFBEE;
 }
 
+/*PROFILE PICTURE*/
+.verified-tick {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: auto!important;
+  border: none!important;
+}
+
+.verified-tick-medium {
+  max-height: 25px;
+}
+
+.verified-tick-small {
+  max-height: 15px;
+}
+
+.profile-picture-wrapper {
+  position: relative;
+}
+
 /*GROUPED BUTTONS*/
 .grouped-buttons-full-width {
   display: flex;

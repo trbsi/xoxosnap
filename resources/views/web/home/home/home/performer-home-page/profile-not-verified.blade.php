@@ -11,7 +11,7 @@ use App\Models\UserVerification;
 					{{__('web/home/home.performer.not_verified.profile_not_verified')}} 
 				</h1>
 				<div class="img-circular mx-auto" style="opacity: 0.6; background-image: url('{{$user->profile->picture}}');">
-					<img src="/img/verified.png" style="position: absolute; bottom: 1px; right: 1px;">
+					<img src="/img/verified.png" class="verified-tick">
 				</div>
 				<p>
 					<ol>

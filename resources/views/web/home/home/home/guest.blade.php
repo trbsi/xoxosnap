@@ -39,7 +39,6 @@
                         <svg class="olymp-trophy-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-trophy-icon"></use></svg>
                     </div>
                     <h6 class="title">{{__('web/home/home.guest.recommended_performers')}}</h6>
-                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                 </div>
             </div>
         </div>
@@ -57,7 +56,12 @@
                     <div class="friend-item-content">
                         <div class="friend-avatar">
                             <div class="author-thumb">
-                                <img src="{{$performer->profile->picture}}" class="img-responsive" alt="author">
+                                @component('components.user.profile-picture-component', [
+									'isVerified' => $performer->is_verified,
+                        			'profilePicture' => $performer->profile->picture,
+									'verifiedTickSizeClass' => 'verified-tick-medium'
+								])
+								@endcomponent
                             </div>
                             <div class="author-content">
                                 <a href="#" class="h5 author-name">{{$performer->name}}</a>

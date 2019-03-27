@@ -24,7 +24,12 @@
 			<div class="control-block">
 				<div class="author-page author vcard inline-items">
 					<div class="author-thumb">
-						<img alt="author" src="{{$userComposerProfilePicture}}" class="avatar">
+						@component('components.user.profile-picture-component', [
+							'isVerified' => $userComposerIsVerified,
+							'profilePicture' => $userComposerProfilePicture,
+							'verifiedTickSizeClass' => 'verified-tick-small'
+						])
+						@endcomponent
 					</div>
 					<a href="@if (null !== $userComposerUsername) {{route('user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
 						<div class="author-title">

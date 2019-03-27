@@ -4,7 +4,12 @@
     <article class="hentry post searches-item">
         <div class="post__author author vcard inline-items">
             <a href="{{$user->profile_url}}">
-                <img src="{{$user->profile->picture}}" alt="author">
+                @component('components.user.profile-picture-component', [
+                    'isVerified' => $user->is_verified,
+                    'profilePicture' => $user->profile->picture,
+                    'verifiedTickSizeClass' => 'verified-tick-small'
+                ])
+                @endcomponent
             </a>
             <div class="author-date">
                 <a class="h6 post__author-name fn" href="{{$user->profile_url}}">{{$user->name}}</a>

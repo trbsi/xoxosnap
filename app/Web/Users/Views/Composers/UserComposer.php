@@ -27,6 +27,7 @@ class UserComposer
             $picture = $user->profile->picture;
             $coins = $user->coin->current_coins;
             $coinsFormatted = $user->coin->current_coins_formatted;
+            $isVerified = $user->is_verified;
         } else {
             $userId = null;
             $name = __('web/users/user.guest');
@@ -34,6 +35,7 @@ class UserComposer
             $picture = UserProfile::NO_PROFILE_PICTURE_PATH;
             $coins = 0;
             $coinsFormatted = 0;
+            $isVerified = false;
         }
 
         $view->with('userComposerUserId', $userId);
@@ -42,5 +44,6 @@ class UserComposer
         $view->with('userComposerUsername', $username);
         $view->with('userComposerCoins', $coins);
         $view->with('userComposerCoinsFormatted', $coinsFormatted);
+        $view->with('userComposerIsVerified', $isVerified);
     }
 }

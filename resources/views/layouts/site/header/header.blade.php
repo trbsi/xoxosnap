@@ -155,7 +155,12 @@ use App\Models\User;
             </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="{{$userComposerProfilePicture}}" class="avatar">
+                    @component('components.user.profile-picture-component', [
+                        'isVerified' => $userComposerIsVerified,
+                        'profilePicture' => $userComposerProfilePicture,
+                        'verifiedTickSizeClass' => 'verified-tick-small'
+                    ])
+                    @endcomponent
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             @auth
