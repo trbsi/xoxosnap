@@ -184,7 +184,7 @@
 </div>
 
 @push('javascript')
-    @component('components.media.javascript.like-media')
+    @component('components.media.javascript.like-media-component')
     @endcomponent
 
 	<script>

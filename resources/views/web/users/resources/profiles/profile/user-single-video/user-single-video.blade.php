@@ -16,6 +16,6 @@
 
 @section('body')
     @include('web.users.resources.profiles.common.profile-info') 
-    @component('components.media.single-video', ['media' => $media])
+    @component('components.media.single-video-component', ['media' => $media])
     @endcomponent
 @endsection

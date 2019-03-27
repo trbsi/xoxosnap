@@ -3,7 +3,7 @@
         <div class="row">
             @if(false === $media->isEmpty())
                 @foreach($media as $video)
-                    @component('components.media.small-video', ['video' => $video])
+                    @component('components.media.small-video-component', ['video' => $video])
                     @endcomponent
                 @endforeach
               {{$media->appends(request()->except('page'))->links()}}
@@ -12,16 +12,16 @@
     </div>
 </div>
 
-@component('components.media.video-popup')
+@component('components.media.video-popup-component')
 @endcomponent
 
 @push('javascript')
-    @component('components.media.javascript.progressbar', ['cssClass' => '.progressbar-continer-vid'])
+    @component('components.media.javascript.progressbar-component', ['cssClass' => '.progressbar-continer-vid'])
     @endcomponent
 
-    @component('components.media.javascript.infinite-scroll')
+    @component('components.media.javascript.infinite-scroll-component')
     @endcomponent
 
-    @component('components.media.javascript.video-access')
+    @component('components.media.javascript.video-access-component')
     @endcomponent    
 @endpush

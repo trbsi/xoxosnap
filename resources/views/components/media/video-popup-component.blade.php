@@ -127,6 +127,6 @@
 <!-- Window-popup Open Photo Popup V2 -->
 
 @push('javascript')
-    @component('components.media.javascript.like-media')
+    @component('components.media.javascript.like-media-component')
     @endcomponent
 @endpush

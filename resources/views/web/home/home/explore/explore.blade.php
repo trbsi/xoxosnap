@@ -20,7 +20,7 @@ use App\Models\Media;
 			</div>
 		</div>
 	</div>
-    @component('components.media.stories', ['stories' => $stories])
+    @component('components.media.stories-component', ['stories' => $stories])
     @endcomponent
 
     <br>
@@ -55,7 +55,7 @@ use App\Models\Media;
 		</div>
 	</div>
 
-	@component('components.media.only-videos', ['media' => $media])
+	@component('components.media.only-videos-component', ['media' => $media])
     @endcomponent
 
 @endsection

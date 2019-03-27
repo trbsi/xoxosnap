@@ -23,7 +23,7 @@
             		@include('web.search.search.users-result')
                     {{$result->appends(request()->except('page'))->links()}}
             	@elseif($searchTypeMedia === $type)
-                    @component('components.media.only-videos', ['media' => $result])
+                    @component('components.media.only-videos-component', ['media' => $result])
                     @endcomponent
             	@endif
             </div>
