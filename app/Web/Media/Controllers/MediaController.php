@@ -5,7 +5,10 @@ namespace App\Web\Media\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Web\Media\Repositories\Media\Delete\DeleteMediaRepository;
+use App\Web\Media\Repositories\Media\Update\UpdateMediaRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Web\Media\Requests\Media\Update\UpdateMediaRequest;
+use App\Models\Media;
 
 class MediaController extends Controller
 {
@@ -23,5 +26,17 @@ class MediaController extends Controller
         } catch (Exception $e) {
             abort(403);
         }
-    } 
+    }
+
+    public function update(UpdateMediaRequest $request, UpdateMediaRepository $updateMediaRepository)
+    {
+        try {
+            $media = Media::find($request->id);
+            $media = $updateMediaRepository->update($media, $request->all());
+            $request->session()->flash('success', __('web/media/media.update.video_updated'));
+            return redirect($media->url);
+        } catch (Exception $e) {
+            abort(403);
+        }
+    }
 }

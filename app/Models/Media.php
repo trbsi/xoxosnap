@@ -184,7 +184,7 @@ class Media extends Model
 
 	public function getDescriptionAttribute($value)
 	{
-		return nl2br($value);
+		return nl2br(e($value));
 	}
 
 	public function user()

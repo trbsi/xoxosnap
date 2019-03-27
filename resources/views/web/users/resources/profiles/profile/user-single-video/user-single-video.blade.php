@@ -16,6 +16,7 @@
 
 @section('body')
     @include('web.users.resources.profiles.common.profile-info') 
+    @include('web.users.resources.profiles.profile.user-single-video.edit-single-video') 
     @component('components.media.single-video-component', ['media' => $media])
     @endcomponent
 @endsection

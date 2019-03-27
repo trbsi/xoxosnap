@@ -52,10 +52,10 @@
 								</form>
                                 <ul class="more-dropdown">
                                     <li>
-                                        <a href="javascript:;" id="delete-media-button">{{__('web/users/resources/profile.single_video.delete')}}</a>
+                                        <a href="javascript:;" id="edit-media-button">{{__('web/users/resources/profile.single_video.edit')}}</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;" id="edit-media-button">{{__('web/users/resources/profile.single_video.edit')}}</a>
+                                        <a href="javascript:;" id="delete-media-button">{{__('web/users/resources/profile.single_video.delete')}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -66,7 +66,7 @@
                             <a href="{{route('search', ['type' => SearchConstants::SEARCH_MEDIA, 'term' => $hashtag->name])}}">#{{$hashtag->name}}</a>
                             @endforeach
                         </p>
-                        <div id="media-description">{{$media->description}}</div>
+                        <div id="media-description">{!! $media->description !!}</div>
                         <div class="post-additional-info inline-items">
 							<img src="/img/loading_circle.gif" style="display: none;" id="likes-loading">
                             <a href="javascript:;" id="likes-icon" class="post-add-icon inline-items" data-video-id="{{$media->id}}" style="{{(true === $media->liked) ? 'fill: #c2c5d9; color: #c2c5d9' : ''}}">
@@ -293,6 +293,10 @@
 					$('#delete-media-form').submit();
 				}
 			});
+		});
+
+		$('#edit-media-button').click(function() {
+			$('#edit-media-container').show();
 		});
 	</script>
 @endpush

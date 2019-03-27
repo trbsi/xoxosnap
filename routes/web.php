@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
 	Route::prefix('media')->group(function () {
 		$ctl = '\App\Web\Media\Controllers\MediaController';
 		Route::post('delete', $ctl.'@delete')->name('media.delete');
+		Route::post('update', $ctl.'@update')->name('media.update');
 	});
 
 	Route::prefix('users')->group(function () {

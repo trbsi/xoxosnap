@@ -4,4 +4,7 @@ return [
 	'delete' => [
 		'video_deleted' => 'Video successfully deleted',
 	],
+	'update' => [
+		'video_updated' => 'Video successfully updated',
+	],
 ];
