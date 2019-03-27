@@ -14,10 +14,12 @@ use App\Models\UserVerification;
 					<img src="/img/verified.png" style="position: absolute; bottom: 1px; right: 1px;">
 				</div>
 				<p>
-					{!! __('web/home/home.performer.not_verified.upload_stories_videos_verify') !!} 
+					<ol>
+						<li>{!! __('web/home/home.performer.not_verified.verify_profile_step_1') !!}</li>
+						<li>{!! __('web/home/home.performer.not_verified.verify_profile_step_2') !!}</li>
+					</ol>
 				</p>
 				<p>
-					{!! __('web/home/home.performer.not_verified.use_this_number_to_verify_profile') !!} 
 					<img src="/img/not_verified.jpg" class="img-thumbnail">
 				</p>
 

@@ -4,7 +4,7 @@
 		<div class="col col-xl-12">
 			<h1>
 				{{__('web/home/home.performer.view_your_profile')}} 
-				<a href="{{route('user.profile', ['username' => $user->username])}}">{{$user->username}}</a>
+				<a href="{{$user->profile_url}}">{{$user->username}}</a>
 			</h1>
 		</div>
 	</div>

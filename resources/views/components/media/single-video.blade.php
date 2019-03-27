@@ -25,11 +25,11 @@
                 <div class="features-video-content">
                     <article class="hentry post">
                         <div class="post__author author vcard inline-items">
-							<a href="{{route('user.profile', ['username' => $media->user->username])}}">
+							<a href="{{$media->user->profile_url}}">
                             	<img src="{{$media->user->profile->picture}}" alt="author">
 							</a>
                             <div class="author-date">
-                                <a class="h6 post__author-name fn" href="{{route('user.profile', ['username' => $media->user->username])}}">{{$media->user->username}}</a>
+                                <a class="h6 post__author-name fn" href="{{$media->user->profile_url}}">{{$media->user->username}}</a>
                                 <div class="post__date">
                                     <time class="published" datetime="2017-03-24T18:18">
                                     {{$media->published_ago}}

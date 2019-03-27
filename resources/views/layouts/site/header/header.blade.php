@@ -62,7 +62,7 @@ use App\Models\User;
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="{{route('user.profile', ['username' => $notification->byUser->username])}}" class="h6 notification-friend">{{$notification->byUser->username}}</a>
+                                        <a href="{{$notification->byUser->profile_url}}" class="h6 notification-friend">{{$notification->byUser->username}}</a>
                                         {{__('general/header.followers.followed_you')}}
                                     </div>
                                     <span class="notification-date"><time class="entry-date updated" datetime="{{$notification->created_at}}">{{$notification->created_ago}}</time></span>
@@ -103,7 +103,7 @@ use App\Models\User;
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="{{route('user.profile', ['username' => $notification->byUser->username])}}" class="h6 notification-friend">
+                                        <a href="{{$notification->byUser->profile_url}}" class="h6 notification-friend">
                                             @switch($notification->byUser->profile_type)
                                                 @case(User::USER_TYPE_PERFORMER)
                                                     {{$notification->byUser->name}}

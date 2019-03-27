@@ -8,7 +8,7 @@
                 href="javascript:;"
                 data-video-id="{{$video->id}}"
                 data-video-user-id="{{$video->user_id}}"
-                data-profile-url="{{route('user.profile', ['username' => $video->user->username])}}"
+                data-profile-url="{{$video->user->profile_url}}"
                 data-is-locked="{{(true === $video->is_locked) ? '1' : '0'}}"
                 data-liked="{{(true === $video->user_liked) ? '1' : '0'}}"
                 data-coins="{{$video->coins}}"
@@ -24,7 +24,7 @@
             <div class="progressbar-continer-vid" data-current-state="{{$video->progress_bar_current_state}}" data-duration="{{$video->progress_bar_duration}}"></div>
             @endif
             <a href="{{$video->url}}" class="h6 title">{{$video->title}}</a>
-            <a href="{{route('user.profile', ['username' => $video->user->username])}}">{{$video->user->username}}</a>
+            <a href="{{$video->user->profile_url}}">{{$video->user->username}}</a>
             |
             {{$video->duration}}
             <br>

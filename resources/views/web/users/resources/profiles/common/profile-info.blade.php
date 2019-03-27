@@ -15,7 +15,7 @@
                             <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
                                     <li>
-                                        <a href="{{route('user.profile', ['username' => $user->username])}}">{{__('web/users/resources/profile.snaps')}}</a>
+                                        <a href="{{$user->profile_url}}">{{__('web/users/resources/profile.snaps')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route('user.about', ['username' => $user->username])}}">{{__('web/users/resources/profile.about')}}</a>
@@ -91,11 +91,11 @@
                     </div>
                     <div class="top-header-author">
                         @if($user::USER_TYPE_PERFORMER === $user->profile_type)
-                            <a href="{{route('user.profile', ['username' => $user->username])}}" class="profile-author-thumb">
+                            <a href="$user->profile_url" class="profile-author-thumb">
                             <img src="{{$user->profile->picture}}" alt="author">
                             </a>
                             <div class="author-content">
-                                <a href="{{route('user.profile', ['username' => $user->username])}}" class="h4 author-name">{{$user->name ?? $user->username}}</a>
+                                <a href="$user->profile_url" class="h4 author-name">{{$user->name ?? $user->username}}</a>
                             </div>
                         @else
                             <span class="profile-author-thumb">

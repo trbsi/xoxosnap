@@ -3,13 +3,13 @@
     <!-- Search Result -->
     <article class="hentry post searches-item">
         <div class="post__author author vcard inline-items">
-            <a href="{{route('user.profile', ['username' => $user->username])}}">
+            <a href="{{$user->profile_url}}">
                 <img src="{{$user->profile->picture}}" alt="author">
             </a>
             <div class="author-date">
-                <a class="h6 post__author-name fn" href="{{route('user.profile', ['username' => $user->username])}}">{{$user->name}}</a>
+                <a class="h6 post__author-name fn" href="{{$user->profile_url}}">{{$user->name}}</a>
                 <div class="country">
-                    <a href="{{route('user.profile', ['username' => $user->username])}}">{{$user->username}}</a>
+                    <a href="{{$user->profile_url}}">{{$user->username}}</a>
                 </div>
             </div>
             <?php /*

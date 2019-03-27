@@ -33,9 +33,10 @@ class SocialAuthController extends Controller
                     ->first();
 
         if (!$user) {
+            $username = $this->checkForUsernameUniqueness($providerUser->getNickname());
             $userData = [
                 'profile_type' => User::USER_TYPE_PERFORMER,
-                'username' => $providerUser->getNickname(),
+                'username' => $username,
                 'name' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
                 'provider_id' => $providerUser->getId(),
@@ -56,5 +57,15 @@ class SocialAuthController extends Controller
         }
 
         return $user;
+    }
+
+    private function checkForUsernameUniqueness($username)
+    {
+        if (User::where('username', $username)->count() > 0) {
+            $username = sprintf('%s%s', $username, rand(1,99));
+            return $this->checkForUsernameUniqueness($username);
+        }
+
+        return $username;
     }
 }

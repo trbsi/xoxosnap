@@ -72,6 +72,15 @@ class User extends Authenticatable
         'is_verified' => 'boolean',
     ];
 
+    protected $appends = [
+        'profile_url'
+    ];
+
+    public function getProfileUrlAttribute()
+    {
+        return route('user.profile', ['username' => $this->username]);
+    }
+
     public function profile()
     {
         return $this->hasOne(UserProfile::class, 'user_id');
