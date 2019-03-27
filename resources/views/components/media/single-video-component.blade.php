@@ -45,13 +45,17 @@
                             <div class="more">
                                 <svg class="olymp-three-dots-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                </svg>
+								</svg>
+								<form style="display:none;" id="delete-media-form" method="POST" action="{{route('media.delete')}}">
+									@csrf
+									<input name="id" value="{{$media->id}}">
+								</form>
                                 <ul class="more-dropdown">
                                     <li>
-                                        <a href="#">{{__('web/users/resources/profile.single_video.delete')}}</a>
+                                        <a href="javascript:;" id="delete-media-button">{{__('web/users/resources/profile.single_video.delete')}}</a>
                                     </li>
                                     <li>
-                                        <a href="#">{{__('web/users/resources/profile.single_video.edit')}}</a>
+                                        <a href="javascript:;" id="edit-media-button">{{__('web/users/resources/profile.single_video.edit')}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -279,5 +283,16 @@
 				});
 			});
 		}
+	</script>
+
+	<script>
+		$('#delete-media-button').click(function() {
+			areYouSure()
+			.then((result) => {
+				if (result.value) {
+					$('#delete-media-form').submit();
+				}
+			});
+		});
 	</script>
 @endpush

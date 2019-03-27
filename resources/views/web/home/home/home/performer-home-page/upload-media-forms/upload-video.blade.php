@@ -243,12 +243,8 @@ $(function () {
 
 resetVideoFormBtn.click(function(e) {
 	e.preventDefault();
-	Swal.fire({
-		title: '{{__('general/site.are_you_sure')}}',
-		type: 'question',
-		showCancelButton: true,
-		showConfirmButton: true,
-	}).then((result) => {
+	areYouSure()
+	.then((result) => {
 	  	if (result.value) {
 	  		emptyVideoFormFields();
 		    toastr.success('{{__('web/home/home.performer_video_form.success')}}');

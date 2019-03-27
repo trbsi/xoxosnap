@@ -152,12 +152,8 @@ $(function () {
 
 	resetStoryFormBtn.click(function(e) {
 		e.preventDefault();
-		Swal.fire({
-			title: '{{__('general/site.are_you_sure')}}',
-			type: 'question',
-			showCancelButton: true,
-			showConfirmButton: true,
-		}).then((result) => {
+		areYouSure()
+		.then((result) => {
 		  	if (result.value) {
 		  		location.reload();
 			}

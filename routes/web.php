@@ -42,6 +42,11 @@ Route::middleware('auth')->group(function () {
 		Route::get('', $ctl.'@get')->name('coins.get');
 	});
 
+	Route::prefix('media')->group(function () {
+		$ctl = '\App\Web\Media\Controllers\MediaController';
+		Route::post('delete', $ctl.'@delete')->name('media.delete');
+	});
+
 	Route::prefix('users')->group(function () {
 		Route::prefix('profiles')->group(function () {
 			Route::prefix('settings')->group(function () {

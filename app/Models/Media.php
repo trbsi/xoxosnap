@@ -77,6 +77,10 @@ class Media extends Model
 
 	public function getFileAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+
 		$year = date('Y', strtotime($this->created_at));
 		$month = date('m', strtotime($this->created_at));
 		return $this->getMediaPath($this->user_id, $year, $month, $value);
@@ -84,6 +88,10 @@ class Media extends Model
 
 	public function getThumbnailAttribute($value)
 	{
+		if ($this->noMutation) {
+			return $value;
+		}
+		
 		$year = date('Y', strtotime($this->created_at));
 		$month = date('m', strtotime($this->created_at));
 		return $this->getMediaPath($this->user_id, $year, $month, $value);

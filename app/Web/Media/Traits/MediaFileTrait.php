@@ -34,4 +34,9 @@ trait MediaFileTrait
     	$path = sprintf('%s%s/%s/%s', Media::MEDIA_PATH, $userId, $year, $month);
     	return $path;
     }
+
+    public function getMediaRelativePath(int $userId, string $year, string $month, string $fileName): string
+    {
+        return sprintf('%s%s/%s/%s/%s', Media::MEDIA_PATH, $userId, $year, $month, $fileName);
+    }
 }
