@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'gender' => ['required', 'integer', 'in:1,2,3'],
             'profile_type' => ['required', 'integer', 'in:1,2'],
             'username' => ['required', 'string', 'max:20', 'unique:users', sprintf('regex:%s',User::USERNAME_VALIDATION_REGEX)],
-            'name' => ['required_if:profile_type,1', 'string', 'max:100'],
+            'name' => ['required_if:profile_type,1', 'string', 'max:100', 'nullable'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -94,7 +94,7 @@ class RegisterController extends Controller
         $user = User::create([
             'profile_type' => $data['profile_type'],
             'username' => $data['username'],
-            'name' => $data['name'],
+            'name' => (User::USER_TYPE_PERFORMER === $data['profile_type']) ? $data['name'] : null,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

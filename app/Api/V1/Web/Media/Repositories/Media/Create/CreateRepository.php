@@ -44,6 +44,11 @@ class CreateRepository
             $hashtags = explode(',', $data['hashtags']);
             $media->hashtags()->attach($hashtags);
 
+            //increment number of videos
+            $profile = $user->profile;
+            $profile->noMutation = true;
+            $profile->increment('videos');
+
             DB::commit();
             return $media;
         } catch (Exception $e) {

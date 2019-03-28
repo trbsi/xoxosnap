@@ -10,13 +10,16 @@ trait NumberFormatterTrait
             // Anything less than a million
             $n_format = number_format($n);
         } elseif ($n < 1000000) {
-            $n_format = number_format($n / 1000, $precision) . 'K';
+            $result = floor($n / 1000);
+            $n_format = number_format($result, $precision) . 'K';
         } elseif ($n < 1000000000) {
             // Anything less than a billion
-            $n_format = number_format($n / 1000000, $precision) . 'M';
+            $result = floor($n / 1000000);
+            $n_format = number_format($result, $precision) . 'M';
         } else {
             // At least a billion
-            $n_format = number_format($n / 1000000000, $precision) . 'B';
+            $result = floor($n / 1000000000);
+            $n_format = number_format($result, $precision) . 'B';
         }
 
         return $n_format;

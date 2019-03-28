@@ -64,19 +64,19 @@
 								@endcomponent
                             </div>
                             <div class="author-content">
-                                <a href="#" class="h5 author-name">{{$performer->name}}</a>
-                                <div class="country">{{$performer->username}}</div>
+                                <a href="{{$performer->profile_url}}" class="h5 author-name">{{$performer->name}}</a>
+                                <a href="{{$performer->profile_url}}"><div class="country">{{$performer->username}}</div></a>
                             </div>
                         </div>
                         <div class="swiper-container" data-slide="fade">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="friend-count" data-swiper-parallax="-500">
-                                        <a href="#" class="friend-count-item">
+                                        <a href="javascript:;" class="friend-count-item">
                                             <div class="h6">{{$performer->profile->followers}}</div>
                                             <div class="title">{{__('web/home/home.guest.followers')}}</div>
                                         </a>
-                                        <a href="#" class="friend-count-item">
+                                        <a href="javascript:;" class="friend-count-item">
                                             <div class="h6">{{$performer->profile->videos}}</div>
                                             <div class="title">{{__('web/home/home.guest.videos')}}</div>
                                         </a>
@@ -98,13 +98,6 @@
                                                 -
                                                 @else
                                                 <a href="{{$performer->profile->website}}">{{__('web/home/home.guest.visit_website')}}</a>
-                                                @endif
-                                            </li>
-											<li><b>{{__('web/home/home.guest.business_email')}}:</b>
-                                                @if('-' === $performer->profile->business_email)
-                                                -
-                                                @else
-                                                <a href="mailto:{{$performer->profile->business_email}}">{{__('web/home/home.guest.send_email')}}</a>
                                                 @endif
                                             </li>
 										</ul>                                    	

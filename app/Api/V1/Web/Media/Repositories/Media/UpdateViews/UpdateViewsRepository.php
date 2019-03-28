@@ -11,6 +11,8 @@ class UpdateViewsRepository
         $media = Media::find($id);
         $media->noMutation = true;
         $media->increment('views');
+
+        $media = $media->fresh();
         return ['views' => $media->views];
     }
 }

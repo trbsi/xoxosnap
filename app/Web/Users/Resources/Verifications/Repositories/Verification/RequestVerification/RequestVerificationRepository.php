@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Exception;
+use DB;
 
 class RequestVerificationRepository
 {
     public function request(array $data)
     {
         try {
+            DB::beginTransaction();
             $user = Auth::user();
 
             $path = Storage::disk('local')->putFileAs('temp', $data['verification_photo'], rand().'.jpg');
@@ -25,7 +27,9 @@ class RequestVerificationRepository
 
             Mail::to(env('APP_OFFICIAL_EMAIL'))
                 ->send(new VerificationRequestedMail($user, $path));
+            DB::commit();
         } catch (Exception $e) {
+            DB::rollBack();
             throw $e;
         }
     }

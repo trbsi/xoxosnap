@@ -30,7 +30,7 @@ use App\Models\Media;
 				<div class="ui-block">
 					<div class="ui-block-title inline-items">
 						<div class="btn btn-control btn-control-small bg-orange">
-							<svg class="olymp-new"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-new"></use></svg>
+							<svg class="olymp-multimedia-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
 						</div>
 						<h6 class="title">{{__('web/home/explore.videos')}}</h6>
 					</div>

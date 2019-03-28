@@ -8,7 +8,6 @@ return [
 		'member_since' => 'Member since',
 		'gender' => 'Gender',
 		'website' => 'Website',
-		'business_email' => 'Business email',
 		'visit_website' => 'Visit website',
 		'send_email' => 'Send email',
 		'make_second_count' => 'Make Every Second Count',
@@ -51,7 +50,7 @@ return [
 		'not_connected_with_twitter_account' => 'You haven\'t logged in via your Twitter account.',
 		'add_video' => 'Add video',
 		'add_story' => 'Add story',
-		
+		'none_so_far' => 'None so far. Add videos and start earning!',		
 		'not_verified' => [
 			'profile_not_verified' => 'Please verify your profile',
 			'upload_stories_videos_verify' => 'In order to be able to upload stories and videos and earn money please complete the form below for verification &#128522;',

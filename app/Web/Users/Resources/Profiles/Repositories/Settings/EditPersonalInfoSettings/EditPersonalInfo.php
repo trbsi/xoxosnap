@@ -15,12 +15,15 @@ class EditPersonalInfo
 	{
 		if (isset($data['picture'])) {
 	        $picture = $data['picture'];
+
 	        //remove old picture
-	        unlink($this->getProfilePictureAbsolutePath($userProfile->user_id, $userProfile->getOriginal('picture')));
+	        $this->removeOldPicture($userProfile);
+
 	        //upload new picture
 	        $pictureName = sprintf('%s_%s.%s', time(), $userProfile->user_id, $picture->extension());
 	        $uploadPath = $this->getProfilePictureUploadPath($userProfile->user_id);
 	        Storage::putFileAs($uploadPath, $picture, $pictureName);
+
 	        //resize and save
 	        $absolutePicturePath = $this->getProfilePictureAbsolutePath($userProfile->user_id, $pictureName);
 	        $this->resizeOrientateAndLowerImageQuality($absolutePicturePath, 500);
@@ -37,5 +40,15 @@ class EditPersonalInfo
         $userProfile->instagram = $data['instagram'];
         $userProfile->twitter = $data['twitter'];
         $userProfile->save();
+	}
+
+	private function removeOldPicture(UserProfile $userProfile)
+	{
+
+		$absolutePath = $this->getProfilePictureAbsolutePath($userProfile->user_id, $userProfile->getOriginal('picture'));
+		if (file_exists($absolutePath)) {
+			$relativePath = $this->getProfilePictureRelativePath($userProfile->user_id, $userProfile->getOriginal('picture'));
+			Storage::delete($relativePath);
+		}
 	}
 }

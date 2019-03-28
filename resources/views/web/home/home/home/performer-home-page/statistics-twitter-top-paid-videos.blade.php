@@ -24,11 +24,15 @@
 				</div>
 
 				<div class="ui-block-content">
-					<ul class="list-group">
-					@foreach($mostBoughtVideos as $index => $video)
-						<li class="list-group-item">{{++$index}}. NC{{$video->earned_coins}} (${{$video->total_earned_money}}) - {{$video->title}}</li>
-					@endforeach
-					</ul>
+					@if(false === $mostBoughtVideos->isEmpty())
+						<ul class="list-group">
+						@foreach($mostBoughtVideos as $index => $video)
+							<li class="list-group-item">{{++$index}}. NC{{$video->earned_coins}} (${{$video->total_earned_money}}) - {{$video->title}}</li>
+						@endforeach
+						</ul>
+					@else
+						<h4 class="text-center">{{__('web/home/home.performer.none_so_far')}}</h4>
+					@endif
 				</div>
 
 			</div>

@@ -34,22 +34,30 @@ class SearchRepository
     {
     	/**
 		SELECT media.*,
-		MATCH(media.title) AGAINST("malen*" IN BOOLEAN MODE) AS mediaScore,
+		MATCH(media.title, media.description) AGAINST("malen*" IN BOOLEAN MODE) AS mediaScore,
 		MATCH(hashtags.name) AGAINST("malen*" IN BOOLEAN MODE) AS hashtagScore
 		FROM `media` 
 		LEFT JOIN media_hashtags ON (media_hashtags.media_id = media.id)
 		LEFT JOIN hashtags ON (hashtags.id = media_hashtags.hashtag_id)
 		WHERE
-		MATCH(media.title) AGAINST("malen*" IN BOOLEAN MODE)
-		OR 
-		MATCH(hashtags.name) AGAINST("malen*" IN BOOLEAN MODE)
+        (expires_at IS NULL OR expires_at >= ?)
+        AND
+        (
+    		MATCH(media.title, media.description) AGAINST("malen*" IN BOOLEAN MODE)
+    		OR 
+    		MATCH(hashtags.name) AGAINST("malen*" IN BOOLEAN MODE)
+        )
+        GROUP BY media.id
 		ORDER BY (mediaScore + hashtagScore) DESC
     	 */
     	$where = sprintf('
-    		MATCH(media.title, media.description) AGAINST("%1$s*" IN BOOLEAN MODE) 
-    		OR 
-    		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE
-    	)', $term);
+            (expires_at IS NULL OR expires_at >= "%2$s")
+            AND
+            (
+        		MATCH(media.title, media.description) AGAINST("%1$s*" IN BOOLEAN MODE) 
+        		OR 
+        		MATCH(hashtags.name) AGAINST("%1$s*" IN BOOLEAN MODE)
+            )', $term, date('Y-m-d H:i:s'));
 
     	$select = sprintf('
 		media.*,
@@ -62,6 +70,7 @@ class SearchRepository
     	->with(['user'])
     	->leftJoin('media_hashtags', 'media_hashtags.media_id', '=', 'media.id')
     	->leftJoin('hashtags', 'hashtags.id', '=', 'media_hashtags.hashtag_id')
+        ->groupBy(['media.id'])
     	->orderByRaw('mediaScore + hashtagScore', 'DESC')
 		->paginate(self::PAGINTION);
     }

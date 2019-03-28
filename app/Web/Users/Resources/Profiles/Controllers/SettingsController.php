@@ -69,7 +69,7 @@ class SettingsController extends Controller
     public function editPersonalInfoSettings(Request $request, EditPersonalInfo $editPersonalInfo)
     {
         $validator = Validator::make($request->all(), [
-            'birthday' => 'date',
+            'birthday' => 'nullable|date',
             'picture' => 'nullable|image',
             'description' => 'max:10000',
             'current_city' => 'present|nullable|string',

@@ -1,3 +1,7 @@
+<?php 
+use App\Models\User;
+?>
+
 @extends('layouts.auth.auth-form')
 @section('title', __('auth.join').' | '.config('app.name'))
 @section('form-section')
@@ -7,7 +11,7 @@
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" data-mh="log-tab">
             <div class="title h6">{{__('auth.register_to')}} {{config('app.name')}}</div>
-            <form class="content" method="POST" action="{{route('register')}}">
+            <form class="content" id="register-form" method="POST" action="{{route('register')}}">
                 @csrf
                 <div class="row">
                     <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -32,7 +36,14 @@
                         </div>                        
                         <div class="form-group label-floating" id="name_input_group">
                             <label class="control-label">{{__('auth.register_page.name')}}</label>
-                            <input name="name" id="name_input" class="form-control" placeholder="" type="text" value="{{ old('name') }}" required>
+                            <input
+                                name="name"
+                                class="form-control"
+                                placeholder=""
+                                type="text"
+                                value="{{ old('name') }}"
+                                required
+                                >
                             @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -74,7 +85,7 @@
                             </span>
                             @endif
                         </div>
-                        <div class="form-group label-floating is-select">
+                        <div class="form-group label-floating is-select" id="gender_input_group">
                             <label class="control-label">{{__('auth.register_page.gender')}}</label>
                             <select name="gender" class="selectpicker form-control" required>
                             @foreach ($genders as $genderKey => $genderValue)
@@ -91,7 +102,7 @@
                             <div class="checkbox">
                                 <label>
                                 <input name="agree_terms" type="checkbox" required>
-                                {{__('auth.register_page.i_accept')}} <a href="#" style="color: gray; text-decoration: underline;">{{__('auth.register_page.terms_and_conditions')}}</a> {{__('auth.register_page.of_website')}}
+                                {{__('auth.register_page.i_accept')}} <a href="{{route('terms-of-use')}}" style="color: gray; text-decoration: underline;" target="_blank">{{__('auth.register_page.terms_and_conditions')}}</a> {{__('auth.register_page.of_website')}}
                                 </label>
                                 @if ($errors->has('agree_terms'))
                                 <span class="invalid-feedback" role="alert">
@@ -113,16 +124,38 @@
 
 @push('javascript')
     <script type="text/javascript">
-        $('#profile_type_input').change(function() {
-            var name_input = $('#name_input');
-            var name_input_group = $('#name_input_group')
-            if ({{$userTypes['performer']}} == $(this).val()) {
-                name_input.attr('required', true);
-                name_input_group.show();
-            } else if ({{$userTypes['viewer']}} == $(this).val()) {
-                name_input.attr('viewer', false);
-                name_input_group.hide();
+        var nameInput = $('#register-form input[name="name"]');
+        var nameInputGroup = $('#name_input_group');
+        var genderInput = $('#register-form input[name="gender"]');
+        var genderInputGroup = $('#gender_input_group');
+        var profileTypeInput = $('#profile_type_input');
+        hideShowInputFieldsBasedOnProfileType(profileTypeInput.val());
+
+        profileTypeInput.change(function() {
+            hideShowInputFieldsBasedOnProfileType($(this).val());
+        });
+
+        $('#register-form button[type="submit"]').click(function(e) {
+            if ($('#register-form input[name="agree_terms"]:checked').length === 0) {
+                toastr.error('{{__('auth.register_page.agree_to_terms_of_use')}}');
             }
         });
+
+        function hideShowInputFieldsBasedOnProfileType(value)
+        {
+            if ({{$userTypes['performer']}} == value) {
+                nameInput.attr('required', true);
+                nameInputGroup.show();
+
+                genderInput.attr('required', true);
+                genderInputGroup.show();
+            } else if ({{$userTypes['viewer']}} == value) {
+                nameInput.attr('required', false);
+                nameInputGroup.hide();
+ 
+                genderInput.attr('required', false);
+                genderInputGroup.hide();
+           }
+        }
     </script>
 @endpush

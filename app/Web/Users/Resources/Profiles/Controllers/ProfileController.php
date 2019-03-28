@@ -65,7 +65,7 @@ class ProfileController extends Controller
     public function userSingleVideo($username, $slug, GetOneMediaRepository $getOneVideoRepository)
     {
         $slugExplode = explode('-', $slug);
-        $videoId = (int) end($slugExplode); 
+        $videoId = (int) end($slugExplode);
         $media = $getOneVideoRepository->getOneVideo($videoId, Auth::id());
 
         if ($media->user_id !== $this->user->id) {

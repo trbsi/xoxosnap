@@ -83,9 +83,9 @@ class UsersSeeder extends Seeder
                 'business_email' => (rand(0,1) % 2 === 0) ? sprintf('%s@businessmail.com', $username) : null,
                 //'badge' => (rand(0,1) % 2 === 0) ? 1 : null,
                 'website' => (rand(0,1) % 2 === 0) ? 'http://www.mysite.com' : null,
-                'facebook' => (rand(0,1) % 2 === 0) ? 'https://www.facebook.com/u/name' : null,
-                'instagram' => (rand(0,1) % 2 === 0) ? 'https://www.instagram.com/u/name' : null,
-                'twitter' => (rand(0,1) % 2 === 0) ? 'https://www.twitter.com/u/name' : null,
+                'facebook' => (rand(0,1) % 2 === 0) ? 'name' : null,
+                'instagram' => (rand(0,1) % 2 === 0) ? 'name' : null,
+                'twitter' => (rand(0,1) % 2 === 0) ? 'name' : null,
             ];
 
             $user = User::create($userData);

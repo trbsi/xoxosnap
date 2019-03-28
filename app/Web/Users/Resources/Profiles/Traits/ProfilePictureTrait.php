@@ -22,6 +22,12 @@ trait ProfilePictureTrait
         return $path;
     }
 
+    public function getProfilePictureRelativePath(int $userId, string $picture): string
+    {
+        $path = sprintf('%s%d/%s', UserProfile::USER_PICTURE_PATH, $userId, $picture);
+        return $path;
+    }
+
     public function getProfilePictureUploadPath(int $userId): string
     {
         //->/user/profile/8

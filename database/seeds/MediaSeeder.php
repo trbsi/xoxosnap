@@ -26,7 +26,7 @@ class MediaSeeder extends Seeder
 					'title' => $title,
 					'description' => 'Someone seems to enjoy the snow!Greetings from snowy Finland❄❄ #snow #test #lol #snap #porn',
 					'file' => $fileName,
-					'cost' => 5,
+					'cost' => (rand(0,1) % 2 === 0) ? 5 : 0,
 					'expires_at' => $this->calculateExpiresAt(),
 					'likes' => 123456,
 					'views' => 123456,

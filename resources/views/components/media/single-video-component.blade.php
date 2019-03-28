@@ -76,7 +76,7 @@
                                 <span>{{$media->likes}}</span>
                             </a>
                             <div class="comments-shared">
-                                <a href="#" class="post-add-icon inline-items">
+                                <a href="javascript:;" class="post-add-icon inline-items">
                                     <svg class="olymp-icon-eye">
                                         <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-icon-eye"></use>
                                     </svg>

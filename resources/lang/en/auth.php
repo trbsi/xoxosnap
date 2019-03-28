@@ -62,6 +62,7 @@ return [
             <li>- Browse PornSnap</li>
         </ul>
         ',
+        'agree_to_terms_of_use' => 'You have to agree to the terms of use',
     ],
     'login_page' => [
         'login_to_your_account' => 'Login to your account',
