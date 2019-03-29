@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Web\Media\Events\PerformerAddedNewMediaEvent;
+use App\Web\Users\Events\ViewerFollowedPerformerEvent;
+use App\Web\Users\Listeners\CreateNotificationForPerformerOnNewFollowerListener;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -38,7 +41,13 @@ class EventServiceProvider extends ServiceProvider
             ],
             MediaPurchasedEvent::class => [
                 CreateNotificationForPerformerListener::class
-            ]
+            ],
+            ViewerFollowedPerformerEvent::class => [
+                CreateNotificationForPerformerOnNewFollowerListener::class,
+            ],
+            PerformerAddedNewMediaEvent::class => [
+
+            ],
         ];
 
         parent::boot();

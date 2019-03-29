@@ -16,7 +16,9 @@ class GetNotificationsRepository
     		->orderBy('id', 'DESC')
    			;
         if (null !== $type) {
-            $notifications = $notifications->where('notification_type', $type);
+            $notifications->where('notification_type', $type);
+        } else {
+            $notifications->where('notification_type', '!=', Notification::TYPE_PERFORMER_NEW_FOLLOWER);
         }
 
         return $notifications->paginate(6);

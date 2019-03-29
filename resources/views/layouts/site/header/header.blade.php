@@ -260,7 +260,9 @@ use App\Models\User;
             var notificationText = null;
             var isReadClass = '';
             var notificationsContainer = $('.notifications-container');
+
             $.each(data.data, function(index, notificationItem) {
+
                 switch (notificationItem.by_user.profile_type) {
                     case <?=User::USER_TYPE_PERFORMER?>:
                         username = notificationItem.by_user.name;
@@ -348,6 +350,7 @@ use App\Models\User;
 
                 $('.notification-list-followers').append(content);
 
+                //handle scrolling on responsive
                 if (0 === notificationsContainer.prop('scrollHeight')) {
                     notificationsContainer = $('.followers-notifications-container-responsive');
                 }

@@ -175,7 +175,7 @@ use App\Models\User;
             <form class="search-bar w-search notification-list friend-requests" method="GET" action="{{route('search')}}">
                 <input type="hidden" name="type" value="{{request()->query('type') ?? 'users'}}">
                 <div class="form-group with-button">
-                    <input class="form-control js-user-search" name="term" placeholder="{{__('general/header.search_placeholder')}}" type="text" value="{{request()->query('term') ?? ''}}">
+                    <input class="form-control" name="term" placeholder="{{__('general/header.search_placeholder')}}" type="text" value="{{request()->query('term') ?? ''}}">
                 </div>
             </form>
         </div>

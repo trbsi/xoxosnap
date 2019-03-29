@@ -7,24 +7,30 @@ use Illuminate\Support\Facades\Auth;
 
 class MarkAllAsReadRepository
 {
-	public function markAllAsRead(?int $type): void
+    private $notification;
+
+    public function __construct(Notification $notification)
+    {
+        $this->notification = $notification;
+    }
+
+    public function markAllAsRead(?int $type): void
 	{
 		$user = Auth::user();
 
 		//this is seperate notification box on frontend, update only those notifications
 		if (Notification::TYPE_PERFORMER_NEW_FOLLOWER === $type) {
-			Notification::where('notification_type', $type)
-			->where('user_id', Auth::id())
-			->update(['is_read' => 1]);
+            $this->notification = $this->notification->where('notification_type', $type);
 
 			$user->notificationCount()->update(['new_followers' => 0]);
 		} else {
 			//update all notifications of this user, except for "new followers" notifications
-			Notification::where('notification_type', '!=', Notification::TYPE_PERFORMER_NEW_FOLLOWER)
-			->where('user_id', Auth::id())
-			->update(['is_read' => 1]);
-
+            $this->notification = $this->notification->where('notification_type', '!=', Notification::TYPE_PERFORMER_NEW_FOLLOWER);
 			$user->notificationCount()->update(['new_notifications' => 0]);
 		}
+
+        $this->notification = $this->notification
+            ->where('user_id', $user->id)
+            ->update(['is_read' => 1]);
 	}
 }
