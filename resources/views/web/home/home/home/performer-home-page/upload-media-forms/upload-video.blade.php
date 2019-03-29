@@ -2,7 +2,7 @@
 use App\Models\Media;
 ?>
 
-<div class="tab-pane {{(null === request()->query('section')) ? 'active' : ''}}" id="video" role="tabpanel" aria-expanded="{{(null === request()->query('section')) ? 'true' : 'false'}}">
+<div class="tab-pane {{(null === request()->query('section')) ? 'active' : ''}}" id="video" role="tabpanel" aria-expanded="true">
     <form enctype="multipart/form-data" id="video-form" method="POST">
     	<input type="hidden" id="thumbnail" name="thumbnail">
     	<div class="row" style="padding: 15px;">

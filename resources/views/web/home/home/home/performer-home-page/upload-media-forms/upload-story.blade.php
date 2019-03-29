@@ -2,7 +2,7 @@
 use App\Models\Story;
 ?>
 
-<div class="tab-pane {{('add-story' === request()->query('section')) ? 'active' : ''}}" id="story" role="tabpanel" aria-expanded="{{('add-story' === request()->query('section')) ? 'true' : 'false'}}">
+<div class="tab-pane {{('add-story' === request()->query('section')) ? 'active' : ''}}" id="story" role="tabpanel" aria-expanded="true">
     <form id="story-form">
     	<div class="row" style="padding: 15px;">
 

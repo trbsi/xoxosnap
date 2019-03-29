@@ -12,7 +12,7 @@
                                data-toggle="tab"
                                href="#video"
                                role="tab"
-                               aria-expanded="{{(null === request()->query('section')) ? 'true' : 'false'}}">
+                               aria-expanded="true">
 
                                 <span>{{__('web/home/home.performer.add_video')}}</span>
                             </a>
@@ -22,7 +22,7 @@
                                data-toggle="tab"
                                href="#story"
                                role="tab"
-                               aria-expanded="{{('add-story' === request()->query('section')) ? 'true' : 'false'}}">
+                               aria-expanded="true">
                                 <span>{{__('web/home/home.performer.add_story')}}</span>
                             </a>
                         </li>
