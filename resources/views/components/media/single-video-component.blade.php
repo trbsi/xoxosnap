@@ -69,11 +69,11 @@
                         <div id="media-description">{!! $media->description !!}</div>
                         <div class="post-additional-info inline-items">
 							<img src="/img/loading_circle.gif" style="display: none;" id="likes-loading">
-                            <a href="javascript:;" id="likes-icon" class="post-add-icon inline-items" data-video-id="{{$media->id}}" style="{{(true === $media->liked) ? 'fill: #c2c5d9; color: #c2c5d9' : ''}}">
+							<a href="javascript:;" id="likes-icon" class="post-add-icon inline-items" data-video-id="{{$media->id}}" style="{{(true === $media->user_liked) ? 'fill: #FF5E3A; color: #FF5E3A' : ''}}">
                                 <svg class="olymp-heart-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
                                 </svg>
-                                <span>{{$media->likes}}</span>
+                                <span id="likes-count">{{$media->likes}}</span>
                             </a>
                             <div class="comments-shared">
                                 <a href="javascript:;" class="post-add-icon inline-items">

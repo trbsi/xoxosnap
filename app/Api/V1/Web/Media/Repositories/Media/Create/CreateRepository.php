@@ -2,6 +2,7 @@
 
 namespace App\Api\V1\Web\Media\Repositories\Media\Create;
 
+use App\Web\Media\Events\PerformerAddedNewMediaEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Media;
@@ -48,6 +49,8 @@ class CreateRepository
             $profile = $user->profile;
             $profile->noMutation = true;
             $profile->increment('videos');
+
+            event(new PerformerAddedNewMediaEvent($user, $media));
 
             DB::commit();
             return $media;

@@ -12,7 +12,7 @@
         .done(function(data) {
             likesLoading.hide();
             likesIcon.show();
-            $('#likes').text(data.likes); 
+            $('#likes-count').text(data.likes);
             if (true === data.liked) {
                 $(globalVideoElement).data('liked', 1);
                 color = '#FF5E3A';

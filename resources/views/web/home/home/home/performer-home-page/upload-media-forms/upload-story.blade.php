@@ -2,7 +2,7 @@
 use App\Models\Story;
 ?>
 
-<div class="tab-pane" id="story" role="tabpanel" aria-expanded="true">
+<div class="tab-pane {{('add-story' === request()->query('section')) ? 'active' : ''}}" id="story" role="tabpanel" aria-expanded="{{('add-story' === request()->query('section')) ? 'true' : 'false'}}">
     <form id="story-form">
     	<div class="row" style="padding: 15px;">
 
@@ -155,7 +155,7 @@ $(function () {
 		areYouSure()
 		.then((result) => {
 		  	if (result.value) {
-		  		location.reload();
+            	window.location.href = '{{route('home', ['section' => 'add-story'])}}';
 			}
 		});
 

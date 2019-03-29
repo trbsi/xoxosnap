@@ -58,7 +58,7 @@
                                 <svg class="olymp-heart-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
                                 </svg>
-                                <span id="likes">148</span>
+                                <span id="likes-count">148</span>
                             </a>
                             <div class="comments-shared">
                                 <a href="javascript:;" class="post-add-icon inline-items">

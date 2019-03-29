@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Repositories\PerformerFollowers;
+namespace App\Web\Users\Repositories\PerformerFollowers;
 
 use App\Models\User;
 

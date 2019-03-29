@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Web\Users\Listeners;
-
+namespace App\Web\Notifications\Listeners;
 
 use App\Models\Notification;
 use App\Web\Users\Events\ViewerFollowedPerformerEvent;

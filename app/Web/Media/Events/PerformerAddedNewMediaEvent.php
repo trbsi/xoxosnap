@@ -2,6 +2,7 @@
 
 namespace App\Web\Media\Events;
 
+use App\Models\Media;
 use App\Models\User;
 use Illuminate\Queue\SerializesModels;
 

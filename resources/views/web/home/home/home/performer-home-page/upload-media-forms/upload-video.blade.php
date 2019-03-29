@@ -2,7 +2,7 @@
 use App\Models\Media;
 ?>
 
-<div class="tab-pane active" id="video" role="tabpanel" aria-expanded="true">
+<div class="tab-pane {{(null === request()->query('section')) ? 'active' : ''}}" id="video" role="tabpanel" aria-expanded="{{(null === request()->query('section')) ? 'true' : 'false'}}">
     <form enctype="multipart/form-data" id="video-form" method="POST">
     	<input type="hidden" id="thumbnail" name="thumbnail">
     	<div class="row" style="padding: 15px;">
@@ -246,22 +246,11 @@ resetVideoFormBtn.click(function(e) {
 	areYouSure()
 	.then((result) => {
 	  	if (result.value) {
-	  		emptyVideoFormFields();
-		    toastr.success('{{__('web/home/home.performer_video_form.success')}}');
+        window.location.href = '{{route('home')}}';
 		}
 	});
 
 });
-
-function emptyVideoFormFields()
-{
-	var form = $('#video-form');
-    form.find("input[type=text], input[type=file], textarea, input[type=number]").val("");
-    $('#video-thumbnail-output').empty();
-    $('#preview-video source').attr('src', '');
-    $('#preview-video')[0].load();
-    $('#video-form-media-to-upload').empty();
-}
 
 function validateVideoFormInput()
 {

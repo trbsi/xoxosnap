@@ -8,13 +8,21 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active inline-items" data-toggle="tab" href="#video" role="tab" aria-expanded="true">
+                            <a class="nav-link inline-items {{(null === request()->query('section')) ? 'active' : ''}}"
+                               data-toggle="tab"
+                               href="#video"
+                               role="tab"
+                               aria-expanded="{{(null === request()->query('section')) ? 'true' : 'false'}}">
 
                                 <span>{{__('web/home/home.performer.add_video')}}</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link inline-items" data-toggle="tab" href="#story" role="tab" aria-expanded="false">
+                            <a class="nav-link inline-items {{('add-story' === request()->query('section')) ? 'active' : ''}}"
+                               data-toggle="tab"
+                               href="#story"
+                               role="tab"
+                               aria-expanded="{{('add-story' === request()->query('section')) ? 'true' : 'false'}}">
                                 <span>{{__('web/home/home.performer.add_story')}}</span>
                             </a>
                         </li>
