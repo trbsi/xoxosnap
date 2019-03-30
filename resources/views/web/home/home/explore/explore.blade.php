@@ -6,22 +6,25 @@ use App\Models\Media;
 @section('title', 'Explore | '.config('app.name'))
 
 @section('body')
-	<div class="container">
-		<div class="row">
-			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="ui-block">
-					<div class="ui-block-title inline-items">
-						<div class="btn btn-control btn-control-small bg-orange">
-							<svg class="olymp-new"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-new"></use></svg>
+	
+	@if (false === empty(json_decode($stories)))
+		<div class="container">
+			<div class="row">
+				<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="ui-block">
+						<div class="ui-block-title inline-items">
+							<div class="btn btn-control btn-control-small bg-orange">
+								<svg class="olymp-new"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-new"></use></svg>
+							</div>
+							<h6 class="title">{{__('web/home/explore.recent_stories')}}</h6>
 						</div>
-						<h6 class="title">{{__('web/home/explore.recent_stories')}}</h6>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-    @component('components.media.stories-component', ['stories' => $stories])
-    @endcomponent
+	    @component('components.media.stories-component', ['stories' => $stories])
+	    @endcomponent
+    @endif
 
     <br>
 	<div class="container">

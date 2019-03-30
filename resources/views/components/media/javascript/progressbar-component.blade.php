@@ -1,5 +1,5 @@
 <script type="text/javascript">
-$('{{$cssClass}}').each(function() {
+$('{{($cssClass) ?? '.progressbar-continer-vid'}}').each(function() {
         var bar = new ProgressBar.Circle(this, {
             strokeWidth: 10,
             easing: 'easeInOut',
@@ -10,7 +10,7 @@ $('{{$cssClass}}').each(function() {
             svgStyle: null
         });
 
-        bar.set($(this).data('current-state'))
+        bar.set(-$(this).data('current-state')); //"-" so animation goes clockwise
         bar.animate(0);
 });
 </script>

@@ -21,7 +21,7 @@
                         svgStyle: null
                     });
 
-                    bar.set($(this).data('current-state'))
+                    bar.set(-$(this).data('current-state')); //"-" so animation goes clockwise
                     bar.animate(0);
                 }); 
             }

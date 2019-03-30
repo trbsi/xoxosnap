@@ -90,7 +90,6 @@ $(function () {
         url: '{{route('story.create')}}',
         beforeSend: function(xhr, data) {
 	        xhr.setRequestHeader("X-CSRF-TOKEN", '{{ csrf_token() }}');
-	        data.formData = {x:23};
 	    },
         add: function (e, data) {
         	if (!(/(\.|\/)(jpe?g|png|mp4)$/i).test(data.files[0].name)) {
@@ -106,7 +105,7 @@ $(function () {
             toastr.success('{{__('web/home/home.performer_story_form.story_added')}}');
 
             setTimeout(function(){
-	            window.location.href = '{{route('home')}}'; 
+	            window.location.href = '{{$user->profile_url}}'; 
 	        }, 2000);
             
         },

@@ -61,11 +61,16 @@
                             </div>
                             @endif
                         </div>
-                        <p>
-                            @foreach ($media->hashtags as $hashtag)
-                            <a href="{{route('search', ['type' => SearchConstants::SEARCH_MEDIA, 'term' => $hashtag->name])}}">#{{$hashtag->name}}</a>
-                            @endforeach
-                        </p>
+						<div>
+							@if(null !== $media->expires_at)
+								<div class="progressbar-continer-vid" data-current-state="{{$media->progress_bar_current_state}}" data-duration="{{$media->progress_bar_duration}}"></div>
+							@endif
+							<p>
+								@foreach ($media->hashtags as $hashtag)
+								<a href="{{route('search', ['type' => SearchConstants::SEARCH_MEDIA, 'term' => $hashtag->name])}}">#{{$hashtag->name}}</a>
+								@endforeach
+							</p>
+						</div>
                         <div id="media-description">{!! $media->description !!}</div>
                         <div class="post-additional-info inline-items">
 							<img src="/img/loading_circle.gif" style="display: none;" id="likes-loading">
@@ -190,6 +195,10 @@
 @push('javascript')
     @component('components.media.javascript.like-media-component')
     @endcomponent
+
+	@component('components.media.javascript.progressbar-component')
+	@endcomponent
+
 
 	<script>
 		$('#media-description').perfectScrollbar();
