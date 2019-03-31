@@ -63,6 +63,14 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{route('web.external.discord')}}">
+						<svg class="olymp-badge-icon">
+							<use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-badge-icon"></use>
+						</svg>
+						<span>{{config('app.name')}} Discord</span>
+					</a>
+				</li>
+				<li>
 					<a href="javascript:;" class="logout-link">
 						<svg class="olymp-logout-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 

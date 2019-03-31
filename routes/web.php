@@ -69,4 +69,10 @@ Route::middleware('auth')->group(function () {
 			Route::post('request-verification', $ctl.'@requestVerification')->name('web.user.verification.request-verification');
 		});
 	});
+
+    Route::prefix('external')->group(function () {
+        $ctl = '\App\Web\External\Resources\Discord\Controllers\DiscordController';
+        Route::get('discord', $ctl.'@showDiscord')->name('web.external.discord');
+    });
+
 });

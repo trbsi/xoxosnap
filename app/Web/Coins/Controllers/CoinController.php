@@ -12,7 +12,7 @@ class CoinController extends Controller
 {
     public function showBuyCoinsForm(Request $request)
     {   
-        return view('web.coins.coin.show-buy-coins-form');
+        return view('web.coins.coin.show-buy-coins-form.show-buy-coins-form');
     }
 
     public function processCoinsOrder(Request $request)
