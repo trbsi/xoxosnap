@@ -10,7 +10,7 @@
 			
 			<!-- Personal Account Settings Form -->
 			
-			<form method="POST" action="{{route('user.profile.settings.edit-personal-info-settings')}}" enctype="multipart/form-data"> 
+			<form method="POST" action="{{route('web.user.profile.settings.edit-personal-info-settings')}}" enctype="multipart/form-data">
 				@csrf
 				<div class="row">
 			

@@ -9,7 +9,7 @@ use App\Models\User;
         <a href="/"><h6>{{config('app.name')}}</h6></a>
     </div>
     <div class="header-content-wrapper">
-        <form class="search-bar w-search notification-list friend-requests" method="GET" action="{{route('search')}}">
+        <form class="search-bar w-search notification-list friend-requests" method="GET" action="{{route('web.search')}}">
             <input type="hidden" name="type" value="{{request()->query('type') ?? 'users'}}">
             <div class="form-group with-button">
                 <input class="form-control" name="term" placeholder="{{__('general/header.search_placeholder')}}" type="text" value="{{request()->query('term') ?? ''}}">
@@ -23,7 +23,7 @@ use App\Models\User;
         <div class="control-block">
             <div class="control-icon more has-items">
                 <svg class="olymp-explore-icon">
-                    <a href="{{route('explore')}}">
+                    <a href="{{route('web.explore')}}">
                         <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-explore-icon"></use>    
                     </a>
                 </svg>
@@ -170,7 +170,7 @@ use App\Models\User;
                             
                             <ul class="account-settings">
                                 <li>
-                                    <a href="{{route('user.profile.settings.account-settings')}}">
+                                    <a href="{{route('web.user.profile.settings.account-settings')}}">
                                         <svg class="olymp-menu-icon">
                                             <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
                                         </svg>
@@ -214,12 +214,12 @@ use App\Models\User;
                             </div>
                             <ul>
                                 <li>
-                                    <a href="{{route('terms-of-use')}}">
+                                    <a href="{{route('web.terms-of-use')}}">
                                     <span>{{__('general/legal.terms_of_use')}}</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('privacy-policy')}}">
+                                    <a href="{{route('web.privacy-policy')}}">
                                     <span>{{__('general/legal.privacy_policy')}}</span>
                                     </a>
                                 </li>
@@ -227,7 +227,7 @@ use App\Models\User;
                         </div>
                     </div>
                 </div>
-                <a href="@if (null !== $userComposerUsername) {{route('user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
+                <a href="@if (null !== $userComposerUsername) {{route('web.user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
                     <div class="author-title">
                         {{$userComposerName}}
                         <svg class="olymp-dropdown-arrow-icon">
@@ -253,7 +253,7 @@ use App\Models\User;
         viewAllNotificationsButton.hide();
         loadMoreNotificationsLoading.show();
 
-        var response = ajax('{{route('notifications.get')}}', 'GET', {page: notificationsPage});
+        var response = ajax('{{route('api.notifications.get')}}', 'GET', {page: notificationsPage});
         response
         .done(function(data) {
             var username = null;
@@ -326,7 +326,7 @@ use App\Models\User;
         viewAllNotificationsButton.hide();
         loadMoreFollowersLoading.show();
 
-        var response = ajax('{{route('notifications.get', ['type' => Notification::TYPE_PERFORMER_NEW_FOLLOWER])}}', 'GET', {page: notificationsPage});
+        var response = ajax('{{route('api.notifications.get', ['type' => Notification::TYPE_PERFORMER_NEW_FOLLOWER])}}', 'GET', {page: notificationsPage});
         response
         .done(function(data) {
             var isReadClass = '';
@@ -379,7 +379,7 @@ use App\Models\User;
         markAsReadLoading.show();
 
         var dataToPost = {type: <?=Notification::TYPE_PERFORMER_NEW_FOLLOWER?>};
-        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', dataToPost);
+        var response = ajax('{{route('api.notifications.mark-all-as-read')}}', 'POST', dataToPost);
         response
         .done(function(data) {
             $('.notification-list-followers li').removeClass('un-read');
@@ -398,7 +398,7 @@ use App\Models\User;
         markAsReadButton.hide();
         markAsReadLoading.show();
 
-        var response = ajax('{{route('notifications.mark-all-as-read')}}', 'POST', {});
+        var response = ajax('{{route('api.notifications.mark-all-as-read')}}', 'POST', {});
         response
         .done(function(data) {
             $('.notification-list-notifications li').removeClass('un-read');

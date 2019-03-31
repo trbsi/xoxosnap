@@ -46,7 +46,7 @@
                                 <svg class="olymp-three-dots-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
 								</svg>
-								<form style="display:none;" id="delete-media-form" method="POST" action="{{route('media.delete')}}">
+								<form style="display:none;" id="delete-media-form" method="POST" action="{{route('web.media.delete')}}">
 									@csrf
 									<input name="id" value="{{$media->id}}">
 								</form>
@@ -67,7 +67,7 @@
 							@endif
 							<p>
 								@foreach ($media->hashtags as $hashtag)
-								<a href="{{route('search', ['type' => SearchConstants::SEARCH_MEDIA, 'term' => $hashtag->name])}}">#{{$hashtag->name}}</a>
+								<a href="{{route('web.search', ['type' => SearchConstants::SEARCH_MEDIA, 'term' => $hashtag->name])}}">#{{$hashtag->name}}</a>
 								@endforeach
 							</p>
 						</div>
@@ -206,7 +206,7 @@
 		var mediaDialog;
 
 		$('.features-video .play-video').click(function() {
-			var response = ajax('{{route('media.one', ['id' => $media->id])}}', 'GET', {});
+			var response = ajax('{{route('api.media.one', ['id' => $media->id])}}', 'GET', {});
 			response
 			.done(function(data) {
 				var mediaData = data;
@@ -258,7 +258,7 @@
 			});
 
             <?php //update views ?>
-            var response = ajax('{{route('media.update-views')}}', 'POST', {id: {{$media->id}}})
+            var response = ajax('{{route('api.media.update-views')}}', 'POST', {id: {{$media->id}}})
             response
 			.done(function(data) {
 				$('.features-video #views').text(data.views);
@@ -269,7 +269,7 @@
 		function buySingleMedia(mediaData)
 		{
 			<?php  //take coins from user ?>
-			var response = ajax('{{route('coins.purchase-media', ['type' => 'video'])}}', 'PATCH', {id: {{$media->id}}});
+			var response = ajax('{{route('api.coins.purchase-media', ['type' => 'video'])}}', 'PATCH', {id: {{$media->id}}});
 			response
 			.done(function(coinsData) {
 				$('.coins-badge').text(coinsData.coins);
@@ -287,7 +287,7 @@
 				})
 				.then((resultBuyCoins) => {
 					if (true === resultBuyCoins.value) {
-						window.location = '{{route('coins.show-buy-coins-form')}}';
+						window.location = '{{route('web.coins.show-buy-coins-form')}}';
 					}
 				});
 			});

@@ -79,10 +79,10 @@ class User extends Authenticatable
     public function getProfileUrlAttribute()
     {
         if (User::USER_TYPE_VIEWER === $this->profile_type) {
-            return route('user.about', ['username' => $this->username]);
+            return route('web.user.about', ['username' => $this->username]);
         }
 
-        return route('user.profile', ['username' => $this->username]);
+        return route('web.user.profile', ['username' => $this->username]);
     }
 
     public function profile()

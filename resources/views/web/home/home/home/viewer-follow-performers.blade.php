@@ -112,7 +112,7 @@
         loadingCircle.show();
 
         var dataToPost = {userId: $(this).data('user-id')};
-        var response = ajax('{{route('users.follow-user')}}', 'POST', dataToPost);
+        var response = ajax('{{route('api.users.follow-user')}}', 'POST', dataToPost);
     
         response
         .done(function(data) {

@@ -31,7 +31,7 @@
 						])
 						@endcomponent
 					</div>
-					<a href="@if (null !== $userComposerUsername) {{route('user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
+					<a href="@if (null !== $userComposerUsername) {{route('web.user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
 						<div class="author-title">
 							{{$userComposerName}} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 						</div>
@@ -56,7 +56,7 @@
 
 			<ul class="account-settings">
 				<li>
-					<a href="{{route('user.profile.settings.account-settings')}}">
+					<a href="{{route('web.user.profile.settings.account-settings')}}">
 						<svg class="olymp-menu-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
 						<span>{{__('general/user-menu.profile_settings')}}</span>
@@ -99,12 +99,12 @@
 
 			<ul class="about-olympus">
 				<li>
-                    <a href="{{route('terms-of-use')}}">
+                    <a href="{{route('web.terms-of-use')}}">
                     <span>{{__('general/legal.terms_of_use')}}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('privacy-policy')}}">
+                    <a href="{{route('web.privacy-policy')}}">
                     <span>{{__('general/legal.privacy_policy')}}</span>
                     </a>
                 </li>

@@ -176,7 +176,7 @@ class Media extends Model
 
 	public function getUrlAttribute()
 	{
-		return route('user.media-share', 
+		return route('web.user.single-video',
 		[	
 			'username' => $this->user->username,
 			'slug' => $this->slug,

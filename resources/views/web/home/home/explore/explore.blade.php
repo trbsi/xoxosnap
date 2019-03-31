@@ -41,16 +41,16 @@ use App\Models\Media;
 			</div>
 			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="btn-group btn-group-justified grouped-buttons-full-width" role="group" style="display: flex;">
-					<a href="{{route('explore', ['type' => Media::ORDER_TYPE_RECENT])}}" class="btn {{(Media::ORDER_TYPE_RECENT === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
+					<a href="{{route('web.explore', ['type' => Media::ORDER_TYPE_RECENT])}}" class="btn {{(Media::ORDER_TYPE_RECENT === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
 						{{__('web/home/explore.recent_videos')}}
 					</a>
-					<a href="{{route('explore', ['type' => Media::ORDER_TYPE_ENDING_SOON])}}" class="btn {{(Media::ORDER_TYPE_ENDING_SOON === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
+					<a href="{{route('web.explore', ['type' => Media::ORDER_TYPE_ENDING_SOON])}}" class="btn {{(Media::ORDER_TYPE_ENDING_SOON === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
 						{{__('web/home/explore.ending_soon_videos')}}
 					</a>
-					<a href="{{route('explore', ['type' => Media::ORDER_TYPE_MOST_VIEWED])}}" class="btn {{(Media::ORDER_TYPE_MOST_VIEWED === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
+					<a href="{{route('web.explore', ['type' => Media::ORDER_TYPE_MOST_VIEWED])}}" class="btn {{(Media::ORDER_TYPE_MOST_VIEWED === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
 						{{__('web/home/explore.most_viewed_videos')}}
 					</a>
-					<a href="{{route('explore', ['type' => Media::ORDER_TYPE_MOST_PAID])}}" class="btn {{(Media::ORDER_TYPE_MOST_PAID === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
+					<a href="{{route('web.explore', ['type' => Media::ORDER_TYPE_MOST_PAID])}}" class="btn {{(Media::ORDER_TYPE_MOST_PAID === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
 						{{__('web/home/explore.most_paid_videos')}}
 					</a>
 				</div>

@@ -18,7 +18,7 @@
                                         <a href="{{$user->profile_url}}">{{__('web/users/resources/profile.snaps')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('user.about', ['username' => $user->username])}}">{{__('web/users/resources/profile.about')}}</a>
+                                        <a href="{{route('web.user.about', ['username' => $user->username])}}">{{__('web/users/resources/profile.about')}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -76,13 +76,13 @@
                             @endif
 
                             @if(null !== $authUser && $user->id === $authUser->id)
-                            <div class="btn btn-control bg-primary more" onclick="window.location='{{route('user.profile.settings.account-settings')}}'">
+                            <div class="btn btn-control bg-primary more" onclick="window.location='{{route('web.user.profile.settings.account-settings')}}'">
                                 <svg class="olymp-settings-icon">
                                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-settings-icon"></use>
                                 </svg>
                                 <ul class="more-dropdown more-with-triangle triangle-top-right">
                                     <li>
-                                        <a href="{{route('user.profile.settings.account-settings')}}">{{__('web/users/resources/profile.account_settings')}}</a>
+                                        <a href="{{route('web.user.profile.settings.account-settings')}}">{{__('web/users/resources/profile.account_settings')}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -131,7 +131,7 @@
         loadingCircle.show();
 
         var dataToPost = {userId: {{$user->id}}};
-        var response = ajax('{{route('users.follow-user')}}', 'POST', dataToPost);
+        var response = ajax('{{route('api.users.follow-user')}}', 'POST', dataToPost);
     
         response
         .done(function(data) {

@@ -22,7 +22,7 @@ class MediaController extends Controller
             $user = Auth::user();
             $deleteMediaRepository->delete($data['id']);
             $request->session()->flash('success', __('web/media/media.delete.video_deleted'));
-            return redirect()->route('user.profile', ['username' => $user->username]);
+            return redirect()->route('web.user.profile', ['username' => $user->username]);
         } catch (Exception $e) {
             abort(403);
         }

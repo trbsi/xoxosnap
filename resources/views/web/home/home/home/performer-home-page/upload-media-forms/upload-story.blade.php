@@ -87,7 +87,7 @@ $(function () {
         dataType: 'json',
         acceptFileTypes: /(\.|\/)(jpe?g|png|mp4)$/i,
         autoUpload: false,
-        url: '{{route('story.create')}}',
+        url: '{{route('api.story.create')}}',
         beforeSend: function(xhr, data) {
 	        xhr.setRequestHeader("X-CSRF-TOKEN", '{{ csrf_token() }}');
 	    },
@@ -154,7 +154,7 @@ $(function () {
 		areYouSure()
 		.then((result) => {
 		  	if (result.value) {
-            	window.location.href = '{{route('home', ['section' => 'add-story'])}}';
+            	window.location.href = '{{route('web.home', ['section' => 'add-story'])}}';
 			}
 		});
 

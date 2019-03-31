@@ -26,7 +26,7 @@ use App\Models\UserVerification;
 				<h1>
 					{{__('web/home/home.performer.not_verified.number')}}: {{$user->verification->number}}
 				</h1>
-				<form method="POST" action="{{route('user.verification.request-verification')}}" enctype="multipart/form-data">
+				<form method="POST" action="{{route('web.user.verification.request-verification')}}" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group">
 						<div class="file-upload">

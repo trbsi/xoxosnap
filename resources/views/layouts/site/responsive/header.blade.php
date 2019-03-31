@@ -10,7 +10,7 @@ use App\Models\User;
                 <a class="nav-link" data-toggle="tab" href="#explore" role="tab">
                     <div class="control-icon has-items">
                         <svg class="olymp-explore-icon">
-                            <a href="{{route('explore')}}">
+                            <a href="{{route('web.explore')}}">
                                 <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-explore-icon"></use>
                             </a>
                         </svg>
@@ -172,7 +172,7 @@ use App\Models\User;
         </div>
 
         <div class="tab-pane " id="search" role="tabpanel">
-            <form class="search-bar w-search notification-list friend-requests" method="GET" action="{{route('search')}}">
+            <form class="search-bar w-search notification-list friend-requests" method="GET" action="{{route('web.search')}}">
                 <input type="hidden" name="type" value="{{request()->query('type') ?? 'users'}}">
                 <div class="form-group with-button">
                     <input class="form-control" name="term" placeholder="{{__('general/header.search_placeholder')}}" type="text" value="{{request()->query('term') ?? ''}}">

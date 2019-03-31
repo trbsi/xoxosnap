@@ -10,7 +10,7 @@
 			
 			<!-- Personal Account Settings Form -->
 			
-			<form method="POST" action="{{route('user.profile.settings.edit-account-settings')}}"> 
+			<form method="POST" action="{{route('web.user.profile.settings.edit-account-settings')}}">
 				@csrf
 				<div class="row">
 			

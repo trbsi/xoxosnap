@@ -27,7 +27,7 @@ $(document).on('click', '.play-video', function() {
         }).then((result) => {
             if (true === result.value) {
             <?php  //take coins from user ?>
-            var response = ajax('{{route('coins.purchase-media', ['type' => 'video'])}}', 'PATCH', {id: $(this).data('video-id')});
+            var response = ajax('{{route('api.coins.purchase-media', ['type' => 'video'])}}', 'PATCH', {id: $(this).data('video-id')});
             response
             .done(function(data) {
                 $('#views').text(data.views); 
@@ -46,7 +46,7 @@ $(document).on('click', '.play-video', function() {
                 })
                 .then((resultBuyCoins) => {
                     if (true === resultBuyCoins.value) {
-                        window.location = '{{route('coins.show-buy-coins-form')}}';
+                        window.location = '{{route('web.coins.show-buy-coins-form')}}';
                     }
                 });
             });
@@ -73,7 +73,7 @@ function openVideoModal(videoElement)
     $('#open-photo-popup-v2 #likes-icon').css({'fill': color, 'color': color});
 
     <?php //open popup ?>
-    var response = ajax('{{route('media.one')}}?id='+videoId, 'GET', {});
+    var response = ajax('{{route('api.media.one')}}?id='+videoId, 'GET', {});
     response
     .done(function(data) {
         <?php //sanity check if user manipulates is-locked ?>
@@ -84,7 +84,7 @@ function openVideoModal(videoElement)
         var hashtags = data.hashtags;
         var hashtagsHtml = '';
         $.each(hashtags, function( index, value ) {
-            hashtagsHtml+='<a href="{{route('search', ['type' => SearchConstants::SEARCH_MEDIA])}}&term='+value.name+'">'+value.hashtag_name+'</a>';
+            hashtagsHtml+='<a href="{{route('web.search', ['type' => SearchConstants::SEARCH_MEDIA])}}&term='+value.name+'">'+value.hashtag_name+'</a>';
             hashtagsHtml+=' ';
         });
 
@@ -107,7 +107,7 @@ function openVideoModal(videoElement)
         globalVideoModalPopup.modal('show');      
 
         <?php //update views ?>
-        var response = ajax('{{route('media.update-views')}}', 'POST', {id: $(videoElement).data('video-id')})
+        var response = ajax('{{route('api.media.update-views')}}', 'POST', {id: $(videoElement).data('video-id')})
         response
         .done(function(data) {
             $('#open-photo-popup-v2 #views').text(data.views); 

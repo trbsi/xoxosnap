@@ -138,7 +138,7 @@
         .then((result) => {
             if (true === result.value) {
                 <?php //send request to server ?>
-                var response = ajax('{{route('coins.purchase-media', ['type' => 'story'])}}', 'PATCH', {id: storyId});
+                var response = ajax('{{route('api.coins.purchase-media', ['type' => 'story'])}}', 'PATCH', {id: storyId});
                 response
                 .done(function(data) {
                     <?php  //unlock story ?>
@@ -160,7 +160,7 @@
                     })
                     .then((resultBuyCoins) => {
                         if (true === resultBuyCoins.value) {
-                            window.location = '{{route('coins.show-buy-coins-form')}}';
+                            window.location = '{{route('web.coins.show-buy-coins-form')}}';
                         }
                     });
                 });
@@ -200,7 +200,7 @@
     function updateStoriesViews()
     {
         var viewedStoryIds = JSON.parse(localStorage.getItem('viewedStoryIds'));
-        ajax('{{route('story.update-views')}}', 'POST', {ids: viewedStoryIds});
+        ajax('{{route('api.story.update-views')}}', 'POST', {ids: viewedStoryIds});
         localStorage.removeItem('viewedStoryIds');
     }
 </script>

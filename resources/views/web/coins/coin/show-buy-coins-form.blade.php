@@ -15,7 +15,7 @@ use App\Models\Coin;
 					<h6 class="title">{{__('web/coins/coins.show_buy_coins_form.buy_coins')}}</h6>
 				</div>
 				<div class="ui-block-content">
-                    <form class="needs-validation" id="buy-coins-form" method="POST" action="{{route('coins.process-coins-order')}}">
+                    <form class="needs-validation" id="buy-coins-form" method="POST" action="{{route('api.coins.process-coins-order')}}">
 						@csrf
 						<div class="row">
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

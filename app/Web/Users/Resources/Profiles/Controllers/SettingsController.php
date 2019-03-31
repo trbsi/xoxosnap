@@ -42,7 +42,7 @@ class SettingsController extends Controller
 
         if ($validator->fails()) {
             return redirect()
-                    ->route('user.profile.settings.account-settings')
+                    ->route('web.user.profile.settings.account-settings')
                     ->withErrors($validator)
                     ->withInput();
         }
@@ -53,7 +53,7 @@ class SettingsController extends Controller
         $authUser->save();
         $request->session()->flash('success', __('web/users/resources/profile.account_update'));
 
-        return redirect()->route('user.profile.settings.account-settings');
+        return redirect()->route('web.user.profile.settings.account-settings');
     }
 
     public function personalInfoSettings(Request $request)
@@ -83,7 +83,7 @@ class SettingsController extends Controller
 
         if ($validator->fails()) {
             return redirect()
-                    ->route('user.profile.settings.personal-info-settings')
+                    ->route('web.user.profile.settings.personal-info-settings')
                     ->withErrors($validator)
                     ->withInput();
         }
@@ -91,7 +91,7 @@ class SettingsController extends Controller
         $editPersonalInfo->editPersonalInfo($request->all(), $this->authUser->profile);
         $request->session()->flash('success', __('web/users/resources/profile.account_update'));
 
-        return redirect()->route('user.profile.settings.personal-info-settings');
+        return redirect()->route('web.user.profile.settings.personal-info-settings');
     }
 
 
@@ -111,7 +111,7 @@ class SettingsController extends Controller
 
         if ($validator->fails()) {
             return redirect()
-                    ->route('user.profile.settings.change-password-settings')
+                    ->route('web.user.profile.settings.change-password-settings')
                     ->withErrors($validator)
                     ->withInput();
         }
@@ -121,6 +121,6 @@ class SettingsController extends Controller
         $authUser->save();
         $request->session()->flash('success', __('web/users/resources/settings.change_password.password_changed'));
 
-        return redirect()->route('user.profile.settings.change-password-settings');
+        return redirect()->route('web.user.profile.settings.change-password-settings');
     }
 }

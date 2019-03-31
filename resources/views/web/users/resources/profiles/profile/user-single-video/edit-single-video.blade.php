@@ -5,7 +5,7 @@
         <div class="ui-block-content">
             <div class="row">
                 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <form method="POST" action="{{route('media.update')}}" id="edit-media-form">
+                    <form method="POST" action="{{route('web.media.update')}}" id="edit-media-form">
                         @csrf
                         <input name="id" type="hidden" value="{{$media->id}}">
                         <div class="form-group">
@@ -77,7 +77,7 @@
             tags.push({id: hashtag.id, name: hashtag.name});
         });
 
-        $("#edit-media-form input[name='hashtags']").tokenInput('{{route('hashtags.filter')}}', {
+        $("#edit-media-form input[name='hashtags']").tokenInput('{{route('api.hashtags.filter')}}', {
             searchDelay: 2000,
             minChars: 3,
             tokenLimit: 5,

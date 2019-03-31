@@ -21,7 +21,7 @@ class VerificationController extends Controller
         if ($validator->fails()) {
             $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
-                ->route('home')
+                ->route('web.home')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -32,6 +32,6 @@ class VerificationController extends Controller
             $request->session()->flash('error', __('general/site.something_went_wrong'));
         }
 
-        return redirect()->route('home');
+        return redirect()->route('web.home');
     }
 }

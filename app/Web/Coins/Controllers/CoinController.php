@@ -24,7 +24,7 @@ class CoinController extends Controller
         if ($validator->fails()) {
             $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
-                ->route('coins.show-buy-coins-form')
+                ->route('web.coins.show-buy-coins-form')
                 ->withErrors($validator)
                 ->withInput();
         }

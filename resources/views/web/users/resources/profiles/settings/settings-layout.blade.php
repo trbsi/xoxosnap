@@ -32,15 +32,15 @@
 							<div id="collapseOne-1" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
 								<ul class="your-profile-menu">
 									<li>
-										<a href="{{route('user.profile.settings.account-settings')}}">{{__('web/users/resources/profile.account_settings')}}</a>
+										<a href="{{route('web.user.profile.settings.account-settings')}}">{{__('web/users/resources/profile.account_settings')}}</a>
 									</li>
 									@if($user::USER_TYPE_PERFORMER === $authUser->profile_type)
 									<li>
-										<a href="{{route('user.profile.settings.personal-info-settings')}}">{{__('web/users/resources/profile.personal_info')}}</a>
+										<a href="{{route('web.user.profile.settings.personal-info-settings')}}">{{__('web/users/resources/profile.personal_info')}}</a>
 									</li>
 									@endif
 									<li>
-										<a href="{{route('user.profile.settings.change-password-settings')}}">{{__('web/users/resources/profile.change_password')}}</a>
+										<a href="{{route('web.user.profile.settings.change-password-settings')}}">{{__('web/users/resources/profile.change_password')}}</a>
 									</li>
 								</ul>
 							</div>
@@ -93,15 +93,15 @@
 								<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
 									<ul class="your-profile-menu">
 										<li>
-											<a href="{{route('user.profile.settings.account-settings')}}">{{__('web/users/resources/profile.account_settings')}}</a>
+											<a href="{{route('web.user.profile.settings.account-settings')}}">{{__('web/users/resources/profile.account_settings')}}</a>
 										</li>
 										@if($user::USER_TYPE_PERFORMER === $authUser->profile_type)
 										<li>
-											<a href="{{route('user.profile.settings.personal-info-settings')}}">{{__('web/users/resources/profile.personal_info')}}</a>
+											<a href="{{route('web.user.profile.settings.personal-info-settings')}}">{{__('web/users/resources/profile.personal_info')}}</a>
 										</li>
 										@endif
 										<li>
-											<a href="{{route('user.profile.settings.change-password-settings')}}">{{__('web/users/resources/profile.change_password')}}</a>
+											<a href="{{route('web.user.profile.settings.change-password-settings')}}">{{__('web/users/resources/profile.change_password')}}</a>
 										</li>
 									</ul>
 								</div>

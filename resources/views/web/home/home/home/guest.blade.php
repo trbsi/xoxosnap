@@ -15,7 +15,7 @@
                 <li class="list-group-item">&starf; {{__('web/home/home.guest.performer_description_3')}}</li>
             </ul>
             <h4><b>{{__('auth.login_page.if_you_are_performer')}}</b></h4>
-            <a href="{{route('social.login', ['provider' => 'twitter'])}}" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>{{__('auth.login_with_twitter')}}</a>
+            <a href="{{route('web.social.login', ['provider' => 'twitter'])}}" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>{{__('auth.login_with_twitter')}}</a>
         </div>
         <div class="col col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <h4>{{__('web/home/home.guest.viewers')}}</h4>

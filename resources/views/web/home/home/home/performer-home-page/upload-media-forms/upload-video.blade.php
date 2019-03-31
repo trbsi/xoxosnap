@@ -147,7 +147,7 @@ $(function () {
         dataType: 'json',
         acceptFileTypes: '/(\.|\/)(mp4)$/i',
         autoUpload: false,
-        url: '{{route('media.create')}}',
+        url: '{{route('api.media.create')}}',
         beforeSend: function(xhr, data) {
 	        xhr.setRequestHeader("X-CSRF-TOKEN", '{{ csrf_token() }}');
 	    },
@@ -257,7 +257,7 @@ resetVideoFormBtn.click(function(e) {
 	areYouSure()
 	.then((result) => {
 	  	if (result.value) {
-        window.location.href = '{{route('home')}}';
+        window.location.href = '{{route('web.home')}}';
 		}
 	});
 
@@ -409,7 +409,7 @@ function shoot()
 </script>
 
 <script type="text/javascript">
-$("#video-form input[name='hashtags']").tokenInput('{{route('hashtags.filter')}}', {
+$("#video-form input[name='hashtags']").tokenInput('{{route('api.hashtags.filter')}}', {
     searchDelay: 2000,
     minChars: 3,
     tokenLimit: 5,

@@ -54,7 +54,7 @@ use App\Models\Notification;
 <script type="text/javascript">
   //redirect when cloced on explore button in header
 	$('.olymp-explore-icon').click(function() {
-		window.location.href = "{{route('explore')}}";
+		window.location.href = "{{route('web.explore')}}";
 	});
 
   //post form to logout

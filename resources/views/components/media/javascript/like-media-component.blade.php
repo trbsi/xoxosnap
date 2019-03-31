@@ -7,7 +7,7 @@
         likesLoading.show();
         likesIcon.hide();
 
-        var response = ajax('{{route('media.like')}}', 'POST', {id: $(this).data('video-id')})
+        var response = ajax('{{route('api.media.like')}}', 'POST', {id: $(this).data('video-id')})
         response
         .done(function(data) {
             likesLoading.hide();

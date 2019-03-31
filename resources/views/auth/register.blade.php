@@ -102,7 +102,7 @@ use App\Models\User;
                             <div class="checkbox">
                                 <label>
                                 <input name="agree_terms" type="checkbox" required>
-                                {{__('auth.register_page.i_accept')}} <a href="{{route('terms-of-use')}}" style="color: gray; text-decoration: underline;" target="_blank">{{__('auth.register_page.terms_and_conditions')}}</a> {{__('auth.register_page.of_website')}}
+                                {{__('auth.register_page.i_accept')}} <a href="{{route('web.terms-of-use')}}" style="color: gray; text-decoration: underline;" target="_blank">{{__('auth.register_page.terms_and_conditions')}}</a> {{__('auth.register_page.of_website')}}
                                 </label>
                                 @if ($errors->has('agree_terms'))
                                 <span class="invalid-feedback" role="alert">
