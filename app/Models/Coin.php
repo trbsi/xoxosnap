@@ -7,7 +7,11 @@ use App\Helpers\Traits\NumberFormatterTrait;
 
 class Coin extends Model
 {
+	public const COIN_COST = 10; //10 coins = 1$
+
 	use NumberFormatterTrait;
+
+	public $noMutation = false;
 
 	protected $table = 'coins';
 

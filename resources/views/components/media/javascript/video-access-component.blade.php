@@ -46,7 +46,7 @@ $(document).on('click', '.play-video', function() {
                 })
                 .then((resultBuyCoins) => {
                     if (true === resultBuyCoins.value) {
-                        window.location = '{{route('coins.get')}}';
+                        window.location = '{{route('coins.show-buy-coins-form')}}';
                     }
                 });
             });

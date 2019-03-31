@@ -39,7 +39,8 @@ Route::namespace('Auth')->group(function () {
 Route::middleware('auth')->group(function () {
 	Route::prefix('coins')->group(function () {
 		$ctl = '\App\Web\Coins\Controllers\CoinController';
-		Route::get('', $ctl.'@get')->name('coins.get');
+        Route::get('buy-coins', $ctl.'@showBuyCoinsForm')->name('coins.show-buy-coins-form');
+        Route::post('process-coins-order', $ctl.'@processCoinsOrder')->name('coins.process-coins-order');
 	});
 
 	Route::prefix('media')->group(function () {

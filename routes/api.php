@@ -64,4 +64,9 @@ Route::prefix('v1')->group(function () {
 		$ctl = '\App\Api\V1\Web\Hashtags\Controllers\HashtagController';
 		Route::get('/filter', $ctl.'@filter')->name('hashtags.filter'); //public beacuse of jquery plugin can't handle laravel_token
 	});
+
+    Route::prefix('coins')->group(function () {
+        $ctl = '\App\Api\V1\Web\Coins\Controllers\CoinController';
+        Route::post('payment-gateway-callback', $ctl.'@paymentGatewayCallback')->name('coins.process-coins-order');
+    });
 });

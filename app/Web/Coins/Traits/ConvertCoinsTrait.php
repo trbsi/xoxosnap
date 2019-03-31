@@ -2,6 +2,8 @@
 
 namespace App\Web\Coins\Traits;
 
+use App\Models\Coin;
+
 trait ConvertCoinsTrait
 {
 	/**
@@ -12,11 +14,11 @@ trait ConvertCoinsTrait
 	 */	
     public function convertToNaughtyCoins(int $cost): int
     {
-    	return $cost * 10;
+    	return $cost * Coin::COIN_COST;
     }
 
     public function convertToMoney(int $coins): float
     {
-    	return round($coins / 10, 2);
+    	return round($coins / Coin::COIN_COST, 2);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Web\Media\Requests\Media\Update;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Media;
 use Illuminate\Support\Facades\Session;
 
 class UpdateMediaRequest extends FormRequest
