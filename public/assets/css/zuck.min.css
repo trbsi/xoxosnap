@@ -415,7 +415,10 @@
     top:0
 }
 #zuck-modal-content .story-viewer .slides .item>.media{
-    height:100%;
+    align-self: center; /*ADDED*/
+    max-height: 100%; /*ADDED*/
+    max-width: 100%; /*ADDED*/
+    height:auto; /*MODIFIED*/
     position:absolute;
     left:50%;
     -webkit-transform:translateX(-50%);
@@ -423,7 +426,7 @@
     margin:auto
 }
 #zuck-modal-content .story-viewer .slides .item.active,#zuck-modal-content .story-viewer .slides .item.active .tip.link{
-    display:block
+    display:flex; /*MODIFIED*/
 }
 #zuck-modal-content .story-viewer .tip{
     text-decoration:none;
