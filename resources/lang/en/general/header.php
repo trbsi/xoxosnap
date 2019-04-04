@@ -7,12 +7,12 @@ return [
 		'followers' => 'Followers',
 		'mark_as_read' => 'Mark all as read',
 		'load_more_followers' => 'Load more followers',
-		'followed_you' => 'followed you'
+		'followed_you' => 'Followed you'
 	],
 	'notifications' => [
 		'notifications' => 'Naughtyfications',
 		'view_all_notifications' => 'Load more Naughtyfications',
-		'bought_your_video' => 'bought your video',
-		'posted_new_video' => 'posted new video',
+		'bought_your_video' => 'Bought your video',
+		'posted_new_video' => 'Posted new video',
 	],
 ];

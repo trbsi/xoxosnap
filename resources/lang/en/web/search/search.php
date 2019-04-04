@@ -5,5 +5,5 @@ return [
 	'search_users' => 'Users',
 	'search_videos' => 'Videos',
 	'by' => 'by',
-	'about_me' => 'About me'
+	'about_me' => 'About Me'
 ];

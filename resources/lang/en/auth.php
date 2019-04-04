@@ -14,11 +14,11 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => 'Sorry too many login attempts. Please try again in :seconds seconds.',
     'ps_auth_description' => '
     <b>Premium Uncensored Video Content!</b><br>
-    Join our community of adult performers and their fans.<br>
-    Follow your favorite porn stars, cam girls, and amateurs now!
+    Join our naughty community of adult performers and their fans.<br>
+    Follow your favorite porn stars, cam girls, exotic dancers and amateurs now!
     <br><br>
     <b>Performers: Reliable Payouts! Start Earning Today!</b><br>
     Just sign in with your Twitter account and get started making money today!
@@ -72,7 +72,7 @@ return [
         'forgot_my_password' => 'Forgot my password',
         'donot_have_account' => 'Don\'t you have an account?',
         'register_now' => 'Register now!',
-        'start_enjoing_benefits' => 'it\'s really simple and you can start enjoing all the benefits!',
+        'start_enjoing_benefits' => 'it\'s really simple and you can start enjoying all the benefits!',
         'if_you_are_performer' => 'If you are a performer login via:'
     ],
     'reset_password_page' => [

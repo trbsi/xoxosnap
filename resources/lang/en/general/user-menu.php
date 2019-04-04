@@ -2,9 +2,9 @@
 return [
 	'about' => 'About',
 	'logout' => 'Log Out',
-	'your_account' => 'Your account',
-	'profile_settings' => 'Profile settings',
-	'collapse_menu' => 'Collapse menu',
+	'your_account' => 'Your Account',
+	'profile_settings' => 'Profile Settings',
+	'collapse_menu' => 'Collapse Menu',
 	'login' => 'Login',
 	'register' => 'Register',
 ];
