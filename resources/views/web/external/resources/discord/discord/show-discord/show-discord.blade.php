@@ -9,6 +9,7 @@
                     DISCORD
                 <div class="ui-block">
                     <div class="ui-block-content">
+                        <iframe src="https://discordapp.com/widget?id=558831981937295372&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
