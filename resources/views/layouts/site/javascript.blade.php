@@ -37,7 +37,6 @@ use App\Models\Notification;
 <script src="/assets/js/mediaelement-playlist-plugin.min.js"></script>
 <script src="/assets/js/ion.rangeSlider.js"></script>
 <script src="/assets/js/base-init.js"></script>
-<script defer src="/assets/fonts/fontawesome-all.js"></script>
 <script src="/assets/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 <!-- custom -->
@@ -49,6 +48,7 @@ use App\Models\Notification;
 <script src="/assets/js/toastr.min.js"></script>
 <script src="/assets/js/jquery.tokeninput.min.js"></script>
 <script src="/assets/js/bootbox.min.js"></script>
+<script src="/assets/js/mfb.min.js"></script>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 
 <script type="text/javascript">

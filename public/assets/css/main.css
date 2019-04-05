@@ -15744,3 +15744,33 @@ body {
   border: 10px solid rgba(255,255,255,0.7);
   position: relative;
 }
+
+
+/*FLOATING BUTTONS*/
+.mfb-component__button--main, .mfb-component__button--child {
+  background-color: #ff5e3a;
+}
+
+.mfb-component__button--main:hover, .mfb-component__button--child:hover {
+  color: white;
+}
+
+.mfb-component__child-icon {
+  font-size: 22px;
+} 
+
+@media only screen and (max-width: 992px) {
+  .mfb-component__button--main {
+    height: 46px;
+    width: 46px;
+  }
+
+  .mfb-component__button--child {
+    height: 46px;
+    width: 46px;
+  }
+
+  .mfb-component__child-icon, .mfb-component__icon, .mfb-component__main-icon--active, .mfb-component__main-icon--resting {
+    line-height: 46px;
+  }
+}
