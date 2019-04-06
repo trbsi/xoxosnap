@@ -6,26 +6,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     @yield('meta')
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/Bootstrap/dist/css/bootstrap-reboot.css">
-    <link rel="stylesheet" type="text/css" href="/assets/Bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/assets/Bootstrap/dist/css/bootstrap-grid.css">
-    <!-- Main Styles CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/fonts.min.css">
-
-    <!-- custom -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/zuck.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/story-skins/snapgram.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/plyr.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/token-input-facebook.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/mfb.min.css">
-
-    <!-- Main Styles CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.css">
 
     @stack('css')
     <!-- Main Font -->
-    <script src="/assets/js/webfontloader.min.js"></script>
+    <script src="/js/webfontloader.min.js"></script>
     <script>
         WebFont.load({
             google: {
