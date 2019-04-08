@@ -4,7 +4,6 @@
 			<div class="ui-block">
 				<div class="ui-block-title">
 					<h6 class="title">{{__('web/users/resources/profile.about_me')}}</h6>
-					<a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
 				</div>
 				<div class="ui-block-content">
 

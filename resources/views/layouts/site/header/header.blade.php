@@ -228,7 +228,8 @@ use App\Models\User;
                         </div>
                     </div>
                 </div>
-                <a href="@if (null !== $userComposerUsername) {{route('web.user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
+                <a href="@if (null !== $userComposerUsername && User::USER_TYPE_PERFORMER === $userComposerProfileType) {{route('web.user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" 
+                    class="author-name fn">
                     <div class="author-title">
                         {{$userComposerName}}
                         <svg class="olymp-dropdown-arrow-icon">

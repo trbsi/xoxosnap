@@ -1,3 +1,6 @@
+<?php 
+use App\Models\User;
+?>
 <!-- Fixed Sidebar Left -->
 
 <div class="fixed-sidebar fixed-sidebar-responsive">
@@ -31,7 +34,7 @@
 						])
 						@endcomponent
 					</div>
-					<a href="@if (null !== $userComposerUsername) {{route('web.user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
+					<a href="@if (null !== $userComposerUsername && User::USER_TYPE_PERFORMER === $userComposerProfileType) {{route('web.user.profile', ['username' => $userComposerUsername])}} @else javascript:; @endif" class="author-name fn">
 						<div class="author-title">
 							{{$userComposerName}} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 						</div>

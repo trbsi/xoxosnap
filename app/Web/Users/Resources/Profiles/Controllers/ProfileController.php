@@ -33,8 +33,8 @@ class ProfileController extends Controller
             ->with(['profile'])
             ->firstOrFail();
         
-            $this->isUserFollowed = $this->isUserFollowedRepository->isUserFollowed($this->user->id, $this->authUser);
-    
+            $this->isUserFollowed = $this->isUserFollowedRepository
+            ->isUserFollowed($this->user->id, $this->authUser);
         }
 
         return parent::callAction($method, $parameters);

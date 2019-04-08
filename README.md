@@ -22,5 +22,3 @@
     SSLCertificateKeyFile "crt/pornsnap.loc/server.key"
 </VirtualHost>
 ```
-
-1. Enable Magick

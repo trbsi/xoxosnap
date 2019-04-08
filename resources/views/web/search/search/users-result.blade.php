@@ -22,13 +22,13 @@
                 <a href="#" class="accept-request">
                     <span class="icon-add without-text">
                         <svg class="olymp-happy-face-icon">
-                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use>
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use>
                         </svg>
                     </span>
                 </a>
                 <a href="#" class="accept-request chat-message">
                     <svg class="olymp-chat---messages-icon">
-                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use>
+                        <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use>
                     </svg>
                 </a>
             </span>

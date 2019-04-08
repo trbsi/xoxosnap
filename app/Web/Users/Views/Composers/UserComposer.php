@@ -28,6 +28,7 @@ class UserComposer
             $coins = $user->coin->current_coins;
             $coinsFormatted = $user->coin->current_coins_formatted;
             $isVerified = $user->is_verified;
+            $profileType = $user->profile_type;
         } else {
             $userId = null;
             $name = __('web/users/user.guest');
@@ -36,6 +37,7 @@ class UserComposer
             $coins = 0;
             $coinsFormatted = 0;
             $isVerified = false;
+            $profileType = null;
         }
 
         $view->with('userComposerUserId', $userId);
@@ -45,5 +47,6 @@ class UserComposer
         $view->with('userComposerCoins', $coins);
         $view->with('userComposerCoinsFormatted', $coinsFormatted);
         $view->with('userComposerIsVerified', $isVerified);
+        $view->with('userComposerProfileType', $profileType);
     }
 }
