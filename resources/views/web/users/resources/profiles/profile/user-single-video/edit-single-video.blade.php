@@ -1,5 +1,4 @@
 @if ($userComposerUserId === $media->user_id)
-
 <div class="container" id="edit-media-container" style="{{($errors->count() === 0) ? 'display:none;' : ''}}">
     <div class="ui-block">
         <div class="ui-block-content">
@@ -61,13 +60,16 @@
         </div>
     </div>
 </div>
-@endif
 
 @push('javascript')
     <script>
         $('#cancel-edit-video-button').click(function() {
             $('#edit-media-container').hide();
         });
+
+        @if(request()->query('edit-media'))
+            $('#edit-media-container').show();
+        @endif
     </script>
 
     <script type="text/javascript">
@@ -87,3 +89,4 @@
         });
     </script>
 @endpush
+@endif

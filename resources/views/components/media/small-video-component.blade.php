@@ -31,6 +31,48 @@
             <time class="published" datetime="{{$video->created_at}}">{{$video->published_ago}}</time>
             |
             <time class="published">{{$video->views}} {{__('web/home/home.viewer.views')}}</time>
+
+            @if ($userComposerUserId === $video->user_id)
+            <hr>
+            <form style="display:none;" id="delete-media-form-{{$video->id}}" method="POST" action="{{route('web.media.delete')}}">
+                @csrf
+                <input name="id" value="{{$video->id}}">
+            </form>
+            <a 
+            class="delete-media-button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{__('web/media/media.tooltip_delete_video')}}"
+            href="javascript:;"
+            data-id="{{$video->id}}"
+            >
+                <i class="fas fa-trash-alt"></i>
+            </a>
+            &nbsp;
+            <a 
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{__('web/media/media.tooltip_edit_video')}}"
+            href="{{$video->url}}?edit-media=true"
+            target="_blank" 
+            >
+                <i class="fas fa-edit"></i>
+            </a>
+            @endif
         </div>
     </div>
 </div>
+
+@push('javascript')
+<script>
+    $('.delete-media-button').click(function() {
+        var deleteMediaButton = $(this);
+        areYouSure()
+        .then((result) => {
+            if (result.value) {
+                $('#delete-media-form-'+deleteMediaButton.data('id')).submit();
+            }
+        });
+    });
+</script>
+@endpush
