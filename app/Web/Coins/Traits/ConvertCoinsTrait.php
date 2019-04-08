@@ -12,13 +12,18 @@ trait ConvertCoinsTrait
 	 * 100-1000 (max $100)
 	 * 1000+ ($100+)
 	 */	
-    public function convertToNaughtyCoins(int $cost): int
+    public function convertMoneyToCoins(int $cost): int
     {
     	return $cost * Coin::COIN_COST;
     }
 
-    public function convertToMoney(int $coins): float
+    public function convertCoinsToMoneyFloor(int $coins): int
     {
-    	return round($coins / Coin::COIN_COST, 2);
+        return (int) floor($coins / Coin::COIN_COST);
+    }
+
+    public function convertCoinsToMoneyCeil(int $coins): int
+    {
+        return (int) ceil($coins / Coin::COIN_COST);
     }
 }

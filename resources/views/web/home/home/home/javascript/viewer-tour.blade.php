@@ -3,7 +3,7 @@
 
     function init() {
         var tourViewerFollowPerformers = window.localStorage.getItem('tour-viewer-follow-performers');
-        var followPerformersClass = $('.viewer-tour-follow-performers').length; console.log(followPerformersClass);
+        var followPerformersClass = $('.viewer-tour-follow-performers').length;
 
         if (
             followPerformersClass > 0 

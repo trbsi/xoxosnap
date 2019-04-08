@@ -19,7 +19,7 @@ class PurchaseMediaRepository
     {
         $model = $this->getModel($id, $type);
     	$user = Auth::user();
-    	$coinsCost = $this->convertToNaughtyCoins($model->cost);
+    	$coinsCost = $this->convertMoneyToCoins($model->cost);
 
     	if ($user->coin->current_coins < $coinsCost) {
     		abort(400, __('web/coins/coins.update.no_enough_coins'));

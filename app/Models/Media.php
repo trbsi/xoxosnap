@@ -148,7 +148,7 @@ class Media extends Model
 
 	public function getCoinsAttribute()
 	{
-		return $this->convertToNaughtyCoins($this->cost);
+		return $this->convertMoneyToCoins($this->cost);
 	}
 
 	public function getIsLockedAttribute()

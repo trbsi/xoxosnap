@@ -72,7 +72,7 @@ class RecentStoriesRepository
 				'views' => $story->views,
 				'last_updated_at' => $this->getLastUpdatedAt($story->max_updated_at),
 				'is_locked' => $story->is_locked,
-				'coins' => $this->convertToNaughtyCoins($story->cost),
+				'coins' => $this->convertMoneyToCoins($story->cost),
 				'items' => $items,
 			];
 		}

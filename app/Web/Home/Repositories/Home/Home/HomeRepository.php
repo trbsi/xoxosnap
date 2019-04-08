@@ -94,10 +94,10 @@ class HomeRepository
 	{
 		//Coins/earnings
 		$currentCoins = $user->coin->current_coins;
-		$currentMoney = $this->convertToMoney($currentCoins);
+		$currentMoney = $this->convertCoinsToMoneyFloor($currentCoins);
 
 		$totalCoins = $user->coin->total_coins;
-		$totalMoney = $this->convertToMoney($totalCoins);
+		$totalMoney = $this->convertCoinsToMoneyFloor($totalCoins);
 
 		//Broj followera
 		$profile = $user->profile;
@@ -113,7 +113,7 @@ class HomeRepository
 		->orderBy('total_earned_money', 'DESC')
 		->get()
 		->map(function($result) {
-			$result->earned_coins = $this->convertToNaughtyCoins($result->total_earned_money);
+			$result->earned_coins = $this->convertMoneyToCoins($result->total_earned_money);
 			return $result;
 		});
 

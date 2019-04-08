@@ -21,7 +21,7 @@ use App\Models\Coin;
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 								<div class="form-group label-floating">
 									<label class="control-label">{{__('web/coins/coins.show_buy_coins_form.number_of_coins')}}</label>
-									<input class="form-control" type="number" name="coins" min="100" required>
+									<input class="form-control" type="number" name="coins" min="100" required style="height:100px; font-size:40px">
 									@if ($errors->has('coins'))
 										<span class="invalid-feedback" role="alert">
 										<strong>{{ $errors->first('coins') }}</strong>
@@ -48,7 +48,7 @@ use App\Models\Coin;
 @section('javascript')
 	<script>
 		$('#buy-coins-form input[name="coins"]').keyup(function() {
-		    var inDollars = $(this).val() / {{Coin::COIN_COST}};
+		    var inDollars = Math.ceil($(this).val() / {{Coin::COIN_COST}});
             $('#in-dollars').text('$'+inDollars);
         });
 	</script>
