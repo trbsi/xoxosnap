@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container viewer-tour-performer-stories">
     <div class="row">
         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div id="stories"></div>
@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="container" id="video-container">
+<div class="container viewer-tour-performer-videos" id="video-container">
     <div class="infinite-scroll-media">
         <div class="row">
             @if(false === $media->isEmpty())

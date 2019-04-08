@@ -7,14 +7,13 @@
                         <svg class="olymp-trophy-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-trophy-icon"></use></svg>
                     </div>
                     <h6 class="title">{{__('web/home/home.guest.recommended_performers')}}</h6>
-                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div class="row">
+    <div class="row viewer-tour-follow-performers">
     	@foreach($performers as $performer)
         <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-block">
