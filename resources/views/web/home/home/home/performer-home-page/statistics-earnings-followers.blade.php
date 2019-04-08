@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col col-xl-4 order-xl-4 col-lg-6 order-lg-4 col-md-6 col-sm-12 col-12">
+		<div class="col col-xl-4 order-xl-4 col-lg-6 order-lg-4 col-md-6 col-sm-12 col-12 performer-tour-current-balance">
 			<div class="ui-block">
 				<div class="ui-block-content">
 					<ul class="statistics-list-count">
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col col-xl-4 order-xl-4 col-lg-6 order-lg-4 col-md-6 col-sm-12 col-12">
+		<div class="col col-xl-4 order-xl-4 col-lg-6 order-lg-4 col-md-6 col-sm-12 col-12 performer-tour-total-balance">
 			<div class="ui-block">
 				<div class="ui-block-content">
 					<ul class="statistics-list-count">
@@ -38,7 +38,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col col-xl-4 order-xl-4 col-lg-6 order-lg-4 col-md-6 col-sm-12 col-12">
+		<div class="col col-xl-4 order-xl-4 col-lg-6 order-lg-4 col-md-6 col-sm-12 col-12 performer-tour-followers">
 			<div class="ui-block">
 				<div class="ui-block-content">
 					<ul class="statistics-list-count">

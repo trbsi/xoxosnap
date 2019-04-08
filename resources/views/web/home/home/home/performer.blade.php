@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container performer-tour-view-public-profile">
 	<div class="row">
 		<div class="col col-xl-12">
 			<h1>
@@ -18,3 +18,7 @@
 
 @include('web.home.home.home.performer-home-page.statistics-earnings-followers')
 @include('web.home.home.home.performer-home-page.statistics-twitter-top-paid-videos')
+
+@push('javascript')
+	@include('web.home.home.home.javascript.performer-tour')
+@endpush

@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+		<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 performer-tour-twitter-feed">
 			<div class="ui-block" data-mh="pie-chart">
 				<div class="ui-block-title">
 					<div class="h6 title">{{__('web/home/home.performer.twitter_feed')}}</div>
@@ -17,7 +17,7 @@
 				@endif
 			</div>
 		</div>
-		<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+		<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 performer-tour-top-videos-by-earnings">
 			<div class="ui-block" data-mh="pie-chart">
 				<div class="ui-block-title">
 					<div class="h6 title">{{__('web/home/home.performer.top_ten_videos_by_earnings')}}</div>

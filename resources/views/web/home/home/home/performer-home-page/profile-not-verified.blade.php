@@ -2,7 +2,7 @@
 use App\Models\UserVerification;
 ?>
 
-<div class="container">
+<div class="container performer-tour-profile-not-verified">
 	<div class="row">
 		@if (UserVerification::STATUS_UNVERIFIED === $user->verification->status)
 		<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

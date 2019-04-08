@@ -16,6 +16,23 @@
 			
 					<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="form-group label-floating is-select">
+							<div>{{__('web/users/resources/settings.personal_info.profile_picture_info')}}:</div>
+							<div class="file-upload">
+								<label for="upload" class="file-upload__label bg-blue" id="upload-button-text">{{__('web/users/resources/settings.personal_info.profile_picture')}}</label>
+								<input class="file-upload__input" type="file" name="picture" id="profile-picture-input-file">
+							</div>
+							<div style="display: none; font-weight: bold;" id="chosen-picture">
+								{{__('web/users/resources/settings.personal_info.chosen_picture')}}: <span id="chosen-picture-name"></span>
+								|
+								<a href="javascript:;" id="remove-chosen-picture">{{__('web/users/resources/settings.personal_info.remove_chosen_picture')}}</a>
+							</div>
+							@if ($errors->has('picture'))
+	                            <span class="invalid-feedback" role="alert">
+	                            <strong>{{ $errors->first('picture') }}</strong>
+	                            </span>
+                            @endif   
+						</div>
+						<div class="form-group label-floating is-select">
 							<label class="control-label">{{__('web/users/resources/settings.personal_info.birthday')}}</label>
 							<input type="date" name="birthday" value="{{old('birthday') ?? $authUser->profile->getOriginal('birthday')}}">
 							@if ($errors->has('birthday'))
@@ -88,23 +105,6 @@
 							@if ($errors->has('instagram'))
 	                            <span class="invalid-feedback" role="alert">
 	                            <strong>{{ $errors->first('instagram') }}</strong>
-	                            </span>
-                            @endif   
-						</div>
-						<div class="form-group label-floating is-select">
-							<div>{{__('web/users/resources/settings.personal_info.profile_picture_info')}}:</div>
-							<div class="file-upload">
-								<label for="upload" class="file-upload__label bg-blue" id="upload-button-text">{{__('web/users/resources/settings.personal_info.profile_picture')}}</label>
-								<input class="file-upload__input" type="file" name="picture" id="profile-picture-input-file">
-							</div>
-							<div style="display: none; font-weight: bold;" id="chosen-picture">
-								{{__('web/users/resources/settings.personal_info.chosen_picture')}}: <span id="chosen-picture-name"></span>
-								|
-								<a href="javascript:;" id="remove-chosen-picture">{{__('web/users/resources/settings.personal_info.remove_chosen_picture')}}</a>
-							</div>
-							@if ($errors->has('picture'))
-	                            <span class="invalid-feedback" role="alert">
-	                            <strong>{{ $errors->first('picture') }}</strong>
 	                            </span>
                             @endif   
 						</div>

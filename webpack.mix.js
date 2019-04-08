@@ -30,6 +30,7 @@ mix.styles([
     'resources/assets/css/toastr.min.css',
     'resources/assets/css/token-input-facebook.css',
     'resources/assets/css/mfb.min.css', //floating button
+    'resources/assets/css/shepherd-theme-default.css',
 
     //Main Styles CSS
     'resources/assets/css/main.css',
@@ -85,5 +86,6 @@ mix.scripts([
 	'resources/assets/js/jquery.tokeninput.min.js',
 	'resources/assets/js/bootbox.min.js',
 	'resources/assets/js/mfb.min.js',
+	'resources/assets/js/shepherd.min.js',
 
 ], 'public/js/all.js');

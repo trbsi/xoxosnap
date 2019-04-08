@@ -2,7 +2,7 @@
 
 <div class="fixed-sidebar fixed-sidebar-responsive">
 
-	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
+	<div class="fixed-sidebar-left sidebar--small performer-tour-responsive-user-menu" id="sidebar-left-responsive">
 		<a href="/" class="logo js-sidebar-open">
 			<img src="/img/logo.png" alt="{{config('app.name')}}">
 		</a>

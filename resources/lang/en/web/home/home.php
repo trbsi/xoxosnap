@@ -56,7 +56,7 @@ return [
 			'upload_stories_videos_verify' => 'In order to be able to upload stories and videos and earn money please complete the form below for verification &#128522;',
 			'choose_photo' => 'Choose your photo',
 			'verify_profile_step_1' => 'Please write "PornSnap + Your Member ID Number" on a paper.',
-			'verify_profile_step_2' => 'Take a picture of yourself with it so we can verify it\'s you (something like what Rick from The Walking Dead did &#128521;)',
+			'verify_profile_step_2' => 'Take a selfie of yourself with the paper so we can verify it\'s you (something like what Rick from The Walking Dead did &#128521;)',
 			'number' => 'Member ID Number',
 			'hold_on_we_are_verifying_you' => 'Hold on! We\'re working on verification. It will take up to 24h &#128513;',
 			'send' => 'Send',
@@ -109,4 +109,27 @@ return [
 		'expires_in' => 'Expires in',
 
 	],
+	'performer_tour' => [
+		'exit' => 'Exit',
+		'next' => 'Next',
+		'back' => 'Back',
+		'done' => 'Done',
+		'public_profile' => 'If you click on your username you\'ll be redirected to your public profile.<br><br>There\' you\'ll be able to manage your videos, edit and delete them, view your videos, number of followers and about yourself.',
+		'upload_media' => 'Here you can upload videos and stories. Set video expiry, cost, thumbnail and much more.<br><br>You are able to create stories and set their expiry.',
+		'current_balance' => 'This is your current balance before payout',
+		'total_balance' => 'This is your total earnings. It displays how much have you earned so far',
+		'number_of_followers' => 'Exact number of your followers',
+		'twitter_feed' => 'If you connected via Twitter you\'ll be able to see your feed here',
+		'top_videos_by_earnings' => 'Your top 10 most profitable videos',	
+		'explore_menu' => 'Explore new videos, stories and performers',
+		'header_followers_notifications' => 'Everytime someone follows you, you\'ll get a notification',
+		'header_notifications' => 'Everytime someone buys one of your videos you\'ll get a notification',
+		'header_coins' => 'Quickly see your current balance',
+		'user_menu' => 'Hover over to reveal menu.',
+		'user_menu_responsive' => 'Click to reveal menu.',
+		'user_menu_explanation' => 'Here you can logout or access your profile\'s settings. In settings you can change info about yourself, profile picture, username, email and much more',
+		'that_is_all' => 'That\'s all, thank you for using PornSnap :)',
+		'header_search' => 'Search for videos and performers',
+		'performer_not_verified' => 'In order to be able to post videos and earn money you need to get verified. This is verification process. <br><br>Once you are verified you\'ll be able to add videos and stories.'
+	]
 ];

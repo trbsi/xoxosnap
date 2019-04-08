@@ -6,7 +6,7 @@ use App\Models\User;
 <header class="header header-responsive" id="site-header-responsive">
     <div class="header-content-wrapper">
         <ul class="nav nav-tabs mobile-app-tabs" role="tablist">
-            <li class="nav-item">
+            <li class="nav-item performer-tour-responsive-explore-menu">
                 <a class="nav-link" data-toggle="tab" href="#explore" role="tab">
                     <div class="control-icon has-items">
                         <svg class="olymp-explore-icon">
@@ -18,7 +18,7 @@ use App\Models\User;
                 </a>
             </li>
             @if (true === $showNewFollowersNotifications)
-            <li class="nav-item">
+            <li class="nav-item performer-tour-responsive-header-followers-notifications">
                 <a class="nav-link" data-toggle="tab" href="#request" role="tab">
                     <div class="control-icon has-items">
                         <svg class="olymp-followers-icon">
@@ -31,7 +31,7 @@ use App\Models\User;
                 </a>
             </li>
             @endif
-            <li class="nav-item">
+            <li class="nav-item performer-tour-responsive-header-notifications">
                 <a class="nav-link" data-toggle="tab" href="#notification" role="tab">
                     <div class="control-icon has-items">
                         <svg class="olymp-notifications-icon">
@@ -43,7 +43,7 @@ use App\Models\User;
                     </div>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item performer-tour-responsive-header-coins">
                 <a class="nav-link" data-toggle="tab" href="#coins" role="tab">
                     <div class="control-icon has-items">
                         <svg class="olymp-piggy-bank">
@@ -55,7 +55,7 @@ use App\Models\User;
                     </div>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item performer-tour-responsive-header-search">
                 <a class="nav-link" data-toggle="tab" href="#search" role="tab">
                     <svg class="olymp-magnifying-glass-icon">
                         <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use>

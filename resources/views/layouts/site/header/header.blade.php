@@ -9,7 +9,7 @@ use App\Models\User;
         <a href="/"><h6>{{config('app.name')}}</h6></a>
     </div>
     <div class="header-content-wrapper">
-        <form class="search-bar w-search notification-list friend-requests" method="GET" action="{{route('web.search')}}">
+        <form class="search-bar w-search notification-list friend-requests performer-tour-header-search" method="GET" action="{{route('web.search')}}">
             <input type="hidden" name="type" value="{{request()->query('type') ?? 'users'}}">
             <div class="form-group with-button">
                 <input class="form-control" name="term" placeholder="{{__('general/header.search_placeholder')}}" type="text" value="{{request()->query('term') ?? ''}}">
@@ -21,7 +21,7 @@ use App\Models\User;
             </div>
         </form>
         <div class="control-block">
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items performer-tour-explore-menu-item">
                 <svg class="olymp-explore-icon">
                     <a href="{{route('web.explore')}}">
                         <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-explore-icon"></use>    
@@ -40,7 +40,7 @@ use App\Models\User;
 
             <!-- followers -->
             @if (true === $showNewFollowersNotifications)
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items performer-tour-header-followers-notifications">
                 <svg class="olymp-followers-icon">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-followers-icon"></use>
                 </svg>
@@ -81,7 +81,7 @@ use App\Models\User;
             @endif
 
             <!-- notifications -->
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items performer-tour-header-notifications">
                 <svg class="olymp-notifications-icon">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-notifications-icon"></use>
                 </svg>
@@ -136,7 +136,7 @@ use App\Models\User;
             </div>
             <!-- notifications -->
 
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items performer-tour-header-coins">
                 <svg class="olymp-piggy-bank">
                     <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
                 </svg>
@@ -153,7 +153,8 @@ use App\Models\User;
                     </div>
                 </div>
             </div>
-            <div class="author-page author vcard inline-items more">
+
+            <div class="author-page author vcard inline-items more performer-tour-user-menu">
                 <div class="author-thumb">
                     @component('components.user.profile-picture-component', [
                         'isVerified' => $userComposerIsVerified,
