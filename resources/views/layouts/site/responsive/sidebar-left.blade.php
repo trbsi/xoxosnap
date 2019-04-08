@@ -66,6 +66,14 @@ use App\Models\User;
 					</a>
 				</li>
 				<li>
+                    <a href="{{route('web.coins.show-buy-coins-form')}}">
+                        <svg class="olymp-piggy-bank">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-piggy-bank"></use>
+                        </svg>
+                        <span>{{__('general/user-menu.buy_coins')}}</span>
+                    </a>
+                </li>
+				<li>
 					<a href="javascript:;" class="logout-link">
 						<svg class="olymp-logout-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 

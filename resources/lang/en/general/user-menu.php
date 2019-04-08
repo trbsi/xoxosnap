@@ -7,4 +7,5 @@ return [
 	'collapse_menu' => 'Collapse Menu',
 	'login' => 'Login',
 	'register' => 'Register',
+	'buy_coins' => 'Buy Coins',
 ];
