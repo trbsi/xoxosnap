@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'PornSnap'),
+    'name' => env('APP_NAME', 'xoxoSnap'),
 
-    'info_email' => env('INFO_EMAIL', 'info@pornsnapx.com'),
+    'info_email' => env('INFO_EMAIL', 'info@xoxosnap.me'),
 
     /*
     |--------------------------------------------------------------------------

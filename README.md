@@ -8,17 +8,24 @@
 ```
 <VirtualHost *:80>
     ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot "F:/xampp/htdocs/pornsnap/site/public"
-    ServerName pornsnap.loc
-    ErrorLog "logs/pornsnap-error.log"
-    CustomLog "logs/pornsnap-access.log" common
+    DocumentRoot "F:/xampp/htdocs/adult/site/public"
+    ServerName adult.loc
+    ErrorLog "logs/adult-error.log"
+    CustomLog "logs/adult-access.log" common
 </VirtualHost>
 
 <VirtualHost *:443>
-    DocumentRoot "F:/xampp/htdocs/pornsnap/site/public"
-    ServerName pornsnap.loc
+    DocumentRoot "F:/xampp/htdocs/adult/site/public"
+    ServerName adult.loc
     SSLEngine on
-    SSLCertificateFile "crt/pornsnap.loc/server.crt"
-    SSLCertificateKeyFile "crt/pornsnap.loc/server.key"
+    SSLCertificateFile "crt/adult.loc/server.crt"
+    SSLCertificateKeyFile "crt/adult.loc/server.key"
 </VirtualHost>
 ```
+
+# Name changing
+1. In code
+1. Domain name
+1. Google Analytics
+1. Gmail + redirect info@newdomain.com to gmail
+1. Change mail settings in .env file

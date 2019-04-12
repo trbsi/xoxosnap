@@ -19,7 +19,7 @@ trait StoryFileTrait
 
     public function getStoryPictureAbsolutePath(int $userId, string $picture, string $year, string $month): string
     {
-        $pathPrefix = Storage::getAdapter()->getPathPrefix(); //->/htdocs/pornsnap/site/storage/app/public/
+        $pathPrefix = Storage::getAdapter()->getPathPrefix(); //->/htdocs/site/storage/app/public/
         $pathPrefix = rtrim($pathPrefix, '/');
         $pathPrefix = rtrim($pathPrefix, '\\');
         $path = sprintf('%s%s%d/%s/%s/%s', $pathPrefix, Story::STORY_PATH, $userId, $year, $month, $picture);

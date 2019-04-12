@@ -16,7 +16,7 @@ trait ProfilePictureTrait
 
     public function getProfilePictureAbsolutePath(int $userId, string $picture): string
     {
-        $pathPrefix = Storage::getAdapter()->getPathPrefix(); //->/htdocs/pornsnap/site/storage/app/public/
+        $pathPrefix = Storage::getAdapter()->getPathPrefix(); //->/htdocs/site/storage/app/public/
         $pathPrefix = rtrim($pathPrefix, '/');
         $path = sprintf('%s%s%d/%s', $pathPrefix, UserProfile::USER_PICTURE_PATH, $userId, $picture);
         return $path;
