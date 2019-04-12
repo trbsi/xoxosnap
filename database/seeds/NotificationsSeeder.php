@@ -9,6 +9,10 @@ class NotificationsSeeder extends Seeder
 {
     public function run(User $user)
     {    	
+        if ('production' === env('APP_ENV')) {
+            return;
+        }
+        
     	$performers = $user->where('profile_type', User::USER_TYPE_PERFORMER)->get();
     	$viewers = $user->where('profile_type', User::USER_TYPE_VIEWER)->get();
 

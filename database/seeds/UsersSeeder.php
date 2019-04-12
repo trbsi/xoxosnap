@@ -35,6 +35,10 @@ class UsersSeeder extends Seeder
 
     public function run()
     {
+        if ('production' === env('APP_ENV')) {
+            return;
+        }
+        
         $profiles = [
             [
                 'data' => $this->performes,

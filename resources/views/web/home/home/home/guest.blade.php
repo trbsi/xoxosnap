@@ -31,6 +31,7 @@
         </div>
     </div>
 
+    @if (false === $performers->isEmpty())
     <div class="row">
         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="ui-block responsive-flex">
@@ -43,6 +44,7 @@
             </div>
         </div>
     </div>
+    @endif
 
 
     <div class="row">

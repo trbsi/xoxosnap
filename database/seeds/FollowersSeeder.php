@@ -8,6 +8,10 @@ class FollowersSeeder extends Seeder
 {
     public function run(User $user)
     {
+        if ('production' === env('APP_ENV')) {
+            return;
+        }
+        
     	$singleUser = $user->where('username', 'john')->first();
     	$singleUser->follows()->attach($this->getUserIds($user));
 
