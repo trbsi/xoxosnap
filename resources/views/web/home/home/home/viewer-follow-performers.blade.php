@@ -72,10 +72,10 @@
     									<ul>
     										<li><b>{{__('web/home/home.guest.gender')}}:</b> {{$performer->profile->gender}}</li>
     										<li><b>{{__('web/home/home.guest.website')}}:</b> 
-                                                @if('-' === $performer->profile->website)
+                                                @if(empty($performer->profile->website))
                                                 -
                                                 @else
-                                                <a href="{{$performer->profile->website}}">{{__('web/home/home.guest.visit_website')}}</a>
+                                                <a href="{{$performer->profile->website}}" target="_blank">{{__('web/home/home.guest.visit_website')}}</a>
                                                 @endif
                                             </li>
     									</ul>                                    	

@@ -88,8 +88,8 @@ class UserProfile extends Model
 			return $value;
 		}
 
-		if (null === $value) {
-			return '-';
+		if (empty($value)) {
+			return $value;
 		}
 
 		return $value;
@@ -171,6 +171,10 @@ class UserProfile extends Model
 			return $value;
 		}
 
+		if (empty($value)) {
+			return $value;
+		}
+
 		return sprintf('https://www.instagram.com/%s', $value);
 	}
 
@@ -180,12 +184,20 @@ class UserProfile extends Model
 			return $value;
 		}
 
+		if (empty($value)) {
+			return $value;
+		}
+
 		return sprintf('https://twitter.com/%s', $value);
 	}
 
 	public function getFacebookAttribute($value)
 	{
 		if ($this->noMutation) {
+			return $value;
+		}
+
+		if (empty($value)) {
 			return $value;
 		}
 		

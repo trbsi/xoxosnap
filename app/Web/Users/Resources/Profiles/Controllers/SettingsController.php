@@ -41,6 +41,7 @@ class SettingsController extends Controller
         ]);
 
         if ($validator->fails()) {
+            $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
                     ->route('web.user.profile.settings.account-settings')
                     ->withErrors($validator)
@@ -82,6 +83,7 @@ class SettingsController extends Controller
         ]);
 
         if ($validator->fails()) {
+            $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
                     ->route('web.user.profile.settings.personal-info-settings')
                     ->withErrors($validator)
@@ -110,6 +112,7 @@ class SettingsController extends Controller
         ]);
 
         if ($validator->fails()) {
+            $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
                     ->route('web.user.profile.settings.change-password-settings')
                     ->withErrors($validator)

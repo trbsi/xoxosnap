@@ -35,7 +35,7 @@
 							<span class="title">{{__('web/users/resources/profile.website')}}:</span>
 							<span class="text">
 								@if(false === empty($user->profile->website))
-								<a href="{{$user->profile->website}}">{{$user->profile->website}}</a>
+								<a href="{{$user->profile->website}}" target="_blank">{{$user->profile->website}}</a>
 								@else
 								-
 								@endif
