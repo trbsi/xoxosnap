@@ -28,4 +28,4 @@
 1. Domain name
 1. Google Analytics
 1. Gmail + redirect info@newdomain.com to gmail
-1. Change mail settings in .env file
+1. Change mail settings in .env file and check mail sending from site

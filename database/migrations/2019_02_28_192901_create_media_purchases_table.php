@@ -14,6 +14,7 @@ class CreateMediaPurchasesTable extends Migration
     public function up()
     {
         Schema::create('media_purchases', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('media_id');

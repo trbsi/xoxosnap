@@ -14,6 +14,7 @@ class CreateUsersProfilesTable extends Migration
     public function up()
     {
         Schema::create('users_profiles', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unique();
             $table->string('picture', 255)->nullable();

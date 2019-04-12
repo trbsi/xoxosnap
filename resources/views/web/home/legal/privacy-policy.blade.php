@@ -127,7 +127,6 @@
                     <p>In the event of any differences in translations or interpretations, the English version of this Privacy Policy shall prevail.</p>
                     <p>If you have any questions or concerns regarding this Privacy Policy, please contact us at <a href="mailto:{{config('app.info_email')}}" class="is-link">{{config('app.info_email')}}</a>. </p>
                     <p>We will do our best to treat your request promptly. Please note that we may sometimes deny your request under relevant laws.</p>
-                    <p><em>Last revision: December 10, 2018</em></p>
                 </article>
             </div>
         </div>

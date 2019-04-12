@@ -14,6 +14,7 @@ class CreateUsersBillingsTable extends Migration
     public function up()
     {
         Schema::create('users_billings', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unique();
             $table->string('name', 100);

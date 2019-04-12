@@ -14,6 +14,7 @@ class CreateStoriesPurchasesTable extends Migration
     public function up()
     {
         Schema::create('stories_purchases', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('story_id');

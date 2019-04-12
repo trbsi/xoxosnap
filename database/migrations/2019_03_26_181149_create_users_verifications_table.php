@@ -14,6 +14,7 @@ class CreateUsersVerificationsTable extends Migration
     public function up()
     {
         Schema::create('users_verifications', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('number', 30)->unique();

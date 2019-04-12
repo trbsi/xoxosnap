@@ -14,6 +14,7 @@ class CreateStoriesMediaTable extends Migration
     public function up()
     {
         Schema::create('stories_media', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('story_id');
             $table->string('file', 100);

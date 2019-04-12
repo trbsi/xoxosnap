@@ -14,6 +14,7 @@ class CreateCoinsTable extends Migration
     public function up()
     {
         Schema::create('coins', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unique();
             $table->integer('current_coins')->default(0);
