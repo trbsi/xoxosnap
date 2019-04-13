@@ -36,11 +36,8 @@
         <div class="header--standard-wrap">
             <a href="/" class="logo">
                 <div class="img-wrap">
-                    <img src="/img/logo.png" alt="Olympus">
-                    <img src="/img/logo-colored-small.png" alt="Olympus" class="logo-colored">
-                </div>
-                <div class="title-block">
-                    <h6 class="logo-title">{{config('app.name')}}</h6>
+                    <img src="/img/logo/logo-xsml.png" alt="{{config('app.name')}}">
+                    <img src="/img/logo/logo-xsml.png" alt="{{config('app.name')}}" class="logo-colored">
                 </div>
             </a>
             <a href="#" class="open-responsive-menu js-open-responsive-menu">

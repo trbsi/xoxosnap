@@ -6,7 +6,7 @@ use App\Models\User;
 <!-- Header-BP -->
 <header class="header" id="site-header">
     <div class="page-title">
-        <a href="/"><h6>{{config('app.name')}}</h6></a>
+        <a href="/"><img src="/img/logo/logo-xsml.png"></a>
     </div>
     <div class="header-content-wrapper">
         <form class="search-bar w-search notification-list friend-requests performer-tour-header-search" method="GET" action="{{route('web.search')}}">

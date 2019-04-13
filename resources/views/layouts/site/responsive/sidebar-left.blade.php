@@ -7,7 +7,7 @@ use App\Models\User;
 
 	<div class="fixed-sidebar-left sidebar--small performer-tour-responsive-user-menu" id="sidebar-left-responsive">
 		<a href="/" class="logo js-sidebar-open">
-			<img src="/img/logo.png" alt="{{config('app.name')}}">
+			<img src="/img/logo/logo-variation-2-xsml.png" alt="{{config('app.name')}}">
 		</a>
 
 	</div>
@@ -15,10 +15,7 @@ use App\Models\User;
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
 		<a href="/" class="logo">
 			<div class="img-wrap">
-				<img src="/img/logo.png" alt="{{config('app.name')}}">
-			</div>
-			<div class="title-block">
-				<h6 class="logo-title">{{config('app.name')}}</h6>
+				<img src="/img/logo/logo-xsml.png" alt="{{config('app.name')}}">
 			</div>
 		</a>
 

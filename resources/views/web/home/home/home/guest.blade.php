@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
-            <h1><b>{{config('app.name')}}</b></h1>
+            <img src="/img/logo/logo-sml.png">
             <h3>{{__('web/home/home.guest.join_community')}}</h3>
             <h4>{{__('web/home/home.guest.watch_uncensored_video')}}</h4>
             <br><br>

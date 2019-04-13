@@ -3887,8 +3887,9 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
   min-height: 1000vh; }
   .fixed-sidebar .logo {
     height: 70px;
-    background-color: #ff5e3a;
-    padding: 15px; }
+    background-color: white;
+    padding: 15px; 
+    border-bottom: 1px solid black; }
   .fixed-sidebar .ui-block-title {
     margin: 15px 0; }
     .fixed-sidebar .ui-block-title:first-child {
