@@ -12,7 +12,7 @@ class CreateNotificationForPerformerListener
     /**
      * Handle the event.
      *
-     * @param  MediaPurchasedEvent  $event
+     * @param  MediaPurchasedEvent $event
      * @return void
      */
     public function handle(MediaPurchasedEvent $event)

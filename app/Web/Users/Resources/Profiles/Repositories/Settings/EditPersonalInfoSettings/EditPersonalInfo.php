@@ -9,27 +9,27 @@ use App\Web\Users\Resources\Profiles\Traits\ProfilePictureTrait;
 
 class EditPersonalInfo
 {
-	use ProfilePictureTrait, ImageManipulationTrait;
+    use ProfilePictureTrait, ImageManipulationTrait;
 
-	public function editPersonalInfo(array $data, UserProfile $userProfile)
-	{
-		if (isset($data['picture'])) {
-	        $picture = $data['picture'];
+    public function editPersonalInfo(array $data, UserProfile $userProfile)
+    {
+        if (isset($data['picture'])) {
+            $picture = $data['picture'];
 
-	        //remove old picture
-	        $this->removeOldPicture($userProfile);
+            //remove old picture
+            $this->removeOldPicture($userProfile);
 
-	        //upload new picture
-	        $pictureName = sprintf('%s_%s.%s', time(), $userProfile->user_id, $picture->extension());
-	        $uploadPath = $this->getProfilePictureUploadPath($userProfile->user_id);
-	        Storage::putFileAs($uploadPath, $picture, $pictureName);
+            //upload new picture
+            $pictureName = sprintf('%s_%s.%s', time(), $userProfile->user_id, $picture->extension());
+            $uploadPath = $this->getProfilePictureUploadPath($userProfile->user_id);
+            Storage::putFileAs($uploadPath, $picture, $pictureName);
 
-	        //resize and save
-	        $absolutePicturePath = $this->getProfilePictureAbsolutePath($userProfile->user_id, $pictureName);
-	        $this->resizeOrientateAndLowerImageQuality($absolutePicturePath, 500);
-	        $userProfile->picture = $pictureName;
-		}
-        
+            //resize and save
+            $absolutePicturePath = $this->getProfilePictureAbsolutePath($userProfile->user_id, $pictureName);
+            $this->resizeOrientateAndLowerImageQuality($absolutePicturePath, 500);
+            $userProfile->picture = $pictureName;
+        }
+
         $userProfile->birthday = $data['birthday'];
         $userProfile->description = $data['description'];
         $userProfile->current_city = $data['current_city'];
@@ -40,15 +40,15 @@ class EditPersonalInfo
         $userProfile->instagram = $data['instagram'];
         $userProfile->twitter = $data['twitter'];
         $userProfile->save();
-	}
+    }
 
-	private function removeOldPicture(UserProfile $userProfile)
-	{
+    private function removeOldPicture(UserProfile $userProfile)
+    {
 
-		$absolutePath = $this->getProfilePictureAbsolutePath($userProfile->user_id, $userProfile->getOriginal('picture'));
-		if (file_exists($absolutePath)) {
-			$relativePath = $this->getProfilePictureRelativePath($userProfile->user_id, $userProfile->getOriginal('picture'));
-			Storage::delete($relativePath);
-		}
-	}
+        $absolutePath = $this->getProfilePictureAbsolutePath($userProfile->user_id, $userProfile->getOriginal('picture'));
+        if (file_exists($absolutePath)) {
+            $relativePath = $this->getProfilePictureRelativePath($userProfile->user_id, $userProfile->getOriginal('picture'));
+            Storage::delete($relativePath);
+        }
+    }
 }

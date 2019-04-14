@@ -9,15 +9,15 @@ trait MediaFileTrait
 {
     public function getMediaPath(int $userId, string $year, string $month, string $fileName): string
     {
-    	 //->/user/media/{user_id}/{year}/{month}/video.mp4
+        //->/user/media/{user_id}/{year}/{month}/video.mp4
         $path = sprintf('storage%s%s/%s/%s/%s', Media::MEDIA_PATH, $userId, $year, $month, $fileName);
         return asset($path);
     }
 
     public function getMediaAbsoluteUploadPath(int $userId): string
     {
-    	$year = date('Y');
-    	$month = date('m');
+        $year = date('Y');
+        $month = date('m');
         $pathPrefix = Storage::getAdapter()->getPathPrefix(); //->/htdocs/site/storage/app/public/
         $pathPrefix = rtrim($pathPrefix, '/');
         $pathPrefix = rtrim($pathPrefix, '\\');
@@ -27,12 +27,12 @@ trait MediaFileTrait
 
     public function getMediaUploadPath(int $userId): string
     {
-    	$year = date('Y');
-    	$month = date('m');
+        $year = date('Y');
+        $month = date('m');
 
-    	//-> /user/media/00/11/22
-    	$path = sprintf('%s%s/%s/%s', Media::MEDIA_PATH, $userId, $year, $month);
-    	return $path;
+        //-> /user/media/00/11/22
+        $path = sprintf('%s%s/%s/%s', Media::MEDIA_PATH, $userId, $year, $month);
+        return $path;
     }
 
     public function getMediaRelativePath(int $userId, string $year, string $month, string $fileName): string

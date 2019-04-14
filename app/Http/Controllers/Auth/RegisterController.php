@@ -33,7 +33,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showRegistrationForm()
-    {        
+    {
         $userTypes = [
             'performer' => User::USER_TYPE_PERFORMER,
             'viewer' => User::USER_TYPE_VIEWER
@@ -65,7 +65,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'agree_terms' => ['accepted'],
             'gender' => ['required', 'integer', 'in:1,2,3'],
             'profile_type' => ['required', 'integer', 'in:1,2'],
-            'username' => ['required', 'string', 'max:20', 'unique:users', sprintf('regex:%s',User::USERNAME_VALIDATION_REGEX)],
+            'username' => ['required', 'string', 'max:20', 'unique:users', sprintf('regex:%s', User::USERNAME_VALIDATION_REGEX)],
             'name' => ['required_if:profile_type,1', 'string', 'max:100', 'nullable'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
@@ -84,7 +84,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)

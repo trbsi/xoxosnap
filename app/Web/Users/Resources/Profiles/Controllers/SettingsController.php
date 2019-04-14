@@ -43,9 +43,9 @@ class SettingsController extends Controller
         if ($validator->fails()) {
             $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
-                    ->route('web.user.profile.settings.account-settings')
-                    ->withErrors($validator)
-                    ->withInput();
+                ->route('web.user.profile.settings.account-settings')
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $authUser = $this->authUser;
@@ -85,9 +85,9 @@ class SettingsController extends Controller
         if ($validator->fails()) {
             $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
-                    ->route('web.user.profile.settings.personal-info-settings')
-                    ->withErrors($validator)
-                    ->withInput();
+                ->route('web.user.profile.settings.personal-info-settings')
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $editPersonalInfo->editPersonalInfo($request->all(), $this->authUser->profile);
@@ -114,9 +114,9 @@ class SettingsController extends Controller
         if ($validator->fails()) {
             $request->session()->flash('error', __('general/site.something_went_wrong_check_inputs'));
             return redirect()
-                    ->route('web.user.profile.settings.change-password-settings')
-                    ->withErrors($validator)
-                    ->withInput();
+                ->route('web.user.profile.settings.change-password-settings')
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $authUser = $this->authUser;

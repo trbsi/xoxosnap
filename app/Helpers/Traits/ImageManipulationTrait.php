@@ -8,7 +8,7 @@ use Intervention\Image\Image as InterventionImage;
 
 trait ImageManipulationTrait
 {
-    
+
     /**
      * Resize and lower quality of an image
      * @param string $picturePath Absoluthe picture path
@@ -17,7 +17,8 @@ trait ImageManipulationTrait
         string $picturePath,
         ?int $width = null,
         ?int $height = null
-    ): ?InterventionImage {
+    ): ?InterventionImage
+    {
         try {
             if (null !== $width && null !== $height) {
                 $height = null;
@@ -28,7 +29,7 @@ trait ImageManipulationTrait
             if (strpos($mime, 'image') !== false) {
                 /** @var InterventionImage $img */
                 $img = Image::make($picturePath);
-             
+
                 // resize the image to a width of 500 and constrain aspect ratio (auto height)
                 // prevent possible upsizing
                 $image = $img->resize($width, $height, function ($constraint) {

@@ -8,10 +8,10 @@ class IsUserFollowedRepository
 {
     public function isUserFollowed(int $userId, ?User $authUser): bool
     {
-    	if (null === $authUser) {
-    		return false;
-    	}
-    	
-    	return $authUser->follows()->where('followers.user_id', $userId)->exists();
+        if (null === $authUser) {
+            return false;
+        }
+
+        return $authUser->follows()->where('followers.user_id', $userId)->exists();
     }
 }

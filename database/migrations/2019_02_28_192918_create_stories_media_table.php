@@ -23,9 +23,9 @@ class CreateStoriesMediaTable extends Migration
             $table->timestamps();
 
             $table->foreign('story_id')
-            ->references('id')
-            ->on('stories')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('stories')
+                ->onDelete('cascade');
         });
     }
 

@@ -6,22 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tip extends Model
 {
-	protected $table = 'tips';
+    protected $table = 'tips';
 
-	protected $casts = [
-		'sender_id' => 'int',
-		'receiver_id' => 'int',
-		'coins' => 'int',
-	];
+    protected $casts = [
+        'sender_id' => 'int',
+        'receiver_id' => 'int',
+        'coins' => 'int',
+    ];
 
-	protected $fillable = [
-		'sender_id',
-		'receiver_id',
-		'coins',
-	];
+    protected $fillable = [
+        'sender_id',
+        'receiver_id',
+        'coins',
+    ];
 
-	public function user()
-	{
-		return $this->belongsTo(\App\Models\User::class, 'sender_id');
-	}
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'sender_id');
+    }
 }

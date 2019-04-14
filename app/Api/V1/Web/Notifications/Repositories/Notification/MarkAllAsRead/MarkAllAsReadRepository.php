@@ -15,22 +15,22 @@ class MarkAllAsReadRepository
     }
 
     public function markAllAsRead(?int $type): void
-	{
-		$user = Auth::user();
+    {
+        $user = Auth::user();
 
-		//this is seperate notification box on frontend, update only those notifications
-		if (Notification::TYPE_PERFORMER_NEW_FOLLOWER === $type) {
+        //this is seperate notification box on frontend, update only those notifications
+        if (Notification::TYPE_PERFORMER_NEW_FOLLOWER === $type) {
             $this->notification = $this->notification->where('notification_type', $type);
 
-			$user->notificationCount()->update(['new_followers' => 0]);
-		} else {
-			//update all notifications of this user, except for "new followers" notifications
+            $user->notificationCount()->update(['new_followers' => 0]);
+        } else {
+            //update all notifications of this user, except for "new followers" notifications
             $this->notification = $this->notification->where('notification_type', '!=', Notification::TYPE_PERFORMER_NEW_FOLLOWER);
-			$user->notificationCount()->update(['new_notifications' => 0]);
-		}
+            $user->notificationCount()->update(['new_notifications' => 0]);
+        }
 
         $this->notification = $this->notification
             ->where('user_id', $user->id)
             ->update(['is_read' => 1]);
-	}
+    }
 }

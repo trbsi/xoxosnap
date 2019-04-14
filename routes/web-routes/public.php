@@ -8,17 +8,17 @@ Route::get('/search', '\App\Web\Search\Controllers\SearchController@search')->na
 
 //user profile
 Route::prefix('u')->group(function () {
-	$ctl = '\App\Web\Users\Resources\Profiles\Controllers\ProfileController';
-	Route::get('{username}', $ctl.'@profile')->name('web.user.profile');
-	Route::get('{username}/about', $ctl.'@about')->name('web.user.about');
-	Route::get('{username}/{slug}', $ctl.'@userSingleVideo')->name('web.user.single-video');
+    $ctl = '\App\Web\Users\Resources\Profiles\Controllers\ProfileController';
+    Route::get('{username}', $ctl . '@profile')->name('web.user.profile');
+    Route::get('{username}/about', $ctl . '@about')->name('web.user.about');
+    Route::get('{username}/{slug}', $ctl . '@userSingleVideo')->name('web.user.single-video');
 });
 
 //register/login
 Auth::routes();
 Route::namespace('Auth')->group(function () {
-	//social login
-	Route::get('auth/callback/{provider}', 'SocialAuthController@callback');
-	Route::get('auth/redirect/{provider}', 'SocialAuthController@redirect')->name('web.social.login');
+    //social login
+    Route::get('auth/callback/{provider}', 'SocialAuthController@callback');
+    Route::get('auth/redirect/{provider}', 'SocialAuthController@redirect')->name('web.social.login');
 });
 

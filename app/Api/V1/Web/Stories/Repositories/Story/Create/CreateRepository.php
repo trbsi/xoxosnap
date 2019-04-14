@@ -14,53 +14,53 @@ use DateTime;
 use App\Web\Stories\Traits\StoryFileTrait;
 use App\Helpers\Traits\ImageManipulationTrait;
 
-class CreateRepository 
+class CreateRepository
 {
-	use StoryFileTrait, ImageManipulationTrait;
+    use StoryFileTrait, ImageManipulationTrait;
 
     public function create(array $data): void
     {
-    	try {
-	    	$user = Auth::user();
-	    	$data['expires_at'] = $this->calculateExpiresAt($data);
+        try {
+            $user = Auth::user();
+            $data['expires_at'] = $this->calculateExpiresAt($data);
 
-	    	DB::beginTransaction();
-			$saveData = [
-	    		'user_id' => $user->id,
-				'expires_at' => $data['expires_at'],
-	    	];
-	    	$story = Story::create($saveData);
+            DB::beginTransaction();
+            $saveData = [
+                'user_id' => $user->id,
+                'expires_at' => $data['expires_at'],
+            ];
+            $story = Story::create($saveData);
 
-	    	$storyMediaData = $this->uploadStoryMedia($data['stories'], $user->id);
+            $storyMediaData = $this->uploadStoryMedia($data['stories'], $user->id);
             $story->media()->createMany($storyMediaData);
-	    	DB::commit();
-    	} catch (Exception $e) {
-    		DB::rollBack();
-    		throw $e;
-    	}
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 
     private function uploadStoryMedia(array $stories, int $userId): array
     {
-    	$storyMediaData = [];
-    	foreach ($stories as $storyFile) {
-	    	$uploadPath = $this->getStoryUploadPath($userId);
-	    	$mediaName = sprintf('%s_%s_%s.%s', time(), rand(), $userId, $storyFile->extension());
-	    	Storage::putFileAs($uploadPath, $storyFile, $mediaName);
+        $storyMediaData = [];
+        foreach ($stories as $storyFile) {
+            $uploadPath = $this->getStoryUploadPath($userId);
+            $mediaName = sprintf('%s_%s_%s.%s', time(), rand(), $userId, $storyFile->extension());
+            Storage::putFileAs($uploadPath, $storyFile, $mediaName);
 
-    		if (false !== strpos($storyFile->getMimeType(), 'video')) {
-    			$type = StoryMedia::TYPE_VIDEO;
-    		} else {
-    			$type = StoryMedia::TYPE_PHOTO;
-    			$pictureAbsoluthePath = $this->getStoryPictureAbsolutePath($userId, $mediaName, date('Y'), date('m'));
-    			$this->resizeOrientateAndLowerImageQuality($pictureAbsoluthePath, null, 1200);
-    		}
+            if (false !== strpos($storyFile->getMimeType(), 'video')) {
+                $type = StoryMedia::TYPE_VIDEO;
+            } else {
+                $type = StoryMedia::TYPE_PHOTO;
+                $pictureAbsoluthePath = $this->getStoryPictureAbsolutePath($userId, $mediaName, date('Y'), date('m'));
+                $this->resizeOrientateAndLowerImageQuality($pictureAbsoluthePath, null, 1200);
+            }
 
-    		$storyMediaData[] = [
-    			'file' => $mediaName,
-    			'type' => $type,
-    		];
-    	}
+            $storyMediaData[] = [
+                'file' => $mediaName,
+                'type' => $type,
+            ];
+        }
 
         return $storyMediaData;
     }
@@ -73,7 +73,7 @@ class CreateRepository
             $date->add(new DateInterval('PT24H'));
             return $date->format('Y-m-d H:i:s');
         }
-        
+
 
         switch ($data['expires_in_type']) {
             case Story::EXPIRY_TIME_HOURS:

@@ -9,16 +9,16 @@ class RolesSeeder extends Seeder
 {
     public function run(UserRole $userRole)
     {
-    	$adminRole = UserRole::where('role_key', 'admin')->first();
-    	$roles = [
-	    	[
-	            'role_key' => 'admin',
-	            'role_description' => 'Admin role'
-	        ]
-	    ];
+        $adminRole = UserRole::where('role_key', 'admin')->first();
+        $roles = [
+            [
+                'role_key' => 'admin',
+                'role_description' => 'Admin role'
+            ]
+        ];
 
-	    foreach ($roles as $role) {
-	    	$userRole->create($role);
-	    }
+        foreach ($roles as $role) {
+            $userRole->create($role);
+        }
     }
 }

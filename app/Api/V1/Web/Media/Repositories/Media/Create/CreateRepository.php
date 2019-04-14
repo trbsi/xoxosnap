@@ -13,9 +13,9 @@ use DateInterval;
 use Exception;
 use DB;
 
-class CreateRepository 
+class CreateRepository
 {
-	use MediaFileTrait;
+    use MediaFileTrait;
 
     public function create(array $data): Media
     {
@@ -36,11 +36,11 @@ class CreateRepository
                 'expires_at' => $data['expires_at'],
                 'duration' => $data['duration'],
             ];
-            $media = Media::create($saveData);   
+            $media = Media::create($saveData);
             //update url
             $media->slug = sprintf('%s-%s', str_slug($media->title), $media->id);
             $media->save();
-            
+
             //save hashtags
             $hashtags = explode(',', $data['hashtags']);
             $media->hashtags()->attach($hashtags);
@@ -61,32 +61,32 @@ class CreateRepository
 
     }
 
-    private function uploadVideo(array $data, User $user) : string
+    private function uploadVideo(array $data, User $user): string
     {
-    	$uploadPath = $this->getMediaUploadPath($user->id);
-    	$video = $data['video'];
-    	$videoName = sprintf('%s_%s_%s.%s', time(), rand(), $user->id, $video->extension());
-    	Storage::putFileAs($uploadPath, $video, $videoName);
+        $uploadPath = $this->getMediaUploadPath($user->id);
+        $video = $data['video'];
+        $videoName = sprintf('%s_%s_%s.%s', time(), rand(), $user->id, $video->extension());
+        Storage::putFileAs($uploadPath, $video, $videoName);
 
-    	return $videoName;
+        return $videoName;
     }
 
     private function uploadThumbnail(array $data, User $user): string
     {
-    	//decode image
-    	$img = str_replace('data:image/jpeg;base64,', '', $data['thumbnail']);
-		$img = str_replace(' ', '+', $img);
-		$image = base64_decode($img);
+        //decode image
+        $img = str_replace('data:image/jpeg;base64,', '', $data['thumbnail']);
+        $img = str_replace(' ', '+', $img);
+        $image = base64_decode($img);
 
-		//remove extension from video
-		$withoutExt = preg_replace('/\\.[^.\\s]{2,4}$/', '', $data['file']);
+        //remove extension from video
+        $withoutExt = preg_replace('/\\.[^.\\s]{2,4}$/', '', $data['file']);
 
-		//save image
-		$thumbnailName = sprintf('thumbnail_%s.%s', $withoutExt, 'jpg');
-		$uploadPath = $this->getMediaAbsoluteUploadPath($user->id); 
-		file_put_contents(sprintf('%s/%s', $uploadPath, $thumbnailName), $image);
+        //save image
+        $thumbnailName = sprintf('thumbnail_%s.%s', $withoutExt, 'jpg');
+        $uploadPath = $this->getMediaAbsoluteUploadPath($user->id);
+        file_put_contents(sprintf('%s/%s', $uploadPath, $thumbnailName), $image);
 
-		return $thumbnailName;
+        return $thumbnailName;
     }
 
     private function calculateExpiresAt(array $data): ?string
@@ -94,14 +94,14 @@ class CreateRepository
         if (Media::EXPIRY_TYPE_NEVER === $data['expiry_type']) {
             return null;
         }
-        
+
         $date = new DateTime();
 
         switch ($data['expires_in_type']) {
             case Media::EXPIRY_TIME_DAYS:
                 $date->add(new DateInterval(sprintf('P%dD', $data['expires_in'])));
                 break;
-            
+
             case Media::EXPIRY_TIME_HOURS:
                 $date->add(new DateInterval(sprintf('PT%dH', $data['expires_in'])));
                 break;

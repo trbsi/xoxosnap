@@ -17,9 +17,9 @@ class AddRoleToUsersTable extends Migration
             $table->unsignedBigInteger('role_id')->after('id')->nullable();
 
             $table->foreign('role_id')
-            ->references('id')
-            ->on('users_roles')
-            ->onDelete('restrict');
+                ->references('id')
+                ->on('users_roles')
+                ->onDelete('restrict');
 
         });
     }

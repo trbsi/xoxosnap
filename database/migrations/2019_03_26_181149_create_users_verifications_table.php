@@ -19,11 +19,11 @@ class CreateUsersVerificationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('number', 30)->unique();
             $table->tinyInteger('status')->default(0);
-            
+
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

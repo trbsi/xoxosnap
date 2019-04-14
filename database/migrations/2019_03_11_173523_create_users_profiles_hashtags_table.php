@@ -20,14 +20,14 @@ class CreateUsersProfilesHashtagsTable extends Migration
             $table->unsignedBigInteger('hashtag_id');
 
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->foreign('hashtag_id')
-            ->references('id')
-            ->on('hashtags')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('hashtags')
+                ->onDelete('cascade');
 
             $table->unique(['user_id', 'hashtag_id']);
 

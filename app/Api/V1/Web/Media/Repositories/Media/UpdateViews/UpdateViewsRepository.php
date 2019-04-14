@@ -4,7 +4,7 @@ namespace App\Api\V1\Web\Media\Repositories\Media\UpdateViews;
 
 use App\Models\Media;
 
-class UpdateViewsRepository 
+class UpdateViewsRepository
 {
     public function update(int $id): array
     {

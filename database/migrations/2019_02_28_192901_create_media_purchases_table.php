@@ -20,14 +20,14 @@ class CreateMediaPurchasesTable extends Migration
             $table->unsignedBigInteger('media_id');
 
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->foreign('media_id')
-            ->references('id')
-            ->on('media')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('media')
+                ->onDelete('cascade');
 
             $table->unique(['user_id', 'media_id']);
         });

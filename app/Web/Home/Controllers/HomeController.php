@@ -17,7 +17,8 @@ class HomeController extends Controller
         Request $request,
         Above18Repository $above18Repository,
         HomeRepository $homeRepository
-    ) {	
+    )
+    {
         $user = User::where('id', Auth::id())->with(['coin', 'profile'])->first();
         $params = [
             'user' => $user,
@@ -27,15 +28,15 @@ class HomeController extends Controller
         $params['javascript'] = $above18Repository->getJavascriptParam();
         $homepageData = $homeRepository->getDataForHomePage($user);
 
-    	return view('web.home.home.home.home', array_merge($params, $homepageData));
+        return view('web.home.home.home.home', array_merge($params, $homepageData));
     }
 
     public function explore(Request $request, ExploreRepository $exploreRepository)
     {
         $exploreType = $request->type ?? Media::ORDER_TYPE_RECENT;
-        $data = $exploreRepository->getDataForExplorePage((int) $exploreType);
-        $data['exploreType'] = (int) $exploreType;
+        $data = $exploreRepository->getDataForExplorePage((int)$exploreType);
+        $data['exploreType'] = (int)$exploreType;
 
-    	return view('web.home.home.explore.explore', $data);
+        return view('web.home.home.explore.explore', $data);
     }
 }

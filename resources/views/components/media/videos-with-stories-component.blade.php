@@ -31,15 +31,15 @@
 @endcomponent
 
 @push('javascript')
-    @component('components.media.javascript.stories-component', ['stories' => $stories])
-    @endcomponent
+@component('components.media.javascript.stories-component', ['stories' => $stories])
+@endcomponent
 
-    @component('components.media.javascript.progressbar-component', ['cssClass' => '.progressbar-continer-vid'])
-    @endcomponent
+@component('components.media.javascript.progressbar-component', ['cssClass' => '.progressbar-continer-vid'])
+@endcomponent
 
-    @component('components.media.javascript.infinite-scroll-component')
-    @endcomponent
+@component('components.media.javascript.infinite-scroll-component')
+@endcomponent
 
-    @component('components.media.javascript.video-access-component')
-    @endcomponent    
+@component('components.media.javascript.video-access-component')
+@endcomponent
 @endpush

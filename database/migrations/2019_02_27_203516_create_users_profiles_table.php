@@ -32,9 +32,9 @@ class CreateUsersProfilesTable extends Migration
             $table->string('twitter', 50)->nullable();
 
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

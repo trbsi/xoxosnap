@@ -13,7 +13,8 @@ class VerificationController extends Controller
     public function requestVerification(
         Request $request,
         RequestVerificationRepository $requestVerificationRepository
-    ) {
+    )
+    {
         $validator = Validator::make($request->all(), [
             'verification_photo' => 'required|image',
         ]);
@@ -28,7 +29,7 @@ class VerificationController extends Controller
         try {
             $requestVerificationRepository->request($request->all());
             $request->session()->flash('success', __('web/home/home.performer.not_verified.request_sent'));
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $request->session()->flash('error', __('general/site.something_went_wrong'));
         }
 

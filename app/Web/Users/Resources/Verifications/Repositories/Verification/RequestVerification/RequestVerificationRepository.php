@@ -18,7 +18,7 @@ class RequestVerificationRepository
             DB::beginTransaction();
             $user = Auth::user();
 
-            $path = Storage::disk('local')->putFileAs('temp', $data['verification_photo'], rand().'.jpg');
+            $path = Storage::disk('local')->putFileAs('temp', $data['verification_photo'], rand() . '.jpg');
             $path = sprintf('%s/app/%s', storage_path(), $path);
 
             $verification = $user->verification;

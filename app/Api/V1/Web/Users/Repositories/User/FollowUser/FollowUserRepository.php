@@ -7,27 +7,27 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use App\Models\user;
 
-class FollowUserRepository 
+class FollowUserRepository
 {
     public function follow(int $userId): array
     {
-    	$followedBy = Auth::user();
+        $followedBy = Auth::user();
         $follows = $followedBy->follows();
 
         $followedUser = User::find($userId);
         $followedUserProfile = $followedUser->profile;
         $followedUserProfile->noMutation = true;
 
-    	try {
-    		$follows->attach($userId);
+        try {
+            $follows->attach($userId);
             $followedUserProfile->increment('followers');
-    		$followed = true;
-    		event(new ViewerFollowedPerformerEvent($followedUser, $followedBy));
-    	} catch (Exception $e) {
-    		$follows->detach($userId);
+            $followed = true;
+            event(new ViewerFollowedPerformerEvent($followedUser, $followedBy));
+        } catch (Exception $e) {
+            $follows->detach($userId);
             $followedUserProfile->decrement('followers');
-    		$followed = false;
-    	}
+            $followed = false;
+        }
         return ['followed' => $followed];
     }
 }

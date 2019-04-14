@@ -29,11 +29,11 @@
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                       	@include('web.home.home.home.performer-home-page.upload-media-forms.upload-video')
-                       	@include('web.home.home.home.performer-home-page.upload-media-forms.upload-story')
+                        @include('web.home.home.home.performer-home-page.upload-media-forms.upload-video')
+                        @include('web.home.home.home.performer-home-page.upload-media-forms.upload-story')
                     </div>
                 </div>
-                <!-- ... end News Feed Form  -->			
+                <!-- ... end News Feed Form  -->
             </div>
         </main>
         <!-- ... end Main Content -->

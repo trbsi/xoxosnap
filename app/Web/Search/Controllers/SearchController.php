@@ -12,7 +12,8 @@ class SearchController extends Controller
     public function search(
         Request $request,
         SearchRepository $searchRepository
-    ) {
+    )
+    {
         $result = $searchRepository->search($request->term, $request->type);
         return view('web.search.search.search-results', [
             'result' => $result,
@@ -21,5 +22,5 @@ class SearchController extends Controller
             'searchTypeUsers' => SearchConstants::SEARCH_USER,
             'searchTypeMedia' => SearchConstants::SEARCH_MEDIA,
         ]);
-   }
+    }
 }

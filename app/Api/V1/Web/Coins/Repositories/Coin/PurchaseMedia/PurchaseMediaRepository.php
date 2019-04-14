@@ -13,17 +13,17 @@ use App\Web\Coins\Events\MediaPurchasedEvent;
 
 class PurchaseMediaRepository
 {
-	use ConvertCoinsTrait;
+    use ConvertCoinsTrait;
 
     public function purchase(int $id, string $type): array
     {
         $model = $this->getModel($id, $type);
-    	$user = Auth::user();
-    	$coinsCost = $this->convertMoneyToCoins($model->cost);
+        $user = Auth::user();
+        $coinsCost = $this->convertMoneyToCoins($model->cost);
 
-    	if ($user->coin->current_coins < $coinsCost) {
-    		abort(400, __('web/coins/coins.update.no_enough_coins'));
-    	}
+        if ($user->coin->current_coins < $coinsCost) {
+            abort(400, __('web/coins/coins.update.no_enough_coins'));
+        }
 
         //check if user already bought access to media
         if ($model->purchases()->where('user_id', $user->id)->count() > 0) {
@@ -32,14 +32,14 @@ class PurchaseMediaRepository
             ];
         }
 
-    	//if exception above is not thrown, user does not have access to media, take coins
-    	try {
+        //if exception above is not thrown, user does not have access to media, take coins
+        try {
             DB::beginTransaction();
             //set as purchased
             $this->setAsPurchased($model, $user->id);
 
             //take coins from user
-    		$user->coin()->decrement('current_coins', $coinsCost);
+            $user->coin()->decrement('current_coins', $coinsCost);
 
             //save transaction
             CoinTransaction::create([
@@ -57,14 +57,14 @@ class PurchaseMediaRepository
 
             event(new MediaPurchasedEvent($user, $model));
             DB::commit();
-		} catch (Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             abort(400, __('web/coins/coins.update.unable_to_take_coins'));
-		}
+        }
 
-    	return [
-    		'coins' => $user->coin->fresh()->current_coins
-    	];
+        return [
+            'coins' => $user->coin->fresh()->current_coins
+        ];
     }
 
     private function getModel(int $id, string $type)
@@ -77,7 +77,7 @@ class PurchaseMediaRepository
         }
     }
 
-    private function setAsPurchased($model, int $userId) 
+    private function setAsPurchased($model, int $userId)
     {
         $model->purchases()->attach($userId);
     }

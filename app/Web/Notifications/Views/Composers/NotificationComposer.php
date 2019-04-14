@@ -14,18 +14,19 @@ class NotificationComposer
     private $getNotificationsRepository;
     private $notificationsCountRepository;
 
-	public function __construct(
+    public function __construct(
         GetNotificationsRepository $getNotificationsRepository,
         NotificationsCountRepository $notificationsCountRepository
-    ) {
+    )
+    {
         $this->getNotificationsRepository = $getNotificationsRepository;
         $this->notificationsCountRepository = $notificationsCountRepository;
-	}
+    }
 
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
+     * @param  View $view
      * @return void
      */
     public function compose(View $view)
@@ -34,25 +35,25 @@ class NotificationComposer
             return;
         }
 
-    	$user = Auth::user();
+        $user = Auth::user();
 
         $newFollowersNotifications = $newNotifications = [];
         $newFollowersNotificationsCount = $newNotificationsCount = 0;
         $showNewFollowersNotifications = false;
 
-    	if (null !== $user) {
-    		if (User::USER_TYPE_PERFORMER === $user->profile_type) {
+        if (null !== $user) {
+            if (User::USER_TYPE_PERFORMER === $user->profile_type) {
                 $showNewFollowersNotifications = true;
 
                 $newFollowersNotifications = $this->getNotificationsRepository->getNewFollowersNotifications();
                 $newFollowersNotificationsCount = $this->notificationsCountRepository->getNewFollowersNotificationsCount();
-    		} elseif (User::USER_TYPE_VIEWER === $user->profile_type) {
+            } elseif (User::USER_TYPE_VIEWER === $user->profile_type) {
                 $showNewFollowersNotifications = false;
-		    }
+            }
 
-            $newNotifications = $this->getNotificationsRepository->getNewNotifications(); 
-            $newNotificationsCount = $this->notificationsCountRepository->getNewNotificationsCount(); 
-    	}
+            $newNotifications = $this->getNotificationsRepository->getNewNotifications();
+            $newNotificationsCount = $this->notificationsCountRepository->getNewNotificationsCount();
+        }
 
         $view->with('showNewFollowersNotifications', $showNewFollowersNotifications);
 

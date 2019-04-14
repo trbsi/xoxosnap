@@ -15,38 +15,38 @@ use App\Web\Media\Repositories\One\GetOneMediaRepository;
 
 class MediaController extends Controller
 {
-	public function one(Request $request, GetOneMediaRepository $getOneVideoRepository)
-	{
-		$media = $getOneVideoRepository->getOneVideo($request->id, Auth::id());
+    public function one(Request $request, GetOneMediaRepository $getOneVideoRepository)
+    {
+        $media = $getOneVideoRepository->getOneVideo($request->id, Auth::id());
 
-		return response()->json($media);
-	}
+        return response()->json($media);
+    }
 
-	public function updateViews(Request $request, UpdateViewsRepository $updateViewsRepository)
-	{
-		$data = $request->validate([
+    public function updateViews(Request $request, UpdateViewsRepository $updateViewsRepository)
+    {
+        $data = $request->validate([
             'id' => 'required|integer',
         ]);
-        
-		return response()->json($updateViewsRepository->update($data['id']));
-	}
 
-	public function like(Request $request, LikeRepository $likeRepository)
-	{
-		$data = $request->validate([
-	        'id' => 'required|integer',
-	    ]);
+        return response()->json($updateViewsRepository->update($data['id']));
+    }
 
-	    return response()->json($likeRepository->like($data['id']));
-	}
+    public function like(Request $request, LikeRepository $likeRepository)
+    {
+        $data = $request->validate([
+            'id' => 'required|integer',
+        ]);
 
-	public function create(CreateMediaRequest $createMediaRequest, CreateRepository $createRepository)
-	{
-		try {
-			$media = $createRepository->create($createMediaRequest->all());
-			return response()->json($media);
-		} catch (Exception $e) {
-			abort(400, $e->getMessage());
-		}
-	}
+        return response()->json($likeRepository->like($data['id']));
+    }
+
+    public function create(CreateMediaRequest $createMediaRequest, CreateRepository $createRepository)
+    {
+        try {
+            $media = $createRepository->create($createMediaRequest->all());
+            return response()->json($media);
+        } catch (Exception $e) {
+            abort(400, $e->getMessage());
+        }
+    }
 }

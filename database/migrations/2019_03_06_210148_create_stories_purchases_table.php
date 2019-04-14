@@ -20,14 +20,14 @@ class CreateStoriesPurchasesTable extends Migration
             $table->unsignedBigInteger('story_id');
 
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->foreign('story_id')
-            ->references('id')
-            ->on('stories')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('stories')
+                ->onDelete('cascade');
 
             $table->unique(['user_id', 'story_id']);
         });

@@ -32,9 +32,9 @@ class CreateMediaTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
 
         DB::statement('CREATE FULLTEXT INDEX title_description ON media(title, description)');

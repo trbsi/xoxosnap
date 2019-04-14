@@ -11,28 +11,28 @@ use Exception;
 
 class StoryController extends Controller
 {
-	public function create(CreateStoryRequest $createStoryRequest, CreateRepository $createRepository)
-	{
-		try {
-			$createRepository->create($createStoryRequest->all());
-			return response()->json();
-		} catch (Exception $e) {
-			abort(400, $e->getMessage());
-		}
-	}
+    public function create(CreateStoryRequest $createStoryRequest, CreateRepository $createRepository)
+    {
+        try {
+            $createRepository->create($createStoryRequest->all());
+            return response()->json();
+        } catch (Exception $e) {
+            abort(400, $e->getMessage());
+        }
+    }
 
-	public function updateViews(Request $request, UpdateViewsRepository $updateViewsRepository)
-	{
-		try {
-			$data = $request->validate([
-	            'ids' => 'required|array',
-	            'ids.*' => 'integer',
-	        ]);
+    public function updateViews(Request $request, UpdateViewsRepository $updateViewsRepository)
+    {
+        try {
+            $data = $request->validate([
+                'ids' => 'required|array',
+                'ids.*' => 'integer',
+            ]);
 
-			$updateViewsRepository->updateViews($data['ids']);
-			return response()->json();
-		} catch (Exception $e) {
-			abort(400, $e->getMessage());
-		}
-	}
+            $updateViewsRepository->updateViews($data['ids']);
+            return response()->json();
+        } catch (Exception $e) {
+            abort(400, $e->getMessage());
+        }
+    }
 }

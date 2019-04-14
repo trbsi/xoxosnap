@@ -6,15 +6,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Notification;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class GetNotificationsRepository 
+class GetNotificationsRepository
 {
-   public function getNotifications(?int $type = null): LengthAwarePaginator
+    public function getNotifications(?int $type = null): LengthAwarePaginator
     {
-		$notifications =
-    		Notification::where('user_id', Auth::id())
-    		->with(['byUser.profile'])
-    		->orderBy('id', 'DESC')
-   			;
+        $notifications =
+            Notification::where('user_id', Auth::id())
+                ->with(['byUser.profile'])
+                ->orderBy('id', 'DESC');
         if (null !== $type) {
             $notifications->where('notification_type', $type);
         } else {
@@ -26,11 +25,11 @@ class GetNotificationsRepository
 
     public function getNewFollowersNotifications()
     {
-    	return $this->getNotifications(Notification::TYPE_PERFORMER_NEW_FOLLOWER);
+        return $this->getNotifications(Notification::TYPE_PERFORMER_NEW_FOLLOWER);
     }
 
     public function getNewNotifications()
     {
-    	return $this->getNotifications();
+        return $this->getNotifications();
     }
 }

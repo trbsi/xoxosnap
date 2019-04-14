@@ -13,7 +13,7 @@ use App\Models\Media;
 class MediaController extends Controller
 {
     public function delete(Request $request, DeleteMediaRepository $deleteMediaRepository)
-    {   
+    {
         $data = $request->validate([
             'id' => 'required|integer',
         ]);

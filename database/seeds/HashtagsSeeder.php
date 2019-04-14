@@ -8,7 +8,7 @@ class HashtagsSeeder extends Seeder
 {
     public function run(Hashtag $hashtag)
     {
-    	$tags = file_get_contents(__DIR__.'/data/tags.txt');
+        $tags = file_get_contents(__DIR__ . '/data/tags.txt');
         $tagsArray = explode(',', $tags);
         $tagsArray = array_unique($tagsArray);
         $inserData = [];
@@ -17,7 +17,7 @@ class HashtagsSeeder extends Seeder
                 'name' => trim($tag),
                 'created_at' => date('Y-m-d'),
                 'updated_at' => date('Y-m-d'),
-            ];    
+            ];
         }
 
         Hashtag::insert($inserData);

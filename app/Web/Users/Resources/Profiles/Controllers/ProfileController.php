@@ -29,12 +29,12 @@ class ProfileController extends Controller
 
         if (isset($parameters['username'])) {
             $this->user = User::where('username', $parameters['username'])
-            ->where('profile_type', User::USER_TYPE_PERFORMER)
-            ->with(['profile'])
-            ->firstOrFail();
-        
+                ->where('profile_type', User::USER_TYPE_PERFORMER)
+                ->with(['profile'])
+                ->firstOrFail();
+
             $this->isUserFollowed = $this->isUserFollowedRepository
-            ->isUserFollowed($this->user->id, $this->authUser);
+                ->isUserFollowed($this->user->id, $this->authUser);
         }
 
         return parent::callAction($method, $parameters);
@@ -50,33 +50,33 @@ class ProfileController extends Controller
             'isUserFollowed' => $this->isUserFollowed,
         ]);
 
-    	return view('web.users.resources.profiles.profile.profile.profile', $data);
+        return view('web.users.resources.profiles.profile.profile.profile', $data);
     }
 
     public function about($username)
     {
-    	return view('web.users.resources.profiles.profile.about.about', [
+        return view('web.users.resources.profiles.profile.about.about', [
             'user' => $this->user,
             'authUser' => $this->authUser,
             'isUserFollowed' => $this->isUserFollowed,
-    	]);
+        ]);
     }
 
     public function userSingleVideo($username, $slug, GetOneMediaRepository $getOneVideoRepository)
     {
         $slugExplode = explode('-', $slug);
-        $videoId = (int) end($slugExplode);
+        $videoId = (int)end($slugExplode);
         $media = $getOneVideoRepository->getOneVideo($videoId, Auth::id());
 
         if ($media->user_id !== $this->user->id) {
             abort(404);
-        } 
+        }
 
         return view('web.users.resources.profiles.profile.user-single-video.user-single-video', [
             'user' => $this->user,
             'media' => $media,
             'authUser' => $this->authUser,
             'isUserFollowed' => $this->isUserFollowed,
-    	]);
+        ]);
     }
 }

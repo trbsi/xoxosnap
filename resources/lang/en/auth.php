@@ -51,7 +51,7 @@ return [
             <li>- Earn money</li>
             <li>- Post videos and photos</li>
             <li>- Post stories</li>
-            <li>- Browse '.config('app.name').'</li>
+            <li>- Browse ' . config('app.name') . '</li>
             <li>- Be verified</li>
         </ul>
         <b>Viewers can:</b>
@@ -59,7 +59,7 @@ return [
             <li>- Follow performers</li>
             <li>- Purchase tokens</li>
             <li>- Watch videos, photos and stories</li>
-            <li>- Browse '.config('app.name').'</li>
+            <li>- Browse ' . config('app.name') . '</li>
         </ul>
         ',
         'agree_to_terms_of_use' => 'You have to agree to the terms of use',
@@ -85,5 +85,5 @@ return [
         'change_password' => 'Change your password',
     ],
     'you_may_login' => 'You may login now :)',
-    'reset_password' => 'Reset your password',    
+    'reset_password' => 'Reset your password',
 ];

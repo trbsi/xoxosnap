@@ -12,7 +12,7 @@ class UpdateMediaRepository
         if ($media->user_id !== Auth::id()) {
             abort(403);
         }
-            
+
         $media->title = $data['title'];
         $media->description = $data['description'];
         $media->slug = sprintf('%s-%s', str_slug($media->title), $media->id);
@@ -20,7 +20,7 @@ class UpdateMediaRepository
 
         $hashtags = explode(',', $data['hashtags']);
         $media->hashtags()->sync($hashtags);
-    
+
         return $media;
     }
 }

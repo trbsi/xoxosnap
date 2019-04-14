@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class CoinController extends Controller
 {
     public function showBuyCoinsForm(Request $request)
-    {   
+    {
         return view('web.coins.coin.show-buy-coins-form.show-buy-coins-form');
     }
 

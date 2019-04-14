@@ -20,14 +20,14 @@ class CreateMediaHashtagsTable extends Migration
             $table->unsignedBigInteger('hashtag_id');
 
             $table->foreign('media_id')
-            ->references('id')
-            ->on('media')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('media')
+                ->onDelete('cascade');
 
             $table->foreign('hashtag_id')
-            ->references('id')
-            ->on('hashtags')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('hashtags')
+                ->onDelete('cascade');
 
             $table->unique(['media_id', 'hashtag_id']);
         });

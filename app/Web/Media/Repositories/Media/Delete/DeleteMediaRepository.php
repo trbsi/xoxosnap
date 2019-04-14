@@ -30,6 +30,6 @@ class DeleteMediaRepository
 
         $media->delete();
 
-        return true; 
+        return true;
     }
 }

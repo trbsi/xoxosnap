@@ -38,7 +38,7 @@ class UsersSeeder extends Seeder
         if ('production' === env('APP_ENV')) {
             return;
         }
-        
+
         $profiles = [
             [
                 'data' => $this->performes,
@@ -48,7 +48,7 @@ class UsersSeeder extends Seeder
                 'data' => $this->users,
                 'profile_type' => User::USER_TYPE_VIEWER,
             ],
-        ]; 
+        ];
 
         foreach ($profiles as $profile) {
             $this->seed($profile['data'], $profile['profile_type']);
@@ -63,14 +63,14 @@ class UsersSeeder extends Seeder
             $pictureName = sprintf('%s.jpg', $username);
 
             //User data
-            $userData  = [
+            $userData = [
                 'email' => sprintf('%s@fakemail.com', $username),
                 'password' => Hash::make('123456'),
                 'username' => $username,
                 'profile_type' => $profileType,
                 'is_verified' => ($i <= 5) ? true : false,
             ];
-            
+
             if (User::USER_TYPE_PERFORMER === $profileType) {
                 $userData['name'] = $name;
             }
@@ -80,16 +80,16 @@ class UsersSeeder extends Seeder
                 'picture' => $pictureName,
                 'followers' => rand(),
                 'videos' => rand(),
-                'description' => (rand(0,1) % 2 === 0) ? 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.' : null,
-                'birthday' => (rand(0,1) % 2 === 0) ? date('1990-05-12') : null,
-                'current_city' => (rand(0,1) % 2 === 0) ? 'New York' : null,
-                'gender' => (rand(0,1) % 2 === 0) ? UserProfile::GENDER_MALE : UserProfile::GENDER_FEMALE,
-                'business_email' => (rand(0,1) % 2 === 0) ? sprintf('%s@businessmail.com', $username) : null,
+                'description' => (rand(0, 1) % 2 === 0) ? 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.' : null,
+                'birthday' => (rand(0, 1) % 2 === 0) ? date('1990-05-12') : null,
+                'current_city' => (rand(0, 1) % 2 === 0) ? 'New York' : null,
+                'gender' => (rand(0, 1) % 2 === 0) ? UserProfile::GENDER_MALE : UserProfile::GENDER_FEMALE,
+                'business_email' => (rand(0, 1) % 2 === 0) ? sprintf('%s@businessmail.com', $username) : null,
                 //'badge' => (rand(0,1) % 2 === 0) ? 1 : null,
-                'website' => (rand(0,1) % 2 === 0) ? 'http://www.mysite.com' : null,
-                'facebook' => (rand(0,1) % 2 === 0) ? 'name' : null,
-                'instagram' => (rand(0,1) % 2 === 0) ? 'name' : null,
-                'twitter' => (rand(0,1) % 2 === 0) ? 'name' : null,
+                'website' => (rand(0, 1) % 2 === 0) ? 'http://www.mysite.com' : null,
+                'facebook' => (rand(0, 1) % 2 === 0) ? 'name' : null,
+                'instagram' => (rand(0, 1) % 2 === 0) ? 'name' : null,
+                'twitter' => (rand(0, 1) % 2 === 0) ? 'name' : null,
             ];
 
             $user = User::create($userData);

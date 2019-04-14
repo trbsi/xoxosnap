@@ -1,5 +1,6 @@
 <!-- Window-popup Open Photo Popup V2 -->
-<div class="modal fade modal-has-swiper" id="open-photo-popup-v2" tabindex="-1" role="dialog" aria-labelledby="open-photo-popup-v2" aria-hidden="true">
+<div class="modal fade modal-has-swiper" id="open-photo-popup-v2" tabindex="-1" role="dialog"
+     aria-labelledby="open-photo-popup-v2" aria-hidden="true">
     <div class="modal-dialog window-popup open-photo-popup open-photo-popup-v2" role="document">
         <div class="modal-content">
             <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
@@ -13,11 +14,11 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                                <div class="photo-item">
-                                    <video id="performer-video" preload="none">
-                                        <source type="video/mp4">
-                                    </video>
-                                </div>
+                            <div class="photo-item">
+                                <video id="performer-video" preload="none">
+                                    <source type="video/mp4">
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -26,10 +27,11 @@
                         <div class="post__author author vcard inline-items">
                             <img id="profile-picture" alt="author">
                             <div class="author-date">
-                                <a id="post-author-name" target="_blank" class="h6 post__author-name fn" href="">First Last</a>
+                                <a id="post-author-name" target="_blank" class="h6 post__author-name fn" href="">First
+                                    Last</a>
                                 <div class="post__date">
                                     <time class="published" id="published-ago" datetime="2017-03-24T18:18">
-                                    2 hours ago
+                                        2 hours ago
                                     </time>
                                 </div>
                             </div>
@@ -72,7 +74,9 @@
                         <div class="control-block-button post-control-button">
                             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                                 <a class="a2a_dd btn btn-control">
-                                    <svg class="olymp-share-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-share-icon"></use></svg>
+                                    <svg class="olymp-share-icon">
+                                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-share-icon"></use>
+                                    </svg>
                                 </a>
                             </div>
                         </div>
@@ -127,6 +131,6 @@
 <!-- Window-popup Open Photo Popup V2 -->
 
 @push('javascript')
-    @component('components.media.javascript.like-media-component')
-    @endcomponent
+@component('components.media.javascript.like-media-component')
+@endcomponent
 @endpush
