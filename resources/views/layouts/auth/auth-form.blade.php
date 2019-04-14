@@ -140,7 +140,7 @@
         <div class="row display-flex">
             <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="landing-content">
-                    <h1>{{config('app.name')}}</h1>
+                    <img src="/img/logo/logo-sml.png">
                     <p>{!! __('auth.ps_auth_description') !!}
                     </p>
                 </div>
