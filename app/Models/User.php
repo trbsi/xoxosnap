@@ -70,6 +70,7 @@ class User extends Authenticatable
         'provider_id' => 'integer',
         'has_notification' => 'boolean',
         'is_verified' => 'boolean',
+        'role_id' => 'int',
     ];
 
     protected $appends = [

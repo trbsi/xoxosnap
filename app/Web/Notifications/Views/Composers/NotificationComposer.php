@@ -30,6 +30,10 @@ class NotificationComposer
      */
     public function compose(View $view)
     {
+        if (false !== strpos($view->getPath(), 'views/admin')) {
+            return;
+        }
+
     	$user = Auth::user();
 
         $newFollowersNotifications = $newNotifications = [];

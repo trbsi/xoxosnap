@@ -18,8 +18,13 @@ class UserComposer
      */
     public function compose(View $view)
     {
-        $user = User::with(['coin', 'profile'])->find(Auth::id());
-        
+        if (false !== strpos($view->getPath(), 'views/admin')) {
+            return;
+        }
+
+        $user = User::with(['coin', 'profile'])
+            ->find(Auth::id());
+
         if (null !== $user) {
             $userId = $user->id;
             $name = $user->name ?? $user->username;

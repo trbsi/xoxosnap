@@ -1,0 +1,1 @@
+This is for site section taken from Olympus template (except for "fileupload" scripts in "js" folder)
