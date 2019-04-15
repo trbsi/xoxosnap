@@ -62,7 +62,7 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('hashtags')->group(function () {
         $ctl = '\App\Api\V1\Web\Hashtags\Controllers\HashtagController';
-        Route::get('/filter', $ctl . '@filter')->name('api.hashtags.filter'); //public beacuse of jquery plugin can't handle laravel_token
+        Route::get('/filter', $ctl . '@filter')->name('api.hashtags.filter'); //public because of jquery token input plugin can't handle laravel_token
     });
 
     Route::prefix('coins')->group(function () {

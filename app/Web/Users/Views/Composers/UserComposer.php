@@ -18,7 +18,11 @@ class UserComposer
      */
     public function compose(View $view)
     {
-        if (false !== strpos($view->getPath(), 'views/admin')) {
+        if (
+            false !== strpos($view->getPath(), 'views/admin')
+            ||
+            false !== strpos($view->getPath(), 'vendor')
+        ) {
             return;
         }
 

@@ -94,8 +94,8 @@ mix.styles([
 ], 'public/css/admin-all.css');
 
 mix.scripts([
-    'resources/assets/js/jquery.min.js',
-    'resources/assets/js/bootstrap-bundle.min.js',
-    'resources/assets/js/jquery.easing.min.js',
-    'resources/assets/js/sb-admin-2.js',
+    'resources/assets/admin/js/jquery.min.js',
+    'resources/assets/admin/js/bootstrap.bundle.min.js',
+    'resources/assets/admin/js/jquery.easing.min.js',
+    'resources/assets/admin/js/sb-admin-2.js',
 ], 'public/js/admin-all.js');

@@ -7,7 +7,7 @@ use App\Helpers\Traits\ImageManipulationTrait;
 use Illuminate\Support\Facades\Storage;
 use App\Web\Users\Resources\Profiles\Traits\ProfilePictureTrait;
 
-class EditPersonalInfo
+class EditPersonalInfoRepository
 {
     use ProfilePictureTrait, ImageManipulationTrait;
 

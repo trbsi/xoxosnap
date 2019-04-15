@@ -9,7 +9,7 @@ use App\Models\UserProfile;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Hash;
-use App\Web\Users\Resources\Profiles\Repositories\Settings\EditPersonalInfoSettings\EditPersonalInfo;
+use App\Web\Users\Resources\Profiles\Repositories\Settings\EditPersonalInfoSettings\EditPersonalInfoRepository;
 
 class SettingsController extends Controller
 {
@@ -67,7 +67,7 @@ class SettingsController extends Controller
     }
 
 
-    public function editPersonalInfoSettings(Request $request, EditPersonalInfo $editPersonalInfo)
+    public function editPersonalInfoSettings(Request $request, EditPersonalInfoRepository $editPersonalInfo)
     {
         $validator = Validator::make($request->all(), [
             'birthday' => 'nullable|date',

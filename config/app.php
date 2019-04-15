@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'xoxoSnap'),
+    'name' => env('APP_NAME', 'XoXoSnap'),
 
     'info_email' => env('INFO_EMAIL', 'info@xoxosnap.me'),
 

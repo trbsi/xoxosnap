@@ -9,7 +9,7 @@ class AdminsSeeder extends Seeder
 {
     public function run(User $user)
     {
-        $adminRole = UserRole::where('role_key', 'admin')->first();
+        $adminRole = UserRole::where('role_key', UserRole::ROLE_ADMIN)->first();
         $admins = [
             [
                 'username' => 'dario',

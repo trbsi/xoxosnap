@@ -74,7 +74,8 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'profile_url'
+        'profile_url',
+        'profile_type_formatted'
     ];
 
     public function getProfileUrlAttribute()
@@ -84,6 +85,16 @@ class User extends Authenticatable
         }
 
         return route('web.user.profile', ['username' => $this->username]);
+    }
+
+    public function getProfileTypeFormattedAttribute()
+    {
+        switch ($this->profile_type) {
+            case self::USER_TYPE_VIEWER:
+                return 'viewer';
+            case self::USER_TYPE_PERFORMER:
+                return 'performer';
+        }
     }
 
     public function profile()
