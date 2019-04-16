@@ -84,7 +84,7 @@ use App\Models\User;
                                     <td><a href="{{$user->profile_url}}" target="_blank">{{$user->username}}</a> </td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->profile_type_formatted}}</td>
-                                    <td>{{true === $user->is_verified ? 'Yes' : 'No'}}</td>
+                                    <td>{{true === $user->is_verified ? 'Yes' : 'No'}} ({{__(sprintf('web/users/resources/verification.status_%s', $user->verification->status))}})</td>
                                     <td>
                                         @switch($user->provider)
                                             @case(User::PROVIDER_TWITTER)
@@ -96,8 +96,13 @@ use App\Models\User;
                                         @endswitch
                                     </td>
                                     <td>
-                                        <form method="POST" action="{{route('web.admin.user.verification.change-verification-status')}}">
-                                            <button class="btn {{true === $user->is_verified ? 'btn-danger' : 'btn-success'}} btn-sm">{{true === $user->is_verified ? 'Unverify' : 'Verify'}}</button>
+                                        <form class="submitform" method="POST" action="{{route('web.admin.user.verification.change-verification-status')}}">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$user->id}}">
+                                            <input type="hidden" name="status" value="{{true === $user->is_verified ? 0 : 1}}">
+                                            <button class="btn {{true === $user->is_verified ? 'btn-danger' : 'btn-success'}} btn-sm">
+                                                {{true === $user->is_verified ? 'Unverify' : 'Verify'}}
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>

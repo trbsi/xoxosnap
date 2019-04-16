@@ -3,30 +3,31 @@
 namespace App\Web\Admin\Users\Resources\Verifications\Repositories\Verification\ChangeVerificationStatus;
 
 use App\Models\User;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Models\UserVerification;
 
 class ChangeVerificationStatusRepository
 {
-    public function getAllUsersPaginated(array $data): LengthAwarePaginator
+    public function changeStatus(array $data): bool
     {
-        $user = User::with(['profile'])
-            ->where('profile_type', $data['profile_type'] ?? User::USER_TYPE_PERFORMER)
-        ;
+        /** @var User $user */
+        $user = User::where('id', $data['id'])->firstOrFail();
+        $verification = $user->verification;
 
-        if (isset($data['username'])) {
-            $user->where('username', $data['username']);
+        //'status' values: 1 (verify) or 0 (unverify)
+        if (true === (bool) $data['status']) {
+            $user->is_verified = 1;
+            $verification->status = UserVerification::STATUS_VERIFIED;
+            $status = true;
+        } else {
+            $user->is_verified = 0;
+            $verification->status = UserVerification::STATUS_UNVERIFIED;
+            $status = false;
         }
 
-        if (isset($data['id'])) {
-            $user->where('id', $data['id']);
-        }
+        $user->save();
+        $verification->save();
 
-        if (isset($data['order_by_type']) && isset($data['order_by_column'])) {
-            $user->orderBy($data['order_by_column'], $data['order_by_type']);
-        }
-
-        return $user->paginate(50);
-
+        return $status;
     }
 
 }

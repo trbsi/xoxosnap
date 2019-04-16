@@ -91,6 +91,7 @@ mix.scripts([
 mix.styles([
     'resources/assets/admin/css/fontawesome-all.css',
     'resources/assets/admin/css/sb-admin-2.css',
+    'resources/assets/css/toastr.min.css',
 ], 'public/css/admin-all.css');
 
 mix.scripts([
@@ -98,4 +99,5 @@ mix.scripts([
     'resources/assets/admin/js/bootstrap.bundle.min.js',
     'resources/assets/admin/js/jquery.easing.min.js',
     'resources/assets/admin/js/sb-admin-2.js',
+    'resources/assets/js/toastr.min.js',
 ], 'public/js/admin-all.js');

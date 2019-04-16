@@ -1,5 +1,5 @@
-@if(false === $media->isEmpty())
-	@component('components.media.videos-with-stories-component', ['media'=> $media, 'stories' => $stories]) 
+@if($user->follows()->count() > 0)
+	@component('components.media.videos-with-stories-component', ['media'=> $media, 'stories' => $stories])
 	@endcomponent
 @else
 	@include('web.home.home.home.viewer-follow-performers')
