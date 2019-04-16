@@ -6,7 +6,7 @@
                     @component('components.media.small-video-component', ['video' => $video])
                     @endcomponent
                 @endforeach
-                {{$media->appends(request()->except('page'))->links()}}
+              {{$media->appends(request()->except('page'))->links()}}
             @endif
         </div>
     </div>
@@ -16,12 +16,12 @@
 @endcomponent
 
 @push('javascript')
-@component('components.media.javascript.progressbar-component', ['cssClass' => '.progressbar-continer-vid'])
-@endcomponent
+    @component('components.media.javascript.progressbar-component', ['cssClass' => '.progressbar-continer-vid'])
+    @endcomponent
 
-@component('components.media.javascript.infinite-scroll-component')
-@endcomponent
+    @component('components.media.javascript.infinite-scroll-component')
+    @endcomponent
 
-@component('components.media.javascript.video-access-component')
-@endcomponent
+    @component('components.media.javascript.video-access-component')
+    @endcomponent    
 @endpush

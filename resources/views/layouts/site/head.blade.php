@@ -11,12 +11,12 @@
     <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-@yield('meta')
-<!-- Bootstrap CSS -->
+    @yield('meta')
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="/css/all.css">
 
-@stack('css')
-<!-- Main Font -->
+    @stack('css')
+    <!-- Main Font -->
     <script src="/js/webfontloader.min.js"></script>
     <script>
         WebFont.load({

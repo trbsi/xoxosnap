@@ -3,9 +3,9 @@
 @include('layouts.site.head')
 @yield('css')
 <body class="auth">
-@yield('body')
-@include('layouts.site.javascript')
-@yield('javascript')
-@stack('javascript')
+    @yield('body')
+    @include('layouts.site.javascript')
+    @yield('javascript')
+    @stack('javascript')
 </body>
 </html>

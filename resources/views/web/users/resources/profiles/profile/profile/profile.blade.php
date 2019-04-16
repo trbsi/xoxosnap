@@ -3,7 +3,7 @@
 @section('title', config('app.name').' | '.$user->username)
 
 @section('meta')
-    @component('components.head.social-media-metatags', [
+	@component('components.head.social-media-metatags', [
         'provider' => $user->provider,
         'username' => $user->username,
         'title' => $user->name,
@@ -15,7 +15,7 @@
 @endsection
 
 @section('body')
-    @include('web.users.resources.profiles.common.profile-info')
-    @component('components.media.videos-with-stories-component', ['media'=> $media, 'stories' => $stories])
-    @endcomponent
+	@include('web.users.resources.profiles.common.profile-info') 
+	@component('components.media.videos-with-stories-component', ['media'=> $media, 'stories' => $stories]) 
+	@endcomponent
 @endsection

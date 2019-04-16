@@ -1,57 +1,51 @@
 @extends('layouts.auth.core')
 @section('css')
-    <style>
-        .landing-content * {
-            color: gray;
-        }
-
-        .nav-item:hover a {
-            color: gray !important;
-        }
-
-        .header--standard-landing .header-menu .nav-item a, .header--standard-landing .header-menu li a {
-            color: gray;
-            fill: gray;
-            display: block;
-        }
-
-        .header--standard-landing .header-menu .nav-item a:hover, .header--standard-landing .header-menu li a:hover {
-            color: gray;
-            fill: gray;
-            display: block;
-        }
-
-        .header--standard-landing .dropdown-toggle::after {
-            border-top-color: gray;
-        }
-
-        .registration-login-form a {
-            color: white;
-        }
-
-        .login-register:hover {
-            color: gray;
-        }
-    </style>
+<style>
+    .landing-content * {
+    color: gray;
+    }
+    .nav-item:hover a {
+    color: gray!important;
+    }
+    .header--standard-landing .header-menu .nav-item a, .header--standard-landing .header-menu li a {
+    color: gray;
+    fill: gray;
+    display: block;
+    }
+    .header--standard-landing .header-menu .nav-item a:hover, .header--standard-landing .header-menu li a:hover {
+    color: gray;
+    fill: gray;
+    display: block;
+    }
+    .header--standard-landing .dropdown-toggle::after {
+    border-top-color: gray;
+    }
+    .registration-login-form a {
+    color: white;
+    }
+    .login-register:hover {
+    color: gray;
+    }
+</style>
 @endsection
 @section('body')
-    <div class="content-bg-wrap"></div>
-    <!-- Header Standard Landing  -->
-    <div class="header--standard header--standard-landing" id="header--standard">
-        <div class="container">
-            <div class="header--standard-wrap">
-                <a href="/" class="logo">
-                    <div class="img-wrap">
-                        <img src="/img/logo/logo-xsml.png" alt="{{config('app.name')}}">
-                        <img src="/img/logo/logo-xsml.png" alt="{{config('app.name')}}" class="logo-colored">
-                    </div>
-                </a>
-                <a href="#" class="open-responsive-menu js-open-responsive-menu">
-                    <svg class="olymp-menu-icon">
-                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
-                    </svg>
-                </a>
-                <?php /*
+<div class="content-bg-wrap"></div>
+<!-- Header Standard Landing  -->
+<div class="header--standard header--standard-landing" id="header--standard">
+    <div class="container">
+        <div class="header--standard-wrap">
+            <a href="/" class="logo">
+                <div class="img-wrap">
+                    <img src="/img/logo/logo-xsml.png" alt="{{config('app.name')}}">
+                    <img src="/img/logo/logo-xsml.png" alt="{{config('app.name')}}" class="logo-colored">
+                </div>
+            </a>
+            <a href="#" class="open-responsive-menu js-open-responsive-menu">
+                <svg class="olymp-menu-icon">
+                    <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
+                </svg>
+            </a>
+            <?php /*
                 <div class="nav nav-pills nav1 header-menu">
                 	<div class="mCustomScrollbar">
                 		<ul>
@@ -131,56 +125,55 @@
                 	</div>
                 </div>
                 */ ?>
-            </div>
         </div>
     </div>
-    <!-- ... end Header Standard Landing  -->
-    <div class="header-spacer--standard"></div>
-    <div class="container">
-        <div class="row display-flex">
-            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                <div class="landing-content">
-                    <img src="/img/logo/logo-sml.png">
-                    <p>{!! __('auth.ps_auth_description') !!}
-                    </p>
-                </div>
+</div>
+<!-- ... end Header Standard Landing  -->
+<div class="header-spacer--standard"></div>
+<div class="container">
+    <div class="row display-flex">
+        <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="landing-content">
+                <img src="/img/logo/logo-sml.png">
+                <p>{!! __('auth.ps_auth_description') !!}
+                </p>
             </div>
-            <div class="col col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12">
-                <!-- Login-Registration Form  -->
-                <!-- Tab panes -->
+        </div>
+        <div class="col col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12">
+            <!-- Login-Registration Form  -->
+            <!-- Tab panes -->
             @yield('form-section')
-            <!-- ... end Login-Registration Form  -->
-            </div>
+            <!-- ... end Login-Registration Form  -->		
         </div>
     </div>
+</div>
 
-    <!-- Window Popup Main Search -->
-    <div class="modal fade" id="main-popup-search" tabindex="-1" role="dialog" aria-labelledby="main-popup-search"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered window-popup main-popup-search" role="document">
-            <div class="modal-content">
-                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-                    <svg class="olymp-close-icon">
-                        <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
-                    </svg>
-                </a>
-                <div class="modal-body">
-                    <form class="form-inline search-form" method="post">
-                        <div class="form-group label-floating">
-                            <label class="control-label">What are you looking for?</label>
-                            <input class="form-control bg-white" placeholder="" type="text" value="">
-                        </div>
-                        <button class="btn btn-purple btn-lg">Search</button>
-                    </form>
-                </div>
+<!-- Window Popup Main Search -->
+<div class="modal fade" id="main-popup-search" tabindex="-1" role="dialog" aria-labelledby="main-popup-search" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered window-popup main-popup-search" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon">
+                    <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                </svg>
+            </a>
+            <div class="modal-body">
+                <form class="form-inline search-form" method="post">
+                    <div class="form-group label-floating">
+                        <label class="control-label">What are you looking for?</label>
+                        <input class="form-control bg-white" placeholder="" type="text" value="">
+                    </div>
+                    <button class="btn btn-purple btn-lg">Search</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 @endsection
 @push('javascript')
 <script type="text/javascript">
-    $('.explanation').click(function () {
-        $('#explanation-details').toggle();
+    $('.explanation').click(function() {
+    	$('#explanation-details').toggle();
     });
 </script>
 @endpush

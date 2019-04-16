@@ -5,7 +5,7 @@ use App\Models\User;
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@<?=env('TWITTER_USERNAME')?>">
 @if (User::PROVIDER_TWITTER === $provider)
-    <meta name="twitter:creator" content="@<?=$username?>">
+<meta name="twitter:creator" content="@<?=$username?>">
 @endif
 <meta name="twitter:title" content="{{$title}}">
 <meta name="twitter:description" content="{{$description}}">
