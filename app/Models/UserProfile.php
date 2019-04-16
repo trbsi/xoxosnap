@@ -17,7 +17,7 @@ class UserProfile extends Model
     public const GENDER_TRANS = 3;
 
     public const USER_PICTURE_PATH = '/user/profile/';
-    public const NO_PROFILE_PICTURE_PATH = '/img/no_profile_picture.png';
+    public const NO_PROFILE_PICTURE_PATH = '/img/no_profile_picture.jpg';
 
     public static $genders = [
         self::GENDER_MALE => 'male',
