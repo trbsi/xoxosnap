@@ -62,7 +62,7 @@ use App\Models\User;
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="{{$notification->byUser->profile_url}}" class="h6 notification-friend">{{$notification->byUser->username}}</a>
+                                        <b>{{$notification->byUser->username}}</b>
                                         {{__('general/header.followers.followed_you')}}
                                     </div>
                                     <span class="notification-date"><time class="entry-date updated" datetime="{{$notification->created_at}}">{{$notification->created_ago}}</time></span>
@@ -103,16 +103,18 @@ use App\Models\User;
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="{{$notification->byUser->profile_url}}" class="h6 notification-friend">
+                                        
                                             @switch($notification->byUser->profile_type)
                                                 @case(User::USER_TYPE_PERFORMER)
-                                                    {{$notification->byUser->name}}
+                                                    <a href="{{$notification->byUser->profile_url}}" class="h6 notification-friend">
+                                                        {{$notification->byUser->name}}
+                                                     </a>
                                                     @break
                                                 @case(User::USER_TYPE_VIEWER)
-                                                    {{$notification->byUser->username}}
+                                                    <b>{{$notification->byUser->username}}</b>
                                                     @break
                                             @endswitch
-                                        </a>
+                                       
                                         @switch($notification->notification_type)
                                             @case($notification::TYPE_PERFORMER_NEW_PURCHASE)
                                                 {{__('general/header.notifications.bought_your_video')}}
@@ -275,10 +277,12 @@ use App\Models\User;
 
                 switch (notificationItem.by_user.profile_type) {
                     case <?=User::USER_TYPE_PERFORMER?>:
-                        username = notificationItem.by_user.name;
+                        username = '<a href="/u/'+notificationItem.by_user.username+'" class="h6 notification-friend">'
+                                +notificationItem.by_user.name+''
+                                +'</a>'
                         break;
                     case <?=User::USER_TYPE_VIEWER?>:
-                        username = notificationItem.by_user.username;
+                        username = '<b>'+notificationItem.by_user.username+'</b>';
                         break;
                 }
 
@@ -298,9 +302,7 @@ use App\Models\User;
                         +'</div>'
                         +'<div class="notification-event">'
                             +'<div>'
-                                +'<a href="/u/'+notificationItem.by_user.username+'" class="h6 notification-friend">'
-                                +username+''
-                                +'</a>'
+                                +username
                                 +' '
                                 +notificationText+''
                             +'</div>'
@@ -336,7 +338,7 @@ use App\Models\User;
         viewAllNotificationsButton.hide();
         loadMoreFollowersLoading.show();
 
-        var response = ajax('{{route('api.notifications.get', ['type' => Notification::TYPE_PERFORMER_NEW_FOLLOWER])}}', 'GET', {page: notificationsPage});
+        var response = ajax('{{route('api.notifications.get', ['type' => Notification::TYPE_PERFORMER_NEW_FOLLOWER])}}', 'GET', {page: followersPage});
         response
         .done(function(data) {
             var isReadClass = '';
@@ -350,7 +352,7 @@ use App\Models\User;
                         +'</div>'
                         +'<div class="notification-event">'
                             +'<div>'
-                                +'<a href="#" class="h6 notification-friend">'+notificationItem.by_user.username+'</a>'
+                                +'<b>'+notificationItem.by_user.username+'</b>'
                                 +' '
                                 +'{{__('general/header.followers.followed_you')}}'
                             +'</div>'
