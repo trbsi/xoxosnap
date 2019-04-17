@@ -2,7 +2,7 @@
 return [
     'about' => 'About',
     'followers' => 'Followers',
-    'snaps' => 'xoxoSnap',
+    'snaps' => 'XoXos',
     'videos' => 'Videos',
     'unfollow' => 'Unfollow',
     'follow' => 'Follow',

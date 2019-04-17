@@ -15,7 +15,7 @@
                             <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
                                     <li>
-                                        <a href="{{$user->profile_url}}">{{__('web/users/resources/profile.snaps')}}</a>
+                                        <a href="{{$user->profile_url}}">{{$user->username}}'s {{__('web/users/resources/profile.snaps')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route('web.user.about', ['username' => $user->username])}}">{{__('web/users/resources/profile.about')}}</a>

@@ -2,10 +2,10 @@
 <div class="container performer-tour-view-public-profile">
 	<div class="row">
 		<div class="col col-xl-12">
-			<h1>
+			<h2>
 				{{__('web/home/home.performer.view_your_profile')}} 
 				<a href="{{$user->profile_url}}">{{$user->username}}</a>
-			</h1>
+			</h2>
 		</div>
 	</div>
 </div>

@@ -53,7 +53,7 @@
                 }]
             });  
         } else {
-            shepherd.addStep('performer-stories', {
+            /*shepherd.addStep('performer-stories', {
                 text: '{{__('web/home/home.viewer_tour_follow_performers.performer_stories')}}',
                 attachTo: '.viewer-tour-performer-stories bottom',
                 buttons: [{
@@ -64,7 +64,7 @@
                     action: shepherd.next,
                     text: '{{__('web/home/home.viewer_tour_follow_performers.next')}}'
                 }]
-            });
+            });*/
 
             shepherd.addStep('performer-videos', {
                 text: '{{__('web/home/home.viewer_tour_follow_performers.performer_videos')}}',

@@ -62,6 +62,7 @@ return [
             'send' => 'Send',
             'request_sent' => 'Your request has been submitted',
         ],
+        'upload_video' => 'Upload video',
     ],
     'performer_video_form' => [
         'description' => 'Description',
@@ -115,7 +116,7 @@ return [
         'back' => 'Back',
         'done' => 'Done',
         'public_profile' => "If you click on your username you'll be redirected to your public profile.<br><br>Once there you'll be able to view your videos, edit your videos, delete your videos, view your number of followers and view your personal information for your followers.",
-        'upload_media' => 'Here you can upload your videos and stories. Choose when your videos expire, the video thumbnail, how much they cost to view and much more!',
+        'upload_media' => 'Here you can upload your videos. Choose when your videos expire, the video thumbnail, how much they cost to view and much more!',
         'current_balance' => 'This is your current balance for payout',
         'total_balance' => sprintf('This is your total earnings. It displays how much you have earned so far on %s', config('app.name')),
         'number_of_followers' => 'Your number of followers',

@@ -29,6 +29,7 @@ use App\Models\Media;
     <br>
 	<div class="container">
 		<div class="row">
+			<?php /*
 			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="ui-block">
 					<div class="ui-block-title inline-items">
@@ -39,6 +40,7 @@ use App\Models\Media;
 					</div>
 				</div>
 			</div>
+			*/?>
 			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="btn-group btn-group-justified grouped-buttons-full-width" role="group" style="display: flex;">
 					<a href="{{route('web.explore', ['type' => Media::ORDER_TYPE_RECENT])}}" class="btn {{(Media::ORDER_TYPE_RECENT === $exploreType) ? 'btn-primary' : 'btn-secondary'}}">
