@@ -2,10 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('admin.layouts.head')
+    @include('web.admin.layouts.head')
 </head>
 <body id="page-top">
 @yield('body')
-@include('admin.layouts.javascript')
+@include('web.admin.layouts.javascript')
 </body>
 </html>

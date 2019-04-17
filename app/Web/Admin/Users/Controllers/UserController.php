@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function get(Request $request, GetAllUsersRepository $getAllUsersRepository)
     {
-        return view('admin.web.users.user.get.get', [
+        return view('web.admin.users.user.get.get-users', [
             'users' => $getAllUsersRepository->getAllUsersPaginated($request->all())
         ]);
     }

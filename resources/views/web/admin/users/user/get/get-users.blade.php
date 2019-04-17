@@ -2,7 +2,7 @@
 use App\Models\User;
 ?>
 
-@extends('admin.layouts.core')
+@extends('web.admin.layouts.core')
 
 @section('body')
     <div class="container-fluid">
@@ -84,7 +84,7 @@ use App\Models\User;
                                     <td><a href="{{$user->profile_url}}" target="_blank">{{$user->username}}</a> </td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->profile_type_formatted}}</td>
-                                    <td>{{true === $user->is_verified ? 'Yes' : 'No'}} ({{__(sprintf('web/users/resources/verification.status_%s', $user->verification->status))}})</td>
+                                    <td>{{true === $user->is_verified ? 'Yes' : 'No'}} ({{__(sprintf('web/admin/users/resources/verification.change_verification_status.status_%s', $user->verification->status))}})</td>
                                     <td>
                                         @switch($user->provider)
                                             @case(User::PROVIDER_TWITTER)
@@ -96,7 +96,7 @@ use App\Models\User;
                                         @endswitch
                                     </td>
                                     <td>
-                                        <form class="submitform" method="POST" action="{{route('web.admin.user.verification.change-verification-status')}}">
+                                        <form class="submit-form" method="POST" action="{{route('web.admin.user.verification.change-verification-status')}}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{$user->id}}">
                                             <input type="hidden" name="status" value="{{true === $user->is_verified ? 0 : 1}}">
@@ -117,3 +117,12 @@ use App\Models\User;
 
     </div>
 @endsection
+
+@push('javascript')
+<script type="text/javascript">
+    $('.submit-form').submit(function(e) {
+        var r = confirm("{{__('general/site.are_you_sure')}}");
+        return r;
+    });
+</script>
+@endpush

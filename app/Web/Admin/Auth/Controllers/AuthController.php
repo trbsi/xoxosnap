@@ -21,7 +21,7 @@ class AuthController extends Controller
             return redirect()->route('web.admin.user.get');
         }
 
-        return view('admin.auth.login.login.login');
+        return view('web.admin.auth.login.login.login');
     }
 
     public function submitLogin(Request $request)

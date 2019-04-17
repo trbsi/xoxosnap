@@ -1,4 +1,4 @@
-@extends('admin.auth.layouts.core')
+@extends('web.admin.auth.layouts.core')
 
 @section('body')
     <div class="container">

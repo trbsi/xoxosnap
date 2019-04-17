@@ -2,17 +2,17 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('admin.layouts.head')
+    @include('web.admin.layouts.head')
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-        @include('admin.layouts.navbar')
+        @include('web.admin.layouts.navbar')
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
-                @include('admin.layouts.topbar')
+                @include('web.admin.layouts.topbar')
                 <!-- Begin Page Content -->
                 @yield('body')
                 <!-- End Page Content -->
@@ -56,6 +56,6 @@
             </div>
         </div>
     </div>
-    @include('admin.layouts.javascript')
+    @include('web.admin.layouts.javascript')
 </body>
 </html>
