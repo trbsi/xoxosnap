@@ -12,6 +12,7 @@ use App\Models\Notification;
 use App\Models\NotificationCount;
 use App\Models\Stories;
 use App\Models\UserVerification;
+use App\Models\UserRole;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -140,5 +141,10 @@ class User extends Authenticatable
     public function verification()
     {
         return $this->hasOne(UserVerification::class, 'user_id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(UserRole::class, 'role_id');
     }
 }

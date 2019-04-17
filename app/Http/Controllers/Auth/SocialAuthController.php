@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserRole;
 use Socialite;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -34,13 +35,14 @@ class SocialAuthController extends Controller
 
         if (!$user) {
             $username = $this->checkForUsernameUniqueness($providerUser->getNickname());
+            $userRole = UserRole::where('role_key', UserRole::ROLE_USER)->first();
             $userData = [
                 'profile_type' => User::USER_TYPE_PERFORMER,
                 'username' => $username,
                 'name' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
                 'provider_id' => $providerUser->getId(),
-                'provider' => $providerName
+                'provider' => $providerName,
             ];
 
             if (isset($providerUserRaw['verified'])) {
@@ -48,6 +50,8 @@ class SocialAuthController extends Controller
             }
 
             $user = User::create($userData);
+            $user->role_id = $userRole->id;
+            $user->save();
 
             $user->profile()->create([
                 'picture' => $providerUser->getAvatar(),

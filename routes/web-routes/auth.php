@@ -1,6 +1,6 @@
 <?php
 //*********************AUTH ROUTES*********************
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:user'])->group(function () {
     Route::prefix('coins')->group(function () {
         $ctl = '\App\Web\Coins\Controllers\CoinController';
         Route::get('buy-coins', $ctl . '@showBuyCoinsForm')->name('web.coins.show-buy-coins-form');

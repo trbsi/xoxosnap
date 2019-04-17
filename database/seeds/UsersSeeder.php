@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\UserProfile;
+use App\Models\UserRole;
 
 class UsersSeeder extends Seeder
 {
@@ -58,6 +59,8 @@ class UsersSeeder extends Seeder
     private function seed(array $profiles, int $profileType)
     {
         $i = 1;
+        $userRole = UserRole::where('role_key', UserRole::ROLE_USER)->first();
+
         foreach ($profiles as $username => $name) {
             //General data
             $pictureName = sprintf('%s.jpg', $username);
@@ -69,6 +72,7 @@ class UsersSeeder extends Seeder
                 'username' => $username,
                 'profile_type' => $profileType,
                 'is_verified' => ($i <= 5) ? true : false,
+                'role_id' => $userRole->id,
             ];
 
             if (User::USER_TYPE_PERFORMER === $profileType) {

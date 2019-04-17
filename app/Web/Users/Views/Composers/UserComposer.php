@@ -2,6 +2,7 @@
 
 namespace App\Web\Users\Views\Composers;
 
+use App\Models\UserRole;
 use Illuminate\View\View;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
