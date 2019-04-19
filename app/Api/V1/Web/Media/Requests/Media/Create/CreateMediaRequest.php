@@ -28,7 +28,7 @@ class CreateMediaRequest extends FormRequest
             'title' => 'required|max:100',
             'cost' => 'required|integer|min:0',
             'description' => 'max:10000',
-            'video' => 'required|file|mimes:mp4',
+            'video' => 'required|file|mimetypes:video/mp4,video/quicktime',
             'thumbnail' => 'required|string',
             'hashtags' => 'required|string',
             'expiry_type' => sprintf('required|in:%s,%s', Media::EXPIRY_TYPE_CUSTOM, Media::EXPIRY_TYPE_NEVER),

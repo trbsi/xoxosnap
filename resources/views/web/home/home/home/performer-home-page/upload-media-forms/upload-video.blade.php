@@ -79,7 +79,7 @@ use App\Models\Media;
                 	<br>
 					<div class="file-upload">
 						<label for="upload" class="file-upload__label">{{__('web/home/home.performer_video_form.choose_video')}}</label>
-						<input class="file-upload__input"  type="file" id="video-form-media-to-upload" accept="video/mp4" name="video">
+						<input class="file-upload__input"  type="file" id="video-form-media-to-upload" accept="video/mp4,video/quicktime" name="video">
 					</div>
 					<br>
 					{{__('web/home/home.performer_video_form.capture_info')}}
@@ -145,7 +145,7 @@ $(function () {
 
     $('#video-form-media-to-upload').fileupload({
         dataType: 'json',
-        acceptFileTypes: '/(\.|\/)(mp4)$/i',
+        acceptFileTypes: '/(\.|\/)(mp4|mov)$/i',
         autoUpload: false,
         url: '{{route('api.media.create')}}',
         beforeSend: function(xhr, data) {
@@ -154,22 +154,25 @@ $(function () {
         add: function (e, data) {
             var videoData = processVideoAndPrepareForThumbnail(data);
 
-		    // Load metadata of the video to get video duration
-		    videoData.video.addEventListener('loadedmetadata', function() {
-		        videoDuration = videoData.video.duration;
-		         if (videoDuration > {{Media::MAX_VIDEO_DURATION}}) {
-	            	toastr.error('{{__('web/home/home.performer_video_form.max_video_length', ['duration' => Media::MAX_VIDEO_DURATION/60])}}');
-            	    $('#preview-video source').attr('src', '');
-    				videoData.video.load();
-	            	return;
-	            }
+            if (videoData) {
+            	 // Load metadata of the video to get video duration
+			    videoData.video.addEventListener('loadedmetadata', function() {
+			        videoDuration = videoData.video.duration;
+			         if (videoDuration > {{Media::MAX_VIDEO_DURATION}}) {
+		            	toastr.error('{{__('web/home/home.performer_video_form.max_video_length', ['duration' => Media::MAX_VIDEO_DURATION/60])}}');
+	            	    $('#preview-video source').attr('src', '');
+	    				videoData.video.load();
+		            	return;
+		            }
 
-	        	fileToSubmit = data;
+		        	fileToSubmit = data;
 
-	            //remove thumbnail
-	            $("#video-form input[name='thumbnail']").val('');
-	            $('#video-thumbnail-output').empty();
-		    });
+		            //remove thumbnail
+		            $("#video-form input[name='thumbnail']").val('');
+		            $('#video-thumbnail-output').empty();
+			    });
+            }
+		   
         },
         done: function (e, data) {
             $('#progress .bar').css('width', '0%');
@@ -324,8 +327,8 @@ function processVideoAndPrepareForThumbnail(videoData)
 
 	// When user chooses a MP4 file
     // Validate whether MP4
-    if(['video/mp4'].indexOf(videoData.files[0].type) == -1) {
-        alert('Error : Only MP4 format allowed');
+    if(['video/mp4'].indexOf(videoData.files[0].type) == -1 && ['video/quicktime'].indexOf(videoData.files[0].type) == -1) {
+        alert('Error : Only MP4 and MOV format allowed');
         return;
     }
 
