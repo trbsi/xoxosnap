@@ -2,7 +2,7 @@
     <title>@yield('title')</title>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons//apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">

@@ -8,4 +8,5 @@ return [
     'login' => 'Login',
     'register' => 'Register',
     'buy_coins' => 'Buy Coins',
+    'upload_media' => 'Upload video',
 ];

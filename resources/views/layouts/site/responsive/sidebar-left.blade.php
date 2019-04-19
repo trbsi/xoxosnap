@@ -56,6 +56,14 @@ use App\Models\User;
 
 			<ul class="account-settings">
 				<li>
+                    <a href="{{route('web.home')}}">
+                        <svg class="olymp-multimedia-icon">
+                            <use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use>
+                        </svg>
+                        <span>{{__('general/user-menu.upload_media')}}</span>
+                    </a>
+                </li>
+				<li>
 					<a href="{{route('web.user.profile.settings.account-settings')}}">
 						<svg class="olymp-menu-icon"><use xlink:href="/assets/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 

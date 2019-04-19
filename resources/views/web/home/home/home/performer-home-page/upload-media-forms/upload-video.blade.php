@@ -75,7 +75,7 @@ use App\Models\Media;
 
             <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                 <div class="form-group">
-                	<label><b>{{__('web/home/home.performer_video_form.video')}}</b></label>
+                	<label><h3>{{__('web/home/home.performer_video_form.video')}}</h3></label>
                 	<br>
 					<div class="file-upload">
 						<label for="upload" class="file-upload__label">{{__('web/home/home.performer_video_form.choose_video')}}</label>
@@ -93,7 +93,7 @@ use App\Models\Media;
 
             <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 				<div>
-					<b>{{__('web/home/home.performer_video_form.preview')}}</b>
+					<h3>{{__('web/home/home.performer_video_form.preview')}}</h3>
 				</div>
 				<video id="preview-video" controls style="max-width: 300px;">
 					<source type="video/mp4">
@@ -102,7 +102,7 @@ use App\Models\Media;
 
 			<div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 				<canvas id="video-canvas" style="display: none;"></canvas>
-				<b>{{__('web/home/home.performer_video_form.thumbnail')}}</b>
+				<h3>{{__('web/home/home.performer_video_form.thumbnail')}}</h3>
 				<div id="video-thumbnail-output"></div>
 			</div>
 
