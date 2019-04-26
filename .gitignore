@@ -16,3 +16,4 @@ seed_db.sh
 error_log
 /public/php.ini
 .vscode/*
+/public/adultnews/

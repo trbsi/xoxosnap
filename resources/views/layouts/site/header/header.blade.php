@@ -233,6 +233,11 @@ use App\Models\User;
                             </div>
                             <ul>
                                 <li>
+                                    <a href="mailto:{{config('app.info_email')}}">
+                                    <span>{{__('general/site.contact_us')}}</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{route('web.terms-of-use')}}">
                                     <span>{{__('general/legal.terms_of_use')}}</span>
                                     </a>
